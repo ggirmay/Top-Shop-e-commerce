@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.ws.rs.GET;
-import javax.xml.ws.Response;
 
 @SpringBootApplication
 @RestController
@@ -17,7 +16,7 @@ public class ProductServiceApplication {
 
     @GetMapping(value = "/products")
     public ResponseEntity<String> test(){
-        return ResponseEntity.ok().body("its working");
+        return ResponseEntity.ok().body("---- I am product ----");
     }
     public static void main(String[] args) {
         SpringApplication.run(ProductServiceApplication.class, args);
