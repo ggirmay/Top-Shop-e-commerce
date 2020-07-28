@@ -17,7 +17,7 @@ public class ProductServiceApplication {
 
     @GetMapping(value = "/products")
     public ResponseEntity<String> test(){
-        return ResponseEntity.ok().body("its working");
+        return ResponseEntity.ok().body("product service is working");
     }
     public static void main(String[] args) {
         SpringApplication.run(ProductServiceApplication.class, args);
