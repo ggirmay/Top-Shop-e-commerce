@@ -22,7 +22,7 @@ public class FinancialAndReportingApplication {
 		return new RestTemplate();
 	}
 
-	@GetMapping(value = "/category")
+	@GetMapping(value = "/test")
 	public ResponseEntity<String> test(){
 		String str = restTemplate.getForObject("http://localhost:8080/shopping-cart-service/test", String.class);
 		return ResponseEntity.ok().body("Now you are connected to another service:  " + " " + str);
