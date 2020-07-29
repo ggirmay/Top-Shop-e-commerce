@@ -13,6 +13,7 @@
         <module name="gateway" />
         <module name="finacialManager" />
         <module name="vendor" />
+        <module name="user" />
         <module name="config" />
       </profile>
     </annotationProcessing>
@@ -24,6 +25,7 @@
       <module name="financialAndReporting" target="1.8" />
       <module name="gateway" target="1.8" />
       <module name="product-service" target="1.8" />
+      <module name="user" target="1.8" />
       <module name="vendor" target="1.8" />
     </bytecodeTargetLevel>
   </component>
@@ -35,6 +37,7 @@
       <module name="financialAndReporting" options="-parameters" />
       <module name="gateway" options="-parameters" />
       <module name="product-service" options="-parameters" />
+      <module name="user" options="-parameters" />
       <module name="vendor" options="-parameters" />
     </option>
   </component>
