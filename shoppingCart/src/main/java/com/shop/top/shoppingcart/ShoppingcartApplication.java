@@ -24,11 +24,11 @@ public class ShoppingcartApplication {
 
 
 
-    @GetMapping("/test")
-    String testMethod(){
-        String result = restTemplate.getForObject("http://localhost:8080/vendor-service/category", String.class);
-        return "this is shopping cart test--- " + result;
-    }
+//    @GetMapping("/test")
+//    String testMethod(){
+//        String result = restTemplate.getForObject("http://localhost:8080/product-service-service/products", String.class);
+//        return "this is shopping cart test--- " + result;
+//    }
 
     public static void main(String[] args) {
         SpringApplication.run(ShoppingcartApplication.class, args);
