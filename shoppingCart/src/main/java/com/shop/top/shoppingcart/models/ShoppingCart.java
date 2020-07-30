@@ -16,14 +16,11 @@ public class ShoppingCart {
     @Id
     @NotNull
     @GeneratedValue(strategy = GenerationType.TABLE)
-    private Long Id;
+    @Column(name = "shopping_cart_id")
+    private Long shoppingCartId;
 
     private Long userId;
 
-    private int quantity;
-
-    private float totalPrice;
-
-    @OneToMany(mappedBy = "shoppingCart")
+    @OneToMany(mappedBy = "ShoppingCart")
     private List<ItemDetail> itemDetails;
 }

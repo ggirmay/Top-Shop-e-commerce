@@ -14,11 +14,12 @@ public class ItemDetail {
     @Id
     @NotNull
     @GeneratedValue(strategy = GenerationType.TABLE)
-    Long id;
+    @Column(name = "item_id")
+    Long ItemId;
 
     @NotNull
-    @Column(name = "user_id")
-    Long userId;
+    @Column(name = "shopping_cart_id")
+    Long shoppingCartId;
 
     @NotNull
     @Column(name = "product_id")
@@ -27,13 +28,15 @@ public class ItemDetail {
     @Column(name = "product_name")
     String productName;
 
-    int quantity;
-
     @Column(name = "unit_price")
     float unitPrice;
 
     @Column(name = "sub_total")
     float subTotal;
+
+    int quantity;
+    // status has three values "Active = A", "Payed = P" and "Deleted = D"
+    char status;
 
     @ManyToOne()
     @JoinColumn(name = "shopping_cart_id")
