@@ -5,6 +5,8 @@ This repository is code base for top shop eccomerce microservice application. th
 * [Contributors](#contributors)
 * [Application Architecture](#application-architecture)
 * [Using the application](#using-application)
+
+    * [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/78f423782d32dd945c02)
     * [Running on local m/c](#run_local_mc)
     * [Running using docker - NOT WORKING](#run_docker) 
 * [Microservices Overview](#microservices-overview)
