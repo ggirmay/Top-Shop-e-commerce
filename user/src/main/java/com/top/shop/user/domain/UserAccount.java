@@ -1,20 +1,18 @@
 package com.top.shop.user.domain;
 
 import com.sun.istack.NotNull;
-import com.top.shop.user.util.Role;
-import lombok.Getter;
-import lombok.Setter;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
+/**
+ * Base class for all accounts(Admin, vendor, Registered users...)
+ * It sole purpose is authorization and authentication.
+ * @author Yome Mengistu
+ */
 
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class UserAccount {
     @Id
+    @GeneratedValue( strategy = GenerationType.AUTO )
     private Long id;
 
     @Email

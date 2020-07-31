@@ -1,20 +1,27 @@
 package com.top.shop.user.domain;
 
+import com.sun.istack.Nullable;
 import com.top.shop.user.util.Role;
 
 import javax.persistence.*;
-
+/**
+ * @author Yome Mengistu
+ */
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
 public class Vendor{
     @Id
+    @GeneratedValue( strategy = GenerationType.AUTO )
     private Long id;
     @OneToOne
-   private UserAccount userAccount;
-   private Role role;
+    private Company company;
+    @OneToOne
+    private UserAccount userAccount;
+    private Role role;
+    @OneToOne
+    private Address address;
 
     public Vendor(){
-       this.role=Role.VENDOR;
+
     }
 
     public UserAccount getUserAccount() {

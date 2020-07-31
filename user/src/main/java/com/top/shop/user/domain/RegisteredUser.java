@@ -4,7 +4,9 @@ import com.top.shop.user.util.Role;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
-
+/**
+ * @author Yome Mengistu
+ */
 @Entity
 public class RegisteredUser  extends User{
 

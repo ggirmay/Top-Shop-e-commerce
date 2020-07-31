@@ -2,13 +2,14 @@ package com.top.shop.user.domain;
 
 import com.top.shop.user.util.Role;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-
+import javax.persistence.*;
+/**
+ * @author Yome Mengistu
+ */
 @Entity
 public class Admin{
     @Id
+    @GeneratedValue( strategy = GenerationType.AUTO )
     private Long id;
     @OneToOne
     private UserAccount account;
