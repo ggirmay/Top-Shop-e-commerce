@@ -1,20 +1,18 @@
-package com.shoptop.vendor.vendor;
+package com.shop.top.shoppingcart;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
-@EnableEurekaClient
 @RestController
-public class VendorApplication {
-
+@EnableEurekaClient
+public class ShoppingcartApplication {
     @Autowired
     RestTemplate restTemplate;
 
@@ -23,14 +21,17 @@ public class VendorApplication {
         return new RestTemplate();
     }
 
-    @GetMapping(value = "/category")
-    public ResponseEntity<String> test(){
-        String str = restTemplate.getForObject("http://localhost:8083/products", String.class);
-        return ResponseEntity.ok().body("This is vendor " + "" + str);
+
+
+
+    @GetMapping("/test")
+    String testMethod(){
+        String result = restTemplate.getForObject("http://localhost:8080/vendor-service/category", String.class);
+        return "this is shopping cart test--- " + result;
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(VendorApplication.class, args);
+        SpringApplication.run(ShoppingcartApplication.class, args);
     }
 
 }
