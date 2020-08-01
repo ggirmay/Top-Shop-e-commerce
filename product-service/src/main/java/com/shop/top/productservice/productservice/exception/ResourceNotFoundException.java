@@ -1,9 +1,9 @@
 package com.shop.top.productservice.productservice.exception;
 
-public class ProductNotFoundException extends RuntimeException {
+public class ResourceNotFoundException extends RuntimeException {
 
-    public ProductNotFoundException(Long id) {
-        super("Book id not found : " + id);
+    public ResourceNotFoundException(Long id) {
+        super("Resource id not found : " + id);
     }
 
 }

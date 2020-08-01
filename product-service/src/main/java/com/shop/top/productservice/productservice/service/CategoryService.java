@@ -1,4 +1,12 @@
 package com.shop.top.productservice.productservice.service;
 
-public interface CategoryInterface {
+import com.shop.top.productservice.productservice.model.Category;
+
+public interface CategoryService {
+
+    Iterable<Category> getAllCategory();
+
+    Category getCategory(long id);
+
+    Category save(Category category);
 }

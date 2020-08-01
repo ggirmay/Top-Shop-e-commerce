@@ -9,8 +9,10 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String status;
+    private String code;
     private String type;
+    private Double price;
+    private String pictureUrl;
     @ManyToOne
     private Category category;
     @OneToMany
