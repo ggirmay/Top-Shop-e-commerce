@@ -6,6 +6,7 @@ import com.shop.top.productservice.productservice.model.Product;
 import com.shop.top.productservice.productservice.model.ProductDetail;
 import com.shop.top.productservice.productservice.repository.ProductDetailRepository;
 import com.shop.top.productservice.productservice.repository.ProductRepository;
+import com.sun.xml.bind.v2.model.core.ID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,5 +31,12 @@ ProductRepository productRepository;
 
 
         }
+    } @Override
+    public void 	deleteAllProducts(){
+        productRepository.deleteAllInBatch();
+    } @Override
+    public void  deleteProduct(ID id){
+        productRepository.deleteById(id);
     }
+
 }
