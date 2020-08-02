@@ -17,7 +17,7 @@ public interface CategoryService {
 
     void 	deleteAllInBatch();
 
-    void  deleteById(ID id);
+    void  deleteCategory(ID id);
 
     void delete(Category category);
 }

@@ -12,7 +12,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ProductServiceImpl implements ProductService {
-ProductRepository productRepository;
+    @Autowired
+    ProductRepository productRepository;
+
     @Override
     public Iterable<Product> getAllProducts() {
         return productRepository.findAll();
@@ -28,14 +30,12 @@ ProductRepository productRepository;
     public Product save(Product product) {
         {
             return productRepository.save(product);
-
-
         }
     } @Override
     public void 	deleteAllProducts(){
         productRepository.deleteAllInBatch();
     } @Override
-    public void  deleteProduct(ID id){
+    public void  deleteProduct(Long id){
         productRepository.deleteById(id);
     }
 

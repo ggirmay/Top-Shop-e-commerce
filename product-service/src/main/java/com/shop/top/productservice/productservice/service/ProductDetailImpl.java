@@ -26,7 +26,7 @@ public class ProductDetailImpl implements ProductDetailService {
     }
 
     @Override
-    public ProductDetail getProductDetail(long id) {
+    public ProductDetail getProductDetail(Long id) {
         return productDetailRepository
                 .findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(id));
@@ -37,7 +37,7 @@ public class ProductDetailImpl implements ProductDetailService {
         return productDetailRepository.save(productDetail);
     }
     @Override
-    public void 	deleteAllProductDetails(){
+    public void deleteAllProductDetails(){
         productDetailRepository.deleteAllInBatch();
     }
     @Override

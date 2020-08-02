@@ -11,8 +11,8 @@ import org.springframework.stereotype.Repository;
 public interface ProductRepository extends JpaRepository<Product,Long> {
     Product findByName(String productName);
     Product findById(ID id);
-
+    Product save( Product product);
     void 	deleteAllInBatch();
-    void  deleteById(ID id);
-    void delete(Product category);
+    void  deleteById(Long id);
+    void delete(Product product);
 }
