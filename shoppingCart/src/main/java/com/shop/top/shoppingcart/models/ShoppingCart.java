@@ -15,12 +15,13 @@ public class ShoppingCart {
 
     @Id
     @NotNull
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "shopping_cart_id")
     private Long shoppingCartId;
 
     private Long userId;
 
-    @OneToMany(mappedBy = "ShoppingCart")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "shopping_cart_id")
     private List<ItemDetail> itemDetails;
 }
