@@ -1,29 +1,33 @@
 package com.shop.top.shoppingcart.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.List;
 
 @Entity
 @Setter
 @Getter
-public class Order {
+public class Orders {
 
     @Id
+    @NotNull
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "order_id", nullable = false)
+    @Column(name = "order_id")
     private Long orderId;
 
-    @Column("user_id")
+    @Column(name = "user_id")
     private Long userId;
 
-    @Column("user_name")
+    @Column(name = "user_name")
     private String userName;
 
-    @Column(name = "created_date")
+    @Column(name = "created_date", columnDefinition = "DATE")
+    @JsonFormat(pattern = "MM/dd/yyyy")
     private LocalDate createdDate;
 
     private String status;
@@ -31,6 +35,6 @@ public class Order {
     private float amount;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn("order_id")
+    @JoinColumn(name = "order_id")
     private List<OrderDetail> orderDetails;
 }

@@ -24,19 +24,19 @@ public class OrderDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "order_detail_id", nullable = false)
-    Long orderId;
+    Long orderDetailId;
 
-    @Column("product_id")
+    @Column(name = "product_id")
     Long productId;
 
-    @Column("product_name")
+    @Column(name = "product_name")
     String productName;
 
     int quantity;
 
-    @Column("unit_price")
+    @Column(name = "unit_price")
     float unitPrice;
 
-    @Column("subtotal_price")
+    @Column(name = "subtotal_price")
     float subtotalPrice;
 }
