@@ -1,9 +1,12 @@
 package com.shop.top.productservice.productservice.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Data
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,4 +20,5 @@ public class Product {
     private Category category;
     @OneToMany
     private List<ProductDetail> productDetailList;
+
 }
