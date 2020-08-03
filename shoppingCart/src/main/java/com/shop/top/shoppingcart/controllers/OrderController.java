@@ -1,5 +1,6 @@
 package com.shop.top.shoppingcart.controllers;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.shop.top.shoppingcart.models.Orders;
 import com.shop.top.shoppingcart.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
