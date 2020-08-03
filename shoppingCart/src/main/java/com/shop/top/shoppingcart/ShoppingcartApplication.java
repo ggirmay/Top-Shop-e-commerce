@@ -5,7 +5,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -24,11 +23,11 @@ public class ShoppingcartApplication {
 
 
 
-    @GetMapping("/test")
-    String testMethod(){
-        String result = restTemplate.getForObject("http://localhost:8080/vendor-service/category", String.class);
-        return "this is shopping cart test--- " + result;
-    }
+//    @GetMapping("/test")
+//    String testMethod(){
+//        String result = restTemplate.getForObject("http://localhost:8080/product-service-service/products", String.class);
+//        return "this is shopping cart test--- " + result;
+//    }
 
     public static void main(String[] args) {
         SpringApplication.run(ShoppingcartApplication.class, args);
