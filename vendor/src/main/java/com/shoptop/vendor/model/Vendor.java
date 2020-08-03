@@ -1,4 +1,4 @@
-package com.shoptop.vendor.vendor.model;
+package com.shoptop.vendor.model;
 
 
 import lombok.Data;
@@ -7,7 +7,6 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "vendor")
 public class Vendor {
 
     @Id

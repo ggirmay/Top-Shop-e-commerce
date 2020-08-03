@@ -1,4 +1,4 @@
-package com.shoptop.vendor.vendor.model;
+package com.shoptop.vendor.model;
 
 public enum Role {
     DATAENTRY,

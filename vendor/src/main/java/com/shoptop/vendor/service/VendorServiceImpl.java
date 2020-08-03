@@ -1,9 +1,8 @@
-package com.shoptop.vendor.vendor.service;
+package com.shoptop.vendor.service;
 
-import com.shoptop.vendor.vendor.model.Vendor;
-import com.shoptop.vendor.vendor.repository.VendorRepository;
+import com.shoptop.vendor.model.Vendor;
+import com.shoptop.vendor.repository.VendorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -23,15 +22,19 @@ public class VendorServiceImpl implements VendorService {
     public Vendor save(Vendor vendor){
         vendor.setPassword(passwordEncoder.encode(vendor.getPassword()));
         return vendorRepository.save(vendor);
+//        return null;
     }
 
-    @Override
-    public Vendor findByUsername (String username){
-        return vendorRepository.findByUserName(username).orElse(null);
+
+   @Override
+    public Vendor findByUserName (String username){
+        return vendorRepository.findByUsername(username).orElse(null);
+//       return null;
     }
 
-    @Override
-    public List<String> findUsers(List<Long> idList){
+   @Override
+    public List<String> findVendors(List<Long> idList){
         return vendorRepository.findByIdList(idList);
+       //return null;
     }
 }

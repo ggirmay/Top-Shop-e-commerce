@@ -1,4 +1,4 @@
-package com.shoptop.vendor.vendor;
+package com.shoptop.vendor;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
