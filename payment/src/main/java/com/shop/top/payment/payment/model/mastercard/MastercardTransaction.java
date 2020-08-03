@@ -1,5 +1,6 @@
 package com.shop.top.payment.payment.model.mastercard;
 
+import com.shop.top.payment.payment.model.CreditCard;
 import com.shop.top.payment.payment.utils.Generator;
 import lombok.Getter;
 
@@ -43,7 +44,7 @@ public class MastercardTransaction {
         this.amountOfPurchase = amountOfPurchase;
         this.cardNumber = cardNumber;
 
-        this.transactionID = Generator.generateTransactionID("V");
+        this.transactionID = Generator.generateTransactionID(CreditCard.MASTERCARD.initial());
         this.dateOfPurchase = LocalDate.now();
         this.remainingAmount = cardNumber.getCurrentAmount() - this.amountOfPurchase;
     }

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface MastercardRepository extends JpaRepository<Mastercard , Long> {
+public interface MastercardRepository extends JpaRepository<Mastercard, Long> {
 
     public Optional<Mastercard> findByCardNumber(String cardNumber);
 

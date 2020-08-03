@@ -1,7 +1,9 @@
 package com.shop.top.payment.payment.model.mastercard;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.shop.top.payment.payment.model.CreditCard;
 import com.shop.top.payment.payment.utils.Generator;
+import lombok.Data;
 import lombok.Getter;
 
 import javax.persistence.*;
@@ -88,8 +90,29 @@ public class Mastercard {
         this.firstName = firstName;
         this.nameOnCard = nameOnCard;
 
-        this.cardNumber = Generator.generateCreditCardNumber(4);
-        this.issuer = "Visa";
+        this.cardNumber = Generator.generateCreditCardNumber(CreditCard.MASTERCARD.value());
+        this.issuer = CreditCard.MASTERCARD.issuer();
+        LocalDate.of(Calendar.getInstance().get(Calendar.YEAR) + 5 ,
+                Calendar.getInstance().get(Calendar.MONTH) ,
+                Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+        this.securityDigit = Generator.generateSecurityDigit();
+        this.value = 1750d;
+        this.upgrade = false;
+        this.upgradeDate = null;
+        this.numberOfUpgrade = 0;
+        this.currentValue = this.value;
+        this.currentAmount = this.value;
+        this.deleted = false;
+
+    }
+
+    public Mastercard(String lastName, String firstName, String nameOnCard , String cardNumber) {
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.nameOnCard = nameOnCard;
+
+        this.cardNumber = cardNumber;
+        this.issuer = CreditCard.MASTERCARD.issuer();
         LocalDate.of(Calendar.getInstance().get(Calendar.YEAR) + 5 ,
                 Calendar.getInstance().get(Calendar.MONTH) ,
                 Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
@@ -105,8 +128,8 @@ public class Mastercard {
     }
 
     private Mastercard(String cardNumber, String lastName, String firstName, String nameOnCard,
-                 String issuer, LocalDate expirationDate, String securityDigit, double value, boolean deleted,
-                 boolean upgrade, LocalDate upgradeDate, int numberOfUpgrade, double currentValue, double currentAmount) {
+                       String issuer, LocalDate expirationDate, String securityDigit, double value, boolean deleted,
+                       boolean upgrade, LocalDate upgradeDate, int numberOfUpgrade, double currentValue, double currentAmount) {
         this.cardNumber = cardNumber;
         this.lastName = lastName;
         this.firstName = firstName;
@@ -123,8 +146,30 @@ public class Mastercard {
         this.deleted = deleted;
     }
 
+    public String getCardNumber() { return this.cardNumber; }
+
     public double getCurrentAmount(){
         return this.currentAmount;
+    }
+
+    public String getNameOnCard() {
+        return nameOnCard;
+    }
+
+    public LocalDate getExpirationDate() {
+        return expirationDate;
+    }
+
+    public String getSecurityDigit() {
+        return securityDigit;
+    }
+
+    public double getCurrentValue() {
+        return currentValue;
+    }
+
+    public void pay(double amount) {
+        this.currentAmount -= amount;
     }
 
     public boolean isDeleted() {
@@ -134,4 +179,6 @@ public class Mastercard {
     public void setDeleted(){
         this.deleted = !this.deleted;
     }
+
+
 }

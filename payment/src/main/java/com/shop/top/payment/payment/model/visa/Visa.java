@@ -1,6 +1,7 @@
 package com.shop.top.payment.payment.model.visa;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.shop.top.payment.payment.model.CreditCard;
 import com.shop.top.payment.payment.utils.Generator;
 import lombok.Getter;
 
@@ -88,8 +89,29 @@ public class Visa {
         this.firstName = firstName;
         this.nameOnCard = nameOnCard;
 
-        this.cardNumber = Generator.generateCreditCardNumber(4);
-        this.issuer = "Visa";
+        this.cardNumber = Generator.generateCreditCardNumber(CreditCard.VISA.value());
+        this.issuer = CreditCard.VISA.issuer();
+        LocalDate.of(Calendar.getInstance().get(Calendar.YEAR) + 5 ,
+                Calendar.getInstance().get(Calendar.MONTH) ,
+                Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+        this.securityDigit = Generator.generateSecurityDigit();
+        this.value = 1750d;
+        this.upgrade = false;
+        this.upgradeDate = null;
+        this.numberOfUpgrade = 0;
+        this.currentValue = this.value;
+        this.currentAmount = this.value;
+        this.deleted = false;
+
+    }
+
+    public Visa(String lastName, String firstName, String nameOnCard , String cardNumber) {
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.nameOnCard = nameOnCard;
+
+        this.cardNumber = cardNumber;
+        this.issuer = CreditCard.VISA.issuer();
         LocalDate.of(Calendar.getInstance().get(Calendar.YEAR) + 5 ,
                 Calendar.getInstance().get(Calendar.MONTH) ,
                 Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
@@ -123,8 +145,30 @@ public class Visa {
         this.deleted = deleted;
     }
 
+    public String getCardNumber() { return this.cardNumber; }
+
     public double getCurrentAmount(){
         return this.currentAmount;
+    }
+
+    public String getNameOnCard() {
+        return nameOnCard;
+    }
+
+    public LocalDate getExpirationDate() {
+        return expirationDate;
+    }
+
+    public String getSecurityDigit() {
+        return securityDigit;
+    }
+
+    public double getCurrentValue() {
+        return currentValue;
+    }
+
+    public void pay(double amount) {
+        this.currentAmount -= amount;
     }
 
     public boolean isDeleted() {
