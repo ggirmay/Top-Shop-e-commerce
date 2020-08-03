@@ -6,9 +6,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
-	<div class="container">
-		<h2 class="text-center text-info">Request Report</h2><hr/>
-		<a href="/api/view" class="btn btn-info" role="button">Generate Report in Pdf</a>
-	</div>
+<div class="container">
+    <h2 class="text-center text-info">Product Reports</h2><hr/>
+
+    <a href="/products/view" class="btn btn-info" role="button">Generate Product Report</a>
+</div>
 </body>
 </html>
