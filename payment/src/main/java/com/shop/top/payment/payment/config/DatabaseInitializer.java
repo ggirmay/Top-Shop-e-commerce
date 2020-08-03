@@ -2,6 +2,8 @@ package com.shop.top.payment.payment.config;
 
 import com.shop.top.payment.payment.model.Role;
 import com.shop.top.payment.payment.model.User;
+import com.shop.top.payment.payment.model.mastercard.Mastercard;
+import com.shop.top.payment.payment.repository.MastercardRepository;
 import com.shop.top.payment.payment.repository.RoleRepository;
 import com.shop.top.payment.payment.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,9 @@ import org.springframework.stereotype.Component;
 @Component
 @ConditionalOnProperty(name = "initialize-db" , havingValue = "Yes")
 public class DatabaseInitializer implements CommandLineRunner {
+
+    @Autowired
+    private MastercardRepository mastercardRepository;
 
     @Autowired
     private RoleRepository roleRepository;
@@ -36,6 +41,12 @@ public class DatabaseInitializer implements CommandLineRunner {
 
         user = new User("user" , "user" , "user" , passwordEncoder.encode("user") , roleUser);
         this.userRepository.save(user);
+
+        Mastercard mastercard1 = new Mastercard("Kassa" , "Mulusew" , "Mulusew K.");
+        Mastercard mastercard2 = new Mastercard("Andriantsoa" , "Ny" , "Ny Andriantsoa");
+
+        this.mastercardRepository.save(mastercard1);
+        this.mastercardRepository.save(mastercard2);
 
     }
 

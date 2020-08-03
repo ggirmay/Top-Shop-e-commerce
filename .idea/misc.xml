@@ -10,6 +10,14 @@
         <option value="$PROJECT_DIR$/discovery/pom.xml" />
         <option value="$PROJECT_DIR$/config/pom.xml" />
         <option value="$PROJECT_DIR$/gateway/pom.xml" />
+<<<<<<< HEAD
+=======
+        <option value="$PROJECT_DIR$/product-service/pom.xml" />
+        <option value="$PROJECT_DIR$/vendor/pom.xml" />
+        <option value="$PROJECT_DIR$/financialAndReporting/pom.xml" />
+        <option value="$PROJECT_DIR$/shoppingCart/pom.xml" />
+        <option value="$PROJECT_DIR$/user/pom.xml" />
+>>>>>>> f3ee40b80ce3ba496637db586d7f6b3ad61e28db
       </list>
     </option>
   </component>
