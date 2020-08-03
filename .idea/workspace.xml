@@ -20,87 +20,62 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="84a451ed-39e5-4b0f-bdd2-f1dcb383c83e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/controller/CategoryController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/controller/ProductController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/controller/ProductDetailController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/controller/SubCategoryController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/exception/CustomErrorResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/exception/CustomGlobalExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/exception/ResourceNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/model/Category.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/model/Product.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/model/ProductDetail.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/model/SubCategory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/repository/CategoryRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/repository/ProductDetailRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/repository/ProductRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/repository/SubCategoryRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/service/CategoryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/service/CategoryServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/service/ProductDetailImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/service/ProductDetailService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/service/ProductService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/service/ProductServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/service/SubCategoryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/service/SubCategoryServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/UserApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/api/client/DummyClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/api/client/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/api/request/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/api/response/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/api/server/HealthCheckApi.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/broker/listener/DummyListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/broker/listener/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/broker/message/DummyBrokerMessageOne.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/broker/message/DummyBrokerMessageTwo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/broker/message/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/broker/publisher/DummyPublisher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/broker/publisher/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/command/action/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/command/service/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/config/DummyConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/config/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/domain/Admin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/domain/Employee.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/domain/FinancialManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/domain/GuestUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/domain/RegisteredUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/domain/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/domain/UserAccount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/domain/Vendor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/domain/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/entity/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/exception/UserException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/exception/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/query/action/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/query/service/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/util/Role.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/resources/bootstrap.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/test/java/com/top/shop/user/user/UserApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/33f5be00-fdcd-4812-91db-4d3ea085c214.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/33f5be00-fdcd-4812-91db-4d3ea085c214/storage_v2/_src_/database/d82kej0plocb28.WiptRg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/33f5be00-fdcd-4812-91db-4d3ea085c214/storage_v2/_src_/database/d82kej0plocb28.WiptRg/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/33f5be00-fdcd-4812-91db-4d3ea085c214/storage_v2/_src_/database/d82kej0plocb28.WiptRg/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/33f5be00-fdcd-4812-91db-4d3ea085c214/storage_v2/_src_/database/d82kej0plocb28.WiptRg/schema/public.abK9xQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Top-Shop-e-commerce" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoppingCart/src/main/java/com/shop/top/shoppingcart/controllers/ItemDetailController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoppingCart/src/main/java/com/shop/top/shoppingcart/controllers/OrderController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoppingCart/src/main/java/com/shop/top/shoppingcart/controllers/OrderDetailController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoppingCart/src/main/java/com/shop/top/shoppingcart/controllers/ShoppingCartController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoppingCart/src/main/java/com/shop/top/shoppingcart/exception/RecordNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoppingCart/src/main/java/com/shop/top/shoppingcart/models/ItemDetail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoppingCart/src/main/java/com/shop/top/shoppingcart/models/OrderDetail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoppingCart/src/main/java/com/shop/top/shoppingcart/models/Orders.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoppingCart/src/main/java/com/shop/top/shoppingcart/models/ShoppingCart.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoppingCart/src/main/java/com/shop/top/shoppingcart/repository/ItemDetailRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoppingCart/src/main/java/com/shop/top/shoppingcart/repository/OrderDetailRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoppingCart/src/main/java/com/shop/top/shoppingcart/repository/OrderRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoppingCart/src/main/java/com/shop/top/shoppingcart/repository/ShoppingCartRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoppingCart/src/main/java/com/shop/top/shoppingcart/services/ItemDetailService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoppingCart/src/main/java/com/shop/top/shoppingcart/services/OrderDetailService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoppingCart/src/main/java/com/shop/top/shoppingcart/services/OrderService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoppingCart/src/main/java/com/shop/top/shoppingcart/services/ShoppingCartService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/src/main/java/com/shoptop/vendor/config/WebSecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/src/main/java/com/shoptop/vendor/controller/CategoryController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/src/main/java/com/shoptop/vendor/controller/ProductController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/src/main/java/com/shoptop/vendor/controller/ProductDetailController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/src/main/java/com/shoptop/vendor/controller/SubCategoryController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/src/main/java/com/shoptop/vendor/controller/VendorController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/src/main/java/com/shoptop/vendor/exception/CustomErrorResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/src/main/java/com/shoptop/vendor/exception/CustomGlobalExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/src/main/java/com/shoptop/vendor/exception/ResourceNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/src/main/java/com/shoptop/vendor/model/Category.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/src/main/java/com/shoptop/vendor/model/Product.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/src/main/java/com/shoptop/vendor/model/ProductDetail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/src/main/java/com/shoptop/vendor/model/Role.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/src/main/java/com/shoptop/vendor/model/SubCategory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/src/main/java/com/shoptop/vendor/model/Vendor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/src/main/java/com/shoptop/vendor/repository/CategoryRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/src/main/java/com/shoptop/vendor/repository/ProductDetailRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/src/main/java/com/shoptop/vendor/repository/ProductRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/src/main/java/com/shoptop/vendor/repository/SubCategoryRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/src/main/java/com/shoptop/vendor/repository/VendorRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/src/main/java/com/shoptop/vendor/service/CategoryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/src/main/java/com/shoptop/vendor/service/CategoryServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/src/main/java/com/shoptop/vendor/service/ProductDetailImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/src/main/java/com/shoptop/vendor/service/ProductDetailService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/src/main/java/com/shoptop/vendor/service/ProductService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/src/main/java/com/shoptop/vendor/service/ProductServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/src/main/java/com/shoptop/vendor/service/SubCategoryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/src/main/java/com/shoptop/vendor/service/SubCategoryServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/src/main/java/com/shoptop/vendor/service/VendorDetailServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/src/main/java/com/shoptop/vendor/service/VendorService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/src/main/java/com/shoptop/vendor/service/VendorServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payment/src/main/java/com/shop/top/payment/payment/config/DatabaseInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/payment/src/main/java/com/shop/top/payment/payment/config/DatabaseInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/ProductServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/ProductServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoppingCart/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingCart/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoppingCart/src/main/java/com/shop/top/shoppingcart/ShoppingcartApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingCart/src/main/java/com/shop/top/shoppingcart/ShoppingcartApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/src/main/java/com/shop/top/vendor/vendor/VendorApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/src/main/java/com/shoptop/vendor/VendorApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/src/test/java/com/shop/top/vendor/vendor/VendorApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/src/test/java/com/shoptop/vendor/VendorApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -323,7 +298,7 @@
       <workItem from="1596330096980" duration="651000" />
       <workItem from="1596409148658" duration="1844000" />
       <workItem from="1596418486468" duration="3560000" />
-      <workItem from="1596423224739" duration="1507000" />
+      <workItem from="1596423224739" duration="2286000" />
     </task>
     <servers />
   </component>
