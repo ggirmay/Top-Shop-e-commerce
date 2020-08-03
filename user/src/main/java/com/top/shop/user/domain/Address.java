@@ -2,13 +2,14 @@ package com.top.shop.user.domain;
 
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 /**
  * @author Yome Mengistu
  */
 @Entity
-@AllArgsConstructor
+@ToString
 public class Address {
     @Id
     @GeneratedValue( strategy = GenerationType.AUTO )
@@ -21,8 +22,18 @@ public class Address {
     private String addressLineOne;
     @NotNull
     private String addressLineTwo;
+    private Long  user_id;
 
     public Address() {
+    }
+
+    public Address(Long id, String city, String state, String addressLineOne, String addressLineTwo, Long user_id) {
+        this.id = id;
+        this.city = city;
+        this.state = state;
+        this.addressLineOne = addressLineOne;
+        this.addressLineTwo = addressLineTwo;
+        this.user_id = user_id;
     }
 
     public Long getId() {

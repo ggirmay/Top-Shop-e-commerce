@@ -11,13 +11,12 @@ public class Admin{
     @Id
     @GeneratedValue( strategy = GenerationType.AUTO )
     private Long id;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private UserAccount account;
     private Role role;
     public Admin(){
         this.role=Role.ADMINISTRATOR;
     }
-
     public UserAccount getAccount() {
         return account;
     }

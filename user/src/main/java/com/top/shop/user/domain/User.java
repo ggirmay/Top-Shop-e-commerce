@@ -1,6 +1,7 @@
 package com.top.shop.user.domain;
 
 import com.top.shop.user.util.Role;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.List;
@@ -11,16 +12,37 @@ import java.util.List;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@ToString
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Role role;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
     private List<Address> addressList;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
     private List<PaymentInformation> paymentInformation;
-    public User() {
-        this.role = Role.USER;
+
+    public void setRole(Role role) {
+        this.role = Role.GUEST_USER;
+    }
+
+    public List<Address> getAddressList() {
+        return addressList;
+    }
+
+    public void setAddressList(List<Address> addressList) {
+        this.addressList = addressList;
+    }
+
+    public List<PaymentInformation> getPaymentInformation() {
+        return paymentInformation;
+    }
+
+    public void setPaymentInformation(List<PaymentInformation> paymentInformation) {
+        this.paymentInformation = paymentInformation;
     }
 
     public Role getRole() {
@@ -34,4 +56,6 @@ public class User {
     public void setId(Long id) {
         this.id = id;
     }
+
+
 }

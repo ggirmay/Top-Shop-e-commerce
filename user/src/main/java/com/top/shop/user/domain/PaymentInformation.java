@@ -2,6 +2,7 @@ package com.top.shop.user.domain;
 
 import com.sun.istack.NotNull;
 import com.top.shop.user.util.CardType;
+import lombok.ToString;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,25 +14,33 @@ import javax.validation.constraints.Size;
  * @author Yome Mengistu
  */
 @Entity
+@ToString
 public class PaymentInformation {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @NotNull
-    @NotEmpty
     private String nameOnCard;
     @NotNull
-    @NotEmpty
     @Size(min = 3,max = 3)
     private String secCode;
     @NotNull
-    @NotEmpty
     private String expDate;
     @NotNull
-    @NotEmpty
     private CardType cardType;
+    @NotNull
+    @Size(min = 16,max = 16)
+    private String cardNumber;
 
     public PaymentInformation() {
+    }
+
+    public String getCardNumber() {
+        return cardNumber;
+    }
+
+    public void setCardNumber(String cardNumber) {
+        this.cardNumber = cardNumber;
     }
 
     public Long getId() {
