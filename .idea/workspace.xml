@@ -20,92 +20,74 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="84a451ed-39e5-4b0f-bdd2-f1dcb383c83e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/controller/CategoryController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/controller/ProductController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/controller/ProductDetailController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/controller/SubCategoryController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/exception/CustomErrorResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/exception/CustomGlobalExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/exception/ResourceNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/model/Category.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/model/Product.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/model/ProductDetail.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/model/SubCategory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/repository/CategoryRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/repository/ProductDetailRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/repository/ProductRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/repository/SubCategoryRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/service/CategoryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/service/CategoryServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/service/ProductDetailImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/service/ProductDetailService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/service/ProductService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/service/ProductServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/service/SubCategoryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/shop/top/productservice/productservice/service/SubCategoryServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/UserApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/api/client/DummyClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/api/client/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/api/request/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/api/response/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/api/server/HealthCheckApi.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/broker/listener/DummyListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/broker/listener/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/broker/message/DummyBrokerMessageOne.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/broker/message/DummyBrokerMessageTwo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/broker/message/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/broker/publisher/DummyPublisher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/broker/publisher/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/command/action/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/command/service/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/config/DummyConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/config/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/domain/Admin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/domain/Employee.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/domain/FinancialManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/domain/GuestUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/domain/RegisteredUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/domain/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/domain/UserAccount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/domain/Vendor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/domain/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/entity/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/exception/UserException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/exception/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/query/action/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/query/service/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/java/com/top/shop/user/util/Role.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/main/resources/bootstrap.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/src/test/java/com/top/shop/user/user/UserApplicationTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/33f5be00-fdcd-4812-91db-4d3ea085c214.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/33f5be00-fdcd-4812-91db-4d3ea085c214/storage_v2/_src_/database/d82kej0plocb28.WiptRg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/33f5be00-fdcd-4812-91db-4d3ea085c214/storage_v2/_src_/database/d82kej0plocb28.WiptRg/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/33f5be00-fdcd-4812-91db-4d3ea085c214/storage_v2/_src_/database/d82kej0plocb28.WiptRg/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/33f5be00-fdcd-4812-91db-4d3ea085c214/storage_v2/_src_/database/d82kej0plocb28.WiptRg/schema/public.abK9xQ.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payment/src/main/java/com/shop/top/payment/payment/config/DatabaseInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/payment/src/main/java/com/shop/top/payment/payment/config/DatabaseInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/bootstrap.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/bootstrap.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoppingCart/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingCart/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="dbcqqtmkv72d2p@ec2-34-225-162-157.compute-1.amazonaws.com" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="dbcqqtmkv72d2p@ec2-34-225-162-157.compute-1.amazonaws.com" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="dbcqqtmkv72d2p@ec2-34-225-162-157.compute-1.amazonaws.com" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="dbcqqtmkv72d2p: database" type="162271b6:PgImplModel$Database" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="dbcqqtmkv72d2p@ec2-34-225-162-157.compute-1.amazonaws.com" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="dbcqqtmkv72d2p: database" type="162271b6:PgImplModel$Database" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="dbcqqtmkv72d2p@ec2-34-225-162-157.compute-1.amazonaws.com" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="dbcqqtmkv72d2p: database" type="162271b6:PgImplModel$Database" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="public: schema" type="983ebcf7:PgImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="dbcqqtmkv72d2p@ec2-34-225-162-157.compute-1.amazonaws.com" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="dbcqqtmkv72d2p: database" type="162271b6:PgImplModel$Database" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="public: schema" type="983ebcf7:PgImplModel$Schema" />
+        <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+    </expand>
+    <select />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -118,6 +100,13 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="S:\MUM Classes Code &amp; Projects\PM\Top-Shop-e-commerce\.idea" />
+      </set>
+    </option>
   </component>
   <component name="ProjectId" id="1fKVov1iVtv2KE0Oa8HXKfVShYi" />
   <component name="ProjectLevelVcsManager">
@@ -139,7 +128,7 @@
     <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/payment" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/product-service" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
@@ -149,12 +138,12 @@
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.shop.top.payment.payment.config.security" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\CS 490 - Project Management\Top Shop E-Commerce\Top-Shop-e-commerce\payment\src\main\java\com\shop\top\payment\payment\model\mastercard" />
-    </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.shop.top.payment.payment.repository" />
       <recent name="com.shop.top.payment.payment.config.security" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\CS 490 - Project Management\Top Shop E-Commerce\Top-Shop-e-commerce\payment\src\main\java\com\shop\top\payment\payment\model\mastercard" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -164,7 +153,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.DiscoveryApplication">
+  <component name="RunManager" selected="Spring Boot.ConfigApplication">
     <configuration name="GeneratorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="payment" />
       <extension name="coverage">
@@ -276,6 +265,27 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ShoppingcartApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="demo" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.shop.top.shoppingcart.ShoppingcartApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="user" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.top.shop.user.UserApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VendorApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="vendor" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.shoptop.vendor.VendorApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="VendorApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="vendor" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.shop.top.vendor.vendor.VendorApplication" />
@@ -292,6 +302,23 @@
         <item itemvalue="JUnit.GeneratorTest" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+            </expand>
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -324,93 +351,106 @@
       <workItem from="1596409148658" duration="1844000" />
       <workItem from="1596418486468" duration="3560000" />
       <workItem from="1596423224739" duration="1507000" />
+      <workItem from="1596460845633" duration="68000" />
+      <workItem from="1596461318947" duration="859000" />
+      <workItem from="1596464781717" duration="4624000" />
+      <workItem from="1596555583170" duration="1543000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="361" y="70" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1596256853981">
+    <state x="361" y="70" key="#Project_Structure" timestamp="1596464302279">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="70" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1596256853981" />
+    <state x="361" y="70" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1596464302279" />
+    <state x="361" y="70" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1596466051601">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="70" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1596466051601" />
     <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser" timestamp="1596421594627">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1596421594627" />
-    <state x="541" y="281" width="775" height="270" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1596251290062">
+    <state x="541" y="281" width="775" height="291" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1596464640406">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="541" y="281" width="775" height="270" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1596251290062" />
+    <state x="541" y="281" width="775" height="291" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1596464640406" />
     <state x="274" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1596240346884">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="274" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1596240346884" />
-    <state x="549" y="105" key="FileChooserDialogImpl" timestamp="1596423775092">
+    <state x="549" y="105" key="FileChooserDialogImpl" timestamp="1596470154002">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="105" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1596423775092" />
-    <state width="1024" height="210" key="GridCell.Tab.0.bottom" timestamp="1596302027078">
+    <state x="549" y="105" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1596470154002" />
+    <state width="1024" height="374" key="GridCell.Tab.0.bottom" timestamp="1596482513689">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1596302027078" />
-    <state width="1024" height="210" key="GridCell.Tab.0.center" timestamp="1596302027077">
+    <state width="1024" height="374" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1596482513689" />
+    <state width="1024" height="374" key="GridCell.Tab.0.center" timestamp="1596482513687">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1596302027077" />
-    <state width="1024" height="210" key="GridCell.Tab.0.left" timestamp="1596302027077">
+    <state width="1024" height="374" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1596482513687" />
+    <state width="1024" height="374" key="GridCell.Tab.0.left" timestamp="1596482513686">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1596302027077" />
-    <state width="1024" height="210" key="GridCell.Tab.0.right" timestamp="1596302027078">
+    <state width="1024" height="374" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1596482513686" />
+    <state width="1024" height="374" key="GridCell.Tab.0.right" timestamp="1596482513687">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1596302027078" />
-    <state width="1024" height="210" key="GridCell.Tab.1.bottom" timestamp="1596302027078">
+    <state width="1024" height="374" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1596482513687" />
+    <state width="1024" height="374" key="GridCell.Tab.1.bottom" timestamp="1596482513691">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="210" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1596302027078" />
-    <state width="1024" height="210" key="GridCell.Tab.1.center" timestamp="1596302027078">
+    <state width="1024" height="374" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1596482513691" />
+    <state width="1024" height="374" key="GridCell.Tab.1.center" timestamp="1596482513689">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="210" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1596302027078" />
-    <state width="1024" height="210" key="GridCell.Tab.1.left" timestamp="1596302027078">
+    <state width="1024" height="374" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1596482513689" />
+    <state width="1024" height="374" key="GridCell.Tab.1.left" timestamp="1596482513689">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="210" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1596302027078" />
-    <state width="1024" height="210" key="GridCell.Tab.1.right" timestamp="1596302027078">
+    <state width="1024" height="374" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1596482513689" />
+    <state width="1024" height="374" key="GridCell.Tab.1.right" timestamp="1596482513689">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="210" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1596302027078" />
+    <state width="1024" height="374" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1596482513689" />
     <state width="189" height="457" key="HiddenNamespacesPopup" timestamp="1596245649821">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="189" height="457" key="HiddenNamespacesPopup/0.0.1536.824@0.0.1536.824" timestamp="1596245649821" />
-    <state x="439" y="116" key="NewModule_or_Project.wizard" timestamp="1596423777174">
+    <state x="439" y="116" key="NewModule_or_Project.wizard" timestamp="1596464860575">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="439" y="116" key="NewModule_or_Project.wizard/0.0.1536.824@0.0.1536.824" timestamp="1596423777174" />
+    <state x="439" y="116" key="NewModule_or_Project.wizard/0.0.1536.824@0.0.1536.824" timestamp="1596464860575" />
     <state x="249" y="0" key="SettingsEditor" timestamp="1595998409900">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1595998409900" />
-    <state x="209" y="73" key="new project wizard" timestamp="1595987158321">
+    <state x="0" y="0" key="com.intellij.ide.util.TipDialog" timestamp="1596555588650">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="209" y="73" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1595987158321" />
+    <state x="0" y="0" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1596555588650" />
+    <state x="209" y="73" key="new project wizard" timestamp="1596470145279">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="209" y="73" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1596470145279" />
     <state x="425" y="187" key="run.anything.popup" timestamp="1596420232178">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

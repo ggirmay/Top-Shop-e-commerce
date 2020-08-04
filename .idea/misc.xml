@@ -10,16 +10,13 @@
         <option value="$PROJECT_DIR$/discovery/pom.xml" />
         <option value="$PROJECT_DIR$/config/pom.xml" />
         <option value="$PROJECT_DIR$/gateway/pom.xml" />
-<<<<<<< HEAD
-=======
         <option value="$PROJECT_DIR$/product-service/pom.xml" />
         <option value="$PROJECT_DIR$/vendor/pom.xml" />
         <option value="$PROJECT_DIR$/financialAndReporting/pom.xml" />
         <option value="$PROJECT_DIR$/shoppingCart/pom.xml" />
         <option value="$PROJECT_DIR$/user/pom.xml" />
->>>>>>> f3ee40b80ce3ba496637db586d7f6b3ad61e28db
       </list>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_14" project-jdk-name="14" project-jdk-type="JavaSDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_13" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
 </project>
