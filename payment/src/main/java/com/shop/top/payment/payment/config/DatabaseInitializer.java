@@ -30,10 +30,10 @@ public class DatabaseInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Role roleUser = new Role("USER");
+        Role roleUser = new Role("ROLE_USER");
         roleUser = this.roleRepository.save(roleUser);
 
-        Role roleAdmin = new Role("ADMIN");
+        Role roleAdmin = new Role("ROLE_ADMIN");
         roleAdmin = this.roleRepository.save(roleAdmin);
 
         User user = new User("Ny Aina Mickael" , "Andriantsoa" , "Admin", passwordEncoder.encode("admin") , roleAdmin);
@@ -42,11 +42,11 @@ public class DatabaseInitializer implements CommandLineRunner {
         user = new User("user" , "user" , "user" , passwordEncoder.encode("user") , roleUser);
         this.userRepository.save(user);
 
-        Mastercard mastercard1 = new Mastercard("Kassa" , "Mulusew" , "Mulusew K.");
+        /*Mastercard mastercard1 = new Mastercard("Kassa" , "Mulusew" , "Mulusew K.");
         Mastercard mastercard2 = new Mastercard("Andriantsoa" , "Ny" , "Ny Andriantsoa");
 
         this.mastercardRepository.save(mastercard1);
-        this.mastercardRepository.save(mastercard2);
+        this.mastercardRepository.save(mastercard2);*/
 
     }
 
