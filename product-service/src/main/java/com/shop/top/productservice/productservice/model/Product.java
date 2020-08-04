@@ -11,6 +11,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    ProductStatus status=ProductStatus.pending;
     private String name;
     private String code;
     private String type;

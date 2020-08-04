@@ -12,7 +12,8 @@ public interface ProductService {
 
     Product save(Product product);
 
-    void 	deleteAllProducts();
+    //void 	deleteAllProducts();
     void  deleteProduct(Long id);
-
+    public void aproveProduct(Long id ) ;
+    public void deAproveProduct(Long id);
 }
