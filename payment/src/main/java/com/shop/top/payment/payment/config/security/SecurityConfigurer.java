@@ -26,9 +26,17 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
         auth.authenticationProvider(authenticationProvider());
     }
 
+//    @Override
+//    public void configure(WebSecurity web) throws Exception {
+//        web.ignoring().antMatchers("/payment/checkout");
+//    }
+
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/payment/checkout").permitAll();
+        http
+            .authorizeRequests().antMatchers("/payment/checkout").permitAll()
+            .anyRequest().authenticated().and().formLogin();
     }
 
     @Bean
