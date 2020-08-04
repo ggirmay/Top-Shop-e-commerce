@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -19,10 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f8feb183-0895-4f86-8be1-d3c6d2aff1af" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="01546c20-8b2e-4b90-b7ea-4aeac6ae7677" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -96,6 +96,13 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Program Files\JetBrains\IntelliJ IDEA 2020.1\plugins\maven\lib\maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
   <component name="ProjectId" id="1fKVov1iVtv2KE0Oa8HXKfVShYi" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -142,7 +149,18 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.DiscoveryApplication">
+  <component name="RunManager" selected="Spring Boot.FinancialAndReportingApplication (1)">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="GeneratorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="payment" />
       <extension name="coverage">
@@ -220,9 +238,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FinancialAndReportingApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <configuration name="FinancialAndReportingApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="financialAndReporting" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.financialAndReporting.financialAndReporting.FinancialAndReportingApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.financialAndReporting.FinancialAndReportingApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -275,13 +293,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VendorApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="vendor" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.shop.top.vendor.vendor.VendorApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.PaymentApplication" />
@@ -292,6 +303,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -370,37 +382,45 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="105" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1596470154002" />
-    <state width="1024" height="374" key="GridCell.Tab.0.bottom" timestamp="1596482513689">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="905" height="297" key="GridCell.Tab.0.bottom" timestamp="1596583847426">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
+    <state width="905" height="297" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1596583847426" />
     <state width="1024" height="374" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1596482513689" />
-    <state width="1024" height="374" key="GridCell.Tab.0.center" timestamp="1596482513687">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="905" height="297" key="GridCell.Tab.0.center" timestamp="1596583847426">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
+    <state width="905" height="297" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1596583847426" />
     <state width="1024" height="374" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1596482513687" />
-    <state width="1024" height="374" key="GridCell.Tab.0.left" timestamp="1596482513686">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="905" height="297" key="GridCell.Tab.0.left" timestamp="1596583847425">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
+    <state width="905" height="297" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1596583847425" />
     <state width="1024" height="374" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1596482513686" />
-    <state width="1024" height="374" key="GridCell.Tab.0.right" timestamp="1596482513687">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="905" height="297" key="GridCell.Tab.0.right" timestamp="1596583847426">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
+    <state width="905" height="297" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1596583847426" />
     <state width="1024" height="374" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1596482513687" />
-    <state width="1024" height="374" key="GridCell.Tab.1.bottom" timestamp="1596482513691">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="905" height="297" key="GridCell.Tab.1.bottom" timestamp="1596583847426">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
+    <state width="905" height="297" key="GridCell.Tab.1.bottom/0.0.1366.738@0.0.1366.738" timestamp="1596583847426" />
     <state width="1024" height="374" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1596482513691" />
-    <state width="1024" height="374" key="GridCell.Tab.1.center" timestamp="1596482513689">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="905" height="297" key="GridCell.Tab.1.center" timestamp="1596583847426">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
+    <state width="905" height="297" key="GridCell.Tab.1.center/0.0.1366.738@0.0.1366.738" timestamp="1596583847426" />
     <state width="1024" height="374" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1596482513689" />
-    <state width="1024" height="374" key="GridCell.Tab.1.left" timestamp="1596482513689">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="905" height="297" key="GridCell.Tab.1.left" timestamp="1596583847426">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
+    <state width="905" height="297" key="GridCell.Tab.1.left/0.0.1366.738@0.0.1366.738" timestamp="1596583847426" />
     <state width="1024" height="374" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1596482513689" />
-    <state width="1024" height="374" key="GridCell.Tab.1.right" timestamp="1596482513689">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="905" height="297" key="GridCell.Tab.1.right" timestamp="1596583847426">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
+    <state width="905" height="297" key="GridCell.Tab.1.right/0.0.1366.738@0.0.1366.738" timestamp="1596583847426" />
     <state width="1024" height="374" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1596482513689" />
     <state width="189" height="457" key="HiddenNamespacesPopup" timestamp="1596245649821">
       <screen x="0" y="0" width="1536" height="824" />
