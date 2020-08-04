@@ -6,6 +6,7 @@ import com.shop.top.payment.payment.service.VisaService;
 import com.shop.top.payment.payment.utils.Getters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +24,7 @@ public class PaymentController {
 
     @Autowired
     private MastercardService mastercardService;
-
+    
     @PostMapping("/checkout")
     public ResponseEntity<?> checkout(@RequestBody HashMap<String, ?> data){
         String cardNumber = Getters.extractString(data.get("cardNumber"));
