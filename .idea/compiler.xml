@@ -6,24 +6,24 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="discovery" />
-        <module name="vendor" />
-        <module name="financialAndReporting" />
-        <module name="product-service" />
-        <module name="finacialManager" />
-        <module name="demo" />
         <module name="user" />
-        <module name="config" />
+        <module name="discovery" />
+        <module name="demo" />
+        <module name="product-service" />
+        <module name="payment" />
+        <module name="financialAndReporting" />
         <module name="gateway" />
+        <module name="vendor" />
+        <module name="config" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="config" target="1.8" />
       <module name="demo" target="1.8" />
       <module name="discovery" target="1.8" />
-      <module name="finacialManager" target="1.5" />
       <module name="financialAndReporting" target="1.8" />
       <module name="gateway" target="1.8" />
+      <module name="payment" target="1.8" />
       <module name="product-service" target="1.8" />
       <module name="user" target="1.8" />
       <module name="vendor" target="1.8" />
@@ -36,6 +36,7 @@
       <module name="discovery" options="-parameters" />
       <module name="financialAndReporting" options="-parameters" />
       <module name="gateway" options="-parameters" />
+      <module name="payment" options="-parameters" />
       <module name="product-service" options="-parameters" />
       <module name="user" options="-parameters" />
       <module name="vendor" options="-parameters" />
