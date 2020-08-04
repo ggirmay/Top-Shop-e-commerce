@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.shop.top.shoppingcart</groupId>
-    <artifactId>demo</artifactId>
+    <artifactId>shoppingcart</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Shoppingcart</name>
     <description>This is shoppingcart and ordering services for Top Shop web application</description>

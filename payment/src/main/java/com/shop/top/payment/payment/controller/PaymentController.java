@@ -24,7 +24,7 @@ public class PaymentController {
 
     @Autowired
     private MastercardService mastercardService;
-    
+
     @PostMapping("/checkout")
     public ResponseEntity<?> checkout(@RequestBody HashMap<String, ?> data){
         String cardNumber = Getters.extractString(data.get("cardNumber"));

@@ -20,14 +20,80 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="84a451ed-39e5-4b0f-bdd2-f1dcb383c83e" name="Default Changelist" comment="">
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/bootstrap.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/bootstrap.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoppingCart/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingCart/pom.xml" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/payment/src/main/java/com/shop/top/payment/payment/config/DatabaseInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/payment/src/main/java/com/shop/top/payment/payment/config/DatabaseInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment/src/main/java/com/shop/top/payment/payment/config/security/MyUserDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/payment/src/main/java/com/shop/top/payment/payment/config/security/MyUserDetails.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/payment/src/main/java/com/shop/top/payment/payment/config/security/SecurityConfigurer.java" beforeDir="false" afterPath="$PROJECT_DIR$/payment/src/main/java/com/shop/top/payment/payment/config/security/SecurityConfigurer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payment/src/main/java/com/shop/top/payment/payment/controller/PaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/payment/src/main/java/com/shop/top/payment/payment/controller/PaymentController.java" afterDir="false" />
+>>>>>>> 159e45586ea5f6331215efc72120d001775a4f83
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="dbcqqtmkv72d2p@ec2-34-225-162-157.compute-1.amazonaws.com" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="dbcqqtmkv72d2p@ec2-34-225-162-157.compute-1.amazonaws.com" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="dbcqqtmkv72d2p@ec2-34-225-162-157.compute-1.amazonaws.com" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="dbcqqtmkv72d2p: database" type="162271b6:PgImplModel$Database" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="dbcqqtmkv72d2p@ec2-34-225-162-157.compute-1.amazonaws.com" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="dbcqqtmkv72d2p: database" type="162271b6:PgImplModel$Database" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="dbcqqtmkv72d2p@ec2-34-225-162-157.compute-1.amazonaws.com" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="dbcqqtmkv72d2p: database" type="162271b6:PgImplModel$Database" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="public: schema" type="983ebcf7:PgImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="dbcqqtmkv72d2p@ec2-34-225-162-157.compute-1.amazonaws.com" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="dbcqqtmkv72d2p: database" type="162271b6:PgImplModel$Database" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="public: schema" type="983ebcf7:PgImplModel$Schema" />
+        <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+    </expand>
+    <select />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -40,6 +106,13 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="S:\MUM Classes Code &amp; Projects\PM\Top-Shop-e-commerce\.idea" />
+      </set>
+    </option>
   </component>
   <component name="ProjectId" id="1fKVov1iVtv2KE0Oa8HXKfVShYi" />
   <component name="ProjectLevelVcsManager">
@@ -61,7 +134,11 @@
     <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+<<<<<<< HEAD
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/product-service" />
+=======
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+>>>>>>> 159e45586ea5f6331215efc72120d001775a4f83
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
@@ -72,12 +149,12 @@
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.shop.top.payment.payment.config.security" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\CS 490 - Project Management\Top Shop E-Commerce\Top-Shop-e-commerce\payment\src\main\java\com\shop\top\payment\payment\model\mastercard" />
-    </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.shop.top.payment.payment.repository" />
       <recent name="com.shop.top.payment.payment.config.security" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\CS 490 - Project Management\Top Shop E-Commerce\Top-Shop-e-commerce\payment\src\main\java\com\shop\top\payment\payment\model\mastercard" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -87,7 +164,11 @@
       </set>
     </option>
   </component>
+<<<<<<< HEAD
+  <component name="RunManager" selected="Spring Boot.ConfigApplication">
+=======
   <component name="RunManager" selected="Spring Boot.PaymentApplication">
+>>>>>>> 159e45586ea5f6331215efc72120d001775a4f83
     <configuration name="GeneratorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="payment" />
       <extension name="coverage">
@@ -237,6 +318,23 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+            </expand>
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -267,45 +365,108 @@
       <workItem from="1596330096980" duration="651000" />
       <workItem from="1596409148658" duration="1844000" />
       <workItem from="1596418486468" duration="3560000" />
+<<<<<<< HEAD
+      <workItem from="1596423224739" duration="1507000" />
+      <workItem from="1596460845633" duration="68000" />
+      <workItem from="1596461318947" duration="859000" />
+      <workItem from="1596464781717" duration="4624000" />
+      <workItem from="1596555583170" duration="1543000" />
+=======
       <workItem from="1596423224739" duration="2521000" />
       <workItem from="1596466050690" duration="2230000" />
       <workItem from="1596574655050" duration="528000" />
-      <workItem from="1596575195971" duration="5069000" />
+      <workItem from="1596575195971" duration="3222000" />
+>>>>>>> 159e45586ea5f6331215efc72120d001775a4f83
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+<<<<<<< HEAD
+    <state x="361" y="70" key="#Project_Structure" timestamp="1596464302279">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="70" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1596464302279" />
+    <state x="361" y="70" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1596466051601">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="70" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1596466051601" />
+    <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser" timestamp="1596421594627">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1596421594627" />
+    <state x="541" y="281" width="775" height="291" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1596464640406">
+=======
     <state x="361" y="70" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1596576213564">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="70" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1596576213564" />
-    <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser" timestamp="1596579086050">
+    <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser" timestamp="1596578319944">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1596579086050" />
+    <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1596578319944" />
     <state x="541" y="281" width="775" height="270" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1596251290062">
+>>>>>>> 159e45586ea5f6331215efc72120d001775a4f83
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="541" y="281" width="775" height="270" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1596251290062" />
+    <state x="541" y="281" width="775" height="291" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1596464640406" />
     <state x="274" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1596240346884">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="274" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1596240346884" />
+<<<<<<< HEAD
+    <state x="549" y="105" key="FileChooserDialogImpl" timestamp="1596470154002">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="105" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1596470154002" />
+    <state width="1024" height="374" key="GridCell.Tab.0.bottom" timestamp="1596482513689">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1024" height="374" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1596482513689" />
+    <state width="1024" height="374" key="GridCell.Tab.0.center" timestamp="1596482513687">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1024" height="374" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1596482513687" />
+    <state width="1024" height="374" key="GridCell.Tab.0.left" timestamp="1596482513686">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1024" height="374" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1596482513686" />
+    <state width="1024" height="374" key="GridCell.Tab.0.right" timestamp="1596482513687">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1024" height="374" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1596482513687" />
+    <state width="1024" height="374" key="GridCell.Tab.1.bottom" timestamp="1596482513691">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1024" height="374" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1596482513691" />
+    <state width="1024" height="374" key="GridCell.Tab.1.center" timestamp="1596482513689">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1024" height="374" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1596482513689" />
+    <state width="1024" height="374" key="GridCell.Tab.1.left" timestamp="1596482513689">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1024" height="374" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1596482513689" />
+    <state width="1024" height="374" key="GridCell.Tab.1.right" timestamp="1596482513689">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1024" height="374" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1596482513689" />
+=======
     <state x="93" y="93" width="1350" height="638" key="DiffContextDialog" timestamp="1596575089527">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -314,42 +475,58 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="105" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1596423775092" />
-    <state width="1024" height="210" key="GridCell.Tab.0.bottom" timestamp="1596580182692">
+    <state width="1024" height="210" key="GridCell.Tab.0.bottom" timestamp="1596578253389">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1596580182692" />
-    <state width="1024" height="210" key="GridCell.Tab.0.center" timestamp="1596580182692">
+    <state width="1024" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1596578253389" />
+    <state width="1024" height="210" key="GridCell.Tab.0.center" timestamp="1596578253389">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1596580182692" />
-    <state width="1024" height="210" key="GridCell.Tab.0.left" timestamp="1596580182691">
+    <state width="1024" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1596578253389" />
+    <state width="1024" height="210" key="GridCell.Tab.0.left" timestamp="1596578253389">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1596580182691" />
-    <state width="1024" height="210" key="GridCell.Tab.0.right" timestamp="1596580182692">
+    <state width="1024" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1596578253389" />
+    <state width="1024" height="210" key="GridCell.Tab.0.right" timestamp="1596578253389">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1596580182692" />
-    <state width="1024" height="210" key="GridCell.Tab.1.bottom" timestamp="1596580182693">
+    <state width="1024" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1596578253389" />
+    <state width="1024" height="210" key="GridCell.Tab.1.bottom" timestamp="1596578253389">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="210" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1596580182693" />
-    <state width="1024" height="210" key="GridCell.Tab.1.center" timestamp="1596580182692">
+    <state width="1024" height="210" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1596578253389" />
+    <state width="1024" height="210" key="GridCell.Tab.1.center" timestamp="1596578253389">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="210" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1596580182692" />
-    <state width="1024" height="210" key="GridCell.Tab.1.left" timestamp="1596580182692">
+    <state width="1024" height="210" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1596578253389" />
+    <state width="1024" height="210" key="GridCell.Tab.1.left" timestamp="1596578253389">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="210" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1596580182692" />
-    <state width="1024" height="210" key="GridCell.Tab.1.right" timestamp="1596580182692">
+    <state width="1024" height="210" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1596578253389" />
+    <state width="1024" height="210" key="GridCell.Tab.1.right" timestamp="1596578253389">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1024" height="210" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1596580182692" />
+    <state width="1024" height="210" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1596578253389" />
+>>>>>>> 159e45586ea5f6331215efc72120d001775a4f83
     <state width="189" height="457" key="HiddenNamespacesPopup" timestamp="1596245649821">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="189" height="457" key="HiddenNamespacesPopup/0.0.1536.824@0.0.1536.824" timestamp="1596245649821" />
+<<<<<<< HEAD
+    <state x="439" y="116" key="NewModule_or_Project.wizard" timestamp="1596464860575">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="439" y="116" key="NewModule_or_Project.wizard/0.0.1536.824@0.0.1536.824" timestamp="1596464860575" />
+    <state x="249" y="0" key="SettingsEditor" timestamp="1595998409900">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1595998409900" />
+    <state x="0" y="0" key="com.intellij.ide.util.TipDialog" timestamp="1596555588650">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="0" y="0" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1596555588650" />
+    <state x="209" y="73" key="new project wizard" timestamp="1596470145279">
+=======
     <state x="147" y="64" key="MergeDialog" timestamp="1596426689603">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -367,9 +544,10 @@
     </state>
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1596575089027" />
     <state x="209" y="73" key="new project wizard" timestamp="1595987158321">
+>>>>>>> 159e45586ea5f6331215efc72120d001775a4f83
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="209" y="73" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1595987158321" />
+    <state x="209" y="73" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1596470145279" />
     <state x="425" y="187" key="run.anything.popup" timestamp="1596420232178">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
