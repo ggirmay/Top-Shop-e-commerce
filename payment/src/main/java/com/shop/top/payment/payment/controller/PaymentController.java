@@ -52,12 +52,12 @@ public class PaymentController {
         LocalDate expirationDate = Getters.extractDate(data.get("expirationDate"));
         Double amount = Double.valueOf(data.get("amount"));
 
-        boolean result = false;
+        HashMap<String, Boolean> result = new HashMap<>();
 
         if(cardNumber.startsWith("" + CreditCard.VISA.value()))
             result = visaService.checkout(cardNumber, nameOnCard, securityDigit, expirationDate, amount);
-        else if(cardNumber.startsWith("" + CreditCard.MASTERCARD.value()))
-            result = mastercardService.checkout(cardNumber, nameOnCard, securityDigit, expirationDate, amount);
+        /*else if(cardNumber.startsWith("" + CreditCard.MASTERCARD.value()))
+            result = mastercardService.checkout(cardNumber, nameOnCard, securityDigit, expirationDate, amount);*/
 
         return ResponseEntity.ok().body(result);
     }
