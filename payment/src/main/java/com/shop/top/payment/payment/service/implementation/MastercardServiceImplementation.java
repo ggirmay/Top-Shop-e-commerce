@@ -6,6 +6,7 @@ import com.shop.top.payment.payment.model.CreditCard;
 import com.shop.top.payment.payment.model.mastercard.Mastercard;
 import com.shop.top.payment.payment.model.mastercard.MastercardTransaction;
 import com.shop.top.payment.payment.repository.MastercardRepository;
+import com.shop.top.payment.payment.repository.MastercardTransactionRepository;
 import com.shop.top.payment.payment.service.MastercardService;
 import com.shop.top.payment.payment.utils.Comparator;
 import com.shop.top.payment.payment.utils.Generator;
@@ -24,6 +25,9 @@ public class MastercardServiceImplementation implements MastercardService {
 
     @Autowired
     private MastercardRepository mastercardRepository;
+
+    @Autowired
+    private MastercardTransactionRepository mastercardTransactionRepository;
 
     @Override
     public List<Mastercard> getAll() {
@@ -108,10 +112,10 @@ public class MastercardServiceImplementation implements MastercardService {
     @Override
     public boolean pay(Mastercard mastercard, double amount) {
         mastercard.pay(amount);
-        mastercard = this.mastercardRepository.save(mastercard);
+        this.mastercardRepository.save(mastercard);
 
         MastercardTransaction mastercardTransaction = new MastercardTransaction(amount, mastercard);
-        this.mastercardRepository.save(mastercard);
+        this.mastercardTransactionRepository.save(mastercardTransaction);
 
         return true;
     }

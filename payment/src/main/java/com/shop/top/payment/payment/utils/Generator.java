@@ -80,7 +80,7 @@ public class Generator {
         }
 
         String id = type + "-" + date.get(Calendar.MONTH) + date.get(Calendar.DAY_OF_MONTH) + date.get(Calendar.YEAR) +
-                "-" + String.format("%06d" , counter);
+                "-" + date.getTimeInMillis()  + String.format("%06d" , counter);
         counter ++;
 
         return id;

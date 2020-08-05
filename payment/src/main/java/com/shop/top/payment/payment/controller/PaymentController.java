@@ -5,11 +5,12 @@ import com.shop.top.payment.payment.service.MastercardService;
 import com.shop.top.payment.payment.service.VisaService;
 import com.shop.top.payment.payment.utils.Getters;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.http.*;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDate;
@@ -43,7 +44,7 @@ public class PaymentController {
     }
 
     @PostMapping( value = "/checkout")
-    public ResponseEntity<?> checkout(@RequestBody HashMap<String, String> data){
+    public HashMap checkout(@RequestBody HashMap<String, String> data){
 
         System.out.println("working");
         String cardNumber = Getters.extractString(data.get("cardNumber"));
@@ -52,14 +53,22 @@ public class PaymentController {
         LocalDate expirationDate = Getters.extractDate(data.get("expirationDate"));
         Double amount = Double.valueOf(data.get("amount"));
 
-        boolean result = false;
 
+        HashMap<String, Boolean> validation = new HashMap<>();
+//        String result;
         if(cardNumber.startsWith("" + CreditCard.VISA.value()))
-            result = visaService.checkout(cardNumber, nameOnCard, securityDigit, expirationDate, amount);
-        else if(cardNumber.startsWith("" + CreditCard.MASTERCARD.value()))
-            result = mastercardService.checkout(cardNumber, nameOnCard, securityDigit, expirationDate, amount);
+            validation = visaService.checkout(cardNumber, nameOnCard, securityDigit, expirationDate, amount);
+//        else if(cardNumber.startsWith("" + CreditCard.MASTERCARD.value()))
+//            validation = mastercardService.checkout(cardNumber, nameOnCard, securityDigit, expirationDate, amount);
 
-        return ResponseEntity.ok().body(result);
+//        if(validation.get("valid"))
+//            result = "validate";
+//        else
+//            result = "not validate";
+
+
+
+        return validation;
     }
 
 }

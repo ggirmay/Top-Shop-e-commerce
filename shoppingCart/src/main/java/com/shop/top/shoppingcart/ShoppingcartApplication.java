@@ -20,15 +20,6 @@ public class ShoppingcartApplication {
         return new RestTemplate();
     }
 
-
-
-
-//    @GetMapping("/test")
-//    String testMethod(){
-//        String result = restTemplate.getForObject("http://localhost:8080/product-service-service/products", String.class);
-//        return "this is shopping cart test--- " + result;
-//    }
-
     public static void main(String[] args) {
         SpringApplication.run(ShoppingcartApplication.class, args);
     }

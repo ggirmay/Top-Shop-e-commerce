@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -89,10 +90,12 @@ public class VisaServiceImplementation implements VisaService {
     }
 
     @Override
-    public /*VisaTransaction*/ boolean checkout(String cardNumber, String nameOnCard, String securityDigit, LocalDate expirationDate, double amount) {
+    public /*VisaTransaction*/ HashMap<String, Boolean> checkout(String cardNumber, String nameOnCard, String securityDigit, LocalDate expirationDate, double amount) {
 
+        HashMap<String , Boolean> result = new HashMap<>();
         Optional<Visa> optionalCard = this.getByCardNumber(cardNumber);
         if(optionalCard.isPresent() && optionalCard.get().isDeleted() == false){
+
             Visa card = optionalCard.get();
 
             if(card.getSecurityDigit().equals(securityDigit)){
@@ -100,9 +103,13 @@ public class VisaServiceImplementation implements VisaService {
                 if(Comparator.compareExpirationDate(card.getExpirationDate() , expirationDate)){
 
                     if(card.getCurrentAmount() >= amount){
-
-                        return this.pay(card , amount);
-
+                        result.put("amount" , true);
+                        result.put("valid" , true);
+                        return result;
+                    } else{
+                        result.put("amount" , false);
+                        result.put("valid" , true);
+                        return result;
                     }
 
                 }
@@ -111,7 +118,9 @@ public class VisaServiceImplementation implements VisaService {
 
         }
 
-        return false;
+        result.put("amount" , false);
+        result.put("valid" , false);
+        return result;
 
     }
 
@@ -121,7 +130,7 @@ public class VisaServiceImplementation implements VisaService {
         System.out.println(card);
 
         card.pay(amount);
-        card = this.visaRepository.save(card);
+        this.visaRepository.save(card);
 
         VisaTransaction visaTransaction = new VisaTransaction(amount, card);
         this.visaTransactionRepository.save(visaTransaction);
