@@ -1,6 +1,7 @@
 package com.shop.top.payment.payment.utils;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Getters {
 
@@ -14,9 +15,9 @@ public class Getters {
 
     }
 
-    public static LocalDate extractDate( Object object ){
-        LocalDate date = (LocalDate) object;
-        return date;
+    public static LocalDate extractDate( String date ){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        return LocalDate.parse(date , formatter);
     }
 
 

@@ -1,6 +1,6 @@
 package com.shop.top.payment.payment.service.implementation;
 
-import com.shop.top.payment.payment.config.security.MyUserDetails;
+//import com.shop.top.payment.payment.config.security.MyUserDetails;
 import com.shop.top.payment.payment.model.User;
 import com.shop.top.payment.payment.repository.UserRepository;
 import com.shop.top.payment.payment.service.UserService;

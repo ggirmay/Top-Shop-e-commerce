@@ -26,29 +26,20 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
         auth.authenticationProvider(authenticationProvider());
     }
 
-//    @Override
-//    public void configure(WebSecurity web) throws Exception {
-//        web.ignoring().antMatchers("/payment/checkout");
-//    }
-
-
     @Override
-    protected void configure(HttpSecurity http) throws Exception {
-//        http
-//            .headers()
-//            .frameOptions()
-//            .sameOrigin()
-//            .and()
-//            .authorizeRequests().antMatchers("/**").permitAll()
-//            .anyRequest().authenticated();
-        http
-                .headers()
-                .frameOptions().sameOrigin()
-                .and()
-                .authorizeRequests()
-                .antMatchers("/payment/checkout").permitAll()
-                .anyRequest().authenticated();
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers("/payment/**");
     }
+
+
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception {
+//        http.authorizeRequests()
+//            .antMatchers("/payment/**")
+//            .permitAll()
+//            .anyRequest()
+//            .authenticated();
+//    }
 
     @Bean
     protected DaoAuthenticationProvider authenticationProvider(){

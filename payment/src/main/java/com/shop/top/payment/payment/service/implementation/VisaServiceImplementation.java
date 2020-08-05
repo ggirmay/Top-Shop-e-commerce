@@ -118,6 +118,8 @@ public class VisaServiceImplementation implements VisaService {
     @Override
     public boolean pay(Visa card, double amount) {
 
+        System.out.println(card);
+
         card.pay(amount);
         card = this.visaRepository.save(card);
 

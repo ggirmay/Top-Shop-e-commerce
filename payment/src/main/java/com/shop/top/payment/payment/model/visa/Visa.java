@@ -18,7 +18,7 @@ public class Visa {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Pattern(regexp = "[4-5][1-9]{15}")
+    @Pattern(regexp = "[4][0-9]{15}")
     @Column(nullable = false , unique = true)
     private String cardNumber;
 
@@ -43,7 +43,7 @@ public class Visa {
     @Column(nullable = false)
     private LocalDate expirationDate;
 
-    @Pattern(regexp = "[0,9]{3}")
+    @Pattern(regexp = "[0-9]{3}")
     @NotNull @NotBlank @NotEmpty
     @Column(nullable = false)
     private String securityDigit;
@@ -165,6 +165,28 @@ public class Visa {
 
     public double getCurrentValue() {
         return currentValue;
+    }
+
+    @Override
+    public String toString() {
+        return "Visa{" +
+                "id=" + id +
+                ", cardNumber='" + cardNumber + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", nameOnCard='" + nameOnCard + '\'' +
+                ", issuer='" + issuer + '\'' +
+                ", expirationDate=" + expirationDate +
+                ", securityDigit='" + securityDigit + '\'' +
+                ", value=" + value +
+                ", upgrade=" + upgrade +
+                ", upgradeDate=" + upgradeDate +
+                ", numberOfUpgrade=" + numberOfUpgrade +
+                ", currentValue=" + currentValue +
+                ", currentAmount=" + currentAmount +
+                ", deleted=" + deleted +
+                ", transactionList=" + transactionList +
+                '}';
     }
 
     public void pay(double amount) {
