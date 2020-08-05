@@ -33,12 +33,26 @@ public class OrderService {
 
         HashMap<String , String> map = new HashMap<>();
 
+        map.put("cardNumber" , "4351930605662860");
+        map.put("nameOnCard" , "ali ansari");
+        map.put("securityDigit" , "123");
+        map.put("expirationDate" , "2020-08-11"); // Localdate -> String
+        map.put("amount" , "" + order.getAmount());
+
         HttpEntity<HashMap<String , String >> request = new HttpEntity<>(map, httpHeaders);
 
-        ResponseEntity<Boolean> result = restTemplate.postForEntity("http://payment-service/payment/checkout",request, Boolean.class);
+        HashMap result = restTemplate.postForObject("http://localhost:8088/payment/checkout",request, HashMap.class);
 
+        System.out.println("This is order service");
+        System.out.println(result.get("amount"));
+        System.out.println(result.get("valid"));
 
-        return orderRepository.save(order);
+//        if (request.equals(true)){
+//            return orderRepository.save(order);
+//        }else {
+//            throw new Exception("You card verification ")
+//        }
+        return null;
     }
 
     public List<Orders> selectAllOrders(){
