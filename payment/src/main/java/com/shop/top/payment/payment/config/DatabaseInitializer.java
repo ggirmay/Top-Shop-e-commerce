@@ -25,12 +25,12 @@ public class DatabaseInitializer implements CommandLineRunner {
     @Autowired
     private UserRepository userRepository;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    //@Autowired
+    //private PasswordEncoder passwordEncoder;
 
     @Override
     public void run(String... args) throws Exception {
-        Role roleUser = new Role("ROLE_USER");
+        /*Role roleUser = new Role("ROLE_USER");
         roleUser = this.roleRepository.save(roleUser);
 
         Role roleAdmin = new Role("ROLE_ADMIN");
@@ -40,7 +40,7 @@ public class DatabaseInitializer implements CommandLineRunner {
         this.userRepository.save(user);
 
         user = new User("user" , "user" , "user" , passwordEncoder.encode("user") , roleUser);
-        this.userRepository.save(user);
+        this.userRepository.save(user);*/
 
         /*Mastercard mastercard1 = new Mastercard("Kassa" , "Mulusew" , "Mulusew K.");
         Mastercard mastercard2 = new Mastercard("Andriantsoa" , "Ny" , "Ny Andriantsoa");
