@@ -1,6 +1,6 @@
 package com.shop.top.payment.payment.repository;
 
-import com.shop.top.payment.payment.config.security.MyUserDetails;
+//import com.shop.top.payment.payment.config.security.MyUserDetails;
 import com.shop.top.payment.payment.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
