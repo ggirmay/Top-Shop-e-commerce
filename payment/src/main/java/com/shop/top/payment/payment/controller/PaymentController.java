@@ -6,6 +6,7 @@ import com.shop.top.payment.payment.service.VisaService;
 import com.shop.top.payment.payment.utils.Getters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,13 +33,15 @@ public class PaymentController {
         LocalDate expirationDate = Getters.extractDate(data.get("expirationDate"));
         Double amount = (Double) data.get("amount");
 
+        System.out.println(cardNumber);
+        boolean result = false;
 
         if(cardNumber.startsWith("" + CreditCard.VISA.value()))
-            visaService.checkout(cardNumber, nameOnCard, securityDigit, expirationDate, amount);
+           result = visaService.checkout(cardNumber, nameOnCard, securityDigit, expirationDate, amount);
         else if(cardNumber.startsWith("" + CreditCard.MASTERCARD.value()))
-            mastercardService.checkout(cardNumber, nameOnCard, securityDigit, expirationDate, amount);
+           result= mastercardService.checkout(cardNumber, nameOnCard, securityDigit, expirationDate, amount);
 
-        return ResponseEntity.ok().body(true);
+        return ResponseEntity.ok().body("this is for test");
     }
 
 }

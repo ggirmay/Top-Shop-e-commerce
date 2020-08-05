@@ -3,5 +3,23 @@
   <component name="JavaScriptSettings">
     <option name="languageLevel" value="ES6" />
   </component>
+<<<<<<< HEAD
+=======
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/payment/pom.xml" />
+        <option value="$PROJECT_DIR$/discovery/pom.xml" />
+        <option value="$PROJECT_DIR$/config/pom.xml" />
+        <option value="$PROJECT_DIR$/gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/product-service/pom.xml" />
+        <option value="$PROJECT_DIR$/vendor/pom.xml" />
+        <option value="$PROJECT_DIR$/financialAndReporting/pom.xml" />
+        <option value="$PROJECT_DIR$/shoppingCart/pom.xml" />
+        <option value="$PROJECT_DIR$/user/pom.xml" />
+      </list>
+    </option>
+  </component>
+>>>>>>> 3d4a43eb62c4d7ac17f5ef804154837ffab4aaeb
   <component name="ProjectRootManager" version="2" languageLevel="JDK_13" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
 </project>
