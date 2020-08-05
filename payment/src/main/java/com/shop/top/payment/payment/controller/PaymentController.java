@@ -26,22 +26,22 @@ public class PaymentController {
     @Autowired
     private MastercardService mastercardService;
 
-    public ResponseEntity<Boolean> checkout(){
-        HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-
-        HashMap<String , String> map = new HashMap<>();
-        map.put("cardNumber" , "4351930605662860");
-        map.put("nameOnCard" , "ali ansari");
-        map.put("securityDigit" , "123");
-        map.put("expirationDate" , "2020-08-11"); // Localdate -> String
-        map.put("amount" , "500"); // Double -> String
-
-        HttpEntity<HashMap<String , String >> request = new HttpEntity<HashMap<String, String>>(map , httpHeaders);
-
-        RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.postForEntity("http://payment-service/payment/checkout" , request , Boolean.class);
-    }
+//    public ResponseEntity<Boolean> checkout(){
+//        HttpHeaders httpHeaders = new HttpHeaders();
+//        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+//
+//        HashMap<String , String> map = new HashMap<>();
+//        map.put("cardNumber" , "4351930605662860");
+//        map.put("nameOnCard" , "ali ansari");
+//        map.put("securityDigit" , "123");
+//        map.put("expirationDate" , "2020-08-11"); // Localdate -> String
+//        map.put("amount" , "500"); // Double -> String
+//
+//        HttpEntity<HashMap<String , String >> request = new HttpEntity<HashMap<String, String>>(map , httpHeaders);
+//
+//        RestTemplate restTemplate = new RestTemplate();
+//        return restTemplate.postForEntity("http://payment-service/payment/checkout" , request , Boolean.class);
+//    }
 
     @PostMapping( value = "/checkout")
     public HashMap checkout(@RequestBody HashMap<String, String> data){
@@ -55,18 +55,11 @@ public class PaymentController {
 
 
         HashMap<String, Boolean> validation = new HashMap<>();
-//        String result;
+
         if(cardNumber.startsWith("" + CreditCard.VISA.value()))
             validation = visaService.checkout(cardNumber, nameOnCard, securityDigit, expirationDate, amount);
-//        else if(cardNumber.startsWith("" + CreditCard.MASTERCARD.value()))
-//            validation = mastercardService.checkout(cardNumber, nameOnCard, securityDigit, expirationDate, amount);
-
-//        if(validation.get("valid"))
-//            result = "validate";
-//        else
-//            result = "not validate";
-
-
+        else if(cardNumber.startsWith("" + CreditCard.MASTERCARD.value()))
+            validation = mastercardService.checkout(cardNumber, nameOnCard, securityDigit, expirationDate, amount);
 
         return validation;
     }

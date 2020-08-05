@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -85,8 +86,10 @@ public class MastercardServiceImplementation implements MastercardService {
     }
 
     @Override
-    public boolean checkout(String cardNumber, String nameOnCard, String securityDigit, LocalDate expirationDate, double amount) {
+    public HashMap<String, Boolean> checkout(String cardNumber, String nameOnCard, String securityDigit, LocalDate expirationDate, double amount) {
         Optional<Mastercard> optionalCard = this.getByCardNumber(cardNumber);
+        HashMap<String , Boolean> result = new HashMap<>();
+
         if(optionalCard.isPresent() && optionalCard.get().isDeleted() == false){
             Mastercard card = optionalCard.get();
 
@@ -95,9 +98,13 @@ public class MastercardServiceImplementation implements MastercardService {
                 if(Comparator.compareExpirationDate(card.getExpirationDate() , expirationDate)){
 
                     if(card.getCurrentAmount() >= amount){
-
-                        return this.pay(card , amount);
-
+                        result.put("amount" , true);
+                        result.put("valid" , true);
+                        return result;
+                    } else{
+                        result.put("amount" , false);
+                        result.put("valid" , true);
+                        return result;
                     }
 
                 }
@@ -106,7 +113,9 @@ public class MastercardServiceImplementation implements MastercardService {
 
         }
 
-        return false;
+        result.put("amount" , false);
+        result.put("valid" , false);
+        return result;
     }
 
     @Override
