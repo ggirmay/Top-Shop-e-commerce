@@ -19,7 +19,7 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-    @PostMapping("/placeorder")
+    @PostMapping(value = "/placeorder", consumes = "application/json", produces = "application/json")
     public Orders placeOrder(@RequestBody Orders order){
         return orderService.placeOrder(order);
     }

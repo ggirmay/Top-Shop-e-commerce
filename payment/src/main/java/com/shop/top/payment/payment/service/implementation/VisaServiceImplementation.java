@@ -90,11 +90,12 @@ public class VisaServiceImplementation implements VisaService {
     }
 
     @Override
-    public /*VisaTransaction*/ /*boolean*/ HashMap<String, Boolean> checkout(String cardNumber, String nameOnCard, String securityDigit, LocalDate expirationDate, double amount) {
+    public /*VisaTransaction*/ HashMap<String, Boolean> checkout(String cardNumber, String nameOnCard, String securityDigit, LocalDate expirationDate, double amount) {
 
-        Optional<Visa> optionalCard = this.getByCardNumber(cardNumber);
         HashMap<String , Boolean> result = new HashMap<>();
+        Optional<Visa> optionalCard = this.getByCardNumber(cardNumber);
         if(optionalCard.isPresent() && optionalCard.get().isDeleted() == false){
+
             Visa card = optionalCard.get();
 
             if(card.getSecurityDigit().equals(securityDigit)){
@@ -102,11 +103,9 @@ public class VisaServiceImplementation implements VisaService {
                 if(Comparator.compareExpirationDate(card.getExpirationDate() , expirationDate)){
 
                     if(card.getCurrentAmount() >= amount){
-
                         result.put("amount" , true);
                         result.put("valid" , true);
                         return result;
-
                     } else{
                         result.put("amount" , false);
                         result.put("valid" , true);

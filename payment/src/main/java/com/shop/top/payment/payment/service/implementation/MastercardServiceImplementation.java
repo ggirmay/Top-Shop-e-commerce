@@ -6,6 +6,7 @@ import com.shop.top.payment.payment.model.CreditCard;
 import com.shop.top.payment.payment.model.mastercard.Mastercard;
 import com.shop.top.payment.payment.model.mastercard.MastercardTransaction;
 import com.shop.top.payment.payment.repository.MastercardRepository;
+import com.shop.top.payment.payment.repository.MastercardTransactionRepository;
 import com.shop.top.payment.payment.service.MastercardService;
 import com.shop.top.payment.payment.utils.Comparator;
 import com.shop.top.payment.payment.utils.Generator;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -24,6 +26,9 @@ public class MastercardServiceImplementation implements MastercardService {
 
     @Autowired
     private MastercardRepository mastercardRepository;
+
+    @Autowired
+    private MastercardTransactionRepository mastercardTransactionRepository;
 
     @Override
     public List<Mastercard> getAll() {
@@ -81,8 +86,10 @@ public class MastercardServiceImplementation implements MastercardService {
     }
 
     @Override
-    public boolean checkout(String cardNumber, String nameOnCard, String securityDigit, LocalDate expirationDate, double amount) {
+    public HashMap<String, Boolean> checkout(String cardNumber, String nameOnCard, String securityDigit, LocalDate expirationDate, double amount) {
         Optional<Mastercard> optionalCard = this.getByCardNumber(cardNumber);
+        HashMap<String , Boolean> result = new HashMap<>();
+
         if(optionalCard.isPresent() && optionalCard.get().isDeleted() == false){
             Mastercard card = optionalCard.get();
 
@@ -91,9 +98,13 @@ public class MastercardServiceImplementation implements MastercardService {
                 if(Comparator.compareExpirationDate(card.getExpirationDate() , expirationDate)){
 
                     if(card.getCurrentAmount() >= amount){
-
-                        return this.pay(card , amount);
-
+                        result.put("amount" , true);
+                        result.put("valid" , true);
+                        return result;
+                    } else{
+                        result.put("amount" , false);
+                        result.put("valid" , true);
+                        return result;
                     }
 
                 }
@@ -102,16 +113,18 @@ public class MastercardServiceImplementation implements MastercardService {
 
         }
 
-        return false;
+        result.put("amount" , false);
+        result.put("valid" , false);
+        return result;
     }
 
     @Override
     public boolean pay(Mastercard mastercard, double amount) {
         mastercard.pay(amount);
-        mastercard = this.mastercardRepository.save(mastercard);
+        this.mastercardRepository.save(mastercard);
 
         MastercardTransaction mastercardTransaction = new MastercardTransaction(amount, mastercard);
-        this.mastercardRepository.save(mastercard);
+        this.mastercardTransactionRepository.save(mastercardTransaction);
 
         return true;
     }

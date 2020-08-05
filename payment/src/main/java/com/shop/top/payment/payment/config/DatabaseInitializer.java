@@ -40,7 +40,7 @@ public class DatabaseInitializer implements CommandLineRunner {
         this.userRepository.save(user);
 
         user = new User("user" , "user" , "user" , passwordEncoder.encode("user") , roleUser);
-        this.userRepository.save(user);*/
+        this.userRepository.save(user);
 
         /*Mastercard mastercard1 = new Mastercard("Kassa" , "Mulusew" , "Mulusew K.");
         Mastercard mastercard2 = new Mastercard("Andriantsoa" , "Ny" , "Ny Andriantsoa");
