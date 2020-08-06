@@ -46,7 +46,7 @@ public class MastercardTransaction {
 
         this.transactionID = Generator.generateTransactionID(CreditCard.MASTERCARD.initial());
         this.dateOfPurchase = LocalDate.now();
-        this.remainingAmount = cardNumber.getCurrentAmount() - this.amountOfPurchase;
+        this.remainingAmount = cardNumber.getCurrentAmount();
     }
 
     public MastercardTransaction(String transactionID, LocalDate dateOfPurchase, double amountOfPurchase,

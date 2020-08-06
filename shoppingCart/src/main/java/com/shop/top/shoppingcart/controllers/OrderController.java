@@ -21,7 +21,13 @@ public class OrderController {
 
     @PostMapping(value = "/placeorder", consumes = "application/json", produces = "application/json")
     public Orders placeOrder(@RequestBody Orders order){
-        return orderService.placeOrder(order);
+        try {
+            return orderService.placeOrder(order);
+        }catch (Exception e){
+            System.out.println("this is in order" + e.getMessage());
+            order.setError(e.getMessage());
+            return order;
+        }
     }
 
     @GetMapping("/ordersofuser/{userid}")
