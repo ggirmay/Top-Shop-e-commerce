@@ -65,6 +65,15 @@ public class Generator {
         return digit;
     }
 
+    public static String generateRandomDigit(int digitNumber){
+        String digit = "";
+        for(int i = 0 ; i < digitNumber ; i++){
+            digit += (int) Math.floor(Math.random() * 10);
+        }
+
+        return digit;
+    }
+
     public static String generateTransactionID(String type){
         Calendar newDate = Calendar.getInstance();
         newDate.setLenient(false);
@@ -80,7 +89,7 @@ public class Generator {
         }
 
         String id = type + "-" + date.get(Calendar.MONTH) + date.get(Calendar.DAY_OF_MONTH) + date.get(Calendar.YEAR) +
-                "-" + date.getTimeInMillis()  + String.format("%06d" , counter);
+                "-" + date.getTimeInMillis() + generateRandomDigit(6);
         counter ++;
 
         return id;
