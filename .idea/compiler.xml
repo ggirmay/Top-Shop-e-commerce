@@ -6,9 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="user" />
         <module name="discovery" />
+        <module name="product-service" />
         <module name="payment" />
+        <module name="financialAndReporting" />
         <module name="gateway" />
+        <module name="vendor" />
         <module name="config" />
         <module name="shoppingcart" />
       </profile>

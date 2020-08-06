@@ -46,7 +46,7 @@ public class VisaTransaction {
 
         this.transactionID = Generator.generateTransactionID(CreditCard.VISA.initial());
         this.dateOfPurchase = LocalDate.now();
-        this.remainingAmount = cardNumber.getCurrentAmount() - this.amountOfPurchase;
+        this.remainingAmount = cardNumber.getCurrentAmount(); // - this.amountOfPurchase
     }
 
     public VisaTransaction(String transactionID, LocalDate dateOfPurchase, double amountOfPurchase,
