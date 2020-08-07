@@ -1,13 +1,20 @@
 package com.shop.top.productservice.productservice.model;
 
 import lombok.Data;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Data
-public class Product {
+public class Product implements Serializable {
+
+
+//    public Product( byte[] picByte) {
+//        this.picByte = picByte;
+//    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -16,10 +23,14 @@ public class Product {
     private String code;
     private String type;
     private Double price;
-    private String pictureUrl;
+    private  int quantity;
+
+    private String picture_url;
     @ManyToOne
     private Category category;
-    @OneToMany
+ @OneToMany()
+  //  @JoinColumn(name="")cascade = CascadeType.DETACH,fetch = FetchType.EAGER
+
     private List<ProductDetail> productDetailList;
 
 }
