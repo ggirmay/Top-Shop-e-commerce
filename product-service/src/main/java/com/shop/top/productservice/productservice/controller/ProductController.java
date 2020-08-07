@@ -7,6 +7,7 @@ import com.shop.top.productservice.productservice.service.ProductService;
 import com.shop.top.productservice.productservice.service.ProductServiceImpl;
 import com.shop.top.productservice.productservice.service.PromotionService;
 import com.sun.xml.bind.v2.model.core.ID;
+import io.micrometer.core.instrument.util.JsonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,7 +42,7 @@ public class ProductController {
 this.productService=productService;
     }
     @GetMapping("/getAll")
-    public @NotNull Iterable<Product> getProducts() {
+    public  Iterable<Product> getProducts() {
         return productService.getAllProducts();
     }
 @PostMapping("/save")
@@ -74,7 +75,7 @@ this.productService=productService;
     }
     //======================================================
     @PostMapping("/upload")
-    public ResponseEntity.BodyBuilder uplaodImage(@RequestPart("image") MultipartFile file , @RequestBody Product product) throws IOException {
+    public ResponseEntity.BodyBuilder uplaodImage(@RequestPart("image") MultipartFile file /*, @RequestBody Product product*/) throws IOException {
 System.out.println("hellooooo");
         System.out.println("this is file "+file);
         if(!file.isEmpty()){
@@ -183,4 +184,12 @@ public Product updateQuantity(@PathVariable Long id, @PathVariable int quantity)
         return outputStream.toByteArray();
 
     }
+    //=======================================
+    @GetMapping("/search")
+
+    public List<Product> findAll(@RequestParam String productName){
+        System.out.println("I am in search");
+      return  productService.searchProduct(productName);
+    }
+
 }
