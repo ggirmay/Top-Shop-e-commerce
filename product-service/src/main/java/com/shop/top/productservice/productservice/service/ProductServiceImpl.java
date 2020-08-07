@@ -65,5 +65,10 @@ public class ProductServiceImpl implements ProductService {
  product.setStatus(ProductStatus.notAprroved);
     }
 
+    @Override
+    public List<Product> searchProduct(String prodct) {
+        return productRepository.findProdcutByName(prodct);
+    }
+
 
 }

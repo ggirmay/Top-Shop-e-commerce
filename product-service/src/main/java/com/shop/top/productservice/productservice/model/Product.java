@@ -18,8 +18,9 @@ public class Product implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    ProductStatus status=ProductStatus.pending;
     private String name;
+    ProductStatus status=ProductStatus.pending;
+
     private String code;
     private String type;
     private Double price;
@@ -28,8 +29,8 @@ public class Product implements Serializable {
     private String picture_url;
     @ManyToOne
     private Category category;
- @OneToMany()
-  //  @JoinColumn(name="")cascade = CascadeType.DETACH,fetch = FetchType.EAGER
+ @OneToMany( fetch = FetchType.EAGER)
+   @JoinColumn()
 
     private List<ProductDetail> productDetailList;
 
