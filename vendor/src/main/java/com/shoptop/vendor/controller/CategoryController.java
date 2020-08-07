@@ -2,7 +2,6 @@ package com.shoptop.vendor.controller;
 
 import com.shoptop.vendor.model.Category;
 import com.shoptop.vendor.service.CategoryService;
-import com.sun.xml.internal.bind.v2.model.core.ID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

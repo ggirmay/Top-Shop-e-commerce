@@ -1,31 +1,29 @@
 package com.top.shop.user.domain;
 
 import com.top.shop.user.util.Role;
+import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-
+import javax.persistence.*;
+/**
+ * @author Yome Mengistu
+ */
 @Entity
+@Data
 public class Admin{
     @Id
+    @GeneratedValue( strategy = GenerationType.AUTO )
     private Long id;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private UserAccount account;
-    private Role role;
-    public Admin(){
-        this.role=Role.ADMINISTRATOR;
-    }
-
     public UserAccount getAccount() {
         return account;
     }
-
     public void setAccount(UserAccount account) {
         this.account = account;
     }
 
-    public Role getRole() {
-        return role;
+    public void setUserAccount(UserAccount userAccount) {
+        this.account = userAccount;
+        userAccount.setRole("ADMIN");
     }
 }
