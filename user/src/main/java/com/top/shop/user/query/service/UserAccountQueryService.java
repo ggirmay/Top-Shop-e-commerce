@@ -1,6 +1,7 @@
 package com.top.shop.user.query.service;
 
 import com.top.shop.user.api.response.LoginResponse;
+import com.top.shop.user.domain.RegisteredUser;
 import com.top.shop.user.domain.UserAccount;
 import com.top.shop.user.query.action.UserAccountQueryAction;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +24,9 @@ public class UserAccountQueryService {
             }
         }
         return null;
+    }
+
+    public UserAccount finsByUsername(String userName) {
+        return userAccountQueryAction.getUserAccountByUserName(userName);
     }
 }

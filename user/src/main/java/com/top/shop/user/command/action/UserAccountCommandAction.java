@@ -13,8 +13,6 @@ import java.util.Date;
 public class UserAccountCommandAction {
     @Autowired
     UserAccountRepository userAccountRepository;
-
-
     public void save(UserAccount userAccount) {
         userAccountRepository.save(userAccount);
     }

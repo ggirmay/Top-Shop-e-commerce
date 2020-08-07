@@ -1,9 +1,16 @@
 package com.top.shop.user.query.action;
 
+import com.top.shop.user.command.service.VerificationTokenCommandService;
+import com.top.shop.user.domain.RegisteredUser;
 import com.top.shop.user.domain.User;
+import com.top.shop.user.exception.UserDoesntExit;
+import com.top.shop.user.repository.RegisteredUserRpository;
 import com.top.shop.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -11,8 +18,30 @@ import java.util.List;
 public class UserQueryAction {
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    RegisteredUserRpository registeredUserRpository;
+    @Autowired
+    VerificationTokenCommandService vtc;
+    RestTemplate  restTemplate = new RestTemplate();
+    @Value("${shopping.cart.uri}")
+    String uri;
 
-    public List<User> getAllUsers(){
-        return userRepository.findAll();
+    public List<RegisteredUser> getAllUsers(){
+        return registeredUserRpository.findAll();
+    }
+
+    public void deleteById_reg(Long id) {
+
+        Boolean shoppingFlag;
+//        shoppingFlag = restTemplate.getForObject(uri+"/shopping-cart/delete/"+id,Boolean.class);
+        shoppingFlag=true;
+       if(shoppingFlag==true)
+           registeredUserRpository.deleteById(id);
+
+        return;
+    }
+
+    public User getById(Long id) {
+        return registeredUserRpository.findById(id).orElseThrow(()->new UserDoesntExit("Could't find user with this id"));
     }
 }

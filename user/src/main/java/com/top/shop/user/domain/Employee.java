@@ -1,21 +1,27 @@
 package com.top.shop.user.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.top.shop.user.util.Role;
+import lombok.EqualsAndHashCode;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+
 /**
  * Requirement Giver and Requirement receiver
  * @author Yome Mengistu
  */
 @Entity
+@EqualsAndHashCode
 public class Employee{
     @Id
     @GeneratedValue( strategy = GenerationType.AUTO )
     private Long Id;
-    private Role employee_role;
+    @OneToOne(cascade = CascadeType.ALL)
+    private UserAccount userAccount;
+    private String role;
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Vendor vendor;
 
     public Employee(){
 
@@ -28,12 +34,30 @@ public class Employee{
     public void setId(Long id) {
         Id = id;
     }
-
-    public Role getEmployee_role() {
-        return employee_role;
+    public void setUserAccount(UserAccount userAccount) {
+        this.userAccount = userAccount;
+        if(this.role!=null&&this.role!="ADMIN")
+        userAccount.setRole(this.role);
+        else userAccount.setRole("GUEST");
     }
 
-    public void setEmployee_role(Role employee_role) {
-        this.employee_role = employee_role;
+    public UserAccount getUserAccount() {
+        return userAccount;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public Vendor getVendor() {
+        return vendor;
+    }
+
+    public void setVendor(Vendor vendor) {
+        this.vendor = vendor;
     }
 }

@@ -1,5 +1,6 @@
 package com.top.shop.user.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -25,18 +26,47 @@ public class UserAccount {
     private String email;
     private String password;
     private boolean enabled;
+    private String username;
+    private String Role;
+    @JsonIgnore
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "userAccount", cascade = { CascadeType.REMOVE }, orphanRemoval = true)
+    VerificationToken verificationToken;
 
-    public UserAccount(Long id, @Email String email, String password) {
+    public VerificationToken getVerificationToken() {
+        return verificationToken;
+    }
+
+    public void setVerificationToken(VerificationToken verificationToken) {
+        this.verificationToken = verificationToken;
+    }
+
+    public UserAccount(Long id, @Email String email, String password, boolean enabled, String username, String role) {
         this.id = id;
         this.email = email;
         this.password = password;
-        this.enabled = false;
+        this.enabled = enabled;
+        this.username = username;
+        Role = role;
+    }
+
+    public String getRole() {
+        return Role;
+    }
+
+    public void setRole(String role) {
+        Role = role;
     }
 
     public UserAccount() {
 
     }
+    public String getUsername() {
+        return username;
+    }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
     public Long getId() {
         return id;
     }

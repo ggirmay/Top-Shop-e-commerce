@@ -3,10 +3,7 @@ package com.top.shop.user.domain;
 import com.top.shop.user.util.Role;
 import lombok.ToString;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.util.List;
 
 /**
@@ -17,9 +14,7 @@ import java.util.List;
 public class RegisteredUser  extends User{
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn()
     private UserAccount userAccount;
-    private Role user_role;
 
 
     public UserAccount getUserAccount() {
@@ -28,13 +23,7 @@ public class RegisteredUser  extends User{
 
     public void setUserAccount(UserAccount userAccount) {
         this.userAccount = userAccount;
+        userAccount.setRole("REGISTERED_USER");
     }
 
-    public Role getRole() {
-        return user_role;
-    }
-
-    public void setUser_role(Role user_role) {
-        this.user_role = Role.REGISTERED_USER;
-    }
 }

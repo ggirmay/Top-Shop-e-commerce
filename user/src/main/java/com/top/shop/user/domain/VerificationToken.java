@@ -18,7 +18,7 @@ public class VerificationToken {
 
     private String token;
 
-    @OneToOne(targetEntity = UserAccount.class, fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
+    @OneToOne(targetEntity = UserAccount.class, fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinColumn(nullable = false, name = "user_id")
     private UserAccount userAccount;
 

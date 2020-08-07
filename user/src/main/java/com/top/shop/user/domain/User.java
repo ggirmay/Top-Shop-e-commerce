@@ -1,5 +1,6 @@
 package com.top.shop.user.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.top.shop.user.util.Role;
 import lombok.ToString;
 
@@ -22,7 +23,7 @@ public class User {
     @JoinColumn(name = "user_id")
     private List<Address> addressList;
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private List<PaymentInformation> paymentInformation;
 
     public void setRole(Role role) {

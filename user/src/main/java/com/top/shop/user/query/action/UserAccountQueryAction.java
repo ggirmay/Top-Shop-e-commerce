@@ -1,6 +1,7 @@
 package com.top.shop.user.query.action;
 
 import com.top.shop.user.domain.UserAccount;
+import com.top.shop.user.exception.BadInputRequestException;
 import com.top.shop.user.repository.UserAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -20,5 +21,13 @@ public class UserAccountQueryAction {
     }
     public UserAccount getUserAccountByEmail(String email){
         return userAccountRepository.findUserAccountByEmail(email);
+    }
+
+    public UserAccount getUserAccountByUserName(String userName) {
+       UserAccount userAccount = userAccountRepository.findUserAccountByUsername(userName);
+       if(userAccount==null)
+           return null;
+//        throw new BadInputRequestException("Couldn't find user with this account");
+        else return userAccount;
     }
 }

@@ -27,4 +27,8 @@ public class UserCommandService {
     public boolean validateAccountInformation(String email){
       return   userAccountQueryService.getUserAccountByEmail(email)==null?true:false;
     }
+
+    public RegisteredUser update(RegisteredUser registeredUser) {
+        return userCommandAction.save(registeredUser);
+    }
 }

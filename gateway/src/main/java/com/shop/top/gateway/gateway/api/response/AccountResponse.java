@@ -5,15 +5,25 @@ public class AccountResponse {
     String email;
     String Role;
     String name;
+    String password;
 
-    public AccountResponse() {
+    public String getPassword() {
+        return password;
     }
 
-    public AccountResponse(Long id, String email, String role, String name) {
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public AccountResponse(Long id, String email, String role, String name, String password) {
         this.id = id;
         this.email = email;
         Role = role;
         this.name = name;
+        this.password = password;
+    }
+
+    public AccountResponse() {
     }
 
     public Long getId() {
