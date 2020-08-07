@@ -35,6 +35,9 @@ public class Orders {
 
     private float amount;
 
+    @Transient
+    String error;
+
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "order_id")
     private List<OrderDetail> orderDetails;

@@ -105,6 +105,7 @@ public class VisaServiceImplementation implements VisaService {
                     if(card.getCurrentAmount() >= amount){
                         result.put("amount" , true);
                         result.put("valid" , true);
+                        pay(card, amount);
                         return result;
                     } else{
                         result.put("amount" , false);

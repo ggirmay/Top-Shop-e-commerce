@@ -27,7 +27,7 @@ public class OrderService {
         this.restTemplate = restTemplate;
     }
 
-    public Orders placeOrder(Orders order){
+    public Orders placeOrder(Orders order) throws Exception {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
 
@@ -47,12 +47,13 @@ public class OrderService {
         System.out.println(result.get("amount"));
         System.out.println(result.get("valid"));
 
-//        if (request.equals(true)){
-//            return orderRepository.save(order);
-//        }else {
-//            throw new Exception("You card verification ")
-//        }
-        return null;
+        if (result.get("valid").equals("true") && result.get("amount").equals("true")){
+            return orderRepository.save(order);
+        }else if (result.get("valid").equals("false")){
+            throw new Exception("You card information is not valid");
+        }else {
+            throw new Exception("You don't have enough amount in your cart to complete the purchase");
+        }
     }
 
     public List<Orders> selectAllOrders(){
@@ -64,6 +65,7 @@ public class OrderService {
     }
 
     public List<Orders> selectOrderWithAllOrderDetail(Long userId){
+
         return orderRepository.findAllByUserId(userId);
     }
 }
