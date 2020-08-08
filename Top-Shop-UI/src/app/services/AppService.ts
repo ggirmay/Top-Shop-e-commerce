@@ -3,11 +3,13 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Cookie} from "ng2-cookies";
 import {Observable} from "rxjs";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {Router} from "@angular/router";
 
 @Injectable()
 export class AppService {
   public clientId = 'newClient';
   public redirectUri = 'http://localhost:8089/';
+  private router: Router;
 
   constructor(
     private _http: HttpClient,private _snackBar:MatSnackBar) {
@@ -46,7 +48,7 @@ export class AppService {
     var expireDate = new Date().getTime() + (1000 * token.expires_in);
     Cookie.set("access_token", token.access_token, expireDate);
     Cookie.set("id_token", token.id_token, expireDate);
-    window.location.href = 'http://localhost:4200/home/three';
+    this.router.navigate(['/']);
     this._snackBar.open("Successfully logged in", '×', { panelClass: [status], verticalPosition: 'top', duration: 3000 });
 
   }
@@ -68,10 +70,7 @@ export class AppService {
     let token = Cookie.get('id_token');
     Cookie.delete('access_token');
     Cookie.delete('id_token');
-    // let logoutURL = "http://localhost:8083/auth/realms/baeldung/protocol/openid-connect/logout?id_token_hint="
-    //   + token
-    //   + "&post_logout_redirect_uri=" + this.redirectUri;
-    window.location.href = 'http://localhost:4200/home/three';
+    this.router.navigate(['/']);
     this._snackBar.open("logged out successfully", '×', { panelClass: [status], verticalPosition: 'top', duration: 3000 });
 
   }
