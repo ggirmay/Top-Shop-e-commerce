@@ -16,6 +16,7 @@ import { MainComponent } from './components/main/main.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ShopModule } from './components/shop/shop.module';
 import { SharedModule } from './components/shared/shared.module';
+import {AppService} from "./services/AppService";
 
 
 @NgModule({
@@ -23,9 +24,6 @@ import { SharedModule } from './components/shared/shared.module';
     AppComponent,
     DemoComponent,
     MainComponent
-
-
-
   ],
   imports: [
     NgxSpinnerModule,
@@ -39,7 +37,7 @@ import { SharedModule } from './components/shared/shared.module';
     AppRoutingModule,
     NgxImgZoomModule
   ],
-  providers: [],
+  providers: [AppService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,5 @@
 {
-  "name": "ecommerce-sophia-new",
+  "name": "top-shop-ui",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -53,6 +53,7 @@
     "karma-coverage-istanbul-reporter": "~2.0.1",
     "karma-jasmine": "^3.1.1",
     "karma-jasmine-html-reporter": "^1.5.2",
+    "ng2-cookies": "^1.0.12",
     "protractor": "^5.4.3",
     "rxjs-tslint": "^0.1.7",
     "ts-node": "~7.0.0",

@@ -5,7 +5,7 @@
 FROM adoptopenjdk/openjdk11:alpine-jre
 
 # Refer to Maven build -> finalName
-ARG JAR_FILE=target/user-0.0.1-SNAPSHOT.jar
+ARG JAR_FILE=target/discovery-0.0.1-SNAPSHOT.jar
 
 # cd /opt/app
 WORKDIR /opt/app

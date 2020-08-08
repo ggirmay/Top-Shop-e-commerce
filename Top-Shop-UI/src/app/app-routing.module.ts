@@ -8,7 +8,7 @@ import { DemoComponent } from './components/demo/demo.component';
 const appRoutes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'home/three',
     pathMatch: 'full'
   },
   {

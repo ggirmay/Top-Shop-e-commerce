@@ -1,12 +1,13 @@
 <div class="my-account sec-padding">
   <div class="container">
-      <mat-card fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="start start"  class="p-0">
+      <mat-card fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="start start"  class="p-0" *ngIf="!isLoggedIn">
           <div class="my-account-wrap p-0" fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="start start" >
+
               <div class="login-wrapper pr-50" fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50">
                   <div class="title">
                     <h3>Login</h3>
                   </div>
-                  <form fxLayout="row wrap">
+                  <form fxLayout="row wrap" #element (ngSubmit)="login(element)">
                       <div  fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
                           <mat-form-field class="w-100">
                               <input matInput placeholder="Username or email address (required)" #name="ngModel" ngModel name="name" required>
@@ -47,6 +48,9 @@
                   </div>
         </div>
       </mat-card>
+    <mat-card fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="start start"  class="p-0" *ngIf="isLoggedIn">
+
+    </mat-card>
 
   </div>
 </div>
