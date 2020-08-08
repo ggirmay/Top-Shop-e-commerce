@@ -32,14 +32,14 @@ public class Mastercard {
     private String firstName;
 
     @NotNull @NotBlank @NotEmpty
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String nameOnCard;
 
     @Transient
     private String issuer;
 
     //@Temporal(TemporalType.DATE)
-    @JsonFormat(pattern = "mm/yyyy")
+    @JsonFormat(pattern = "MM/yyyy")
     @NotNull
     @Column(nullable = false)
     private LocalDate expirationDate;
@@ -83,7 +83,7 @@ public class Mastercard {
     @Column(nullable = false)
     private boolean deleted;
 
-    @OneToMany(mappedBy = "cardNumber")
+    @OneToMany(mappedBy = "cardNumber" , fetch = FetchType.LAZY)
     private List<MastercardTransaction> transactionList;
 
     public Mastercard() {

@@ -40,7 +40,18 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
             .anyRequest()
             .authenticated();*/
 
+
+        /*http.csrf().disable();
+        http.httpBasic()
+            .and()
+            .authorizeRequests()
+            .antMatchers("/login").permitAll()
+            .anyRequest().authenticated();*/
+
+        http.cors();
         http.csrf().disable();
+        http.authorizeRequests().antMatchers("/**").fullyAuthenticated().and().httpBasic();
+
     }
 
     @Bean

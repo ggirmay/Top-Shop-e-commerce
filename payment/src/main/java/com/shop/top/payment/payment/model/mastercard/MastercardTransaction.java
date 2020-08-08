@@ -1,5 +1,6 @@
 package com.shop.top.payment.payment.model.mastercard;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.shop.top.payment.payment.model.CreditCard;
 import com.shop.top.payment.payment.utils.Generator;
 import lombok.Getter;
@@ -34,6 +35,7 @@ public class MastercardTransaction {
     @Column(nullable = false)
     private double remainingAmount;
 
+    @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL)
     private Mastercard cardNumber;
 
