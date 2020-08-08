@@ -10,7 +10,7 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('Welcome to ecommerce-sophia-new!');
+    expect(page.getTitleText()).toEqual('Welcome to top-shop-ui!');
   });
 
   afterEach(async () => {

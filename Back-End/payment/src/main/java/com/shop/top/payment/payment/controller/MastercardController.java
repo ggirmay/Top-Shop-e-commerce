@@ -21,13 +21,14 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/mastercard-api")
-
 public class MastercardController {
 
     @Autowired
     private MastercardService mastercardService;
-       @Secured(value = {"ROLE_ADMIN"})
+
+    @Secured(value = {"ROLE_ADMIN"})
     @GetMapping(value = {"/" , "" , "/list"})
+    @CrossOrigin(origins = "*")
     public ResponseEntity<List<Mastercard>> getAllMastercard(){
 
         return ResponseEntity.ok().body(this.mastercardService.getAll());
@@ -35,6 +36,7 @@ public class MastercardController {
 
     @Secured(value = {"ROLE_ADMIN"})
     @GetMapping(value = {"/find", "/list/find"})
+    @CrossOrigin(origins = "*")
     public ResponseEntity<?> getOneMastercardByCardNumber(@RequestParam(value = "cardNumber") String cardNumber){
         Optional<Mastercard> mastercard = this.mastercardService.getByCardNumber(cardNumber);
         if(mastercard.isPresent())
@@ -49,6 +51,7 @@ public class MastercardController {
     * */
     @Secured(value = {"ROLE_ADMIN"})
     @PostMapping(value = "/save")
+    @CrossOrigin(origins = "*")
     public ResponseEntity<?> uploadNewCard(@RequestBody Map<String , ?> data) {
 
         String lastName = Getters.extractString(data.get("lastName"));
@@ -69,6 +72,7 @@ public class MastercardController {
 
     @Secured(value = {"ROLE_ADMIN"})
     @DeleteMapping(value = "/delete")
+    @CrossOrigin(origins = "*")
     public ResponseEntity<?> deleteCard(@RequestParam("cardNumber") String cardNumber){
 
         boolean result = false;
@@ -85,6 +89,7 @@ public class MastercardController {
 
     @Secured(value = {"ROLE_ADMIN"})
     @PutMapping(value = "/edit")
+    @CrossOrigin(origins = "*")
     public ResponseEntity<?> updateCard(@Valid @RequestBody Mastercard mastercard , BindingResult bindingResult){
 
         if(bindingResult.hasErrors()){
