@@ -16,13 +16,19 @@ import { MainComponent } from './components/main/main.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ShopModule } from './components/shop/shop.module';
 import { SharedModule } from './components/shared/shared.module';
+import { RegistrationComponent } from './components/vendor/registration/registration.component';
+import { ManagementComponent } from './components/vendor/management/management.component';
+import { ValidationComponent } from './components/vendor/validation/validation.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     DemoComponent,
-    MainComponent
+    MainComponent,
+    RegistrationComponent,
+    ManagementComponent,
+    ValidationComponent
 
 
 
