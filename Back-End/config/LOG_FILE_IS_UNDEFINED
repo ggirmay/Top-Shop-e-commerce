@@ -472,3 +472,4 @@ Caused by: org.postgresql.util.PSQLException: ERROR: syntax error at or near "us
 2020-08-08 13:13:27.898  INFO 17404 --- [restartedMain] com.top.shop.user.UserApplication        : Started UserApplication in 11.639 seconds (JVM running for 13.668)
 2020-08-08 13:13:35.150 DEBUG 17404 --- [http-nio-8086-exec-2] c.t.s.u.api.server.VerificationTokenApi  : id = 130 token =1869b569-898c-4bd4-80b2-af16ec670260
 2020-08-08 13:13:35.308 DEBUG 17404 --- [http-nio-8086-exec-2] c.t.s.u.api.server.VerificationTokenApi  : 130 130
+2020-08-08 15:26:53.697  WARN 17404 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7m29s196ms259µs700ns).
