@@ -1,5 +1,6 @@
 package com.top.shop.user.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -17,8 +18,8 @@ public class VerificationToken {
     private Long id;
 
     private String token;
-
-    @OneToOne(targetEntity = UserAccount.class, fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JsonIgnore
+    @OneToOne(targetEntity = UserAccount.class, fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(nullable = false, name = "user_id")
     private UserAccount userAccount;
 

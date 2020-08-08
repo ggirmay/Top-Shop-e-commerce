@@ -42,3 +42,433 @@ Caused by: org.postgresql.util.PSQLException: ERROR: syntax error at or near "us
 	... 18 common frames omitted
 
 2020-08-08 11:15:44.781  INFO 18652 --- [restartedMain] com.top.shop.user.UserApplication        : Started UserApplication in 35.738 seconds (JVM running for 38.444)
+2020-08-08 11:56:17.018 DEBUG 18652 --- [http-nio-8086-exec-6] com.top.shop.user.api.server.UserApi     : RegisteredUser(userAccount=UserAccount(id=null, email=ymengistu@gmail.org, password=admin, enabled=false, username=admin, Role=REGISTERED_USER, verificationToken=null))
+2020-08-08 12:37:44.699  INFO 18128 --- [restartedMain] com.top.shop.user.UserApplication        : No active profile set, falling back to default profiles: default
+2020-08-08 12:37:49.206  WARN 18128 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-08-08 12:37:49.216  WARN 18128 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-08-08 12:37:49.500  WARN 18128 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-08-08 12:37:52.931  WARN 18128 --- [restartedMain] ockingLoadBalancerClientRibbonWarnLogger : You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2020-08-08 12:37:53.254  WARN 18128 --- [task-1] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "create table user (id int8 not null, role int4, primary key (id))" via JDBC Statement
+
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "create table user (id int8 not null, role int4, primary key (id))" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:559)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:504)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.createTable(AbstractSchemaMigrator.java:277)
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:71)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:207)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:114)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:184)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:316)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:469)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1259)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+Caused by: org.postgresql.util.PSQLException: ERROR: syntax error at or near "user"
+  Position: 14
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2532)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2267)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:312)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:448)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:369)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:310)
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:296)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:273)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:268)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 18 common frames omitted
+
+2020-08-08 12:37:55.632  INFO 18128 --- [restartedMain] com.top.shop.user.UserApplication        : Started UserApplication in 14.25 seconds (JVM running for 16.046)
+2020-08-08 12:38:09.165 DEBUG 18128 --- [http-nio-8086-exec-1] com.top.shop.user.api.server.UserApi     : RegisteredUser(userAccount=UserAccount(id=null, email=ymengistu@gmail.org, password=admin, enabled=false, username=admin, Role=REGISTERED_USER, verificationToken=null))
+2020-08-08 12:38:09.370 ERROR 18128 --- [http-nio-8086-exec-1] com.top.shop.user.api.server.UserApi     : com.top.shop.user.exception.UserExist: the user with this email/username has already exist
+2020-08-08 12:38:17.508 DEBUG 18128 --- [http-nio-8086-exec-3] com.top.shop.user.api.server.UserApi     : RegisteredUser(userAccount=UserAccount(id=null, email=ymengistu@ggmail.org, password=admin, enabled=false, username=admin, Role=REGISTERED_USER, verificationToken=null))
+2020-08-08 12:39:31.935 DEBUG 18128 --- [http-nio-8086-exec-5] com.top.shop.user.api.server.UserApi     : RegisteredUser(userAccount=UserAccount(id=null, email=ymengistu@ggmail.org, password=admin, enabled=false, username=admin, Role=REGISTERED_USER, verificationToken=null))
+2020-08-08 12:39:32.052 ERROR 18128 --- [http-nio-8086-exec-5] com.top.shop.user.api.server.UserApi     : com.top.shop.user.exception.UserExist: the user with this email/username has already exist
+2020-08-08 12:40:24.248 DEBUG 18128 --- [http-nio-8086-exec-7] com.top.shop.user.api.server.UserApi     : RegisteredUser(userAccount=UserAccount(id=null, email=yome.mengistu@outlook.com, password=admin, enabled=false, username=yome, Role=REGISTERED_USER, verificationToken=null))
+2020-08-08 12:41:48.263 DEBUG 18128 --- [http-nio-8086-exec-10] com.top.shop.user.api.server.UserApi     : RegisteredUser(userAccount=UserAccount(id=null, email=ymengistu@miu.edu, password=admin, enabled=false, username=ymengistu, Role=REGISTERED_USER, verificationToken=null))
+2020-08-08 12:42:59.046 DEBUG 18128 --- [http-nio-8086-exec-1] c.t.s.u.api.server.VerificationTokenApi  : id = 125 token =cbc033a3-19b0-4245-85ab-7dc4d593a12e
+2020-08-08 12:42:59.362  WARN 18128 --- [http-nio-8086-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.util.NestedServletException: Handler dispatch failed; nested exception is java.lang.StackOverflowError]
+2020-08-08 12:46:40.862 DEBUG 18128 --- [http-nio-8086-exec-9] c.t.s.u.api.server.VerificationTokenApi  : id = 115 token =3edb953c-f9c0-49fc-a48c-edf109a5cb63
+2020-08-08 12:46:41.152  WARN 18128 --- [http-nio-8086-exec-9] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.util.NestedServletException: Handler dispatch failed; nested exception is java.lang.StackOverflowError]
+2020-08-08 12:47:57.771  INFO 10916 --- [restartedMain] com.top.shop.user.UserApplication        : No active profile set, falling back to default profiles: default
+2020-08-08 12:48:02.058  WARN 10916 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-08-08 12:48:02.065  WARN 10916 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-08-08 12:48:02.251  WARN 10916 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-08-08 12:48:05.416  WARN 10916 --- [restartedMain] ockingLoadBalancerClientRibbonWarnLogger : You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2020-08-08 12:48:05.699  WARN 10916 --- [task-1] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "create table user (id int8 not null, role int4, primary key (id))" via JDBC Statement
+
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "create table user (id int8 not null, role int4, primary key (id))" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:559)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:504)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.createTable(AbstractSchemaMigrator.java:277)
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:71)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:207)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:114)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:184)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:316)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:469)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1259)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+Caused by: org.postgresql.util.PSQLException: ERROR: syntax error at or near "user"
+  Position: 14
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2532)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2267)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:312)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:448)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:369)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:310)
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:296)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:273)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:268)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 18 common frames omitted
+
+2020-08-08 12:48:08.154  INFO 10916 --- [restartedMain] com.top.shop.user.UserApplication        : Started UserApplication in 13.936 seconds (JVM running for 16.16)
+2020-08-08 12:48:14.931  WARN 10916 --- [http-nio-8086-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.dao.EmptyResultDataAccessException: No class com.top.shop.user.domain.RegisteredUser entity with id 125 exists!]
+2020-08-08 12:51:49.027 DEBUG 10916 --- [http-nio-8086-exec-5] com.top.shop.user.api.server.UserApi     : RegisteredUser(userAccount=UserAccount(id=null, email=ymengistu@miu.edu, password=admin, enabled=false, username=ymengistu, Role=REGISTERED_USER, verificationToken=null))
+2020-08-08 12:53:18.315 DEBUG 10916 --- [http-nio-8086-exec-7] c.t.s.u.api.server.VerificationTokenApi  : id = 130 token =1869b569-898c-4bd4-80b2-af16ec670260
+2020-08-08 12:53:46.888 DEBUG 10916 --- [http-nio-8086-exec-10] c.t.s.u.api.server.VerificationTokenApi  : id = 129 token =1869b569-898c-4bd4-80b2-af16ec670260
+2020-08-08 12:55:38.190 DEBUG 10916 --- [http-nio-8086-exec-3] c.t.s.u.api.server.VerificationTokenApi  : id = 130 token =1869b569-898c-4bd4-80b2-af16ec670260
+2020-08-08 12:56:43.796 DEBUG 10916 --- [http-nio-8086-exec-5] c.t.s.u.api.server.VerificationTokenApi  : id = 130 token =1869b569-898c-4bd4-80b2-af16ec670260
+2020-08-08 12:57:59.259 DEBUG 10916 --- [http-nio-8086-exec-10] c.t.s.u.api.server.VerificationTokenApi  : id = 129 token =1869b569-898c-4bd4-80b2-af16ec670260
+2020-08-08 12:58:04.654 DEBUG 10916 --- [http-nio-8086-exec-2] c.t.s.u.api.server.VerificationTokenApi  : id = 130 token =1869b569-898c-4bd4-80b2-af16ec670260
+2020-08-08 12:58:44.307  INFO 17768 --- [restartedMain] com.top.shop.user.UserApplication        : No active profile set, falling back to default profiles: default
+2020-08-08 12:58:47.507  WARN 17768 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-08-08 12:58:47.516  WARN 17768 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-08-08 12:58:47.732  WARN 17768 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-08-08 12:58:50.397  WARN 17768 --- [restartedMain] ockingLoadBalancerClientRibbonWarnLogger : You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2020-08-08 12:58:50.690  WARN 17768 --- [task-1] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "create table user (id int8 not null, role int4, primary key (id))" via JDBC Statement
+
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "create table user (id int8 not null, role int4, primary key (id))" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:559)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:504)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.createTable(AbstractSchemaMigrator.java:277)
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:71)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:207)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:114)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:184)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:316)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:469)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1259)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+Caused by: org.postgresql.util.PSQLException: ERROR: syntax error at or near "user"
+  Position: 14
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2532)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2267)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:312)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:448)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:369)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:310)
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:296)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:273)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:268)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 18 common frames omitted
+
+2020-08-08 12:58:52.537  INFO 17768 --- [restartedMain] com.top.shop.user.UserApplication        : Started UserApplication in 11.39 seconds (JVM running for 13.282)
+2020-08-08 12:59:51.285 DEBUG 17768 --- [http-nio-8086-exec-1] c.t.s.u.api.server.VerificationTokenApi  : id = 130 token =1869b569-898c-4bd4-80b2-af16ec670260
+2020-08-08 13:02:54.562  INFO 920 --- [restartedMain] com.top.shop.user.UserApplication        : No active profile set, falling back to default profiles: default
+2020-08-08 13:02:57.938  WARN 920 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-08-08 13:02:57.948  WARN 920 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-08-08 13:02:58.224  WARN 920 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-08-08 13:03:01.422  WARN 920 --- [restartedMain] ockingLoadBalancerClientRibbonWarnLogger : You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2020-08-08 13:03:01.564  WARN 920 --- [task-1] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "create table user (id int8 not null, role int4, primary key (id))" via JDBC Statement
+
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "create table user (id int8 not null, role int4, primary key (id))" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:559)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:504)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.createTable(AbstractSchemaMigrator.java:277)
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:71)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:207)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:114)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:184)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:316)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:469)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1259)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+Caused by: org.postgresql.util.PSQLException: ERROR: syntax error at or near "user"
+  Position: 14
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2532)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2267)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:312)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:448)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:369)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:310)
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:296)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:273)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:268)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 18 common frames omitted
+
+2020-08-08 13:03:03.945  INFO 920 --- [restartedMain] com.top.shop.user.UserApplication        : Started UserApplication in 12.653 seconds (JVM running for 14.612)
+2020-08-08 13:03:11.908 DEBUG 920 --- [http-nio-8086-exec-2] c.t.s.u.api.server.VerificationTokenApi  : id = 130 token =1869b569-898c-4bd4-80b2-af16ec670260
+2020-08-08 13:03:12.370  WARN 920 --- [http-nio-8086-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.util.NestedServletException: Handler dispatch failed; nested exception is java.lang.StackOverflowError]
+2020-08-08 13:05:58.147  INFO 17948 --- [restartedMain] com.top.shop.user.UserApplication        : No active profile set, falling back to default profiles: default
+2020-08-08 13:06:01.375  WARN 17948 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-08-08 13:06:01.383  WARN 17948 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-08-08 13:06:01.567  WARN 17948 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-08-08 13:06:03.926  WARN 17948 --- [restartedMain] ockingLoadBalancerClientRibbonWarnLogger : You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2020-08-08 13:06:04.250  WARN 17948 --- [task-1] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "create table user (id int8 not null, role int4, primary key (id))" via JDBC Statement
+
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "create table user (id int8 not null, role int4, primary key (id))" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:559)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:504)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.createTable(AbstractSchemaMigrator.java:277)
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:71)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:207)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:114)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:184)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:316)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:469)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1259)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+Caused by: org.postgresql.util.PSQLException: ERROR: syntax error at or near "user"
+  Position: 14
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2532)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2267)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:312)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:448)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:369)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:310)
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:296)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:273)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:268)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 18 common frames omitted
+
+2020-08-08 13:06:06.192  INFO 17948 --- [restartedMain] com.top.shop.user.UserApplication        : Started UserApplication in 11.162 seconds (JVM running for 12.953)
+2020-08-08 13:06:21.615 DEBUG 17948 --- [http-nio-8086-exec-1] c.t.s.u.api.server.VerificationTokenApi  : id = 130 token =1869b569-898c-4bd4-80b2-af16ec670260
+2020-08-08 13:06:21.925  WARN 17948 --- [http-nio-8086-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.util.NestedServletException: Handler dispatch failed; nested exception is java.lang.StackOverflowError]
+2020-08-08 13:07:58.756  INFO 19232 --- [restartedMain] com.top.shop.user.UserApplication        : No active profile set, falling back to default profiles: default
+2020-08-08 13:08:03.058  WARN 19232 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-08-08 13:08:03.067  WARN 19232 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-08-08 13:08:03.333  WARN 19232 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-08-08 13:08:06.151  WARN 19232 --- [restartedMain] ockingLoadBalancerClientRibbonWarnLogger : You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2020-08-08 13:08:06.453  WARN 19232 --- [task-1] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "create table user (id int8 not null, role int4, primary key (id))" via JDBC Statement
+
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "create table user (id int8 not null, role int4, primary key (id))" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:559)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:504)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.createTable(AbstractSchemaMigrator.java:277)
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:71)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:207)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:114)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:184)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:316)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:469)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1259)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+Caused by: org.postgresql.util.PSQLException: ERROR: syntax error at or near "user"
+  Position: 14
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2532)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2267)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:312)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:448)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:369)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:310)
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:296)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:273)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:268)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 18 common frames omitted
+
+2020-08-08 13:08:08.303  INFO 19232 --- [restartedMain] com.top.shop.user.UserApplication        : Started UserApplication in 13.007 seconds (JVM running for 15.106)
+2020-08-08 13:08:30.023 DEBUG 19232 --- [http-nio-8086-exec-1] c.t.s.u.api.server.VerificationTokenApi  : id = 130 token =1869b569-898c-4bd4-80b2-af16ec670260
+2020-08-08 13:08:30.235 DEBUG 19232 --- [http-nio-8086-exec-1] c.t.s.u.api.server.VerificationTokenApi  : 130 130
+2020-08-08 13:09:12.479  INFO 16552 --- [restartedMain] com.top.shop.user.UserApplication        : No active profile set, falling back to default profiles: default
+2020-08-08 13:09:15.790  WARN 16552 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-08-08 13:09:15.798  WARN 16552 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-08-08 13:09:15.983  WARN 16552 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-08-08 13:09:18.516  WARN 16552 --- [restartedMain] ockingLoadBalancerClientRibbonWarnLogger : You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2020-08-08 13:09:18.872  WARN 16552 --- [task-1] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "create table user (id int8 not null, role int4, primary key (id))" via JDBC Statement
+
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "create table user (id int8 not null, role int4, primary key (id))" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:559)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:504)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.createTable(AbstractSchemaMigrator.java:277)
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:71)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:207)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:114)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:184)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:316)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:469)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1259)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+Caused by: org.postgresql.util.PSQLException: ERROR: syntax error at or near "user"
+  Position: 14
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2532)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2267)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:312)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:448)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:369)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:310)
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:296)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:273)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:268)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 18 common frames omitted
+
+2020-08-08 13:09:20.821  INFO 16552 --- [restartedMain] com.top.shop.user.UserApplication        : Started UserApplication in 11.529 seconds (JVM running for 13.897)
+2020-08-08 13:09:52.552 DEBUG 16552 --- [http-nio-8086-exec-2] c.t.s.u.api.server.VerificationTokenApi  : id = 130 token =1869b569-898c-4bd4-80b2-af16ec670260
+2020-08-08 13:09:52.691 DEBUG 16552 --- [http-nio-8086-exec-2] c.t.s.u.api.server.VerificationTokenApi  : 130 130
+2020-08-08 13:10:19.443  INFO 19756 --- [restartedMain] com.top.shop.user.UserApplication        : No active profile set, falling back to default profiles: default
+2020-08-08 13:10:22.780  WARN 19756 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-08-08 13:10:22.787  WARN 19756 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-08-08 13:10:22.968  WARN 19756 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-08-08 13:10:25.478  WARN 19756 --- [restartedMain] ockingLoadBalancerClientRibbonWarnLogger : You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2020-08-08 13:10:25.773  WARN 19756 --- [task-1] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "create table user (id int8 not null, role int4, primary key (id))" via JDBC Statement
+
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "create table user (id int8 not null, role int4, primary key (id))" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:559)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:504)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.createTable(AbstractSchemaMigrator.java:277)
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:71)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:207)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:114)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:184)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:316)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:469)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1259)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+Caused by: org.postgresql.util.PSQLException: ERROR: syntax error at or near "user"
+  Position: 14
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2532)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2267)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:312)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:448)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:369)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:310)
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:296)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:273)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:268)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 18 common frames omitted
+
+2020-08-08 13:10:27.637  INFO 19756 --- [restartedMain] com.top.shop.user.UserApplication        : Started UserApplication in 11.507 seconds (JVM running for 13.549)
+2020-08-08 13:10:39.991 DEBUG 19756 --- [http-nio-8086-exec-2] c.t.s.u.api.server.VerificationTokenApi  : id = 130 token =1869b569-898c-4bd4-80b2-af16ec670260
+2020-08-08 13:10:40.133 DEBUG 19756 --- [http-nio-8086-exec-2] c.t.s.u.api.server.VerificationTokenApi  : 130 130
+2020-08-08 13:10:40.492  WARN 19756 --- [http-nio-8086-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.util.NestedServletException: Handler dispatch failed; nested exception is java.lang.StackOverflowError]
+2020-08-08 13:13:19.599  INFO 17404 --- [restartedMain] com.top.shop.user.UserApplication        : No active profile set, falling back to default profiles: default
+2020-08-08 13:13:23.034  WARN 17404 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-08-08 13:13:23.041  WARN 17404 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-08-08 13:13:23.230  WARN 17404 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-08-08 13:13:25.619  WARN 17404 --- [restartedMain] ockingLoadBalancerClientRibbonWarnLogger : You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2020-08-08 13:13:25.971  WARN 17404 --- [task-1] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "create table user (id int8 not null, role int4, primary key (id))" via JDBC Statement
+
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "create table user (id int8 not null, role int4, primary key (id))" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:559)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:504)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.createTable(AbstractSchemaMigrator.java:277)
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:71)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:207)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:114)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:184)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:316)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:469)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1259)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+Caused by: org.postgresql.util.PSQLException: ERROR: syntax error at or near "user"
+  Position: 14
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2532)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2267)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:312)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:448)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:369)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:310)
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:296)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:273)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:268)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 18 common frames omitted
+
+2020-08-08 13:13:27.898  INFO 17404 --- [restartedMain] com.top.shop.user.UserApplication        : Started UserApplication in 11.639 seconds (JVM running for 13.668)
+2020-08-08 13:13:35.150 DEBUG 17404 --- [http-nio-8086-exec-2] c.t.s.u.api.server.VerificationTokenApi  : id = 130 token =1869b569-898c-4bd4-80b2-af16ec670260
+2020-08-08 13:13:35.308 DEBUG 17404 --- [http-nio-8086-exec-2] c.t.s.u.api.server.VerificationTokenApi  : 130 130

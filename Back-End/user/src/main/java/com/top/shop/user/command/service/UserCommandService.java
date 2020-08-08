@@ -18,15 +18,16 @@ public class UserCommandService {
     UserAccountQueryService userAccountQueryService;
 
     public User registerUser(RegisteredUser user){
-        if(validateAccountInformation(user.getUserAccount().getEmail())){
+        if(validateAccountInformation(user.getUserAccount().getEmail(),user.getUserAccount().getUsername())){
             return userCommandAction.registerUser(user);
         }
-        else throw new UserExist("the user with this email has already exist");
+        else throw new UserExist("the user with this email/username has already exist");
     }
 
-    public boolean validateAccountInformation(String email){
-      return   userAccountQueryService.getUserAccountByEmail(email)==null?true:false;
+    public boolean validateAccountInformation(String email,String userName){
+      return   userAccountQueryService.getUserAccountByEmail(email)==null?userAccountQueryService.getUserAccountByEmail(email)==null?true:false:false;
     }
+
 
     public RegisteredUser update(RegisteredUser registeredUser) {
         return userCommandAction.save(registeredUser);

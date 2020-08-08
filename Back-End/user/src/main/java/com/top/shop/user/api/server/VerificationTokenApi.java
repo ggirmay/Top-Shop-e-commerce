@@ -49,9 +49,10 @@ public class VerificationTokenApi{
         }
 
         UserAccount userAccount = verificationToken.getUserAccount();
-        if(userAccount.getId()!=id){
+        log.debug(userAccount.getId()+" "+ id);
+        if(!userAccount.getId().equals(id)){
             String message = messages.getMessage("auth.invalid.id", null, null);
-            return ResponseEntity.ok().body(message);
+            return ResponseEntity.ok().body("User doesnt exist");
         }
         Calendar cal = Calendar.getInstance();
         if ((verificationToken.getExpiryDate().getTime() - cal.getTime().getTime()) <= 0) {
@@ -64,7 +65,7 @@ public class VerificationTokenApi{
         userAccountCommandService.enable(userAccount);
         verificationTokenCommandService.remove(verificationToken);
 
-        log.debug("user Account = " + userAccount );
+//        log.debug("user Account = " + userAccount );
 
 
         return ResponseEntity.ok().body("account verified");

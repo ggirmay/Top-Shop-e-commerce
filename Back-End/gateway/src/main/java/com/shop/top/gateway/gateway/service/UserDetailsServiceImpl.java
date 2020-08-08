@@ -35,23 +35,16 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         }
         UserAccount user  = restTemplate.getForObject(uri, UserAccount.class);
 
-        if (user!=null) {
-            System.out.println(user.toString()+ "user Service main");
-            List role = new ArrayList<>();
-            GrantedAuthority auth = new GrantedAuthority() {
-                @Override
-                public String getAuthority() {
-                    return user.getRole();
-                }
-            };
-           List gAtuh = new ArrayList<>();
-           gAtuh.add(auth);
-
+        if (user!=null&&user.isEnabled()) {
             return new User(user.getUsername(), user.getPassword(),
                     Arrays.asList(new SimpleGrantedAuthority("ROLE_"+user.getRole())));
 
-        } else {
-            throw new UsernameNotFoundException("uer ot found");
+        }
+        else if (user!=null&&user.isEnabled()==false) {
+            throw new UsernameNotFoundException("please activate User");
+        }
+        else {
+            throw new UsernameNotFoundException("user not found");
         }
 
     }
