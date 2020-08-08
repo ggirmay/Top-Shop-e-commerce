@@ -29,6 +29,31 @@
                     <div class="title">
                         <h3>Register</h3>
                       </div>
+                  <div formGroupName="address">
+                    <h3>Address</h3>
+
+                    <label>
+                      Street:
+                      <input type="text" formControlName="street">
+                    </label>
+
+                    <label>
+                      City:
+                      <input type="text" formControlName="city">
+                    </label>
+
+                    <label>
+                      State:
+                      <input type="text" formControlName="state">
+                    </label>
+
+                    <label>
+                      Zip Code:
+                      <input type="text" formControlName="zip">
+                    </label>
+                  </div>
+
+
                       <div class="register-body">
                         <p>Create new account today to reap the benefits of a personalized shopping experience.</p>
                         <form fxLayout="row wrap">
@@ -48,6 +73,8 @@
                   </div>
         </div>
       </mat-card>
+
+
     <mat-card fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="start start"  class="p-0" *ngIf="isLoggedIn">
 
     </mat-card>
