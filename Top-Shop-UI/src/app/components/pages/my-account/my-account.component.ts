@@ -14,10 +14,10 @@ export class MyAccountComponent implements OnInit {
     private _service:AppService){}
 
   ngOnInit(){
-    // this.isLoggedIn = this._service.checkCredentials();
-    // let i = window.location.href.indexOf('code');
-    // if(!this.isLoggedIn && i != -1){
-    // }
+    this.isLoggedIn = this._service.checkCredentials();
+    let i = window.location.href.indexOf('code');
+    if(!this.isLoggedIn && i != -1){
+    }
   }
 
   login(element: HTMLFormElement) {

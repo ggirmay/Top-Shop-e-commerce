@@ -41,6 +41,7 @@ public class Controller {
     UserAccountControllerBuilder ubuilder = new UserAccountControllerBuilder();
     UserAccountClient userAccountClient = ubuilder.getUserAccountClient();
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "authenticate")
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
 
