@@ -54,6 +54,10 @@ public class Mastercard {
     @Column(nullable = false)
     private double value;
 
+    @NotEmpty @NotBlank @NotNull
+    @Column(nullable = false)
+    private String email;
+
     @NotNull
     @Column(nullable = false)
     private boolean upgrade;
@@ -85,14 +89,15 @@ public class Mastercard {
     public Mastercard() {
     }
 
-    public Mastercard(String lastName, String firstName, String nameOnCard) {
+    public Mastercard(String lastName, String firstName, String nameOnCard , String email) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.nameOnCard = nameOnCard;
+        this.email = email;
 
         this.cardNumber = Generator.generateCreditCardNumber(CreditCard.MASTERCARD.value());
         this.issuer = CreditCard.MASTERCARD.issuer();
-        LocalDate.of(Calendar.getInstance().get(Calendar.YEAR) + 5 ,
+        this.expirationDate = LocalDate.of(Calendar.getInstance().get(Calendar.YEAR) + 5 ,
                 Calendar.getInstance().get(Calendar.MONTH) ,
                 Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
         this.securityDigit = Generator.generateSecurityDigit();
@@ -106,14 +111,15 @@ public class Mastercard {
 
     }
 
-    public Mastercard(String lastName, String firstName, String nameOnCard , String cardNumber) {
+    public Mastercard(String lastName, String firstName, String nameOnCard , String email , String cardNumber) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.nameOnCard = nameOnCard;
+        this.email = email;
 
         this.cardNumber = cardNumber;
         this.issuer = CreditCard.MASTERCARD.issuer();
-        LocalDate.of(Calendar.getInstance().get(Calendar.YEAR) + 5 ,
+        this.expirationDate = LocalDate.of(Calendar.getInstance().get(Calendar.YEAR) + 5 ,
                 Calendar.getInstance().get(Calendar.MONTH) ,
                 Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
         this.securityDigit = Generator.generateSecurityDigit();
@@ -127,12 +133,13 @@ public class Mastercard {
 
     }
 
-    private Mastercard(String cardNumber, String lastName, String firstName, String nameOnCard,
+    private Mastercard(String cardNumber, String lastName, String firstName, String nameOnCard, String email,
                        String issuer, LocalDate expirationDate, String securityDigit, double value, boolean deleted,
                        boolean upgrade, LocalDate upgradeDate, int numberOfUpgrade, double currentValue, double currentAmount) {
         this.cardNumber = cardNumber;
         this.lastName = lastName;
         this.firstName = firstName;
+        this.email = email;
         this.nameOnCard = nameOnCard;
         this.issuer = issuer;
         this.expirationDate = expirationDate;

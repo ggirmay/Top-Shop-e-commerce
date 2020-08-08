@@ -7,10 +7,7 @@ import com.shop.top.payment.payment.utils.Getters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDate;
@@ -44,6 +41,7 @@ public class PaymentController {
 //    }
 
     @PostMapping( value = "/checkout")
+    @CrossOrigin(origins = "*")
     public HashMap checkout(@RequestBody HashMap<String, String> data){
 
         System.out.println("working");

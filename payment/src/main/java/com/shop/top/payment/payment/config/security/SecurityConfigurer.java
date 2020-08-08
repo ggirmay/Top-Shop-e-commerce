@@ -32,14 +32,16 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
     }
 
 
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//        http.authorizeRequests()
-//            .antMatchers("/payment/**")
-//            .permitAll()
-//            .anyRequest()
-//            .authenticated();
-//    }
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        /*http.authorizeRequests()
+            .antMatchers("/payment/**")
+            .permitAll()
+            .anyRequest()
+            .authenticated();*/
+
+        http.csrf().disable();
+    }
 
     @Bean
     protected DaoAuthenticationProvider authenticationProvider(){
