@@ -3,6 +3,7 @@ import { Product } from 'src/app/modals/product.model';
 import { CartItem } from 'src/app/modals/cart-item';
 import { CartService } from '../services/cart.service';
 import { SidebarMenuService } from '../sidebar/sidebar-menu.service';
+import {AppService} from "../../../services/AppService";
 
 @Component({
   selector: 'app-header',
@@ -27,13 +28,15 @@ export class HeaderComponent implements OnInit {
 
   indexProduct: number;
   shoppingCartItems: CartItem[] = [];
+  public isLoggedIn = false;
 
 
-  constructor(private cartService: CartService) {
+  constructor(private cartService: CartService,private _service:AppService) {
     this.cartService.getItems().subscribe(shoppingCartItems => this.shoppingCartItems = shoppingCartItems);
   }
 
   ngOnInit() {
+    this.isLoggedIn = this._service.checkCredentials();
     this.currency = this.currencies[0];
     this.flag = this.flags[0];
   }
@@ -45,4 +48,7 @@ export class HeaderComponent implements OnInit {
     this.flag = flag;
   }
 
+  public logout(){
+    this._service.logout();
+  }
 }

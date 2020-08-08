@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AppService} from "../../../services/AppService";
+import {NgForm} from "@angular/forms";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-my-account',
@@ -8,10 +10,11 @@ import {AppService} from "../../../services/AppService";
 })
 export class MyAccountComponent implements OnInit {
   public isLoggedIn = false;
+  public username;
+  public password;
 
 
-  constructor(
-    private _service:AppService){}
+  constructor(private _service:AppService,private _snackBar:MatSnackBar){}
 
   ngOnInit(){
     this.isLoggedIn = this._service.checkCredentials();
@@ -20,9 +23,12 @@ export class MyAccountComponent implements OnInit {
     }
   }
 
-  login(element: HTMLFormElement) {
-    console.log("user login",element);
-    this._service.retrieveToken(null);
+  login(element: NgForm) {
+    this.username = element.value.username;
+    this.password = element.value.password;
+    if(element.valid)
+    this._service.retrieveToken(this.username,this.password);
+
   }
 
   logout() {

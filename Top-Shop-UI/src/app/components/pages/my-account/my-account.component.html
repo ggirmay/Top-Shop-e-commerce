@@ -7,17 +7,17 @@
                   <div class="title">
                     <h3>Login</h3>
                   </div>
-                  <form fxLayout="row wrap" #element (ngSubmit)="login(element)">
+                  <form fxLayout="row wrap" #f="ngForm" (ngSubmit)="login(f) ">
                       <div  fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
                           <mat-form-field class="w-100">
-                              <input matInput placeholder="Username or email address (required)" #name="ngModel" ngModel name="name" required>
-                              <mat-error *ngIf="name.invalid">Please enter a valid message</mat-error>
+                              <input matInput placeholder="Username or email address (required)" #username="ngModel" ngModel name="username" required>
+                              <mat-error *ngIf="username.invalid">Please enter a valid message</mat-error>
                             </mat-form-field>
                       </div>
                       <div  fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
                           <mat-form-field class="w-100">
-                              <input matInput placeholder="Password (required)" #email="ngModel" ngModel name="email" required>
-                              <mat-error *ngIf="email.invalid">Please enter a valid message</mat-error>
+                              <input matInput placeholder="Password (required)" #password="ngModel" ngModel name="password" required>
+                              <mat-error *ngIf="password.invalid">Please enter a valid message</mat-error>
                             </mat-form-field>
                       </div>
                       <div class="button-wrap" fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
