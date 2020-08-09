@@ -1,21 +1,19 @@
 package com.shop.top.productservice.productservice.controller;
-
 import com.shop.top.productservice.productservice.model.Product;
 import com.shop.top.productservice.productservice.repository.ProductRepository;
 import com.shop.top.productservice.productservice.service.FileUploadService;
 import com.shop.top.productservice.productservice.service.ProductService;
-import com.shop.top.productservice.productservice.service.ProductServiceImpl;
 import com.shop.top.productservice.productservice.service.PromotionService;
-import com.sun.xml.bind.v2.model.core.ID;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.util.UriComponents;
-import org.springframework.web.util.UriComponentsBuilder;
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.constraints.NotNull;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.List;
@@ -41,7 +39,7 @@ public class ProductController {
 this.productService=productService;
     }
     @GetMapping("/getAll")
-    public @NotNull Iterable<Product> getProducts() {
+    public  Iterable<Product> getProducts() {
         return productService.getAllProducts();
     }
 @PostMapping("/save")
@@ -62,7 +60,7 @@ this.productService=productService;
         p.setType(newProduct.getType());
         p.setPrice(newProduct.getPrice());
         p.setCategory(newProduct.getCategory());
-        p.setProductDetailList(newProduct.getProductDetailList());
+        p.setProductDetail(newProduct.getProductDetail());
         p.setPicture_url(newProduct.getPicture_url());
         final Product updatedProduct = productService.save(p);
         return ResponseEntity.ok(updatedProduct);
@@ -73,25 +71,24 @@ this.productService=productService;
         productService.deleteProduct(id);
     }
     //======================================================
-    @PostMapping("/upload")
-    public ResponseEntity.BodyBuilder uplaodImage(@RequestPart("image") MultipartFile file , @RequestBody Product product) throws IOException {
-System.out.println("hellooooo");
+    @PostMapping(value = "/upload",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public String uplaodImage(@RequestPart("image") MultipartFile file , @RequestPart(value = "product") Product product) throws IOException {
+        System.out.println("hellooooo");
         System.out.println("this is file "+file);
+        System.out.println(product.toString());
         if(!file.isEmpty()){
             try {
                 System.out.println(" another hellooooo");
                 String imagePath=fileUploadService.saveImage(file);
-               // product.setPicture_url(imagePath);
+                product.setPicture_url(imagePath);
             }
             catch (Exception e){
                 System.out.println("hellooooo inside catch");
                 ((NullPointerException) e).printStackTrace();
             }
         }
-
-
-       // productRepository.save(product);
-        return ResponseEntity.status(HttpStatus.OK);
+        productRepository.save(product);
+        return " Product created";
     }
 
 //    @GetMapping(path = { "/get/{imageName}" })
@@ -183,4 +180,14 @@ public Product updateQuantity(@PathVariable Long id, @PathVariable int quantity)
         return outputStream.toByteArray();
 
     }
+    //=======================================
+    @GetMapping("/search")
+
+    public Page<Product> findAll(@RequestParam  Optional<String> productName, @RequestParam Optional<Integer> page,
+                                 @RequestParam Optional<String> sortby){
+        System.out.println("I am in search");
+      return  productRepository.findProdcutByName(productName.orElse(" "), PageRequest.of(page.orElse(0),
+              5, Sort.by(Sort.Direction.ASC,sortby.orElse("id"))));
+    }
+
 }
