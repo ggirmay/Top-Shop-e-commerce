@@ -2,7 +2,8 @@
   <mat-card fxLayout="column">
     <div class="product-img">
         <a class="product-link" [routerLink]="['/home/product', product.id]">
-          <img [src]="product.pictures[0].big" alt="">
+<!--          <img [src]="product.pictures[0].big" alt="">-->
+          <img [attr.src]="'/upload?id='" />
        </a>
     </div>
      <div class="product-info-wrapper">
