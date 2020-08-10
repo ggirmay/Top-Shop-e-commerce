@@ -31,14 +31,14 @@ public class Visa {
     private String firstName;
 
     @NotNull @NotBlank @NotEmpty
-    @Column(nullable = false)
+    @Column(nullable = false , unique = true)
     private String nameOnCard;
 
     @Transient
     private String issuer;
 
     //@Temporal(TemporalType.DATE)
-    @JsonFormat(pattern = "mm/yyyy")
+    @JsonFormat(pattern = "MM/yyyy")
     @NotNull
     @Column(nullable = false)
     private LocalDate expirationDate;
@@ -78,20 +78,25 @@ public class Visa {
     @Column(nullable = false)
     private boolean deleted;
 
-    @OneToMany(mappedBy = "cardNumber")
+    @NotNull @NotBlank @NotEmpty
+    @Column(nullable = false)
+    private String email;
+
+    @OneToMany(mappedBy = "cardNumber", fetch = FetchType.LAZY)
     private List<VisaTransaction> transactionList;
 
     public Visa() {
     }
 
-    public Visa(String lastName, String firstName, String nameOnCard) {
+    public Visa(String lastName, String firstName, String nameOnCard , String email) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.nameOnCard = nameOnCard;
+        this.email = email;
 
         this.cardNumber = Generator.generateCreditCardNumber(CreditCard.VISA.value());
         this.issuer = CreditCard.VISA.issuer();
-        LocalDate.of(Calendar.getInstance().get(Calendar.YEAR) + 5 ,
+        this.expirationDate = LocalDate.of(Calendar.getInstance().get(Calendar.YEAR) + 5 ,
                 Calendar.getInstance().get(Calendar.MONTH) ,
                 Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
         this.securityDigit = Generator.generateSecurityDigit();
@@ -105,14 +110,15 @@ public class Visa {
 
     }
 
-    public Visa(String lastName, String firstName, String nameOnCard , String cardNumber) {
+    public Visa(String lastName, String firstName, String nameOnCard , String cardNumber , String email) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.nameOnCard = nameOnCard;
+        this.email = email;
 
         this.cardNumber = cardNumber;
         this.issuer = CreditCard.VISA.issuer();
-        LocalDate.of(Calendar.getInstance().get(Calendar.YEAR) + 5 ,
+        this.expirationDate = LocalDate.of(Calendar.getInstance().get(Calendar.YEAR) + 5 ,
                 Calendar.getInstance().get(Calendar.MONTH) ,
                 Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
         this.securityDigit = Generator.generateSecurityDigit();
@@ -126,13 +132,14 @@ public class Visa {
 
     }
 
-    private Visa(String cardNumber, String lastName, String firstName, String nameOnCard,
+    private Visa(String cardNumber, String lastName, String firstName, String nameOnCard, String email,
                  String issuer, LocalDate expirationDate, String securityDigit, double value, boolean deleted,
                  boolean upgrade, LocalDate upgradeDate, int numberOfUpgrade, double currentValue, double currentAmount) {
         this.cardNumber = cardNumber;
         this.lastName = lastName;
         this.firstName = firstName;
         this.nameOnCard = nameOnCard;
+        this.email = email;
         this.issuer = issuer;
         this.expirationDate = expirationDate;
         this.securityDigit = securityDigit;

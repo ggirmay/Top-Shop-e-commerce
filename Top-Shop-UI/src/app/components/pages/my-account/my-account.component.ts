@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AppService} from "../../../services/AppService";
 import {NgForm} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-my-account',
@@ -12,6 +13,8 @@ export class MyAccountComponent implements OnInit {
   public isLoggedIn = false;
   public username;
   public password;
+  name = new FormControl('');
+
 
 
   constructor(private _service:AppService,private _snackBar:MatSnackBar){}
@@ -34,4 +37,5 @@ export class MyAccountComponent implements OnInit {
   logout() {
     this._service.logout();
   }
+
 }
