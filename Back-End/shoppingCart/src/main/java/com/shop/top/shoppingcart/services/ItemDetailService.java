@@ -34,7 +34,6 @@ public class ItemDetailService {
         }else {
             throw new RecordNotFoundException("Wrong Item ID", itemId);
         }
-
     }
 
     public List<ItemDetail> viewItems(){
@@ -43,8 +42,9 @@ public class ItemDetailService {
 
     public boolean deleteItem(Long itemId){
         try {
-            getItemByID(itemId);
-            itemDetailRepository.deleteById(itemId);
+            ItemDetail temp = getItemByID(itemId);
+            temp.setStatus('D');
+            itemDetailRepository.save(temp);
             return true;
         }catch (RecordNotFoundException e){
             System.out.println(e.getMessage());
@@ -58,6 +58,19 @@ public class ItemDetailService {
             return itemDetail.get();
         }else {
             throw new RecordNotFoundException("This item doesn't exist in your card, item ID: ", itemId);
+        }
+    }
+
+    public boolean deleteItemFromShoppingCart(Long itemId, Long cartId) throws RecordNotFoundException{
+        ItemDetail temp = itemDetailRepository.findByProductIdAndShoppingCartId(itemId, cartId);
+        if (temp == null) {
+            throw new RecordNotFoundException("This item doesn't exist in your card, item ID: ", itemId);
+        }
+        else {
+            temp.setStatus('D');
+            itemDetailRepository.save(temp);
+            System.out.println("item deleted");
+            return true;
         }
     }
 

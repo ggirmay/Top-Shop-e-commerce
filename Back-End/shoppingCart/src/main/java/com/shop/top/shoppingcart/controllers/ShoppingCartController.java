@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/shoppingcart")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ShoppingCartController {
 
     ShoppingCartService shoppingCartService;
@@ -31,11 +32,11 @@ public class ShoppingCartController {
         return shoppingCartService.addItemToCart(id,itemDetail);
     }
 
-    @DeleteMapping("/deleteitem/{cartid}&{itemid}")
-    public boolean deleteItemFromShoppingCart(@PathVariable("cartid") Long id, @PathVariable("itemid") Long item)
+    @DeleteMapping("/deleteitem/{productid}&{cartid}")
+    public boolean deleteItemFromShoppingCart(@PathVariable("productid") Long itemId, @PathVariable("cartid") Long cartId)
     throws RecordNotFoundException {
         try {
-            return shoppingCartService.deleteItemFromCart(id, item);
+            return shoppingCartService.deleteItemFromCart(itemId, cartId);
         }catch (RecordNotFoundException e){
             System.out.println(e.getMessage());
             return false;

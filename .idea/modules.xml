@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Top-Shop-e-commerce.iml" filepath="$PROJECT_DIR$/.idea/Top-Shop-e-commerce.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Back-End/config/config.iml" filepath="$PROJECT_DIR$/Back-End/config/config.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Back-End/discovery/discovery.iml" filepath="$PROJECT_DIR$/Back-End/discovery/discovery.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Back-End/gateway/gateway.iml" filepath="$PROJECT_DIR$/Back-End/gateway/gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Back-End/shoppingCart/shoppingcart.iml" filepath="$PROJECT_DIR$/Back-End/shoppingCart/shoppingcart.iml" />
+    </modules>
+  </component>
+</project>
