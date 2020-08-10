@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/shoppingcart")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ShoppingCartController {
 
     ShoppingCartService shoppingCartService;
@@ -26,7 +26,7 @@ public class ShoppingCartController {
         return shoppingCartService.creatShoppingCart(shoppingCart);
     }
 
-    @PutMapping(value = "additme/{cartid}")
+    @PostMapping("/additem/{cartid}")
     public ShoppingCart addItemToCart(@PathVariable("cartid") Long id, @RequestBody ItemDetail itemDetail)
     throws RecordNotFoundException{
         return shoppingCartService.addItemToCart(id,itemDetail);

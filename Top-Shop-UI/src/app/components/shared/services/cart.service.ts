@@ -23,8 +23,7 @@ export class CartService {
   constructor(public snackBar: MatSnackBar, public httpClient: HttpClient) {
     this.cartItems.subscribe((products) => (products = products));
     this.itemDetail = new Item_detail();
-    this.shoppingCartUrl =
-      "http://localhost:8080/shopping-cart-service/shoppingcart/";
+    this.shoppingCartUrl = "http://localhost:8087/shoppingcart/";
   }
 
   // Get Products
@@ -144,11 +143,11 @@ export class CartService {
       }
     });
   }
-
+  //============================================================================
   // my custome methods
   public addToShoppingCartInBackend(itemDetail: Item_detail) {
     return this.httpClient.post<Item_detail>(
-      this.shoppingCartUrl + "additme/1",
+      this.shoppingCartUrl + "additem/1",
       itemDetail
     );
   }
