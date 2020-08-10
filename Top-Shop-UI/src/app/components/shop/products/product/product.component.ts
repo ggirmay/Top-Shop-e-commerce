@@ -16,7 +16,7 @@ export class ProductComponent implements OnInit {
 
   @Output() onOpenProductDialog: EventEmitter<any> = new EventEmitter();
  @Input() product: Product;
-
+url='http://localhost:8083/product/getImage?image_id=';
   constructor(private cartService: CartService, public productsService: ProductService, private wishlistService: WishlistService, private dialog: MatDialog, private router: Router ) { }
 
   ngOnInit() {

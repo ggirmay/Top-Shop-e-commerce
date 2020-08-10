@@ -1,11 +1,14 @@
 package com.shop.top.productservice.productservice.controller;
+import com.shop.top.productservice.productservice.model.Picture;
 import com.shop.top.productservice.productservice.model.Product;
+import com.shop.top.productservice.productservice.repository.ImageService;
 import com.shop.top.productservice.productservice.repository.ProductRepository;
 import com.shop.top.productservice.productservice.service.FileUploadService;
 import com.shop.top.productservice.productservice.service.ProductService;
 import com.shop.top.productservice.productservice.service.PromotionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -18,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.zip.DataFormatException;
@@ -37,6 +41,7 @@ public class ProductController {
     private PromotionService promotionService;
 
     @Autowired
+    ImageService imageService;
     public ProductController( ProductService productService){
 this.productService=productService;
     }
@@ -76,17 +81,29 @@ this.productService=productService;
     @PostMapping(value = "/upload",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public String uplaodImage(@RequestPart("image") MultipartFile file , @RequestPart(value = "product") Product product) throws IOException {
         System.out.println("hellooooo");
-        System.out.println("this is file "+file);
+        System.out.println("this is file "+file  + " " + file.getOriginalFilename()+"."+file.getContentType());
         System.out.println(product.toString());
         if(!file.isEmpty()){
             try {
                 System.out.println(" another hellooooo");
+
                 String imagePath=fileUploadService.saveImage(file);
                 product.setPicture_url(imagePath);
+                String imageNmae = file.getOriginalFilename();
+
+                String url ="http://localhost:8083/product/getImage?image_id=";
+                Picture p = new Picture();
+                p.setBig(url+imageNmae);
+
+                p.setSmall(url+imageNmae);
+
+                ArrayList<Picture> pictures= new ArrayList<Picture>();
+                pictures.add(p);
+                product.setPictures(pictures);
             }
             catch (Exception e){
                 System.out.println("hellooooo inside catch");
-                ((NullPointerException) e).printStackTrace();
+                e.printStackTrace();
             }
         }
         productRepository.save(product);
@@ -194,18 +211,12 @@ public Product updateQuantity(@PathVariable Long id, @PathVariable int quantity)
 
     @RequestMapping(value = "/getImage", method = RequestMethod.GET,
             produces = MediaType.IMAGE_JPEG_VALUE)
-    public ResponseEntity<byte[]> getImage(@RequestParam String image_id) throws IOException {
-        String uploaddirectory =System.getProperty("user.dir")+"/src/main/resource/images/";
+    public  synchronized ResponseEntity<byte[]> getImage(@RequestParam String image_id) throws Exception {
 
-
-        ClassPathResource imgFile = new ClassPathResource("image"+"/"+image_id);
-        imgFile.getDescription();
-        System.out.println(imgFile.getClassLoader() + "  " +  imgFile.getFilename() + "  " + imgFile.getPath());
-        byte[] bytes = StreamUtils.copyToByteArray(imgFile.getInputStream());
 
         return ResponseEntity
                 .ok()
                 .contentType(MediaType.IMAGE_JPEG)
-                .body(bytes);
+                .body(imageService.getImage(image_id));
     }
 }

@@ -50,4 +50,8 @@ public class Product implements Serializable {
     @CollectionTable(name = "tag",
             joinColumns = @JoinColumn(name="product_id"))
     private Set<String> tags = new HashSet<String>();
+
+    public void addpicture(String imageNmae){
+
+    }
 }

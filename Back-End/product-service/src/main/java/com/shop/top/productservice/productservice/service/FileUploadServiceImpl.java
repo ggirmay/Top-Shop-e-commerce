@@ -9,10 +9,12 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 @Service
 public class FileUploadServiceImpl implements FileUploadService {
-    private static  String uploaddirectory =System.getProperty("user.dir")+"/src/main/resource/images/";
+    ///src/main/resources
+    private static  String uploaddirectory =System.getProperty("user.dir")+"/image/";
     @Override
     public String saveImage(MultipartFile file) throws Exception {
        File directory=new File(uploaddirectory);
+
        if(!directory.exists()){
            directory.mkdir();
        }
