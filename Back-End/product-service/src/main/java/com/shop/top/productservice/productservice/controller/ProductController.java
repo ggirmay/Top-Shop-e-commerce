@@ -211,7 +211,7 @@ public Product updateQuantity(@PathVariable Long id, @PathVariable int quantity)
 
     @RequestMapping(value = "/getImage", method = RequestMethod.GET,
             produces = MediaType.IMAGE_JPEG_VALUE)
-    public ResponseEntity<byte[]> getImage(@RequestParam String image_id) throws Exception {
+    public  synchronized ResponseEntity<byte[]> getImage(@RequestParam String image_id) throws Exception {
 
 
         return ResponseEntity
