@@ -5,12 +5,14 @@ import com.shop.top.productservice.productservice.service.FileUploadService;
 import com.shop.top.productservice.productservice.service.ProductService;
 import com.shop.top.productservice.productservice.service.PromotionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -190,4 +192,20 @@ public Product updateQuantity(@PathVariable Long id, @PathVariable int quantity)
               5, Sort.by(Sort.Direction.ASC,sortby.orElse("id"))));
     }
 
+    @RequestMapping(value = "/getImage", method = RequestMethod.GET,
+            produces = MediaType.IMAGE_JPEG_VALUE)
+    public ResponseEntity<byte[]> getImage(@RequestParam String image_id) throws IOException {
+        String uploaddirectory =System.getProperty("user.dir")+"/src/main/resource/images/";
+
+
+        ClassPathResource imgFile = new ClassPathResource("image"+"/"+image_id);
+        imgFile.getDescription();
+        System.out.println(imgFile.getClassLoader() + "  " +  imgFile.getFilename() + "  " + imgFile.getPath());
+        byte[] bytes = StreamUtils.copyToByteArray(imgFile.getInputStream());
+
+        return ResponseEntity
+                .ok()
+                .contentType(MediaType.IMAGE_JPEG)
+                .body(bytes);
+    }
 }
