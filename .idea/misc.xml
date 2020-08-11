@@ -10,6 +10,9 @@
         <option value="$PROJECT_DIR$/../../Top Shop E-Commerce/Top-Shop-e-commerce/discovery/pom.xml" />
         <option value="$PROJECT_DIR$/../../Top Shop E-Commerce/Top-Shop-e-commerce/gateway/pom.xml" />
         <option value="$PROJECT_DIR$/../../Top Shop E-Commerce/Top-Shop-e-commerce/payment/pom.xml" />
+        <option value="$PROJECT_DIR$/../../Top Shop E-Commerce/Top-Shop-e-commerce/product-service/pom.xml" />
+        <option value="$PROJECT_DIR$/../../Top Shop E-Commerce/Top-Shop-e-commerce/shoppingCart/pom.xml" />
+        <option value="$PROJECT_DIR$/../../Top Shop E-Commerce/Top-Shop-e-commerce/user/pom.xml" />
       </list>
     </option>
   </component>

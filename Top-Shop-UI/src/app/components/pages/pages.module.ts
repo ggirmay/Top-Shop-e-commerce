@@ -14,6 +14,10 @@ import { FaqComponent } from './faq/faq.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { BlogModule } from '../blog/blog.module';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { BillingInfoComponent } from './checkout/billing-info/billing-info.component';
+import { CardInfoComponent } from './checkout/card-info/card-info.component';
+import { ConfirmationPageComponent } from './checkout/confirmation-page/confirmation-page.component';
+import { CheckoutWithComponent } from './cart/checkout-with/checkout-with.component';
 
 
 @NgModule({
@@ -34,7 +38,11 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     MyAccountComponent,
     FaqComponent,
     AboutUsComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    BillingInfoComponent,
+    CardInfoComponent,
+    ConfirmationPageComponent,
+    CheckoutWithComponent
 
   ]
 })

@@ -3,7 +3,7 @@ import { Product } from 'src/app/modals/product.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CartItem } from 'src/app/modals/cart-item';
 import { map } from 'rxjs/operators';
-import { Observable, BehaviorSubject, Subscriber } from 'rxjs';
+import { Observable, BehaviorSubject, Subscriber, of } from 'rxjs';
 
 // Get product from Localstorage
 let products = JSON.parse(localStorage.getItem("cartItem")) || [];
@@ -30,6 +30,10 @@ public observer   :  Subscriber<{}>;
       observer.complete();
     });
     return <Observable<CartItem[]>>itemsStream;
+  }
+
+  public getCheckoutItems(): CartItem[] {
+    return JSON.parse(localStorage.getItem('checkoutItem'));
   }
 
    // Add to cart
@@ -97,6 +101,15 @@ public getTotalAmount(): Observable<number> {
       return prev + curr.product.price * curr.quantity;
     }, 0);
   }));
+}
+
+public getNewTotalAmount(): Observable<number> {
+  
+  let items : CartItem[] = JSON.parse(localStorage.getItem('checkoutItem'))
+  return of(items.reduce((prev, curr: CartItem) => {
+    return prev + curr.product.price * curr.quantity;
+  }, 0));
+
 }
 
 // Update Cart Value
