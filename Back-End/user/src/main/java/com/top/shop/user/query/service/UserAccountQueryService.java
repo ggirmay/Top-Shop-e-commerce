@@ -29,4 +29,6 @@ public class UserAccountQueryService {
     public UserAccount finsByUsername(String userName) {
         return userAccountQueryAction.getUserAccountByUserName(userName);
     }
+
+
 }
