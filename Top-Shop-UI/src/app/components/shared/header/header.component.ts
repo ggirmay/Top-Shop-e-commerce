@@ -49,6 +49,7 @@ export class HeaderComponent implements OnInit {
   }
 
   public logout(){
+    this.isLoggedIn=false;
     this._service.logout();
   }
 }

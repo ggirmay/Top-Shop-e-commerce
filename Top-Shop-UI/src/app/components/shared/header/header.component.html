@@ -28,12 +28,12 @@
 
       <div class="main-menu-wrapper-2" fxLayout="row" fxLayoutAlign="space-between center" *ngIf="isLoggedIn">
         <mat-toolbar class="top-navbar top menu">
-          <div class="form-wrap" >
-          <button class="btn-search" type="submit" (click)="logout()">Logout</button>
+          <div class="button-wrap" fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
+            <button class="btn-project" mat-raised-button color="accent" type="submit"(click)="logout()">Logout</button>
           </div>
         </mat-toolbar>
       </div>
-      <div class="widget-text" *ngIf="!isLoggedIn">
+      <div class="widget-text">
         <a fxShow="false" fxShow.gt-xs [routerLink]="['/pages/my-account']" routerLinkActive="router-link-active" ><mat-icon>person</mat-icon>My Account</a>
       </div>
     </div>
