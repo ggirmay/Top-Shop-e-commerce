@@ -7,7 +7,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DemoComponent } from './components/demo/demo.component';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { NgxImgZoomModule } from 'ngx-img-zoom';
-
+import {MatRadioModule} from '@angular/material/radio';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { MainComponent } from './components/main/main.component';
 
@@ -36,7 +37,9 @@ import {User} from "./models/userModel/User";
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    NgxImgZoomModule
+    NgxImgZoomModule,
+    MatRadioModule,
+    MatCheckboxModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

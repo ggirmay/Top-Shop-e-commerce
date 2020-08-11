@@ -17,6 +17,7 @@
               <div class="mat-header-cell">Quantity</div>
               <div class="mat-header-cell">Total</div>
               <div class="mat-header-cell">Action</div>
+              <div class="mat-header-cell">Checkout with?</div>
            </div>
            <div *ngFor="let item of shoppingCartItems"  class="mat-row">
               <div class="mat-cell"><img [src]="item.product.pictures[0].small"></div>
@@ -33,19 +34,16 @@
                           <mat-icon>add</mat-icon>
                        </button>
                     </div>
-                    <!-- <div *ngIf="type!='wish'">
-                       <button mat-icon-button matTooltip="Add to wishlist" (click)="addToWishList(product)"><mat-icon>favorite</mat-icon></button>
-                       <button mat-icon-button matTooltip="Add to cart" *ngIf="product?.availibilityCount > 0" (click)="addToCart(product)"><mat-icon>shopping_cart</mat-icon></button>
-                       <button mat-icon-button matTooltip="Add to compare" (click)="addToCompare(product)"><mat-icon>compare</mat-icon></button>
-                       <button *ngIf="type!='all'" mat-icon-button matTooltip="Quick view" (click)="openProductDialog(product)"><mat-icon>remove_red_eye</mat-icon></button>
-                       </div> -->
                  </div>
               </div>
               <div class="mat-cell total">{{item.product.price * item.quantity | number : '1.2-2' }}</div>
               <div class="mat-cell text-center">
-                 <div class="p-1">
-                    <mat-icon (click)="removeItem(item)">close</mat-icon>
-                 </div>
+                  <div class="p-1">
+                     <mat-icon (click)="removeItem(item)">close</mat-icon>
+                  </div>
+              </div>
+              <div class="mat-cell">
+                  <app-checkout-with [item]="item" (eventEmitter)="setCheckoutItem($event)" ></app-checkout-with>
               </div>
            </div>
            <div class="mat-row">
@@ -54,10 +52,15 @@
               <div class="mat-cell"></div>
               <div class="mat-cell text-right">
                  <div fxLayout="column" fxLayoutAlign="center end" class="grand-total px-2">
-                    <span class="new-price">Grand total: {{getTotal()  | async | currency:productsService?.currency:'symbol'}}</span>
+                    <!-- <span class="new-price">Grand total: {{getTotal()  | async | currency:productsService?.currency:'symbol'}}</span> -->
+                    <span class="new-price">Grand total: {{getNewTotal()  | currency:productsService?.currency:'symbol'}}</span>
                  </div>
               </div>
-              <div class="mat-cell text-center"><a mat-raised-button  class="btn-project" [routerLink]="['/pages/checkout']" routerLinkActive="router-link-active" >Proceed To Checkout</a></div>
+              <div class="mat-cell"></div>
+              <div class="mat-cell text-center">
+                 <a mat-raised-button  class="btn-project" *ngIf="checkoutItems.length > 0" (click)="proceedCheckout()" [routerLink]="['/pages/checkout']" routerLinkActive="router-link-active" >Proceed To Checkout</a>
+                  <p style="font-size: small;" > Please select items you want to check out with </p>
+               </div>
            </div>
         </div>
      </mat-card>
