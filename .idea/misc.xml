@@ -6,6 +6,15 @@
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
+        <option value="$PROJECT_DIR$/Back-End/shoppingCart/pom.xml" />
+        <option value="$PROJECT_DIR$/Back-End/config/pom.xml" />
+        <option value="$PROJECT_DIR$/Back-End/discovery/pom.xml" />
+        <option value="$PROJECT_DIR$/Back-End/gateway/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_12" project-jdk-name="12" project-jdk-type="JavaSDK" />
+
         <option value="$PROJECT_DIR$/../../Top Shop E-Commerce/Top-Shop-e-commerce/config/pom.xml" />
         <option value="$PROJECT_DIR$/../../Top Shop E-Commerce/Top-Shop-e-commerce/discovery/pom.xml" />
         <option value="$PROJECT_DIR$/../../Top Shop E-Commerce/Top-Shop-e-commerce/gateway/pom.xml" />

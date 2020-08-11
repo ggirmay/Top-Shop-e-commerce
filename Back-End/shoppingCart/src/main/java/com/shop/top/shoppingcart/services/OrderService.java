@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -31,24 +32,38 @@ public class OrderService {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
 
-        HashMap<String , String> map = new HashMap<>();
+        HashMap<String , String> orderInfo = new HashMap<>();
+        HashMap<Long, Integer> quantityInfo = new HashMap<>();
 
-        map.put("cardNumber" , "4351930605662860");
-        map.put("nameOnCard" , "ali ansari");
-        map.put("securityDigit" , "123");
-        map.put("expirationDate" , "2020-08-11"); // Localdate -> String
-        map.put("amount" , "" + order.getAmount());
+        orderInfo.put("cardNumber" , "4351930605662860");
+        orderInfo.put("nameOnCard" , "ali ansari");
+        orderInfo.put("securityDigit" , "123");
+        orderInfo.put("expirationDate" , "2020-08-11"); // Localdate -> String
+        orderInfo.put("amount" , "" + order.getAmount());
+        HttpEntity<HashMap<String , String >> request = new HttpEntity<>(orderInfo, httpHeaders);
 
-        HttpEntity<HashMap<String , String >> request = new HttpEntity<>(map, httpHeaders);
+        int size = order.getOrderDetails().size();
+        for (int i = 0; i < size; i++) {
+            quantityInfo.put(order.getOrderDetails().get(i).getProductId(), order.getOrderDetails().get(i).getQuantity() );
+        }
 
-        HashMap result = restTemplate.postForObject("http://localhost:8088/payment/checkout",request, HashMap.class);
+        // type inside the HttpEntity<here> must match with type that we pass to in as a first parameter
+        // in here "listOfQuantity"
+        HttpEntity<HashMap<Long, Integer>> quantity = new HttpEntity(quantityInfo, httpHeaders);
 
-        System.out.println("This is order service");
-        System.out.println(result.get("amount"));
-        System.out.println(result.get("valid"));
+
+        HashMap result = restTemplate.postForObject("http://localhost:8080/payment-service/payment/checkout",request, HashMap.class);
+
+        System.out.println("this is before product call" + request.toString());
 
         if (result.get("valid").equals("true") && result.get("amount").equals("true")){
-            return orderRepository.save(order);
+            String checking = restTemplate.postForObject("http://localhost:8080/product-service/product/updateQuantity", quantity, String.class);
+            System.out.println("this is order service " + checking);
+
+            if(checking.equals("true"))
+                return orderRepository.save(order);
+            else
+                throw new Exception("Not enough item in stock");
         }else if (result.get("valid").equals("false")){
             throw new Exception("You card information is not valid");
         }else {
@@ -64,8 +79,7 @@ public class OrderService {
         return orderRepository.selectAllOrdersOfSpecificUser(userId);
     }
 
-    public List<Orders> selectOrderWithAllOrderDetail(Long userId){
-
+    public List<Orders> selectOrdersWithAllOrderDetailForSpecificUser(Long userId){
         return orderRepository.findAllByUserId(userId);
     }
 }

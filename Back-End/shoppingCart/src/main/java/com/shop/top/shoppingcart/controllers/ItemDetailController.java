@@ -43,11 +43,12 @@ public class ItemDetailController {
         return new ResponseEntity<List<ItemDetail>>(allItems, HttpStatus.OK);
     }
 
-    @PutMapping("/edititem/{id}&{quantity}")
-    public ResponseEntity<ItemDetail> editItem(@PathVariable("id") Long id,@PathVariable("quantity") int quantity)
+    @PutMapping("/edititem/{id}&{cartid}&{quantity}")
+    public ResponseEntity<ItemDetail> editItem(@PathVariable("id") Long itemId, @PathVariable("cartid") Long cartId,
+                                               @PathVariable("quantity") int quantity)
             throws RecordNotFoundException {
 
-        ItemDetail editedItem = itemDetailService.editItem(id, quantity);
+        ItemDetail editedItem = itemDetailService.editItem(itemId, cartId, quantity);
         return new ResponseEntity<ItemDetail>(editedItem, HttpStatus.OK);
     }
 

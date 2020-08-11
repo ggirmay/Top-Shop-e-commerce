@@ -15,6 +15,18 @@ import java.util.List;
 @Getter
 public class Orders {
 
+    public Orders() {
+    }
+
+    public Orders(Long id, Long userId, String userName, LocalDate createdDate, String status, float amount){
+        this.orderId = id;
+        this.userId = userId;
+        this.userName = userName;
+        this.createdDate = createdDate;
+        this.status = status;
+        this.amount = amount;
+    }
+
     @Id
     @NotNull
     @GeneratedValue(strategy = GenerationType.AUTO)

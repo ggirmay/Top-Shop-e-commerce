@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/shoppingcart")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ShoppingCartController {
 
     ShoppingCartService shoppingCartService;
@@ -25,17 +26,18 @@ public class ShoppingCartController {
         return shoppingCartService.creatShoppingCart(shoppingCart);
     }
 
-    @PutMapping(value = "additme/{cartid}")
+    @PostMapping("/additem/{cartid}")
     public ShoppingCart addItemToCart(@PathVariable("cartid") Long id, @RequestBody ItemDetail itemDetail)
     throws RecordNotFoundException{
         return shoppingCartService.addItemToCart(id,itemDetail);
     }
 
-    @DeleteMapping("/deleteitem/{cartid}&{itemid}")
-    public boolean deleteItemFromShoppingCart(@PathVariable("cartid") Long id, @PathVariable("itemid") Long item)
+    @PutMapping("/deleteitem")
+    public boolean deleteItemFromShoppingCart(@RequestParam("productid") Long itemId, @RequestParam("cartid") Long cartId)
     throws RecordNotFoundException {
+        System.out.println("this is controller: " + itemId + "  :  " + cartId);
         try {
-            return shoppingCartService.deleteItemFromCart(id, item);
+            return shoppingCartService.deleteItemFromCart(itemId, cartId);
         }catch (RecordNotFoundException e){
             System.out.println(e.getMessage());
             return false;
@@ -47,8 +49,9 @@ public class ShoppingCartController {
         return shoppingCartService.viewAllItemOfCart(cartId);
     }
 
-    @PutMapping("/editquantity/{itemid}&{quantity}")
-    public ItemDetail editQuantityOfItemInCart(@PathVariable("itemid")Long itemId, @PathVariable("quantity")int quantity){
-        return shoppingCartService.editQuantityOfItemInCart(itemId, quantity);
+    @PutMapping("/editquantity")
+    public ItemDetail editQuantityOfItemInCart(@RequestParam("itemid")Long itemId, @RequestParam("cartid") Long cartId,
+                                               @RequestParam("quantity")int quantity){
+        return shoppingCartService.editQuantityOfItemInCart(itemId, cartId, quantity);
     }
 }
