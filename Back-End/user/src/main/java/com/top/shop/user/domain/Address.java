@@ -20,8 +20,9 @@ public class Address {
     private String state;
     @NotNull
     private String addressLineOne;
-    @NotNull
     private String addressLineTwo;
+    @NotNull
+    private String postcode;
     private Long  user_id;
 
     public Address() {

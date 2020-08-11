@@ -28,6 +28,11 @@ public class UserAccount {
     private boolean enabled;
     private String username;
     private String Role;
+    private String firstName;
+    private String lastName;
+    @Transient
+    private Long user_id;
+
     @JsonIgnore
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "userAccount", cascade = { CascadeType.REMOVE }, orphanRemoval = true)
     VerificationToken verificationToken;
@@ -40,13 +45,40 @@ public class UserAccount {
         this.verificationToken = verificationToken;
     }
 
-    public UserAccount(Long id, @Email String email, String password, boolean enabled, String username, String role) {
+    public UserAccount(Long id, @Email String email, String password, boolean enabled, String username, String role, String firstName, String lastNmae, VerificationToken verificationToken) {
         this.id = id;
         this.email = email;
         this.password = password;
         this.enabled = enabled;
         this.username = username;
         Role = role;
+        this.firstName = firstName;
+        this.lastName = lastNmae;
+        this.verificationToken = verificationToken;
+    }
+
+    public Long getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(Long user_id) {
+        this.user_id = user_id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getRole() {

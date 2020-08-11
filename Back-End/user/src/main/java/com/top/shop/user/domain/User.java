@@ -27,7 +27,7 @@ public class User {
     private List<PaymentInformation> paymentInformation;
 
     public void setRole(Role role) {
-        this.role = Role.GUEST_USER;
+        this.role = Role.USER;
     }
 
     public List<Address> getAddressList() {

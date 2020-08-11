@@ -8,6 +8,7 @@ import com.shop.top.gateway.gateway.config.JwtResponse;
 import com.shop.top.gateway.gateway.service.UserDetailsServiceImpl;
 import com.shop.top.gateway.gateway.util.JwtTokenUtil;
 import com.shop.top.gateway.gateway.config.JwtUserDetailsService;
+import com.shop.top.gateway.gateway.util.Resposnse;
 import com.shop.top.gateway.gateway.util.UserAccountControllerBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -43,15 +44,15 @@ public class Controller {
 
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "authenticate")
-    public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
+    public ResponseEntity<Resposnse> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
 
         authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword(),authenticationRequest.getEmail());
 
         final UserDetails userDetails = userDetailsService
                 .loadUserByUsername(authenticationRequest.getUsername());
         final String token = jwtTokenUtil.generateToken(userDetails);
-
-        return ResponseEntity.ok(new JwtResponse(token));
+        System.out.println(userDetailsService.userAccount);
+        return ResponseEntity.ok( new Resposnse(userDetailsService.userAccount,token));
     }
 
     private void authenticate(String username, String password, String email) throws Exception {

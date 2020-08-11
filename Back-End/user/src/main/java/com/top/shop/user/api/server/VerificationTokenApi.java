@@ -36,8 +36,8 @@ public class VerificationTokenApi{
     UserAccountCommandService userAccountCommandService;
     final Logger log = LoggerFactory.getLogger(VerificationTokenApi.class);
 
-    @GetMapping("/registrationConfirm/{id}/{token}")
-    public ResponseEntity<String> confirmRegistration(@PathVariable Long id, @PathVariable String token){
+    @GetMapping("/registrationConfirm/{id}")
+    public ResponseEntity<String> confirmRegistration(@PathVariable Long id, @RequestParam String token){
         log.debug("id = " +id+" token =" + token );
 
 
