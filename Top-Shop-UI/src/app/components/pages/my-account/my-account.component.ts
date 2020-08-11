@@ -1,5 +1,5 @@
 import {Component, HostListener, OnInit} from '@angular/core';
-import {AppService} from "../../../services/AppService";
+import {UserService} from "../../../services/UserService";
 import {NgForm} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import { FormControl } from '@angular/forms';
@@ -22,7 +22,7 @@ export class MyAccountComponent implements OnInit {
 
 
 
-  constructor(private _service:AppService,private _snackBar:MatSnackBar, private router: Router){}
+  constructor(private _service:UserService,private _snackBar:MatSnackBar, private router: Router){}
 
   ngOnInit(){
     this.isLoggedIn = this._service.checkCredentials();
