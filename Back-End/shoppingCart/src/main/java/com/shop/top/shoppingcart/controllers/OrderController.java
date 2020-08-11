@@ -1,6 +1,5 @@
 package com.shop.top.shoppingcart.controllers;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.shop.top.shoppingcart.models.Orders;
 import com.shop.top.shoppingcart.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +20,10 @@ public class OrderController {
 
     @PostMapping(value = "/placeorder", consumes = "application/json", produces = "application/json")
     public Orders placeOrder(@RequestBody Orders order){
+        System.out.println("this is order controller");
         try {
             return orderService.placeOrder(order);
         }catch (Exception e){
-            System.out.println("this is in order" + e.getMessage());
             order.setError(e.getMessage());
             return order;
         }
@@ -37,6 +36,11 @@ public class OrderController {
 
     @GetMapping("/orderwithorderdetail/{userid}")
     public List<Orders> selectOrdersWithOrderDetail(@PathVariable("userid") Long userId){
-        return orderService.selectOrderWithAllOrderDetail(userId);
+        return orderService.selectOrdersWithAllOrderDetailForSpecificUser(userId);
+    }
+
+    @GetMapping("/allorders")
+    public List<Orders> allOrders(){
+        return orderService.selectAllOrders();
     }
 }

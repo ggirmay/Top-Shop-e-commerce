@@ -9,9 +9,12 @@ import com.shop.top.productservice.productservice.repository.ProductDetailReposi
 import com.shop.top.productservice.productservice.repository.ProductRepository;
 import com.sun.xml.bind.v2.model.core.ID;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -19,7 +22,7 @@ public class ProductServiceImpl implements ProductService {
     ProductRepository productRepository;
 
     @Override
-    public Iterable<Product> getAllProducts() {
+    public List<Product> getAllProducts() {
         return productRepository.findAll();
     }
 
@@ -63,6 +66,12 @@ public class ProductServiceImpl implements ProductService {
  Product product= productRepository.findById(id)
         .orElseThrow(()->new ResourceNotFoundException(id));
  product.setStatus(ProductStatus.notAprroved);
+    }
+
+    @Override
+    public Page<Product> searchProduct(String prodct, Pageable pageable) {
+        return productRepository.findProdcutByName(prodct,pageable);
+
     }
 
 

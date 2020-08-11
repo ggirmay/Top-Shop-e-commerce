@@ -41,11 +41,11 @@ public class ShoppingCartService {
         return result;
     }
 
-    public boolean deleteItemFromCart(Long cartId, Long itemId) throws RecordNotFoundException {
+    public boolean deleteItemFromCart(Long itemId, Long cartId) throws RecordNotFoundException {
         Optional<ShoppingCart> shoppingCart = shoppingCartRepository.findById(cartId);
 
         if(shoppingCart.isPresent()) {
-            return itemDetailService.deleteItem(itemId);
+            return itemDetailService.deleteItemFromShoppingCart(itemId, cartId);
         }
         else
             throw new RecordNotFoundException("Shopping cart ID doesn't exist: ", cartId);
@@ -55,9 +55,9 @@ public class ShoppingCartService {
         return itemDetailService.selectAllShoppingCartItems(cartId);
     }
 
-    public ItemDetail editQuantityOfItemInCart(Long itemId, int quantity){
+    public ItemDetail editQuantityOfItemInCart(Long itemId, Long cartId, int quantity){
         try {
-            return itemDetailService.editItem(itemId, quantity);
+            return itemDetailService.editItem(itemId, cartId, quantity);
         }catch (RecordNotFoundException e){
             System.out.println(e.getMessage());
             return null;

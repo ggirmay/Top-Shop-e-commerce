@@ -23,18 +23,16 @@ public class ItemDetailService {
         return itemDetailRepository.save(itemDetail);
     }
 
-    public ItemDetail editItem(Long itemId, int quantity) throws RecordNotFoundException{
-        Optional<ItemDetail> itemDetail = itemDetailRepository.findById(itemId);
-        if (itemDetail.isPresent()){
-            ItemDetail temp = itemDetail.get();
-            temp.setSubTotal(quantity * temp.getUnitPrice());
-            temp.setQuantity(quantity);
-            temp = itemDetailRepository.save(temp);
-            return temp;
+    public ItemDetail editItem(Long itemId, Long cartId, int quantity) throws RecordNotFoundException{
+        ItemDetail itemDetail = itemDetailRepository.findByProductIdAndShoppingCartId(itemId, cartId);
+        if (itemDetail != null){
+            itemDetail.setSubTotal(quantity * itemDetail.getUnitPrice());
+            itemDetail.setQuantity(quantity);
+            itemDetail = itemDetailRepository.save(itemDetail);
+            return itemDetail;
         }else {
             throw new RecordNotFoundException("Wrong Item ID", itemId);
         }
-
     }
 
     public List<ItemDetail> viewItems(){
@@ -43,8 +41,9 @@ public class ItemDetailService {
 
     public boolean deleteItem(Long itemId){
         try {
-            getItemByID(itemId);
-            itemDetailRepository.deleteById(itemId);
+            ItemDetail temp = getItemByID(itemId);
+            temp.setStatus('D');
+            itemDetailRepository.save(temp);
             return true;
         }catch (RecordNotFoundException e){
             System.out.println(e.getMessage());
@@ -58,6 +57,19 @@ public class ItemDetailService {
             return itemDetail.get();
         }else {
             throw new RecordNotFoundException("This item doesn't exist in your card, item ID: ", itemId);
+        }
+    }
+
+    public boolean deleteItemFromShoppingCart(Long itemId, Long cartId) throws RecordNotFoundException{
+        ItemDetail temp = itemDetailRepository.findByProductIdAndShoppingCartId(itemId, cartId);
+        if (temp == null) {
+            throw new RecordNotFoundException("This item doesn't exist in your card, item ID: ", itemId);
+        }
+        else {
+            temp.setStatus('D');
+            itemDetailRepository.save(temp);
+            System.out.println("item deleted");
+            return true;
         }
     }
 

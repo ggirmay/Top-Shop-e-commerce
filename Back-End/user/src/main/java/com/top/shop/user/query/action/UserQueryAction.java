@@ -1,9 +1,11 @@
 package com.top.shop.user.query.action;
 
 import com.top.shop.user.command.service.VerificationTokenCommandService;
+import com.top.shop.user.domain.GuestUser;
 import com.top.shop.user.domain.RegisteredUser;
 import com.top.shop.user.domain.User;
 import com.top.shop.user.exception.UserDoesntExit;
+import com.top.shop.user.repository.GuestUserRepository;
 import com.top.shop.user.repository.RegisteredUserRpository;
 import com.top.shop.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,8 @@ public class UserQueryAction {
     RestTemplate  restTemplate = new RestTemplate();
     @Value("${shopping.cart.uri}")
     String uri;
+    @Autowired
+    GuestUserRepository guestUserRepository;
 
     public List<RegisteredUser> getAllUsers(){
         return registeredUserRpository.findAll();
@@ -43,5 +47,13 @@ public class UserQueryAction {
 
     public User getById(Long id) {
         return registeredUserRpository.findById(id).orElseThrow(()->new UserDoesntExit("Could't find user with this id"));
+    }
+
+    public User getById_guest(Long id) {
+        return guestUserRepository.findById(id).orElseThrow(()->new UserDoesntExit("Could't find user with this id"));
+    }
+
+    public RegisteredUser getUserBy_accountId(Long id) {
+        return registeredUserRpository.findByUserAccount(id);
     }
 }

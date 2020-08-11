@@ -27,4 +27,12 @@ public class UserQueryService {
     public User getUerById(Long id) {
         return userQueryAction.getById(id);
     }
+
+    public User getGuestUerById(Long id) {
+      return   userQueryAction.getById_guest(id);
+    }
+
+    public RegisteredUser getUserBy_accountId(Long id) {
+        return userQueryAction.getUserBy_accountId(id);
+    }
 }

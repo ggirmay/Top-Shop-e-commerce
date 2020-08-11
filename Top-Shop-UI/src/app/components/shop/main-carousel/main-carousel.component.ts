@@ -1,27 +1,37 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { SwiperConfigInterface, SwiperPaginationInterface } from 'ngx-swiper-wrapper';
+import { Component, OnInit, Input } from "@angular/core";
+import {
+  SwiperConfigInterface,
+  SwiperPaginationInterface,
+} from "ngx-swiper-wrapper";
+import { ProductService } from "../../shared/services/product.service";
+import { Product } from "src/app/modals/product.model";
 
 @Component({
-  selector: 'app-main-carousel',
-  templateUrl: './main-carousel.component.html',
-  styleUrls: ['./main-carousel.component.sass']
+  selector: "app-main-carousel",
+  templateUrl: "./main-carousel.component.html",
+  styleUrls: ["./main-carousel.component.sass"],
 })
 export class MainCarouselComponent implements OnInit {
+  products: Array<Product>;
 
-  @Input('slides') slides: Array<any> = [];
+  @Input("slides") slides: Array<any> = [];
 
   public config: SwiperConfigInterface = {};
 
   private pagination: SwiperPaginationInterface = {
-    el: '.swiper-pagination',
-    clickable: true
+    el: ".swiper-pagination",
+    clickable: true,
   };
 
-  constructor() { }
+  constructor(private productService: ProductService) {}
 
-  ngOnInit() { }
+  ngOnInit() {
+    // this.productService.findTop5().subscribe((data) => {
+    //   this.products = data;
+    // });
+  }
 
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     this.config = {
       slidesPerView: 1,
       spaceBetween: 0,
@@ -34,14 +44,10 @@ export class MainCarouselComponent implements OnInit {
       lazy: true,
       autoplay: {
         delay: 6000,
-        disableOnInteraction: false
+        disableOnInteraction: false,
       },
       speed: 500,
-      effect: "slide"
-    }
+      effect: "slide",
+    };
   }
-
-
-
-
 }
