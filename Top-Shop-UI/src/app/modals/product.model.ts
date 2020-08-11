@@ -1,4 +1,6 @@
 // Product Tag
+import {Category} from "./Category";
+
 export type ProductTags = 'nike' | 'puma' | 'lifestyle' | 'caprese';
 
 // Product Colors
@@ -19,7 +21,7 @@ export class Product {
   newPro?: boolean;
   brand?: string;
   sale?: boolean;
-  category?: string;
+  category?:Category;
   tags?: ProductTags[];
   colors?: ProductColor[];
 
@@ -36,7 +38,7 @@ export class Product {
     newPro?: boolean,
     brand?: string,
     sale?: boolean,
-    category?: string,
+    category?: Category,
     tags?: ProductTags[],
     colors?: ProductColor[]
   ) {
@@ -52,7 +54,7 @@ export class Product {
     this.newPro = newPro;
     this.brand = brand;
     this.sale = sale;
-    this.category = category;
+    this.category = new Category(category.id);
     this.tags = tags;
     this.colors = colors;
   }

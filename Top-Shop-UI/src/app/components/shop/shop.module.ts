@@ -26,6 +26,7 @@ import { BrandsComponent } from './widgets/brands/brands.component';
 import { CategoriesComponent } from './widgets/categories/categories.component';
 import { PopularProductsComponent } from './widgets/popular-products/popular-products.component';
 import { ProductZoomComponent } from './products/product-details/product-zoom/product-zoom.component';
+//import {CategoryComponent} from "./products/product/category.component";
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { ProductZoomComponent } from './products/product-details/product-zoom/pr
     HomeComponent,
     MainCarouselComponent,
     ProductsComponent,
+
     PriceComponent,
     ProductComponent,
     ProductDetailsComponent,

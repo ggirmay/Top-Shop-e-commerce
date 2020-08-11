@@ -15,4 +15,5 @@ public interface CategoryRepository extends JpaRepository<Category,Long> {
      void 	deleteAllInBatch();
    void  deleteById(ID id);
     void delete(Category category);
+    Category save(Category category);
 }
