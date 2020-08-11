@@ -78,7 +78,6 @@ export class ProductDetailsComponent implements OnInit {
     }
   }
 
-
   public openProductDialog(product, bigProductImageIndex) {
     let dialogRef = this.dialog.open(ProductZoomComponent, {
       data: {product, index: bigProductImageIndex },
@@ -90,27 +89,19 @@ export class ProductDetailsComponent implements OnInit {
       }
     });
   }
-
-
   public selectImage(index) {
     console.log(this.product)
     console.log(index)
     this.bigProductImageIndex = index;
   }
-
-
-
-
 public increment() {
   this.counter += 1;
 }
-
 public decrement() {
   if(this.counter >1){
      this.counter -= 1;
   }
 }
-
 getRelatedProducts() {
   this.productsService.getProducts()
   .subscribe(
@@ -118,7 +109,6 @@ getRelatedProducts() {
       this.products = product
     });
 }
-
   // Add to cart
   public addToCart(product: Product, quantity) {
     if (quantity == 0) return false;
@@ -131,9 +121,6 @@ getRelatedProducts() {
       this.cartService.addToCart(product,parseInt(quantity));
       this.router.navigate(['/pages/checkout']);
  }
-
-
-
  public onMouseMove(e){
   if(window.innerWidth >= 1280){
     var image, offsetX, offsetY, x, y, zoomer;
@@ -162,8 +149,6 @@ public openZoomViewer(){
     panelClass: 'zoom-dialog'
   });
 }
-
-
 
 }
 

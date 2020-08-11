@@ -1,29 +1,33 @@
 package com.shop.top.productservice.productservice.controller;
-
+import com.shop.top.productservice.productservice.model.Picture;
 import com.shop.top.productservice.productservice.model.Product;
+import com.shop.top.productservice.productservice.repository.ImageService;
 import com.shop.top.productservice.productservice.repository.ProductRepository;
 import com.shop.top.productservice.productservice.service.FileUploadService;
 import com.shop.top.productservice.productservice.service.ProductService;
-import com.shop.top.productservice.productservice.service.ProductServiceImpl;
 import com.shop.top.productservice.productservice.service.PromotionService;
-import com.sun.xml.bind.v2.model.core.ID;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.util.UriComponents;
-import org.springframework.web.util.UriComponentsBuilder;
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.constraints.NotNull;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.zip.DataFormatException;
 import java.util.zip.Deflater;
 import java.util.zip.Inflater;
-
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/product")
 public class ProductController {
@@ -37,11 +41,12 @@ public class ProductController {
     private PromotionService promotionService;
 
     @Autowired
+    ImageService imageService;
     public ProductController( ProductService productService){
 this.productService=productService;
     }
     @GetMapping("/getAll")
-    public @NotNull Iterable<Product> getProducts() {
+    public  Iterable<Product> getProducts() {
         return productService.getAllProducts();
     }
 @PostMapping("/save")
@@ -62,7 +67,7 @@ this.productService=productService;
         p.setType(newProduct.getType());
         p.setPrice(newProduct.getPrice());
         p.setCategory(newProduct.getCategory());
-        p.setProductDetailList(newProduct.getProductDetailList());
+        p.setProductDetail(newProduct.getProductDetail());
         p.setPicture_url(newProduct.getPicture_url());
         final Product updatedProduct = productService.save(p);
         return ResponseEntity.ok(updatedProduct);
@@ -73,25 +78,36 @@ this.productService=productService;
         productService.deleteProduct(id);
     }
     //======================================================
-    @PostMapping("/upload")
-    public ResponseEntity.BodyBuilder uplaodImage(@RequestPart("image") MultipartFile file , @RequestBody Product product) throws IOException {
-System.out.println("hellooooo");
-        System.out.println("this is file "+file);
+    @PostMapping(value = "/upload",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public String uplaodImage(@RequestPart("image") MultipartFile file , @RequestPart(value = "product") Product product) throws IOException {
+        System.out.println("hellooooo");
+        System.out.println("this is file "+file  + " " + file.getOriginalFilename()+"."+file.getContentType());
+        System.out.println(product.toString());
         if(!file.isEmpty()){
             try {
                 System.out.println(" another hellooooo");
+
                 String imagePath=fileUploadService.saveImage(file);
-               // product.setPicture_url(imagePath);
+                product.setPicture_url(imagePath);
+                String imageNmae = file.getOriginalFilename();
+
+                String url ="http://localhost:8083/product/getImage?image_id=";
+                Picture p = new Picture();
+                p.setBig(url+imageNmae);
+
+                p.setSmall(url+imageNmae);
+
+                ArrayList<Picture> pictures= new ArrayList<Picture>();
+                pictures.add(p);
+                product.setPictures(pictures);
             }
             catch (Exception e){
                 System.out.println("hellooooo inside catch");
-                ((NullPointerException) e).printStackTrace();
+                e.printStackTrace();
             }
         }
-
-
-       // productRepository.save(product);
-        return ResponseEntity.status(HttpStatus.OK);
+        productRepository.save(product);
+        return " Product created";
     }
 
 //    @GetMapping(path = { "/get/{imageName}" })
@@ -182,5 +198,25 @@ public Product updateQuantity(@PathVariable Long id, @PathVariable int quantity)
 
         return outputStream.toByteArray();
 
+    }
+    //=======================================
+    @GetMapping("/search")
+
+    public Page<Product> findAll(@RequestParam  Optional<String> productName, @RequestParam Optional<Integer> page,
+                                 @RequestParam Optional<String> sortby){
+        System.out.println("I am in search");
+      return  productRepository.findProdcutByName(productName.orElse(" "), PageRequest.of(page.orElse(0),
+              5, Sort.by(Sort.Direction.ASC,sortby.orElse("id"))));
+    }
+
+    @RequestMapping(value = "/getImage", method = RequestMethod.GET,
+            produces = MediaType.IMAGE_JPEG_VALUE)
+    public  synchronized ResponseEntity<byte[]> getImage(@RequestParam String image_id) throws Exception {
+
+
+        return ResponseEntity
+                .ok()
+                .contentType(MediaType.IMAGE_JPEG)
+                .body(imageService.getImage(image_id));
     }
 }
