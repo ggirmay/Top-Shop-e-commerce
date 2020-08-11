@@ -23,14 +23,13 @@ public class ItemDetailService {
         return itemDetailRepository.save(itemDetail);
     }
 
-    public ItemDetail editItem(Long itemId, int quantity) throws RecordNotFoundException{
-        Optional<ItemDetail> itemDetail = itemDetailRepository.findById(itemId);
-        if (itemDetail.isPresent()){
-            ItemDetail temp = itemDetail.get();
-            temp.setSubTotal(quantity * temp.getUnitPrice());
-            temp.setQuantity(quantity);
-            temp = itemDetailRepository.save(temp);
-            return temp;
+    public ItemDetail editItem(Long itemId, Long cartId, int quantity) throws RecordNotFoundException{
+        ItemDetail itemDetail = itemDetailRepository.findByProductIdAndShoppingCartId(itemId, cartId);
+        if (itemDetail != null){
+            itemDetail.setSubTotal(quantity * itemDetail.getUnitPrice());
+            itemDetail.setQuantity(quantity);
+            itemDetail = itemDetailRepository.save(itemDetail);
+            return itemDetail;
         }else {
             throw new RecordNotFoundException("Wrong Item ID", itemId);
         }

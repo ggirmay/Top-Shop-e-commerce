@@ -32,9 +32,10 @@ public class ShoppingCartController {
         return shoppingCartService.addItemToCart(id,itemDetail);
     }
 
-    @DeleteMapping("/deleteitem/{productid}&{cartid}")
-    public boolean deleteItemFromShoppingCart(@PathVariable("productid") Long itemId, @PathVariable("cartid") Long cartId)
+    @PutMapping("/deleteitem")
+    public boolean deleteItemFromShoppingCart(@RequestParam("productid") Long itemId, @RequestParam("cartid") Long cartId)
     throws RecordNotFoundException {
+        System.out.println("this is controller: " + itemId + "  :  " + cartId);
         try {
             return shoppingCartService.deleteItemFromCart(itemId, cartId);
         }catch (RecordNotFoundException e){
@@ -48,8 +49,9 @@ public class ShoppingCartController {
         return shoppingCartService.viewAllItemOfCart(cartId);
     }
 
-    @PutMapping("/editquantity/{itemid}&{quantity}")
-    public ItemDetail editQuantityOfItemInCart(@PathVariable("itemid")Long itemId, @PathVariable("quantity")int quantity){
-        return shoppingCartService.editQuantityOfItemInCart(itemId, quantity);
+    @PutMapping("/editquantity")
+    public ItemDetail editQuantityOfItemInCart(@RequestParam("itemid")Long itemId, @RequestParam("cartid") Long cartId,
+                                               @RequestParam("quantity")int quantity){
+        return shoppingCartService.editQuantityOfItemInCart(itemId, cartId, quantity);
     }
 }

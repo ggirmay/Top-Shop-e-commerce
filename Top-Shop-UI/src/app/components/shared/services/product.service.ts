@@ -130,8 +130,8 @@ export class ProductService {
 
   // =============================================================
 
-  public findTop5(): Observable<Product[]> {
-    console.log("product service file");
-    return this.httpClient.get<Product[]>(this.productUrl + "getAll");
-  }
+  // public findTop5(): Observable<Product[]> {
+  //   console.log("product service file");
+  //   return this.httpClient.get<Product[]>(this.productUrl + "getAll");
+  // }
 }

@@ -10,7 +10,8 @@ import java.util.Optional;
 
 
 public interface ItemDetailRepository extends JpaRepository<ItemDetail, Long> {
-    @Query(value = "select * from item_detail where product_id = :productId and shopping_cart_id = :cartId", nativeQuery = true)
+    @Query(value = "select * from item_detail where product_id = :productId and shopping_cart_id = :cartId " +
+            "and status = 'A'", nativeQuery = true)
     ItemDetail findByProductIdAndShoppingCartId(@Param("productId") Long productId, @Param("cartId") Long cartId);
 
     @Query(value = "select * from item_detail where shopping_cart_id = :cartId", nativeQuery = true)

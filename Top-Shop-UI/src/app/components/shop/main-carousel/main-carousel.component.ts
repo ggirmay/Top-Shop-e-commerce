@@ -26,9 +26,9 @@ export class MainCarouselComponent implements OnInit {
   constructor(private productService: ProductService) {}
 
   ngOnInit() {
-    this.productService.findTop5().subscribe((data) => {
-      this.products = data;
-    });
+    // this.productService.findTop5().subscribe((data) => {
+    //   this.products = data;
+    // });
   }
 
   ngAfterViewInit() {

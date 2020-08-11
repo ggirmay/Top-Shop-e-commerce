@@ -4,7 +4,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 import { CartItem } from "src/app/modals/cart-item";
 import { map } from "rxjs/operators";
 import { Observable, BehaviorSubject, Subscriber } from "rxjs";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Item_detail } from "src/app/modals/item_detail";
 
 // Get product from Localstorage
@@ -23,7 +23,8 @@ export class CartService {
   constructor(public snackBar: MatSnackBar, public httpClient: HttpClient) {
     this.cartItems.subscribe((products) => (products = products));
     this.itemDetail = new Item_detail();
-    this.shoppingCartUrl = "http://localhost:8087/shoppingcart/";
+    this.shoppingCartUrl =
+      "http://localhost:8080/shopping-cart-service/shoppingcart/";
   }
 
   // Get Products
@@ -53,17 +54,16 @@ export class CartService {
             verticalPosition: "top",
             duration: 3000,
           });
-          console.log("this is in add cart in cart service " + product.name);
+          console.log(
+            "this is in add cart in cart service second: " + product.name
+          );
 
           // call add to cart from backend in here
-          this.itemDetail.productId = product.id;
-          this.itemDetail.productName = product.name;
-          this.itemDetail.quantity = quantity;
-          this.itemDetail.status = "A";
-          this.itemDetail.unitPrice = product.price;
-          this.itemDetail.subTotal = product.price * quantity;
-
-          this.addToShoppingCartInBackend(this.itemDetail).subscribe();
+          this.updateItemInShoppingCart(
+            product.id.toString(),
+            "1",
+            qty
+          ).subscribe();
 
           console.log(
             "this is in add cart in cart service " + this.itemDetail.productName
@@ -84,6 +84,17 @@ export class CartService {
         verticalPosition: "top",
         duration: 3000,
       });
+      console.log("this is in add cart in cart service first: " + product.name);
+
+      // call add to cart from backend in here
+      this.itemDetail.productId = product.id;
+      this.itemDetail.productName = product.name;
+      this.itemDetail.quantity = quantity;
+      this.itemDetail.status = "A";
+      this.itemDetail.unitPrice = product.price;
+      this.itemDetail.subTotal = product.price * quantity;
+
+      this.addToShoppingCartInBackend(this.itemDetail).subscribe();
     }
 
     localStorage.setItem("cartItem", JSON.stringify(products));
@@ -115,6 +126,11 @@ export class CartService {
     const index = products.indexOf(item);
     products.splice(index, 1);
     localStorage.setItem("cartItem", JSON.stringify(products));
+
+    this.removeItemFromShoppingCart(
+      item.product.id.toString(),
+      "1"
+    ).subscribe();
   }
 
   // Total amount
@@ -143,12 +159,42 @@ export class CartService {
       }
     });
   }
+
   //============================================================================
   // my custome methods
+
+  // add item to the item detail table (add item to shopping cart)
   public addToShoppingCartInBackend(itemDetail: Item_detail) {
     return this.httpClient.post<Item_detail>(
       this.shoppingCartUrl + "additem/1",
       itemDetail
     );
+  }
+
+  public updateItemInShoppingCart(
+    productId: string,
+    cartId: string,
+    quantity: string
+  ) {
+    const param = new HttpParams()
+      .set("itemid", productId)
+      .set("cartid", cartId)
+      .set("quantity", quantity);
+
+    console.log("this is update item from cart");
+    return this.httpClient.put<any>(
+      this.shoppingCartUrl + "editquantity",
+      param
+    );
+  }
+
+  // change status of item in item detail table from 'A' to 'D' (remove item from shopping cart)
+  public removeItemFromShoppingCart(productId: string, cartId: string) {
+    const param = new HttpParams()
+      .set("productid", productId)
+      .set("cartid", cartId);
+
+    console.log("this is remove from cart");
+    return this.httpClient.put<any>(this.shoppingCartUrl + "deleteitem", param);
   }
 }

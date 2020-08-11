@@ -55,9 +55,9 @@ public class ShoppingCartService {
         return itemDetailService.selectAllShoppingCartItems(cartId);
     }
 
-    public ItemDetail editQuantityOfItemInCart(Long itemId, int quantity){
+    public ItemDetail editQuantityOfItemInCart(Long itemId, Long cartId, int quantity){
         try {
-            return itemDetailService.editItem(itemId, quantity);
+            return itemDetailService.editItem(itemId, cartId, quantity);
         }catch (RecordNotFoundException e){
             System.out.println(e.getMessage());
             return null;
