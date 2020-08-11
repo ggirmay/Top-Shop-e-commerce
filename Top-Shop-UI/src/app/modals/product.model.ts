@@ -1,12 +1,24 @@
 // Product Tag
+<<<<<<< HEAD
 import {Category} from "./Category";
 
 export type ProductTags = 'nike' | 'puma' | 'lifestyle' | 'caprese';
+=======
+export type ProductTags = "nike" | "puma" | "lifestyle" | "caprese";
+>>>>>>> c4b3d31aa0666c0c706d55533616e05d9ddf3350
 
 // Product Colors
-export type ProductColor = 'white' | 'black' | 'red' | 'green' | 'purple' | 'yellow' | 'blue' | 'gray' | 'orange' | 'pink';
-
-
+export type ProductColor =
+  | "white"
+  | "black"
+  | "red"
+  | "green"
+  | "purple"
+  | "yellow"
+  | "blue"
+  | "gray"
+  | "orange"
+  | "pink";
 
 export class Product {
   id?: number;
@@ -14,7 +26,7 @@ export class Product {
   price?: number;
   salePrice?: number;
   discount?: number;
-  pictures?: string;
+  picture_url?: string;
   shortDetails?: string;
   description?: string;
   stock?: number;
@@ -47,7 +59,7 @@ export class Product {
     this.price = price;
     this.salePrice = salePrice;
     this.discount = discount;
-    this.pictures = pictures;
+    this.picture_url = pictures;
     this.shortDetails = shortDetails;
     this.description = description;
     this.stock = stock;
@@ -58,9 +70,8 @@ export class Product {
     this.tags = tags;
     this.colors = colors;
   }
-
- }
-  // Color Filter
-  export interface ColorFilter {
-    color?: ProductColor;
-  }
+}
+// Color Filter
+export interface ColorFilter {
+  color?: ProductColor;
+}

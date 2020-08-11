@@ -3,7 +3,7 @@ import { Product } from 'src/app/modals/product.model';
 import { CartItem } from 'src/app/modals/cart-item';
 import { CartService } from '../services/cart.service';
 import { SidebarMenuService } from '../sidebar/sidebar-menu.service';
-import {AppService} from "../../../services/AppService";
+import {UserService} from "../../../services/UserService";
 
 @Component({
   selector: 'app-header',
@@ -31,7 +31,7 @@ export class HeaderComponent implements OnInit {
   public isLoggedIn = false;
 
 
-  constructor(private cartService: CartService,private _service:AppService) {
+  constructor(private cartService: CartService,private _service:UserService) {
     this.cartService.getItems().subscribe(shoppingCartItems => this.shoppingCartItems = shoppingCartItems);
   }
 
@@ -49,6 +49,7 @@ export class HeaderComponent implements OnInit {
   }
 
   public logout(){
+    this.isLoggedIn=false;
     this._service.logout();
   }
 }

@@ -27,6 +27,7 @@ public class VisaController {
 
     @Secured(value = {"ROLE_ADMIN"})
     @GetMapping(value = {"/" , "" , "/list"})
+    @CrossOrigin(origins = "*")
     public ResponseEntity<List<Visa>> getAllVisa(){
 
         return ResponseEntity.ok().body(this.visaService.getAll());
@@ -34,6 +35,7 @@ public class VisaController {
 
     @Secured(value = {"ROLE_ADMIN"})
     @GetMapping(value = {"/find", "/list/find"})
+    @CrossOrigin(origins = "*")
     public ResponseEntity<?> getOneVisaByCardNumber(@RequestParam(value = "cardNumber") String cardNumber){
         Optional<Visa> visa = this.visaService.getByCardNumber(cardNumber);
         if(visa.isPresent())
@@ -48,6 +50,7 @@ public class VisaController {
      * */
     @Secured(value = {"ROLE_ADMIN"})
     @PostMapping(value = "/save")
+    @CrossOrigin(origins = "*")
     public ResponseEntity<?> uploadNewCard(@RequestBody Map<String , ?> data) {
 
         String lastName = Getters.extractString(data.get("lastName"));
@@ -68,6 +71,7 @@ public class VisaController {
 
     @Secured(value = {"ROLE_ADMIN"})
     @DeleteMapping(value = "/delete")
+    @CrossOrigin(origins = "*")
     public ResponseEntity<?> deleteCard(@RequestParam("cardNumber") String cardNumber){
 
         boolean result = false;
@@ -84,6 +88,7 @@ public class VisaController {
 
     @Secured(value = {"ROLE_ADMIN"})
     @PutMapping(value = "/edit")
+    @CrossOrigin(origins = "*")
     public ResponseEntity<?> updateCard(@Valid @RequestBody Visa visa , BindingResult bindingResult){
 
         if(bindingResult.hasErrors()){

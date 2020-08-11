@@ -2,13 +2,11 @@ package com.top.shop.user.api.server;
 
 
 import com.top.shop.user.api.request.LoginRequest;
+import com.top.shop.user.api.response.ErrorMessage;
 import com.top.shop.user.api.response.LoginResponse;
 import com.top.shop.user.command.service.UserCommandService;
 import com.top.shop.user.command.service.VerificationTokenCommandService;
-import com.top.shop.user.domain.RegisteredUser;
-import com.top.shop.user.domain.User;
-import com.top.shop.user.domain.UserAccount;
-import com.top.shop.user.domain.VerificationToken;
+import com.top.shop.user.domain.*;
 import com.top.shop.user.exception.UserExist;
 import com.top.shop.user.query.service.RegisterduserQueryService;
 import com.top.shop.user.query.service.UserAccountQueryService;
@@ -16,6 +14,7 @@ import com.top.shop.user.query.service.UserQueryService;
 import com.top.shop.user.repository.UserRepository;
 import com.top.shop.user.repository.VerificationTokenRepository;
 import com.top.shop.user.util.OnRegistrationCompleteEvent;
+import com.top.shop.user.util.PlainText;
 import io.swagger.v3.oas.annotations.Operation;
 
 import io.swagger.v3.oas.annotations.media.Content;
@@ -54,6 +53,7 @@ public class UserApi {
     MessageSource messageSource;
     private RegisterduserQueryService regUserService;
 
+    @CrossOrigin(origins = "*")
     @PostMapping
     @Operation(summary = "User Account registration", description = "Account registration and email activation")
     public ResponseEntity registerUserAccount(@RequestBody RegisteredUser user, HttpServletRequest request){
@@ -67,13 +67,14 @@ public class UserApi {
                     request.getLocale(), appUrl));
         }
         catch (UserExist e){
-            log.error(e.toString());
-            return ResponseEntity.ok(messageSource.getMessage("auth.email.exist",null,null));
+            ErrorMessage response = new ErrorMessage(messageSource.getMessage("auth.email.exist",null,null), "Make sure your input value is correct");
+            return ResponseEntity.badRequest().body(response);
         }
+        PlainText message = new PlainText(messageSource.getMessage("auth.account.created.activate",null,null));
+        return ResponseEntity.ok().body(message);
 
-        return ResponseEntity.ok(messageSource.getMessage("auth.account.created.activate",null,null));
     }
-
+    @CrossOrigin
     @PostMapping("/login")
     @Operation(summary = "User Login",description = "Use your email and password to login")
     @ApiResponses(value = { @ApiResponse(responseCode = "200", description = "successfully logged in")})
@@ -82,7 +83,7 @@ public class UserApi {
         return ResponseEntity.ok().body(userAccountQueryService.authenticate(loginRequest.getEmail(),loginRequest.getPassword()));
     }
 
-
+    @CrossOrigin
     @GetMapping(value = "/findByUserName/{userName}")
     @Operation(summary = "User return details",description = "Return User Account")
     @ApiResponses(value = { @ApiResponse(responseCode = "200", description = "successfully logged in")})
@@ -93,31 +94,56 @@ public class UserApi {
     }
 
 
+    @CrossOrigin
     @GetMapping
     @Operation(summary = "Grt All users", description = "Retrive all Users")
     public ResponseEntity<List<RegisteredUser>> getAllREgisteredUsers(){
         return ResponseEntity.ok().body(userQueryService.getAllUsers());
     }
-
+    @CrossOrigin
     @DeleteMapping("/{id}")
-    @Operation(summary = "Grt All users", description = "Retrive all Users")
+    @Operation(summary = "delete user", description = "delete User")
     public ResponseEntity<String> deleteUserById(@PathVariable Long id){
         userQueryService.deleteUser(id);
         return ResponseEntity.ok("deleted");
     }
-
+    @CrossOrigin
     @GetMapping("/{id}")
-    @Operation(summary = "Grt All users", description = "Retrive all Users")
+    @Operation(summary = "Grt by user id", description = "get by user id")
     public ResponseEntity<User> getUserById(@PathVariable Long id){
 //        userQueryService.deleteUser(id);
         return ResponseEntity.ok().body(userQueryService.getUerById(id));
     }
+    @CrossOrigin
+    @GetMapping("getByAccountId/{id}")
+    @Operation(summary = "Get user by account id", description = "get by account id")
+    public ResponseEntity<User> getUserBy_accountId(@PathVariable Long id){
+//        userQueryService.deleteUser(id);
+        return ResponseEntity.ok().body(userQueryService.getUserBy_accountId(id));
+    }
 
+    @CrossOrigin
     @PutMapping("update/{id}")
     @Operation(summary = "update Registred user", description = "Update User")
-    public ResponseEntity<User> getUserById(@RequestBody RegisteredUser registeredUser){
+    public ResponseEntity<User> editUserById(@RequestBody RegisteredUser registeredUser){
 //        userQueryService.deleteUser(id);
         return ResponseEntity.ok().body(userCommandservice.update(registeredUser));
+    }
+
+    @CrossOrigin
+    @PostMapping("/create_guest")
+    @Operation(summary = "create guest user", description = "create User")
+    public ResponseEntity<User> create(@RequestBody GuestUser guestUser){
+//        userQueryService.deleteUser(id);
+        return ResponseEntity.ok().body(userCommandservice.createGuest(guestUser));
+    }
+
+    @CrossOrigin
+    @GetMapping("/get_guest/{id}")
+    @Operation(summary = "create guest user", description = "create User")
+    public ResponseEntity<User> getGuest(@PathVariable Long id){
+//        userQueryService.deleteUser(id);
+        return ResponseEntity.ok().body(userQueryService.getGuestUerById(id));
     }
 
 }

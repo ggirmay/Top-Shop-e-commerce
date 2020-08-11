@@ -19,34 +19,34 @@ public class DatabaseInitializer implements CommandLineRunner {
     @Autowired
     private MastercardRepository mastercardRepository;
 
-    @Autowired
-    private RoleRepository roleRepository;
+//    @Autowired
+//    private RoleRepository roleRepository;
 
-    @Autowired
-    private UserRepository userRepository;
-
-    //@Autowired
-    //private PasswordEncoder passwordEncoder;
+//    @Autowired
+//    private UserRepository userRepository;
+//
+//    @Autowired
+//    private PasswordEncoder passwordEncoder;
 
     @Override
     public void run(String... args) throws Exception {
-        /*Role roleUser = new Role("ROLE_USER");
-        roleUser = this.roleRepository.save(roleUser);
+//        Role roleUser = new Role("ROLE_USER");
+//        roleUser = this.roleRepository.save(roleUser);
+//
+//        Role roleAdmin = new Role("ROLE_ADMIN");
+//        roleAdmin = this.roleRepository.save(roleAdmin);
 
-        Role roleAdmin = new Role("ROLE_ADMIN");
-        roleAdmin = this.roleRepository.save(roleAdmin);
+//        User user = new User("Ny Aina Mickael" , "Andriantsoa" , "Admin", passwordEncoder.encode("admin") , roleAdmin);
+//        this.userRepository.save(user);
+//
+//        user = new User("user" , "user" , "user" , passwordEncoder.encode("user") , roleUser);
+//        this.userRepository.save(user);
 
-        User user = new User("Ny Aina Mickael" , "Andriantsoa" , "Admin", passwordEncoder.encode("admin") , roleAdmin);
-        this.userRepository.save(user);
-
-        user = new User("user" , "user" , "user" , passwordEncoder.encode("user") , roleUser);
-        this.userRepository.save(user);
-
-        /*Mastercard mastercard1 = new Mastercard("Kassa" , "Mulusew" , "Mulusew K.");
-        Mastercard mastercard2 = new Mastercard("Andriantsoa" , "Ny" , "Ny Andriantsoa");
-
-        this.mastercardRepository.save(mastercard1);
-        this.mastercardRepository.save(mastercard2);*/
+//        Mastercard mastercard1 = new Mastercard("Kassa" , "Mulusew" , "Mulusew K." , "mkass@miu.edu");
+//        Mastercard mastercard2 = new Mastercard("Andriantsoa" , "Ny" , "Ny Andriantsoa" , "nandriantsoa@miu.edu");
+//
+//        this.mastercardRepository.save(mastercard1);
+//        this.mastercardRepository.save(mastercard2);
 
     }
 

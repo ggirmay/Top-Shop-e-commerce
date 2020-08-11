@@ -1,5 +1,8 @@
-[{
+[
+
+  {
   "id": 1,
+
   "name": "Muller",
   "status": "pending",
   "code": null,
@@ -11,19 +14,10 @@
   "productDetail": null,
   "salesPrice": 0.0,
   "discount": 50.0,
-  "shortDetails": "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,",
-  "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-  "newPro": true,
-  "sale": true,
-  "brand": "Brand-1",
-  "pictures": [
-    {
-      "small": "https://tse1.mm.bing.net/th?id=OIP.1sHOTrUj4C2XjsqQwjBciAExDM&pid=Api&P=0&w=228&h=153",
-      "big": "http://localhost:8083/product/getImage?image_id=photo_2018-10-31_03-54-57.jpg"
-    }
-  ]
-
+  "name": "ONTEC E Headset",
+  "price": 175,
 },
+
 {
   "id": 2,
   "name": "Solo Headset",
