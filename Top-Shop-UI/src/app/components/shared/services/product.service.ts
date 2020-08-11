@@ -10,6 +10,11 @@ import { map } from 'rxjs/operators';
 // Get product from Localstorage
 let products = JSON.parse(localStorage.getItem("compareItem")) || [];
 
+
+// let products=this.getproducts().subscribe(
+//   response =>{this.employees = response;}
+//  );
+
 @Injectable({
   providedIn: 'root'
 })
@@ -26,9 +31,18 @@ export class ProductService {
   constructor(private httpClient: HttpClient, public snackBar: MatSnackBar) {
    this.compareProducts.subscribe(products => products = products)
   }
+//======================
 
+
+   getproducts()
+{
+
+  return this.httpClient.get<Product[]>('http://localhost:8083/product/getAll');
+}
+//===========================
   private products(): Observable<Product[]> {
-    return this.httpClient.get<Product[]>('assets/data/products2.json');
+
+    return this.httpClient.get<Product[]>('http://localhost:8083/product/getAll');
   }
 
   public banners(): Observable<any[]>{
