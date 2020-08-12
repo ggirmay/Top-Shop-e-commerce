@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Product } from 'src/app/modals/product.model';
+import { Product } from '../../../modals/product.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { CartItem } from 'src/app/modals/cart-item';
+import { CartItem } from '../../../modals/cart-item';
 import { map } from 'rxjs/operators';
 import { Observable, BehaviorSubject, Subscriber, of } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
-import { Item_detail } from "src/app/modals/item_detail";
+import { Item_detail } from '../../../modals/item_detail';
 
 // Get product from Localstorage
 let products = JSON.parse(localStorage.getItem("cartItem")) || [];

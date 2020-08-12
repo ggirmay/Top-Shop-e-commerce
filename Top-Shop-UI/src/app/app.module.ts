@@ -19,13 +19,15 @@ import { ShopModule } from './components/shop/shop.module';
 import { SharedModule } from './components/shared/shared.module';
 import {UserService} from "./services/UserService";
 import {User} from "./models/userModel/User";
+import { ConfirmationPageComponent } from './components/pages/checkout/confirmation-page/confirmation-page.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     DemoComponent,
-    MainComponent
+    MainComponent,
+    ConfirmationPageComponent
   ],
   imports: [
     NgxSpinnerModule,

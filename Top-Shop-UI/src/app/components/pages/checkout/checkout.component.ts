@@ -1,15 +1,14 @@
 import { Component, OnInit , ViewChild , AfterViewInit } from '@angular/core';
 import { CartService } from '../../shared/services/cart.service';
-import { Observable, of } from 'rxjs';
-import { CartItem } from 'src/app/modals/cart-item';
+import { Observable, of, from } from 'rxjs';
+import { CartItem } from '../../../modals/cart-item';
 import { ProductService } from '../../shared/services/product.service';
-import { PaymentInformation } from 'src/app/modals/payment-information';
-import { BillingInformation } from 'src/app/modals/billing-information';
-import { NgForm } from '@angular/forms';
+import { PaymentInformation } from '../../../modals/payment-information';
+import { BillingInformation } from '../../../modals/billing-information';
 import { CardInfoComponent } from './card-info/card-info.component';
 import { MatRadioChange } from '@angular/material/radio';
 import { BillingInfoComponent } from './billing-info/billing-info.component';
-import { CheckoutService } from 'src/app/services/checkout.service';
+import { CheckoutService } from '../../../services/checkout.service';
 
 @Component({
   selector: 'app-checkout',
@@ -17,6 +16,8 @@ import { CheckoutService } from 'src/app/services/checkout.service';
   styleUrls: ['./checkout.component.sass']
 })
 export class CheckoutComponent implements AfterViewInit {
+
+  modal: boolean = false;
 
   public cartItems: Observable<CartItem[]> = of([]);
   public buyProducts: CartItem[] = [];
@@ -74,7 +75,7 @@ export class CheckoutComponent implements AfterViewInit {
   @ViewChild(BillingInfoComponent) billingInfoChild;
 
   constructor(private cartService: CartService, public productService: ProductService , 
-              private checkoutService: CheckoutService  ) { }
+              private checkoutService: CheckoutService ) { }
 
   ngAfterViewInit(){
   }
@@ -105,10 +106,18 @@ export class CheckoutComponent implements AfterViewInit {
     
     if(this.checkoutService.checkOrder(this.cardInfoChild.paymentInformation , this.billingInfoChild.billingInformation)){
       
-      this.checkoutService.placeOrder(this.cardInfoChild.paymentInformation , this.billingInfoChild.billingInformation);
+      this.modal = true;
       
     }
 
+  }
+
+  checkout(){
+    this.checkoutService.placeOrder(this.cardInfoChild.paymentInformation , this.billingInfoChild.billingInformation);
+  }
+
+  closeModal(event){
+    this.modal = event;
   }
 
   paymentChange(event : MatRadioChange){
@@ -122,13 +131,3 @@ export class CheckoutComponent implements AfterViewInit {
   }
 
 }
-
-
-/*console.log(this.paymentChosed);*/
-
-    /*{
-      cardNumber: "1111111111111",
-      expDate: "11111111111",
-      nameOnCard: "1111111111111",
-      secDigit: "2111111111"
-    }*/

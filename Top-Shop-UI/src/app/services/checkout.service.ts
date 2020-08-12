@@ -1,41 +1,74 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { PaymentInformation } from '../modals/payment-information';
 import { BillingInformation } from '../modals/billing-information';
 import * as _ from 'lodash';
 import { UserDTO } from '../modals/dto/user-dto';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { catchError, timeout } from 'rxjs/operators';
 import { ErrorService } from './error.service';
 import { Order } from '../modals/order';
 import { Product } from '../modals/product.model';
 import { CartItem } from '../modals/cart-item';
+import { CartService } from '../components/shared/services/cart.service';
+import { OrderDetail } from '../modals/order-detail';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CheckoutService {
 
-  constructor(private http : HttpClient , private error : ErrorService) { }
+  user : UserDTO;
+
+  amount : number;
+
+  constructor(private http : HttpClient , private error : ErrorService, 
+              private cartservice: CartService, private router : Router) { }
 
   public placeOrder(paymentInformation : PaymentInformation , billingInformation : BillingInformation) {
+    let order = this.prepare(paymentInformation, billingInformation);
+    this.saveOrder(order).subscribe((response) => {
+      console.log("RESPONSE :" , response)
+      let cart: CartItem[] = JSON.parse(localStorage.getItem('checkoutItem'))
+      let currentCart : CartItem[] = JSON.parse(localStorage.getItem('cartItem'))
+
+      for(let item of cart){
+        for (let i = 0 ; i < currentCart.length ; i++){
+          if( currentCart[i].product.id === item.product.id ){
+            currentCart.splice(i , 1);
+            break;
+          }
+        }
+      }
+
+      localStorage.setItem('cartItem' , JSON.stringify(currentCart))
+      //localStorage.setItem('orderID' , response.id )
+
+      this.router.navigate(['confirmation-page'])
+
+    }, (err) => {
+      console.error(err)
+    })
 
   }
 
-  /*private prepare(paymentInformation : PaymentInformation , billingInformation : BillingInformation) : Order {
+  private prepare(paymentInformation : PaymentInformation , billingInformation : BillingInformation) : Order {
     
     let payment = this.preparePaymentInformation(paymentInformation);
-    let user = this.getUser();
 
+    this.cartservice.getNewTotalAmount().subscribe((response) => this.amount = response);
+    this.getUser(payment , billingInformation).subscribe((response) => this.user = response);
 
+    let order : Order = {
+      amount: this.amount,
+      createdDate: new Date(),
+      status: "Payed",
+      userId: this.user.id,
+      orderDetails: this.getOrderDetails()
+    }
 
-    // let order : Order = {
-    //   amount: ,
-    //   createdDate: new Date(),
-    //   status: "Payed",
-    //   userId: user.id,
-    //   orderDetails: []
-    // }
+    return order;
 
     /*
     TODO: fetch user from local storage
@@ -51,7 +84,25 @@ export class CheckoutService {
 
     */
 
-  /*}*/
+  }
+
+  private getOrderDetails() : OrderDetail[] {
+    let cartItem : CartItem[] = JSON.parse(localStorage.getItem("chekoutItem"));
+
+    let orderDetails: OrderDetail[] = []
+
+    for( let item of cartItem ){
+      orderDetails.push({
+        productId: item.product.id,
+        productName: item.product.name,
+        quantity: item.quantity,
+        unitPrice: item.product.price,
+        subtotalPrice: item.product.price * item.quantity
+      })
+    }
+
+    return orderDetails;
+  }
 
   public createCheckoutItem(items : CartItem[]){
     localStorage.setItem("checkoutItem" , JSON.stringify(items));
@@ -61,8 +112,29 @@ export class CheckoutService {
     localStorage.removeItem("checkoutItem");
   }
 
-  private getUser() : UserDTO {
-    return new UserDTO();
+  private getUser(paymentInformation: PaymentInformation , billingInformation: BillingInformation) : Observable<UserDTO> {
+    let id = localStorage.getItem("accountUser")
+    if(id){
+      let activeUser = new UserDTO();
+      activeUser.id = id;
+      return of(activeUser);
+    }else{
+      let userData: UserDTO = {
+        role: "USER",
+        firstName: billingInformation.firstName,
+        lastName: billingInformation.lastName,
+        addressList:[ {
+          addressLineOne: billingInformation.address,
+          addressLineTwo: billingInformation.country + " " + billingInformation.postcode,
+          city: billingInformation.town,
+          state: billingInformation.state
+        }],
+        paymentInformation: [ {...paymentInformation} ],
+        user_role: "GUEST_USER"
+      }
+
+      return this.saveGuestUser(userData);
+    }
   }
 
   private saveGuestUser(user : UserDTO) : Observable<UserDTO> {

@@ -2,6 +2,7 @@ import { OrderDetail } from './order-detail';
 
 export class Order {
 
+    id? : number;
     userId? : string;
     userName? : string;
     createdDate? : Date;
