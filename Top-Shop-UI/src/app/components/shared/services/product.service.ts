@@ -140,4 +140,7 @@ export class ProductService {
       )
     );
   }
+  addProduct(newProduct: Product) {
+    return this.httpClient.post<Product>('http://localhost:8083/product/add', Product);
+  }
 }

@@ -3,24 +3,22 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report2" pageWidth="595" pageHeight="842" whenNoDataType="NoPages" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4f53b2e4-0a08-4914-b618-195d62ba1fc4">
 	<parameter name="createdBy" class="java.lang.String"/>
 	<parameter name="ProductName" class="java.lang.String"/>
-	<field name="Id" class="java.lang.Long">
-		<fieldDescription><![CDATA[id]]></fieldDescription>
+	<field name="OrderDetailId" class="java.lang.Long">
+		<fieldDescription><![CDATA[orderDetailId]]></fieldDescription>
 	</field>
-	<field name="Name" class="java.lang.String">
-		<fieldDescription><![CDATA[name]]></fieldDescription>
-	</field>
-	<field name="Category" class="java.lang.String">
-		<fieldDescription><![CDATA[category]]></fieldDescription>
-	</field>
-	<field name="Status" class="java.lang.Object">
-		<fieldDescription><![CDATA[status]]></fieldDescription>
+	<field name="ProductName" class="java.lang.String">
+		<fieldDescription><![CDATA[productName]]></fieldDescription>
 	</field>
 	<field name="Quantity" class="java.lang.Integer">
 		<fieldDescription><![CDATA[quantity]]></fieldDescription>
 	</field>
-	<field name="Price" class="java.lang.Double">
-		<fieldDescription><![CDATA[price]]></fieldDescription>
+	<field name="UnitPrice" class="java.lang.Float">
+		<fieldDescription><![CDATA[unitPrice]]></fieldDescription>
 	</field>
+	<field name="SubtotalPrice" class="java.lang.Float">
+		<fieldDescription><![CDATA[subtotalPrice]]></fieldDescription>
+	</field>
+
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -31,7 +29,7 @@
 				<textElement textAlignment="Right">
 					<font fontName="Cambria" size="19" isBold="true" isItalic="true"/>
 				</textElement>
-				<text><![CDATA[    PRODUCT REPORT
+				<text><![CDATA[    SALES REPORT
                 ]]></text>
 			</staticText>
 			<image>
@@ -50,14 +48,7 @@
 				<reportElement x="398" y="21" width="58" height="20" uuid="99315854-14c9-4cf6-be72-c3d82661e194"/>
 				<text><![CDATA[Created By:]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="90" y="20" width="100" height="20" uuid="32f6a175-c0f7-43e7-9ccd-85e2ac26b3d9"/>
-				<textFieldExpression><![CDATA[$P{ProductName}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="10" y="21" width="70" height="19" uuid="c8775919-1742-4a0e-a96d-ccf0cc18a033"/>
-				<text><![CDATA[Product Name:]]></text>
-			</staticText>
+
 			<textField>
 				<reportElement x="0" y="57" width="50" height="15" uuid="0efdf604-d66c-4737-9fba-3e8ccb9efdf7"/>
 				<textElement textAlignment="Center"/>
@@ -66,22 +57,22 @@
 			<textField>
 				<reportElement x="65" y="57" width="115" height="15" uuid="baf5ef3b-69d0-42ad-b894-c051a4d1e0f6"/>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA["Product Category"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Product Name"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="323" y="58" width="71" height="15" uuid="42e30cbb-2dbf-484b-85b8-b71aa3c631af"/>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA["Product Status"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Quantity"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="404" y="58" width="71" height="15" uuid="a00e92a8-0a30-47bf-bd9a-d43bc6620cc6"/>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA["Quantity"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Unit price"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="488" y="58" width="71" height="15" uuid="68272c82-a49d-4db8-afd3-c4e22d418e10"/>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA["Product Price"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Total Price"]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="-10" y="52" width="575" height="1" uuid="a232c3d9-0616-4eaa-af33-e65c8a2f4489"/>
@@ -89,7 +80,7 @@
 			<staticText>
 				<reportElement x="214" y="56" width="100" height="16" uuid="3e7fc9b2-592a-43fb-8a93-459e358a29a9"/>
 				<textElement textAlignment="Center"/>
-				<text><![CDATA[Product Name]]></text>
+<!--				<text><![CDATA[Product Name]]></text>-->
 			</staticText>
 		</band>
 	</columnHeader>
@@ -98,32 +89,28 @@
 			<textField>
 				<reportElement x="0" y="5" width="50" height="15" uuid="d79e5fe8-acbd-4dcf-9261-cbf144450b08"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{Id}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{OrderDetailId}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="70" y="5" width="110" height="15" uuid="bae5c4ca-177c-40f7-b71c-e636bb47b3f0"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{Category}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{ProductName}]]></textFieldExpression>
 			</textField>
-<!--			<textField>-->
-<!--				<reportElement x="70" y="5" width="110" height="15" uuid="bae5c4ca-177c-40f7-b71c-e636bb47b3f0"/>-->
-<!--				<textElement textAlignment="Left" verticalAlignment="Middle"/>-->
-<!--				<textFieldExpression><![CDATA[$F{Name}]]></textFieldExpression>-->
-<!--			</textField>-->
+
 			<textField>
 				<reportElement x="343" y="5" width="50" height="15" uuid="e3ad312d-e865-4027-b1e9-110301cd6c52"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{Status}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{Quantity}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="410" y="5" width="64" height="15" uuid="157f216e-b2d6-4f0e-912e-399e257d214d"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{Quantity}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{UnitPrice}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="488" y="5" width="68" height="15" uuid="58862fc1-e4e2-4407-a713-388e343cce52"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{Price}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{SubtotalPrice}]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="-10" y="0" width="575" height="1" uuid="63f825fd-4dec-4549-a607-3bf78ceab71d"/>
@@ -176,7 +163,7 @@
 			<textField>
 				<reportElement x="214" y="4" width="100" height="15" uuid="33c2a86b-46c1-4b3a-8237-be79e4c10dae"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{Name}]]></textFieldExpression>
+<!--				<textFieldExpression><![CDATA[$F{Name}]]></textFieldExpression>-->
 			</textField>
 		</band>
 	</detail>

@@ -1,5 +1,6 @@
 package com.shop.top.productservice.productservice.controller;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import com.shop.top.productservice.productservice.model.Category;
 import com.shop.top.productservice.productservice.model.Product;
 import com.shop.top.productservice.productservice.service.CategoryService;
@@ -10,7 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.NotNull;
-
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/category")
 public class CategoryController {
@@ -22,7 +23,8 @@ public class CategoryController {
         return categoryService.getAllCategory();
     }
     @PostMapping(value = "/save")
-    public Category addProduct(@RequestBody Category category){
+    public Category addCategory(@RequestBody Category category){
+        System.out.println(category.getName());
         return categoryService.save(category);
     }
     @GetMapping("/{id}")

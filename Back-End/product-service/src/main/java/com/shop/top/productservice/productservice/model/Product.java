@@ -30,8 +30,8 @@ public class Product implements Serializable {
     private  int quantity;
 
     private String picture_url;
-   // @ManyToOne
-    private String category;
+    @ManyToOne
+    private Category category;
 
     @OneToOne
     private ProductDetail productDetail;

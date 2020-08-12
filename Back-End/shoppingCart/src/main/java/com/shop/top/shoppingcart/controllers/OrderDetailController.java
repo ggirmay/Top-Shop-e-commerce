@@ -1,6 +1,7 @@
 package com.shop.top.shoppingcart.controllers;
 
 import com.shop.top.shoppingcart.models.OrderDetail;
+import com.shop.top.shoppingcart.models.OrderDetailList;
 import com.shop.top.shoppingcart.services.OrderDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,5 +25,12 @@ public class OrderDetailController {
     @GetMapping("/specificorder/{orderid}")
     public List<OrderDetail> selectOrderDetailOfSpecificOrder(@PathVariable("orderid") Long orderId){
         return orderDetailService.selectOrderDetailOfSpecificOrder(orderId);
+    }
+    //Janvier
+    @GetMapping("/getOrderDetail")
+    public OrderDetailList getOrderDetail() {
+        OrderDetailList orderDetailList=new OrderDetailList();
+        orderDetailList.setOrderDetails(orderDetailService.getAllOrderDetail());
+        return orderDetailList ;
     }
 }

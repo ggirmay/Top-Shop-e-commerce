@@ -12,6 +12,11 @@ public class OrderDetailService {
 
     OrderDetailRepository orderDetailRepository;
 
+    //Janvier
+    public List<OrderDetail> getAllOrderDetail() {
+        return orderDetailRepository.findAll();
+    }
+
     @Autowired
     public OrderDetailService(OrderDetailRepository orderDetailRepository) {
         this.orderDetailRepository = orderDetailRepository;
@@ -20,4 +25,5 @@ public class OrderDetailService {
     public List<OrderDetail> selectOrderDetailOfSpecificOrder(Long orderId){
         return orderDetailRepository.findAllOrderDetailByOrderID(orderId);
     }
+
 }
