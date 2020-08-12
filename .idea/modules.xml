@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/Back-End/discovery/discovery.iml" filepath="$PROJECT_DIR$/Back-End/discovery/discovery.iml" />
       <module fileurl="file://$PROJECT_DIR$/Back-End/gateway/gateway.iml" filepath="$PROJECT_DIR$/Back-End/gateway/gateway.iml" />
       <module fileurl="file://$PROJECT_DIR$/Back-End/shoppingCart/shoppingcart.iml" filepath="$PROJECT_DIR$/Back-End/shoppingCart/shoppingcart.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Back-End/user/user.iml" filepath="$PROJECT_DIR$/Back-End/user/user.iml" />
     </modules>
   </component>
 </project>

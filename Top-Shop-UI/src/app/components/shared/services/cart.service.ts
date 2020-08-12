@@ -58,7 +58,7 @@ export class CartService {
             "this is in add cart in cart service second: " + product.name
           );
 
-          // call add to cart from backend in here
+          // this will update the quantity of the product because it is already added to cart
           this.updateItemInShoppingCart(
             product.id.toString(),
             "1",
@@ -155,6 +155,11 @@ export class CartService {
         let stock = this.calculateStockCounts(products[index], quantity);
         if (qty != 0 && stock) products[index]["quantity"] = qty;
         localStorage.setItem("cartItem", JSON.stringify(products));
+        this.updateItemInShoppingCart(
+          product.id.toString(),
+          "1",
+          qty
+        ).subscribe();
         return true;
       }
     });
