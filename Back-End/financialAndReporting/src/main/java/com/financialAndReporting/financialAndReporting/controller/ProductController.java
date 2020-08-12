@@ -94,12 +94,12 @@ final InputStream stream = new FileInputStream(new File(pathname));
 
     @GetMapping(value = "/testProduct")
     public ResponseEntity<ProductList> test(){
-        ProductList productList = restTemplate.getForObject("http://localhost:8083/product/getAll", ProductList.class);
+        ProductList productList = restTemplate.getForObject("http://localhost:8083/product/getAllforReporting", ProductList.class);
         return ResponseEntity.ok().body(productList);
     }
 
     private  ProductList getFromProductList(){
-        ProductList productList = restTemplate.getForObject("http://localhost:8083/product/getAll", ProductList.class);
+        ProductList productList = restTemplate.getForObject("http://localhost:8083/product/getAllforReporting", ProductList.class);
         return productList;
     }
 }

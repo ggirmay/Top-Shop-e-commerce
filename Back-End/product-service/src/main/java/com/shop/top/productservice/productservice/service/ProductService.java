@@ -11,6 +11,7 @@ import java.util.Optional;
 
 
 public interface ProductService {
+    //Rep
     List<Product> getAllProducts();
 
     Product getProduct(long id);
@@ -22,4 +23,5 @@ public interface ProductService {
     public void aproveProduct(Long id ) ;
     public void deAproveProduct(Long id);
     Page<Product> searchProduct(String prodct, Pageable pageable);
+
 }
