@@ -19,8 +19,7 @@ import java.util.List;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
-
-
+   public UserAccount userAccount;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         RestTemplate restTemplate = new RestTemplate();
@@ -36,6 +35,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         UserAccount user  = restTemplate.getForObject(uri, UserAccount.class);
 
         if (user!=null&&user.isEnabled()) {
+            userAccount =user;
             return new User(user.getUsername(), user.getPassword(),
                     Arrays.asList(new SimpleGrantedAuthority("ROLE_"+user.getRole())));
 

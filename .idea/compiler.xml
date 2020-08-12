@@ -17,6 +17,7 @@
       <module name="discovery" target="1.8" />
       <module name="gateway" target="1.8" />
       <module name="shoppingcart" target="1.8" />
+      <module name="payment" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

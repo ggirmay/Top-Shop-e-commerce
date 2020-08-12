@@ -1,5 +1,6 @@
 package com.top.shop.user.command.action;
 
+import com.top.shop.user.domain.GuestUser;
 import com.top.shop.user.domain.RegisteredUser;
 import com.top.shop.user.domain.User;
 import com.top.shop.user.repository.UserRepository;
@@ -31,5 +32,9 @@ public class UserCommandAction {
 
     public RegisteredUser save(RegisteredUser user) {
       return   userRepository.save(user);
+    }
+
+    public User createGuest(GuestUser guestUser) {
+       return userRepository.save(guestUser);
     }
 }

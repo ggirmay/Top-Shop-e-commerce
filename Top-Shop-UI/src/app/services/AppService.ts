@@ -4,37 +4,31 @@ import {Cookie} from "ng2-cookies";
 import {Observable} from "rxjs";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
+import {RegisteredUser} from "../models/userModel/RegisteredUser";
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Injectable()
 export class AppService {
   public clientId = 'newClient';
   public redirectUri = 'http://localhost:8089/';
-  private router: Router;
+
 
   constructor(
-    private _http: HttpClient,private _snackBar:MatSnackBar) {
+    private _http: HttpClient,private _snackBar:MatSnackBar,private spinner: NgxSpinnerService,private _router: Router) {
   }
 
 
   retrieveToken(username,password){
-    let params = new URLSearchParams();
-    params.append('grant_type','authorization_code');
-    params.append('client_id', this.clientId);
-    params.append('client_secret', 'newClientSecret');
-    params.append('redirect_uri', this.redirectUri);
-    // params.append("username","admin")
-    // params.append("password","password");
-    // params.append("email","yomefisseha18@gmail.com");
-    // console.log("params",params);
-
-    let headers = new HttpHeaders({'Content-type': 'application/x-www-form-urlencoded; charset=utf-8'});
     this._http.post<any>('http://localhost:8080/authenticate', {
       "password":password,
       "username":username,
       "email":"ymengit2u@outlook.com"
     })
       .subscribe(
-        data => this.saveToken(data),
+        data => {
+          this.saveToken(data)
+
+        },
         err => alert("unable to login!z")
       );
 
@@ -44,13 +38,19 @@ export class AppService {
     //     err => alert('Invalid Credentials')
     //   );
   }
-  saveToken(token) {
-    var expireDate = new Date().getTime() + (1000 * token.expires_in);
-    Cookie.set("access_token", token.access_token, expireDate);
-    Cookie.set("id_token", token.id_token, expireDate);
-    this.router.navigate(['/']);
-    this._snackBar.open("Successfully logged in", '×', { panelClass: [status], verticalPosition: 'top', duration: 3000 });
+  saveToken(data) {
+    var expireDate = new Date().getTime() + (1000 * data.token.expires_in);
+    Cookie.set("access_token", data.token.tokaccess_token, expireDate);
+    Cookie.set("id_token", data.token.id_token, expireDate);
+    Cookie.set("userAccount",data.userAccount);
 
+    let userInfo = this.getInfo("/api/user/getByAccountId/"+data.userAccount.id,null,null);
+    Cookie.set("user",userInfo,expireDate);
+    console.log(userInfo);
+    this._router.navigateByUrl('/');
+    this._snackBar.open("Successfully logged in", '', {
+      duration: 3000
+    });
   }
 
   getResource(resourceUrl){
@@ -70,8 +70,63 @@ export class AppService {
     let token = Cookie.get('id_token');
     Cookie.delete('access_token');
     Cookie.delete('id_token');
-    this.router.navigate(['/']);
-    this._snackBar.open("logged out successfully", '×', { panelClass: [status], verticalPosition: 'top', duration: 3000 });
+    this._router.navigateByUrl('/');
+    this._snackBar.open("Successfully logged out", '', {
+      duration: 3000
+    });
+  }
+
+  register(registeredUser: RegisteredUser,element) {
+    this.spinner.show();
+    this._http.post<any>('http://localhost:8086/api/user', registeredUser)
+      .subscribe(
+        data =>{
+          this.spinner.hide();
+          this._snackBar.open("user account created Please check your email", '', {
+            duration: 6000
+          });
+          this._router.navigate(['/pages/my-account']);
+          this.spinner.hide();
+          element.reset();
+          element.valid=true;
+        },
+        err =>{
+          this.spinner.hide();
+          this.error(err);
+        }
+      );
+
+  }
+
+  activate(data){
+    console.log(data);
+  }
+
+  error(err){
+    console.log(err.error);
+    var message;
+    if(err.error.message==null||err.error.message=='')
+      message = "unable to connect to server";
+   else message =err.error.message;
+    this._snackBar.open(message, '', {
+      duration: 3000
+    });
+  }
+
+  private  getInfo(queryParam:any,path,header):any {
+    // let headers = new HttpHeaders({'Authorization': 'Bearer '+Cookie.get("ccess_token")});
+    this._http.get<any>('http://localhost:8086'+path)
+      .subscribe(
+        data => {
+          console.log(data);
+          return data;
+        },
+        err => {return err;}
+      );
+  }
+
+  getRequest(){
 
   }
 }
+

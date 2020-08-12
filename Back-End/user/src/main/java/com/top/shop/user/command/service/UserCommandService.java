@@ -1,6 +1,7 @@
 package com.top.shop.user.command.service;
 
 import com.top.shop.user.command.action.UserCommandAction;
+import com.top.shop.user.domain.GuestUser;
 import com.top.shop.user.domain.RegisteredUser;
 import com.top.shop.user.domain.User;
 import com.top.shop.user.domain.UserAccount;
@@ -25,11 +26,15 @@ public class UserCommandService {
     }
 
     public boolean validateAccountInformation(String email,String userName){
-      return   userAccountQueryService.getUserAccountByEmail(email)==null?userAccountQueryService.getUserAccountByEmail(email)==null?true:false:false;
+      return   userAccountQueryService.getUserAccountByEmail(email)==null?userAccountQueryService.finsByUsername(userName)==null?true:false:false;
     }
 
 
     public RegisteredUser update(RegisteredUser registeredUser) {
         return userCommandAction.save(registeredUser);
+    }
+
+    public User createGuest(GuestUser guestUser) {
+        return userCommandAction.createGuest(guestUser);
     }
 }
