@@ -16,7 +16,6 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
@@ -40,15 +39,9 @@ public class ProductController {
 
     @Autowired
     RestTemplate restTemplate;
-
-
-
     final Logger log = LoggerFactory.getLogger(this.getClass());
     final ModelAndView model = new ModelAndView();
 
-    // @Autowired annotation provides the automatic dependency injection.
-//    @Autowired
-//    ProductService eservice;
 
     // Method to display the index page of the application.
     @GetMapping(value= "/welcome")
@@ -58,30 +51,15 @@ public class ProductController {
         return model;
     }
 
-    // Method to create the pdf report via jasper framework.
-//    @GetMapping(value = "/view")
-//    public ModelAndView viewReport() {
-//        log.info("Preparing the pdf report via jasper.");
-//        try {
-//            createPdfReport(getFromProductList().getProductList());
-//            log.info("File successfully saved at the given path.");
-//        } catch (final Exception e) {
-//            log.error("Some error has occurred while preparing the product pdf report.");
-//            e.printStackTrace();
-//        }
-
-//        // Returning the view name as the index page for ease.
-//        model.setViewName("welcome");
-//        return model;
-//    }
     @GetMapping(value = "/report")
-    public void getProductReport(HttpServletResponse response){
+    public void getProductReport(HttpServletResponse response ){
         log.info("Preparing the pdf report via jasper.");
-        //List<Product> productLists = getFromProductList().getProductList(productName);
         List<Product> productLists = getFromProductList().getProductList();
+        // Adding the additional parameters to the pdf.
         Map parameters = new HashMap();
+   parameters.put("createdBy", "Top Shop");
 //        parameters.put("ProductName",productName);
-        String pathname = "E:\\MUM\\PM\\Top-Shop-e-commerce\\financialAndReporting\\src\\main\\resources\\product_report.jrxml";
+        String pathname = "E:\\MUM\\PM\\Top-Shop-e-commerce\\Back-End\\financialAndReporting\\src\\main\\resources\\product_report.jrxml";
         try {
             response = createPdfReport(response,productLists,parameters,pathname);
             log.info("File successfully Created");
@@ -99,9 +77,7 @@ public class ProductController {
 
     // Method to create the pdf file using the product list datasource.
     public HttpServletResponse createPdfReport(HttpServletResponse response, List<Product> productList, Map parameters, String pathname) throws IOException, JRException {
-        // Fetching the .jrxml file from the resources folder.
-//       Comment from here
-//        ???\\?\final InputStream stream = this.getClass().getResourceAsStream("/product_report.jrxml");
+
 final InputStream stream = new FileInputStream(new File(pathname));
         // Compile the Jasper report from .jrxml to .japser
 //        ???//?final JasperReport report = JasperCompileManager.compileReport(stream);
@@ -116,32 +92,14 @@ final InputStream stream = new FileInputStream(new File(pathname));
         return response;
     }
 
-//
-//        final JRBeanCollectionDataSource source = new JRBeanCollectionDataSource(productList);
-//
-//        // Adding the additional parameters to the pdf.
-//        final Map<String, Object> parameters = new HashMap<>();
-//        parameters.put("createdBy", "Top Shop");
-//
-//        // Filling the report with the products data and additional parameters information.
-//        final JasperPrint print = JasperFillManager.fillReport(report, parameters, source);
-//
-//        // Users can change as per their project requrirements or can take it as request input requirement.
-//        // For simplicity, this will automatically place the file under the "E:" drive.
-//        // If users want to download the pdf file on the browser, then they need to use the "Content-Disposition" technique.
-//        final String filePath = "\\";
-//        // Export the report to a PDF file.
-//        JasperExportManager.exportReportToPdfFile(print, filePath + "Product_report.pdf");
-//    }
-
     @GetMapping(value = "/testProduct")
     public ResponseEntity<ProductList> test(){
-        ProductList productList = restTemplate.getForObject("http://localhost:8083/product/getAll", ProductList.class);
+        ProductList productList = restTemplate.getForObject("http://localhost:8083/product/getAllforReporting", ProductList.class);
         return ResponseEntity.ok().body(productList);
     }
 
     private  ProductList getFromProductList(){
-        ProductList productList = restTemplate.getForObject("http://localhost:8083/product/getAll", ProductList.class);
+        ProductList productList = restTemplate.getForObject("http://localhost:8083/product/getAllforReporting", ProductList.class);
         return productList;
     }
 }

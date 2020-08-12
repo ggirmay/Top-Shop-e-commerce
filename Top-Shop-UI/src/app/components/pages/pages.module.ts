@@ -1,6 +1,9 @@
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
-
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { BillingInfoComponent } from './checkout/billing-info/billing-info.component';
+import { CardInfoComponent } from './checkout/card-info/card-info.component';
+import { ConfirmationPageComponent } from './checkout/confirmation-page/confirmation-page.component';
+import { CheckoutWithComponent } from './cart/checkout-with/checkout-with.component';
 import { CartComponent } from "./cart/cart.component";
 import { ContactComponent } from "./contact/contact.component";
 import { WishlistComponent } from "./wishlist/wishlist.component";
@@ -34,6 +37,11 @@ import { ErrorPageComponent } from "./error-page/error-page.component";
     FaqComponent,
     AboutUsComponent,
     ErrorPageComponent,
-  ],
+    BillingInfoComponent,
+    CardInfoComponent,
+    ConfirmationPageComponent,
+    CheckoutWithComponent
+
+  ]
 })
 export class PagesModule {}
