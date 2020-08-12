@@ -41,7 +41,9 @@ export class UserService {
     var expireDate = new Date().getTime() + (1000 * data.token.expires_in);
     Cookie.set("access_token", data.token.tokaccess_token, expireDate);
     Cookie.set("id_token", data.token.id_token, expireDate);
-    console.log(data.userAccount.id);
+    Cookie.set("user_id", data.userAccount.id);
+
+    console.log();
     console.log(data);
     //let userinfo = this.getUserId(data.userAccount.id);
     this._router.navigateByUrl('/');
