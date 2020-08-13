@@ -4,6 +4,7 @@ import { MainComponent } from "./components/main/main.component";
 import { HomeComponent } from "./components/shop/home/home.component";
 import { DemoComponent } from "./components/demo/demo.component";
 import { HomeThreeComponent } from "./components/shop/home-three/home-three.component";
+import { VendorComponent } from './components/pages/vendor/vendor.component';
 
 const appRoutes: Routes = [
   {
@@ -35,10 +36,6 @@ const appRoutes: Routes = [
           import("./components/blog/blog.module").then((m) => m.BlogModule),
       },
     ],
-  },
-  {
-    path: "**",
-    redirectTo: "home/one",
   },
 ];
 
