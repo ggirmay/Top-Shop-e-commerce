@@ -18,6 +18,7 @@ import { SharedModule } from './components/shared/shared.module';
 import {UserService} from "./services/UserService";
 import {User} from "./models/userModel/User";
 import { VendorService } from './services/vendor-service.service';
+//import { VendorService } from './services/vendor-service.service';
 
 
 @NgModule({
@@ -40,7 +41,7 @@ import { VendorService } from './services/vendor-service.service';
     MatRadioModule,
     MatCheckboxModule
   ],
-  providers: [UserService,VendorService],
+  providers: [UserService, VendorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

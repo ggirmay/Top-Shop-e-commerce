@@ -27,7 +27,7 @@ export class CartService {
     this.cartItems.subscribe((products) => (products = products));
     this.itemDetail = new Item_detail();
     this.shoppingCartUrl =
-      "http://localhost:8080/shopping-cart-service/shoppingcart/";
+      "http://localhost:8087/shoppingcart/";
 
     this.getCartId();
   }
@@ -54,7 +54,7 @@ export class CartService {
       let items: CartItem[] = [];
       this.httpClient
         .get<Item_detail[]>(
-          "http://localhost:8080/shopping-cart-service/itemdetail/shoppingcart/" +
+          "http://localhost:8087/itemdetail/shoppingcart/" +
             this.cartId
         )
         .subscribe((data) => {
