@@ -26,14 +26,26 @@ public class ShoppingCartService {
         return shoppingCartRepository.save(shoppingCart);
     }
 
+    public ShoppingCart getShoppingCartId(Long userId) throws Exception {
+        try {
+            return shoppingCartRepository.findByUserId(userId);
+        }catch (Exception e){
+            throw new Exception("user doesn't have shopping cart id ");
+        }
+    }
     public ShoppingCart addItemToCart(Long cartId, ItemDetail itemDetail) throws RecordNotFoundException {
+        System.out.println("this is shopping cart service cart id" + cartId);
+
         Optional<ShoppingCart> shoppingCart =  shoppingCartRepository.findById(cartId);
         ShoppingCart result = null;
 
         if(shoppingCart.isPresent()){
             result = shoppingCart.get();
             result.getItemDetails().add(itemDetail);
+            System.out.println("value saved in item ==" + result.getItemDetails());
+
             shoppingCartRepository.save(result);
+            System.out.println("value saved in item detail" + result.getShoppingCartId());
         }else{
             throw new RecordNotFoundException("Shopping Cart doesn't exist, Shopping Cart ID: ", cartId);
         }
@@ -43,7 +55,6 @@ public class ShoppingCartService {
 
     public boolean deleteItemFromCart(Long itemId, Long cartId) throws RecordNotFoundException {
         Optional<ShoppingCart> shoppingCart = shoppingCartRepository.findById(cartId);
-
         if(shoppingCart.isPresent()) {
             return itemDetailService.deleteItemFromShoppingCart(itemId, cartId);
         }

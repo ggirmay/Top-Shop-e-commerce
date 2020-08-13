@@ -134,11 +134,36 @@
     > -->
     <!-- <a mat-button class="mat-button" [routerLink]="['']">Sell your product</a> -->
     <a
-      fxShow="false"
-      fxShow.gt-xs
+      mat-button
+      class="mat-button"
       [routerLink]="['/pages/vendor']"
       routerLinkActive="router-link-active"
       >sell product</a
+    >
+
+    <a
+      mat-button
+      class="mat-button"
+      [routerLink]="['/pages/vendor']"
+      *ngIf="userRole == 'VENDOR'"
+      routerLinkActive="router-link-active"
+      >Add Product</a
+    >
+    <a
+      mat-button
+      class="mat-button"
+      [routerLink]="['/pages/vendor']"
+      *ngIf="userRole == 'VENDOR'"
+      routerLinkActive="router-link-active"
+      >Manage Procuct</a
+    >
+    <a
+      mat-button
+      class="mat-button"
+      [routerLink]="['/pages/vendor']"
+      *ngIf="userRole == 'VENDOR'"
+      routerLinkActive="router-link-active"
+      >Generated Report</a
     >
   </div>
 </mat-toolbar-row>

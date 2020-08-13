@@ -17,4 +17,6 @@ public interface ItemDetailRepository extends JpaRepository<ItemDetail, Long> {
     @Query(value = "select * from item_detail where shopping_cart_id = :cartId", nativeQuery = true)
     List<ItemDetail> selectAllShoppingCartItems(@Param("cartId")Long cartItem);
 
+    @Query(value = "select * from item_detail where status = 'A' and shopping_cart_id = :cartId", nativeQuery = true)
+    List<ItemDetail> findActiveItemInShoppingCart(@Param("cartId")Long cartId);
 }
