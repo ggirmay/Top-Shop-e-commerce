@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/components/shared/services/product.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Product, ColorFilter } from 'src/app/modals/product.model';
+import {Category} from "../../../../modals/Category";
 
 @Component({
   selector: 'app-product-left-sidebar',
@@ -27,7 +28,8 @@ export class ProductLeftSidebarComponent implements OnInit {
   constructor(private productService: ProductService, private route: ActivatedRoute) {
     this.route.params.subscribe(
       (params: Params) => {
-        const category = params['category'];
+     const category = params['category'];
+
         this.productService.getProductByCategory(category).subscribe(products => {
        this.allItems = products;
        this.products = products.slice(0.8);

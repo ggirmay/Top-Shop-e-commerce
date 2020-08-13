@@ -4,6 +4,7 @@ import { MainComponent } from "./components/main/main.component";
 import { HomeComponent } from "./components/shop/home/home.component";
 import { DemoComponent } from "./components/demo/demo.component";
 import { HomeThreeComponent } from "./components/shop/home-three/home-three.component";
+import  { AddproductComponent } from "./components/shop/products/product/AddProduct.component";
 
 const appRoutes: Routes = [
   {
@@ -35,6 +36,10 @@ const appRoutes: Routes = [
           import("./components/blog/blog.module").then((m) => m.BlogModule),
       },
     ],
+  },
+  {
+    path: "product/addNewProduct",
+    component: AddproductComponent,
   },
   {
     path: "**",

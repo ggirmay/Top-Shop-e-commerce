@@ -4,6 +4,7 @@ import { HttpClient } from "@angular/common/http";
 import { Product } from "src/app/modals/product.model";
 import { MatSnackBar } from "@angular/material";
 import { map } from "rxjs/operators";
+import {Category} from "../../../modals/Category";
 
 // Get product from Localstorage
 let products = JSON.parse(localStorage.getItem("compareItem")) || [];
@@ -130,12 +131,12 @@ export class ProductService {
   }
 
   // Get Products By category
-  public getProductByCategory(category: string): Observable<Product[]> {
+  public getProductByCategory(category: Category): Observable<Product[]> {
     return this.products().pipe(
       map((items) =>
         items.filter((item: Product) => {
           if (category == "all") return item;
-          else return item.category === category;
+          else return item.category.name === category;
         })
       )
     );
