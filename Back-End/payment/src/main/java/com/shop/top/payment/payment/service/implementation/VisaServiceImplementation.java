@@ -97,6 +97,8 @@ public class VisaServiceImplementation implements VisaService {
         if(optionalCard.isPresent() && optionalCard.get().isDeleted() == false){
 
             Visa card = optionalCard.get();
+            
+            System.out.println(card);
 
             if(card.getSecurityDigit().equals(securityDigit)){
 

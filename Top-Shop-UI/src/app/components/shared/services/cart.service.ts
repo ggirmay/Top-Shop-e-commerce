@@ -1,11 +1,11 @@
-import { Injectable } from "@angular/core";
-import { Product } from "src/app/modals/product.model";
-import { MatSnackBar } from "@angular/material/snack-bar";
-import { CartItem } from "src/app/modals/cart-item";
+import { Injectable } from '@angular/core';
+import { Product } from '../../../modals/product.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { CartItem } from '../../../modals/cart-item';
 import { map, timeInterval } from "rxjs/operators";
 import { Observable, BehaviorSubject, Subscriber, of } from "rxjs";
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
-import { Item_detail } from "src/app/modals/item_detail";
+import { Item_detail } from '../../../modals/item_detail';
 import { Cookie } from "ng2-cookies";
 
 // Get product from Localstorage
@@ -203,14 +203,14 @@ export class CartService {
     });
   }
 
-  public getNewTotalAmount(): Observable<number> {
-    let items: CartItem[] = JSON.parse(localStorage.getItem("checkoutItem"));
-    return of(
-      items.reduce((prev, curr: CartItem) => {
-        return prev + curr.product.price * curr.quantity;
-      }, 0)
-    );
-  }
+  // public getNewTotalAmount(): Observable<number> {
+  //   let items: CartItem[] = JSON.parse(localStorage.getItem("checkoutItem"));
+  //   return of(
+  //     items.reduce((prev, curr: CartItem) => {
+  //       return prev + curr.product.price * curr.quantity;
+  //     }, 0)
+  //   );
+  // }
 
   //============================================================================
   // my custome methods
@@ -221,6 +221,15 @@ export class CartService {
       this.shoppingCartUrl + "additem/" + this.cartId,
       itemDetail
     );
+  }
+
+  public getNewTotalAmount(): Observable<number> {
+
+    let items: CartItem[] = JSON.parse(localStorage.getItem('checkoutItem'))
+    return of(items.reduce((prev, curr: CartItem) => {
+      return prev + curr.product.price * curr.quantity;
+    }, 0));
+
   }
 
   public updateItemInShoppingCart(

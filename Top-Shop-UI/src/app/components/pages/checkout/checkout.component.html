@@ -1,4 +1,8 @@
 <div class="container">
+  
+  <!-- !MODAL CONFIRMATION -->
+  <app-proceed *ngIf="modal" [modal]="modal" (placeOrder)="checkout()" (closeModal)="closeModal($event)" > </app-proceed>
+
   <div class="checkout sec-padding">
     <div fxLayout="row wrap" class="">
       <div class="billing-details  pr-15" fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50">
@@ -15,14 +19,14 @@
 
               <mat-radio-button (change)="billingChange($event)" style="margin: 10px;"
                 *ngFor="let address of billingInformations" [value]="address">
-                <mat-card *ngIf="(address.firstName || address.lastName) && address.email" style="min-width: 200px;">
+                <mat-card *ngIf="address.firstName || address.lastName" style="min-width: 200px;">
                   <h4>{{address.firstName}} {{address.lastName}}</h4>
                   <p> {{address.email}} </p>
                   <p> {{address.phone}} </p>
                   <p> {{address.town}} </p>
                   <p> {{address.state}} {{address.postCode}} {{address.country}} </p>
                 </mat-card>
-                <mat-card *ngIf="!address.firstName && !address.lastName && !address.email">
+                <mat-card *ngIf="!address.firstName && !address.lastName">
                   <h4>New Billing Information</h4>
                 </mat-card>
               </mat-radio-button>
@@ -92,6 +96,8 @@
                 <span class="count">{{ getNewTotal() | async | currency:productService?.currency:'symbol'}}</span>
               </li>
             </ul>
+
+            
 
             <div class="order">
               <button class="btn-project" (click)="placeOrder()" mat-raised-button color="accent">

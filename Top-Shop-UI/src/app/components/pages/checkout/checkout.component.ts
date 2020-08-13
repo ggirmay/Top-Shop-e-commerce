@@ -1,15 +1,17 @@
 import { Component, OnInit , ViewChild , AfterViewInit } from '@angular/core';
 import { CartService } from '../../shared/services/cart.service';
-import { Observable, of } from 'rxjs';
-import { CartItem } from 'src/app/modals/cart-item';
+import { Observable, of, from } from 'rxjs';
+import { CartItem } from '../../../modals/cart-item';
 import { ProductService } from '../../shared/services/product.service';
-import { PaymentInformation } from 'src/app/modals/payment-information';
-import { BillingInformation } from 'src/app/modals/billing-information';
-import { NgForm } from '@angular/forms';
+import { PaymentInformation } from '../../../modals/payment-information';
+import { BillingInformation } from '../../../modals/billing-information';
 import { CardInfoComponent } from './card-info/card-info.component';
 import { MatRadioChange } from '@angular/material/radio';
 import { BillingInfoComponent } from './billing-info/billing-info.component';
-import { CheckoutService } from 'src/app/services/checkout.service';
+import { CheckoutService } from '../../../services/checkout.service';
+import { HttpClient } from '@angular/common/http';
+import { UserDTO } from '../../../modals/dto/user-dto';
+import { Cookie } from 'ng2-cookies';
 
 @Component({
   selector: 'app-checkout',
@@ -18,6 +20,8 @@ import { CheckoutService } from 'src/app/services/checkout.service';
 })
 export class CheckoutComponent implements AfterViewInit {
 
+  modal: boolean = false;
+
   public cartItems: Observable<CartItem[]> = of([]);
   public buyProducts: CartItem[] = [];
 
@@ -25,7 +29,7 @@ export class CheckoutComponent implements AfterViewInit {
   payments: string[] = ['Create an Account?', 'Flat Rate'];
   
   paymentInformations: PaymentInformation[] = [
-    {
+    /*{
       cardNumber: "4956-6580-0568-0385",
       expDate: "12/2030",
       nameOnCard: "Mickael",
@@ -37,12 +41,12 @@ export class CheckoutComponent implements AfterViewInit {
       nameOnCard: "Mika",
       secDigit: "652"
     },
-    new PaymentInformation()
+    new PaymentInformation()*/
 
   ];
 
   billingInformations: BillingInformation[] = [
-    {
+    /*{
       firstName: "Ny",
       lastName: "Andriantsoa",
       email: "nandriantsoa@miu.edu",
@@ -64,7 +68,7 @@ export class CheckoutComponent implements AfterViewInit {
       postcode: "52543",
       phone: "+1 685-451-0220"
     },
-    new BillingInformation()
+    new BillingInformation()*/
   ];
 
   billingChosed: BillingInformation;
@@ -74,7 +78,7 @@ export class CheckoutComponent implements AfterViewInit {
   @ViewChild(BillingInfoComponent) billingInfoChild;
 
   constructor(private cartService: CartService, public productService: ProductService , 
-              private checkoutService: CheckoutService  ) { }
+              private checkoutService: CheckoutService , private http : HttpClient) { }
 
   ngAfterViewInit(){
   }
@@ -86,7 +90,8 @@ export class CheckoutComponent implements AfterViewInit {
     this.cartItems.subscribe(products => this.buyProducts = products);
     this.getTotal().subscribe(amount => this.amount = amount);
 
-    this.billingChosed = this.billingInformations[0] || new BillingInformation();
+    this.getBillingInformation();
+    //this.billingChosed = this.billingInformations[0] || new BillingInformation();
     this.paymentChosed = this.paymentInformations[0] || new PaymentInformation();
 
   }
@@ -105,10 +110,19 @@ export class CheckoutComponent implements AfterViewInit {
     
     if(this.checkoutService.checkOrder(this.cardInfoChild.paymentInformation , this.billingInfoChild.billingInformation)){
       
-      this.checkoutService.placeOrder(this.cardInfoChild.paymentInformation , this.billingInfoChild.billingInformation);
+      this.modal = true;
+      //this.checkoutService.prepare(this.cardInfoChild.paymentInformation , this.billingInfoChild.billingInformation)
       
     }
 
+  }
+
+  checkout(){
+    this.checkoutService.placeOrder(this.cardInfoChild.paymentInformation , this.billingInfoChild.billingInformation);
+  }
+
+  closeModal(event){
+    this.modal = event;
   }
 
   paymentChange(event : MatRadioChange){
@@ -121,14 +135,32 @@ export class CheckoutComponent implements AfterViewInit {
     this.billingInfoChild.billingInformation = this.billingChosed;
   }
 
+  getBillingInformation(){
+    let id : string = Cookie.get('user_id')
+    if(id) {
+      this.http.get<UserDTO>('localhost:8086/api/user/get_guest/' + id).subscribe((response) => {
+        let arr : BillingInformation[] = [];
+
+        for(let address of response.addressList){
+          arr.push({
+            firstName : response.firstName,
+            lastName : response.lastName,
+            email : "",
+            address : address.addressLineOne + " " + address.addressLineTwo,
+            town : address.city,
+            state : address.state,
+            phone : ""
+          })
+        }
+
+        this.billingInformations = [...arr , new BillingInformation()];
+
+        this.paymentInformations = [...response.paymentInformation , new PaymentInformation()];
+
+      },(err) => {
+        console.log(err)
+      })
+    }
+  }
+
 }
-
-
-/*console.log(this.paymentChosed);*/
-
-    /*{
-      cardNumber: "1111111111111",
-      expDate: "11111111111",
-      nameOnCard: "1111111111111",
-      secDigit: "2111111111"
-    }*/
