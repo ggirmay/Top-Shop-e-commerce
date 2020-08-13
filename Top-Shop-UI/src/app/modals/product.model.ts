@@ -1,11 +1,7 @@
 // Product Tag
-<<<<<<< HEAD
 import {Category} from "./Category";
 
 export type ProductTags = 'nike' | 'puma' | 'lifestyle' | 'caprese';
-=======
-export type ProductTags = "nike" | "puma" | "lifestyle" | "caprese";
->>>>>>> c4b3d31aa0666c0c706d55533616e05d9ddf3350
 
 // Product Colors
 export type ProductColor =
