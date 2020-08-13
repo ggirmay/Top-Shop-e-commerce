@@ -20,7 +20,6 @@ public class OrderController {
 
     @PostMapping(value = "/placeorder", consumes = "application/json", produces = "application/json")
     public Orders placeOrder(@RequestBody Orders order){
-        System.out.println("this is order controller");
         try {
             return orderService.placeOrder(order);
         }catch (Exception e){

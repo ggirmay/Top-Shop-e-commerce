@@ -2,10 +2,11 @@ import { Injectable } from "@angular/core";
 import { Product } from "src/app/modals/product.model";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { CartItem } from "src/app/modals/cart-item";
-import { map } from "rxjs/operators";
+import { map, timeInterval } from "rxjs/operators";
 import { Observable, BehaviorSubject, Subscriber, of } from "rxjs";
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Item_detail } from "src/app/modals/item_detail";
+import { Cookie } from "ng2-cookies";
 
 // Get product from Localstorage
 let products = JSON.parse(localStorage.getItem("cartItem")) || [];
@@ -19,21 +20,58 @@ export class CartService {
   public observer: Subscriber<{}>;
   public shoppingCartUrl: string;
   public itemDetail: Item_detail;
+  public userId = Cookie.get("user_id");
+  public cartId: number;
 
   constructor(public snackBar: MatSnackBar, public httpClient: HttpClient) {
     this.cartItems.subscribe((products) => (products = products));
     this.itemDetail = new Item_detail();
     this.shoppingCartUrl =
       "http://localhost:8080/shopping-cart-service/shoppingcart/";
+
+    this.getCartId();
+  }
+
+  public getCartId() {
+    this.httpClient
+      .get<number>(this.shoppingCartUrl + "cartid/" + this.userId)
+      .subscribe((data) => {
+        this.cartId = data;
+      });
   }
 
   // Get Products
   public getItems(): Observable<CartItem[]> {
-    const itemsStream = new Observable((observer) => {
-      observer.next(products);
-      observer.complete();
-    });
-    return <Observable<CartItem[]>>itemsStream;
+    let id = Cookie.get("user_id");
+
+    if (id != null) {
+      const itemsStream = new Observable((observer) => {
+        observer.next(products);
+        observer.complete();
+      });
+      return <Observable<CartItem[]>>itemsStream;
+    } else {
+      let items: CartItem[] = [];
+      this.httpClient
+        .get<Item_detail[]>(
+          "http://localhost:8080/shopping-cart-service/itemdetail/shoppingcart/" +
+            this.cartId
+        )
+        .subscribe((data) => {
+          for (let i of data) {
+            items.push({
+              product: {
+                name: i.productName,
+                price: i.unitPrice,
+                id: i.productId,
+              },
+              quantity: i.quantity,
+            });
+          }
+        });
+
+      return of(items);
+    }
   }
 
   public getCheckoutItems(): CartItem[] {
@@ -65,13 +103,9 @@ export class CartService {
           // this will update the quantity of the product because it is already added to cart
           this.updateItemInShoppingCart(
             product.id.toString(),
-            "1",
+            this.cartId,
             qty
           ).subscribe();
-
-          console.log(
-            "this is in add cart in cart service " + this.itemDetail.productName
-          );
         }
         return true;
       }
@@ -133,7 +167,7 @@ export class CartService {
 
     this.removeItemFromShoppingCart(
       item.product.id.toString(),
-      "1"
+      this.cartId
     ).subscribe();
   }
 
@@ -161,7 +195,7 @@ export class CartService {
         localStorage.setItem("cartItem", JSON.stringify(products));
         this.updateItemInShoppingCart(
           product.id.toString(),
-          "1",
+          this.cartId,
           qty
         ).subscribe();
         return true;
@@ -184,29 +218,19 @@ export class CartService {
   // add item to the item detail table (add item to shopping cart)
   public addToShoppingCartInBackend(itemDetail: Item_detail) {
     return this.httpClient.post<Item_detail>(
-      this.shoppingCartUrl + "additem/1",
+      this.shoppingCartUrl + "additem/" + this.cartId,
       itemDetail
     );
   }
 
-
-  public getNewTotalAmount(): Observable<number> {
-
-    let items: CartItem[] = JSON.parse(localStorage.getItem('checkoutItem'))
-    return of(items.reduce((prev, curr: CartItem) => {
-      return prev + curr.product.price * curr.quantity;
-    }, 0));
-
-  }
-
   public updateItemInShoppingCart(
     productId: string,
-    cartId: string,
+    cartId: number,
     quantity: string
   ) {
     const param = new HttpParams()
       .set("itemid", productId)
-      .set("cartid", cartId)
+      .set("cartid", cartId.toString())
       .set("quantity", quantity);
 
     console.log("this is update item from cart");
@@ -217,10 +241,10 @@ export class CartService {
   }
 
   // change status of item in item detail table from 'A' to 'D' (remove item from shopping cart)
-  public removeItemFromShoppingCart(productId: string, cartId: string) {
+  public removeItemFromShoppingCart(productId: string, cartId: number) {
     const param = new HttpParams()
       .set("productid", productId)
-      .set("cartid", cartId);
+      .set("cartid", cartId.toString());
 
     console.log("this is remove from cart");
     return this.httpClient.put<any>(this.shoppingCartUrl + "deleteitem", param);

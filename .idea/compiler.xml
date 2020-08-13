@@ -9,6 +9,9 @@
         <outputRelativeToContentRoot value="true" />
         <module name="user" />
         <module name="discovery" />
+        <module name="product-service" />
+        <module name="payment" />
+        <module name="financialAndReporting" />
         <module name="gateway" />
         <module name="config" />
         <module name="shoppingcart" />
