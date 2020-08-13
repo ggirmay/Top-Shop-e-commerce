@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { VendorService } from "src/app/services/vendor-service.service";
+import { VendorService } from "../../../services/vendor-service.service";
 import { CommonModule } from "@angular/common";
 import { BrowserModule } from "@angular/platform-browser";
 
