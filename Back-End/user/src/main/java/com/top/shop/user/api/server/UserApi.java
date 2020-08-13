@@ -31,10 +31,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 
-import javax.print.attribute.standard.Media;
 import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.Path;
 import java.util.List;
+
 
 @RestController
 @RequestMapping("api/user")

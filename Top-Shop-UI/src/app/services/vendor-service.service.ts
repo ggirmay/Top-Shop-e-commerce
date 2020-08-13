@@ -4,10 +4,11 @@ import {Cookie} from "ng2-cookies";
 import {Observable} from "rxjs";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
-import {RegisteredUser} from "../models/userModel/RegisteredUser";
+//import {RegisteredVendor} from "../models/VendorModel/RegisteredVendor";
 import {NgxSpinnerService} from "ngx-spinner";
+import { Vendor } from '../models/vendorModel/Vendor';
 @Injectable()
-export class UserService {
+export class VendorService {
   public clientId = 'newClient';
   public redirectUri = 'http://localhost:8089/';
 
@@ -41,12 +42,10 @@ export class UserService {
     var expireDate = new Date().getTime() + (1000 * data.token.expires_in);
     Cookie.set("access_token", data.token.tokaccess_token, expireDate);
     Cookie.set("id_token", data.token.id_token, expireDate);
-    Cookie.set("user_id", data.userAccount.id);
-
-    console.log();
+    console.log(data.vendorAccount.id);
     console.log(data);
     //let userinfo = this.getUserId(data.userAccount.id);
-    this._router.navigateByUrl('/');
+    this._router.navigateByUrl('/vendor');
     this._snackBar.open("Successfully logged in", '', {
       duration: 3000
     });
@@ -75,16 +74,16 @@ export class UserService {
     });
   }
 
-  register(registeredUser: RegisteredUser,element) {
+  register(vendor: Vendor, element) {
     this.spinner.show();
-    this._http.post<any>('http://localhost:8086/api/user', registeredUser)
+    this._http.post<any>('http://localhost:8086/api/vendor', vendor)
       .subscribe(
         data =>{
           this.spinner.hide();
-          this._snackBar.open("user account created Please check your email", '', {
+          this._snackBar.open("vendor account created Please check your email", '', {
             duration: 6000
           });
-          this._router.navigate(['/pages/my-account']);
+          this._router.navigate(['/pages/vendor']);
           this.spinner.hide();
           element.reset();
           element.valid=true;
@@ -114,7 +113,7 @@ export class UserService {
 
   private  getUserId(id:number){
     // let headers = new HttpHeaders({'Authorization': 'Bearer '+Cookie.get("ccess_token")});
-  return   this._http.get<any>('http://localhost:8086/api/user/getByAccountId/'+id)
+  return   this._http.get<any>('http://localhost:8086/api/vendor/getByAccountId/'+id)
       .subscribe(
         data => {
           return data;
@@ -127,4 +126,5 @@ export class UserService {
 
   }
 }
+
 
