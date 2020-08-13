@@ -59,18 +59,18 @@
 
                             <!-- <div> Address </div> -->
   
-                             <!-- <div  fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" class="mt-20 pr-5" ngClass.sm="mt-10" ngClass.xs="mt-10">
+                             <div  fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" class="mt-20 pr-5" ngClass.sm="mt-10" ngClass.xs="mt-10">
                                 <mat-form-field class="w-100">
                                   <input matInput placeholder="First name (required)" #firstName="ngModel" ngModel name="firstName" required>
                                   <mat-error *ngIf="firstName.invalid">Please enter a valid message</mat-error>
                                 </mat-form-field>
-                              </div> -->
-                              <!-- <div  fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" class="pl-5 mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
+                              </div>
+                              <div  fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" class="pl-5 mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
                                 <mat-form-field class="w-100">
                                   <input matInput placeholder="Last name (required)" #lastName="ngModel" ngModel name="lastName" required>
                                   <mat-error *ngIf="lastName.invalid">Please enter a valid message</mat-error>
                                 </mat-form-field>
-                              </div> -->
+                              </div>
                            
                               <div  fxFlex="100" fxFlex.gt-sm="100" class="mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
                                 <mat-form-field class="w-100">
@@ -83,6 +83,13 @@
                                 <mat-form-field class="w-100">
                                   <input matInput placeholder="State / Country (required)" #state="ngModel" ngModel name="state" required>
                                   <mat-error *ngIf="state.invalid">Please enter a valid message</mat-error>
+                                </mat-form-field>
+                              </div>
+
+                              <div  fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" class="pl-5 mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
+                                <mat-form-field class="w-100">
+                                  <input matInput placeholder="Postcode / zip (required)" #postcode="ngModel" ngModel name="postcode" required>
+                                  <mat-error *ngIf="postcode.invalid">Please enter a valid message</mat-error>
                                 </mat-form-field>
                               </div>
 
@@ -126,7 +133,11 @@
                               <!-- payment information-->
                             
                             
-                            
+                              <!-- <div class="title">
+                                <br/>
+                                <h3>Payment information</h3>
+                                <br/>
+                              </div> -->
                             
   
                             <div  fxFlex="100" fxFlex.gt-md="100" fxFlex.md="100" class="mt-20 pr-5" ngClass.sm="mt-10" ngClass.xs="mt-10">
