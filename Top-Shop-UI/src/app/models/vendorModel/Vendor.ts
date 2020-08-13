@@ -7,6 +7,7 @@ export class Vendor{
   private address:Address;
   private paymentInformation: PaymentInformation[];
   private userAccount : UserAccount;
+  
 
   constructor(address: Address, paymentInformation: PaymentInformation[], userAccount: UserAccount) {
     this.address = address;

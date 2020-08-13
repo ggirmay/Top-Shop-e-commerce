@@ -19,7 +19,7 @@ import { ShopModule } from './components/shop/shop.module';
 import { SharedModule } from './components/shared/shared.module';
 import {UserService} from "./services/UserService";
 import {User} from "./models/userModel/User";
-import { VendorComponent } from './components/pages/vendor/vendor.component';
+import { VendorService } from './services/vendor-service.service';
 
 
 @NgModule({
@@ -27,7 +27,6 @@ import { VendorComponent } from './components/pages/vendor/vendor.component';
     AppComponent,
     DemoComponent,
     MainComponent,
-    VendorComponent
   ],
   imports: [
     NgxSpinnerModule,
@@ -43,7 +42,7 @@ import { VendorComponent } from './components/pages/vendor/vendor.component';
     MatRadioModule,
     MatCheckboxModule
   ],
-  providers: [UserService],
+  providers: [UserService,VendorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

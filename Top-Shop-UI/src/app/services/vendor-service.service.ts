@@ -45,7 +45,7 @@ export class VendorService {
     console.log(data.vendorAccount.id);
     console.log(data);
     //let userinfo = this.getUserId(data.userAccount.id);
-    this._router.navigateByUrl('/');
+    this._router.navigateByUrl('/vendor');
     this._snackBar.open("Successfully logged in", '', {
       duration: 3000
     });
@@ -83,7 +83,7 @@ export class VendorService {
           this._snackBar.open("vendor account created Please check your email", '', {
             duration: 6000
           });
-          this._router.navigate(['/pages/my-account']);
+          this._router.navigate(['/pages/vendor']);
           this.spinner.hide();
           element.reset();
           element.valid=true;

@@ -12,7 +12,7 @@ import { Vendor } from 'src/app/models/vendorModel/Vendor';
 import { UserAccount } from 'src/app/models/vendorModel/UserAccount';
 
 @Component({
-  selector: 'app-my-account',
+  selector: 'app-vendor',
   templateUrl: './vendor.component.html',
   styleUrls: ['./vendor.component.sass']
 })
@@ -58,11 +58,11 @@ export class VendorComponent implements OnInit {
 
 
     console.log(vendor);
-    // this._service.register(registeredVendor,element);
+    this._service.register(vendor,element);
 
-    // this.router.navigateByUrl('/').then(
-    //   () => {this.router.navigateByUrl('pages/my-account');});
-    // element.reset();
+    this.router.navigateByUrl('/').then(
+      () => {this.router.navigateByUrl('pages/vendor');});
+    element.reset();
 
   }
 
