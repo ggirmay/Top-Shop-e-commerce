@@ -131,8 +131,10 @@
       mat-button
       class="mat-button"
       >Contact</a
+
     > -->
     <!-- <a mat-button class="mat-button" [routerLink]="['']">Sell your product</a> -->
+
     <a
       mat-button
       class="mat-button"
@@ -144,6 +146,7 @@
     <a
       mat-button
       class="mat-button"
+
       [routerLink]="['/pages/vendor']"
       *ngIf="userRole == 'VENDOR'"
       routerLinkActive="router-link-active"
@@ -165,5 +168,10 @@
       routerLinkActive="router-link-active"
       >Generated Report</a
     >
+
+      > Sell your product</a>
+    <!-- <a mat-button class="mat-button" [routerLink]="['']">Sell your product</a> -->
   </div>
+
+
 </mat-toolbar-row>
