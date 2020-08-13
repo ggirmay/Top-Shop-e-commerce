@@ -24,4 +24,6 @@ public interface ProductService {
     public void deAproveProduct(Long id);
     Page<Product> searchProduct(String prodct, Pageable pageable);
 
+    List<Product> getPendingProducts();
+
 }

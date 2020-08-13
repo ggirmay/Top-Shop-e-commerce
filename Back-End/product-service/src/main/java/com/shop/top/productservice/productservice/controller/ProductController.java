@@ -28,7 +28,6 @@ import java.util.Optional;
 import java.util.zip.DataFormatException;
 import java.util.zip.Deflater;
 import java.util.zip.Inflater;
-@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/product")
 public class ProductController {
@@ -46,19 +45,23 @@ public class ProductController {
     public ProductController( ProductService productService){
 this.productService=productService;
     }
+    @CrossOrigin
     @GetMapping("/getAll")
     public  Iterable<Product> getProductss() {
         return productService.getAllProducts();
     }
+    @CrossOrigin
 @PostMapping("/save")
     public Product addProduct(@RequestBody Product product){
         System.out.println("Hello");
     return productService.save(product);
 }
+    @CrossOrigin
     @GetMapping("/{id}")
     Product getProduct(@PathVariable Long id) {
         return productService.getProduct(id);
     }
+    @CrossOrigin
     @PutMapping("/{id}")
    ResponseEntity<Product>  editProduct(@RequestBody Product newProduct, @PathVariable Long id) {
 
@@ -74,11 +77,13 @@ this.productService=productService;
         return ResponseEntity.ok(updatedProduct);
     }
 
+    @CrossOrigin
     @DeleteMapping("/{id}")
     void deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);
     }
     //======================================================
+    @CrossOrigin
     @PostMapping(value = "/upload",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public String uplaodImage(@RequestPart("image") MultipartFile file , @RequestPart(value = "product") Product product) throws IOException {
         System.out.println("hellooooo");
@@ -122,11 +127,13 @@ this.productService=productService;
 //
 //    }
 
+    @CrossOrigin
     @GetMapping("/promoted-products")
     public List<Product> promotedProduct(){
         return this.promotionService.getAllPromotedProducts();
     }
 
+    @CrossOrigin
     @PutMapping("/updateQuantity/{id}/{quantity}")
 public Product updateQuantity(@PathVariable Long id, @PathVariable int quantity){
         Product product=productService.getProduct(id);
@@ -201,6 +208,7 @@ public Product updateQuantity(@PathVariable Long id, @PathVariable int quantity)
 
     }
     //=======================================
+    @CrossOrigin
     @GetMapping("/search")
 
     public Page<Product> findAll(@RequestParam  Optional<String> productName, @RequestParam Optional<Integer> page,
@@ -210,6 +218,7 @@ public Product updateQuantity(@PathVariable Long id, @PathVariable int quantity)
               5, Sort.by(Sort.Direction.ASC,sortby.orElse("id"))));
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/getImage", method = RequestMethod.GET,
             produces = MediaType.IMAGE_JPEG_VALUE)
     public  synchronized ResponseEntity<byte[]> getImage(@RequestParam String image_id) throws Exception {
@@ -222,10 +231,49 @@ public Product updateQuantity(@PathVariable Long id, @PathVariable int quantity)
     }
 
     //Janvier Reporting Module
+    @CrossOrigin
     @GetMapping("/getAllforReporting")
     public ProductList getProducts() {
         ProductList productList=new ProductList();
         productList.setProductList(productService.getAllProducts());
         return productList ;
+    }
+    @CrossOrigin
+    @GetMapping("/pending")
+    public ResponseEntity<List<Product>> pending() {
+        return ResponseEntity.ok().body(productService.getPendingProducts());
+    }
+
+    @CrossOrigin
+    @GetMapping("/approve/{id}")
+    public ResponseEntity pending(@PathVariable Long id) {
+        productService.aproveProduct(id);
+
+        return ResponseEntity.ok().body(new PlainText("Approved"));
+
+    }
+
+    @CrossOrigin
+    @GetMapping("/reject/{id}")
+    public ResponseEntity reject(@PathVariable Long id) {
+        System.out.println("I am here");
+        productService.deAproveProduct(id);
+        return ResponseEntity.ok().body(new PlainText("Depproved"));
+    }
+}
+
+class  PlainText{
+    private String message;
+
+    public PlainText(String message) {
+        this.message = message;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

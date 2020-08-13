@@ -33,4 +33,23 @@ public class VendorQueryAction {
     public List<PaymentInformation> findPaymentInfo(Long id) {
         return repository.findAllPaymentInformationById(id);
     }
+
+    public List<Vendor> getPendingBVendors() {
+
+        return repository.findPendingAccount();
+    }
+
+    public void approveVendor(Long vendor_id) {
+        Vendor v = repository.getOne(vendor_id);
+        v.getUserAccount().setEnabled(true);
+
+        repository.save(v);
+    }
+
+    public void rejectVendor(Long vendor_id) {
+        Vendor v = repository.getOne(vendor_id);
+        v.getUserAccount().setEnabled(false);
+
+        repository.save(v);
+    }
 }

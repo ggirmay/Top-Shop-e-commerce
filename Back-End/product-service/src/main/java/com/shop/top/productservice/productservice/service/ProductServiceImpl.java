@@ -49,9 +49,8 @@ public class ProductServiceImpl implements ProductService {
 //    }
     @Override
     public void  deleteProduct(Long id){
-     Product product=   productRepository.findById(id)
-             .orElseThrow(()->new ResourceNotFoundException(id));
-        product.setStatus(ProductStatus.removed);
+     productRepository.deleteById(id);
+
     }
 
     @Override
@@ -59,13 +58,16 @@ public class ProductServiceImpl implements ProductService {
         Product product= productRepository.findById(id)
                 .orElseThrow(()->new ResourceNotFoundException(id));
         product.setStatus(ProductStatus.approved);
+        productRepository.save(product);
+
     }
 
     @Override
     public void deAproveProduct(Long id) {
- Product product= productRepository.findById(id)
+        Product product= productRepository.findById(id)
         .orElseThrow(()->new ResourceNotFoundException(id));
- product.setStatus(ProductStatus.notAprroved);
+        product.setStatus(ProductStatus.notAprroved);
+        productRepository.save(product);
     }
 
     @Override
@@ -73,6 +75,12 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findProdcutByName(prodct,pageable);
 
     }
+
+    @Override
+    public List<Product> getPendingProducts() {
+        return productRepository.getpending(ProductStatus.pending);
+    }
+
 
 
 }

@@ -26,12 +26,14 @@ public class AdminApi {
     AdminQueryService adminQueryService;
     @Autowired
     AdminCommandService adminCommandService;
+
+    @CrossOrigin
     @PostMapping
     @Operation(summary = "Create Admin ",description = "Return Admin Detail")
     public ResponseEntity<Admin> create(@RequestBody Admin admin){
         return ResponseEntity.ok().body(adminCommandService.registerUser(admin));
     }
-
+    @CrossOrigin
     @GetMapping
     @Operation(summary = "Get all admins",description = "Return List of Admins")
     public ResponseEntity<List<Admin>> getAll(){
@@ -39,14 +41,14 @@ public class AdminApi {
         return ResponseEntity.ok().body(adminQueryService.fndAll());
     }
 
-
+    @CrossOrigin
     @GetMapping("findById/{id}")
     @Operation(summary = "Get admin by id",description = "Return Admin by id")
     public ResponseEntity<Admin> getAll(@PathVariable Long id){
         return ResponseEntity.ok().body(adminQueryService.getById(id));
     }
 
-
+    @CrossOrigin
     @PutMapping("/{id}")
     @Operation(summary = "Update  admin Account",description = "return updated value")
     public ResponseEntity<Admin> update(@RequestBody Admin admin){
