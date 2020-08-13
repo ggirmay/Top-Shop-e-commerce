@@ -1,8 +1,10 @@
-import { Component, OnInit } from "@angular/core";
+import {Component, Input, OnInit} from "@angular/core";
 import { Product } from "src/app/modals/product.model";
 import { CartItem } from "src/app/modals/cart-item";
 import { ProductService } from "../../shared/services/product.service";
 import { CartService } from "../../shared/services/cart.service";
+import {ActivatedRoute, Router} from "@angular/router";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: "app-home-three",
@@ -10,6 +12,7 @@ import { CartService } from "../../shared/services/cart.service";
   styleUrls: ["./home-three.component.sass"],
 })
 export class HomeThreeComponent implements OnInit {
+
   products: Product[];
   public banners = [];
 
@@ -50,7 +53,7 @@ export class HomeThreeComponent implements OnInit {
   ];
 
   constructor(
-    private productService: ProductService,
+    private productService: ProductService,private httpClient:HttpClient, private router: Router,
     private cartService: CartService
   ) {}
 
@@ -79,4 +82,10 @@ export class HomeThreeComponent implements OnInit {
       subtitle: "Sale up to 30%",
     },
   ];
+  // ====================================================================
+
+
+
+
+
 }

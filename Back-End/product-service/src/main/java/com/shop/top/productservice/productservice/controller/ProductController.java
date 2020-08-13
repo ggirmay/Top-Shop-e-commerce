@@ -80,8 +80,8 @@ this.productService=productService;
     }
     //======================================================
     @PostMapping(value = "/upload",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public String uplaodImage(@RequestPart("image") MultipartFile file , @RequestPart(value = "product") Product product) throws IOException {
-        System.out.println("hellooooo");
+    public String uplaodImage(@RequestPart("image") MultipartFile file, @RequestPart(value = "product") Product product ) throws IOException {
+        System.out.println(product);
         System.out.println("this is file "+file  + " " + file.getOriginalFilename()+"."+file.getContentType());
         System.out.println(product.toString());
         if(!file.isEmpty()){

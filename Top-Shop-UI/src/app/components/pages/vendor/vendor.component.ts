@@ -62,7 +62,6 @@ export class VendorComponent implements OnInit {
 
     this.router.navigateByUrl('/').then(
       () => {this.router.navigateByUrl('pages/vendor');});
-    element.reset();
 
   }
 
