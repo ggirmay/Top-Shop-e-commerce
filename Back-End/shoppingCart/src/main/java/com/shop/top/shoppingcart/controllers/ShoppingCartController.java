@@ -54,4 +54,9 @@ public class ShoppingCartController {
                                                @RequestParam("quantity")int quantity){
         return shoppingCartService.editQuantityOfItemInCart(itemId, cartId, quantity);
     }
+
+    @GetMapping("/allshoppingcarts")
+    public List<ShoppingCart> allShoppingCarts(){
+        return shoppingCartService.getAllShoppingCarts();
+    }
 }

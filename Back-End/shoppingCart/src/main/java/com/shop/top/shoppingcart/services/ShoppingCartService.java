@@ -63,4 +63,8 @@ public class ShoppingCartService {
             return null;
         }
     }
+
+    public List<ShoppingCart> getAllShoppingCarts() {
+        return shoppingCartRepository.findAll();
+    }
 }

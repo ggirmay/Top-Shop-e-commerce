@@ -57,7 +57,6 @@ public class UserApi {
     @Operation(summary = "User Account registration", description = "Account registration and email activation")
     public ResponseEntity registerUserAccount(@RequestBody RegisteredUser user, HttpServletRequest request){
         log.debug(user.toString());
-
         String appUrl = request.getContextPath();
 
         try {
@@ -113,6 +112,7 @@ public class UserApi {
 //        userQueryService.deleteUser(id);
         return ResponseEntity.ok().body(userQueryService.getUerById(id));
     }
+
     @CrossOrigin
     @GetMapping("getByAccountId/{id}")
     @Operation(summary = "Get user by account id", description = "get by account id")
