@@ -26,7 +26,8 @@ import { BrandsComponent } from './widgets/brands/brands.component';
 import { CategoriesComponent } from './widgets/categories/categories.component';
 import { PopularProductsComponent } from './widgets/popular-products/popular-products.component';
 import { ProductZoomComponent } from './products/product-details/product-zoom/product-zoom.component';
-//import {AddproductComponent} from "./products/product/addProductcomponent";
+import {AddproductComponent} from "./products/product/AddProduct.component";
+
 //import {CategoryComponent} from "./products/product/category.component";
 
 
@@ -38,7 +39,7 @@ import { ProductZoomComponent } from './products/product-details/product-zoom/pr
 
     PriceComponent,
     ProductComponent,
-
+    AddproductComponent,
     ProductDetailsComponent,
     ProductDialogComponent,
     ProductLeftSidebarComponent,

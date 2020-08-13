@@ -42,11 +42,8 @@ public class UserCommandService {
 
             HttpEntity<HashMap<String , Long >> request = new HttpEntity(shoppingCart, httpHeaders);
 
-            Object temp = restTemplate.postForObject("http://localhost:8080/shopping-cart-service/shoppingcart/createnewcart", request, shoppingCart.getClass());
-
-            System.out.println("this is in user service" + temp.toString());
+            restTemplate.postForObject("http://localhost:8080/shopping-cart-service/shoppingcart/createnewcart", request, shoppingCart.getClass());
             // end of the process
-
             return temporary;
         }
         else throw new UserExist("the user with this email/username has already exist");

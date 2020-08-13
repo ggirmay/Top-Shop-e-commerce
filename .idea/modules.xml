@@ -4,10 +4,15 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Top-Shop-e-commerce.iml" filepath="$PROJECT_DIR$/.idea/Top-Shop-e-commerce.iml" />
       <module fileurl="file://$PROJECT_DIR$/Back-End/config/config.iml" filepath="$PROJECT_DIR$/Back-End/config/config.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../Top Shop E-Commerce/Top-Shop-e-commerce/config/config (1).iml" filepath="$PROJECT_DIR$/../../Top Shop E-Commerce/Top-Shop-e-commerce/config/config (1).iml" />
       <module fileurl="file://$PROJECT_DIR$/Back-End/discovery/discovery.iml" filepath="$PROJECT_DIR$/Back-End/discovery/discovery.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Back-End/financialAndReporting/financialAndReporting.iml" filepath="$PROJECT_DIR$/Back-End/financialAndReporting/financialAndReporting.iml" />
       <module fileurl="file://$PROJECT_DIR$/Back-End/gateway/gateway.iml" filepath="$PROJECT_DIR$/Back-End/gateway/gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Back-End/payment/payment.iml" filepath="$PROJECT_DIR$/Back-End/payment/payment.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Back-End/product-service/product-service.iml" filepath="$PROJECT_DIR$/Back-End/product-service/product-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/Back-End/shoppingCart/shoppingcart.iml" filepath="$PROJECT_DIR$/Back-End/shoppingCart/shoppingcart.iml" />
       <module fileurl="file://$PROJECT_DIR$/Back-End/user/user.iml" filepath="$PROJECT_DIR$/Back-End/user/user.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../Top Shop E-Commerce/Top-Shop-e-commerce/user/user (1).iml" filepath="$PROJECT_DIR$/../../Top Shop E-Commerce/Top-Shop-e-commerce/user/user (1).iml" />
     </modules>
   </component>
 </project>

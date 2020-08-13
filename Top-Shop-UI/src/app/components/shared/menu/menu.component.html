@@ -131,13 +131,47 @@
       mat-button
       class="mat-button"
       >Contact</a
+
     > -->
+    <!-- <a mat-button class="mat-button" [routerLink]="['']">Sell your product</a> -->
+
     <a
-      [routerLink]="['/vendor']"
-      routerLinkActive="router-link-active"
       mat-button
       class="mat-button"
+      [routerLink]="['/pages/vendor']"
+      routerLinkActive="router-link-active"
+      >sell product</a
+    >
+
+    <a
+      mat-button
+      class="mat-button"
+
+      [routerLink]="['/pages/vendor']"
+      *ngIf="userRole == 'VENDOR'"
+      routerLinkActive="router-link-active"
+      >Add Product</a
+    >
+    <a
+      mat-button
+      class="mat-button"
+      [routerLink]="['/pages/vendor']"
+      *ngIf="userRole == 'VENDOR'"
+      routerLinkActive="router-link-active"
+      >Manage Procuct</a
+    >
+    <a
+      mat-button
+      class="mat-button"
+      [routerLink]="['/pages/vendor']"
+      *ngIf="userRole == 'VENDOR'"
+      routerLinkActive="router-link-active"
+      >Generated Report</a
+    >
+
       > Sell your product</a>
     <!-- <a mat-button class="mat-button" [routerLink]="['']">Sell your product</a> -->
   </div>
+
+
 </mat-toolbar-row>

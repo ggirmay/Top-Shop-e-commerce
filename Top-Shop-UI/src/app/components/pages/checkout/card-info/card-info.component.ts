@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
-import { PaymentInformation } from 'src/app/modals/payment-information';
+import { PaymentInformation } from '../../../../modals/payment-information';
 
 @Component({
   selector: 'app-card-info',

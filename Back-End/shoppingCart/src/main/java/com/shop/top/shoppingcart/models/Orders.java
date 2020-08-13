@@ -8,6 +8,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -18,8 +19,16 @@ public class Orders {
     public Orders() {
     }
 
-    public Orders(Long id, Long userId, String userName, LocalDate createdDate, String status, float amount){
+    public Orders(Long id, Long userId, String userName, Date createdDate, String status, float amount){
         this.orderId = id;
+        this.userId = userId;
+        this.userName = userName;
+        this.createdDate = createdDate;
+        this.status = status;
+        this.amount = amount;
+    }
+    
+    public Orders(Long userId, String userName, Date createdDate, String status, float amount){
         this.userId = userId;
         this.userName = userName;
         this.createdDate = createdDate;
@@ -41,7 +50,7 @@ public class Orders {
 
     @Column(name = "created_date", columnDefinition = "DATE")
     @JsonFormat(pattern = "MM/dd/yyyy")
-    private LocalDate createdDate;
+    private Date createdDate;
 
     private String status;
 
@@ -53,4 +62,13 @@ public class Orders {
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "order_id")
     private List<OrderDetail> orderDetails;
+
+	@Override
+	public String toString() {
+		return "Orders [orderId=" + orderId + ", userId=" + userId + ", userName=" + userName + ", createdDate="
+				+ createdDate + ", status=" + status + ", amount=" + amount + ", error=" + error + ", orderDetails="
+				+ orderDetails + "]";
+	}
+    
+    
 }

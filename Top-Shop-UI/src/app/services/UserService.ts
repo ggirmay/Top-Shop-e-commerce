@@ -1,58 +1,62 @@
-import {Injectable} from "@angular/core";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Cookie} from "ng2-cookies";
-import {Observable} from "rxjs";
-import {MatSnackBar} from "@angular/material/snack-bar";
-import {Router} from "@angular/router";
-import {RegisteredUser} from "../models/userModel/RegisteredUser";
-import {NgxSpinnerService} from "ngx-spinner";
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Cookie } from "ng2-cookies";
+import { Observable } from "rxjs";
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { Router } from "@angular/router";
+import { RegisteredUser } from "../models/userModel/RegisteredUser";
+import { NgxSpinnerService } from "ngx-spinner";
 @Injectable()
 export class UserService {
-  public clientId = 'newClient';
-  public redirectUri = 'http://localhost:8089/';
-
+  public clientId = "newClient";
+  public redirectUri = "http://localhost:8089/";
 
   constructor(
-    private _http: HttpClient,private _snackBar:MatSnackBar,private spinner: NgxSpinnerService,private _router: Router) {
-  }
+    private _http: HttpClient,
+    private _snackBar: MatSnackBar,
+    private spinner: NgxSpinnerService,
+    private _router: Router
+  ) {}
 
-
-  retrieveToken(username,password){
+  retrieveToken(username, password) {
     this.spinner.show();
-    this._http.post<any>('http://localhost:8080/authenticate', {
-      "password":password,
-      "username":username,
-      "email":"ymengit2u@outlook.com"
-    })
+    this._http
+      .post<any>("http://localhost:8080/authenticate", {
+        password: password,
+        username: username,
+        email: "ymengit2u@outlook.com",
+      })
       .subscribe(
-        data => {
-          this.saveToken(data)
-
+        (data) => {
+          this.saveToken(data);
         },
-        err => {
-          this._snackBar.open("Unable to login please insert correct username and password", '', {
-            duration: 3000
-          });
+        (err) => {
+          this._snackBar.open(
+            "Unable to login please insert correct username and password",
+            "",
+            {
+              duration: 3000,
+            }
+          );
         }
       );
     this.spinner.hide();
   }
   saveToken(data) {
-    var expireDate = new Date().getTime() + (1000 * data.token.expires_in);
+    var expireDate = new Date().getTime() + 1000 * data.token.expires_in;
     Cookie.set("access_token", data.token.tokaccess_token, expireDate);
     Cookie.set("id_token", data.token.id_token, expireDate);
     Cookie.set("user_id", data.userAccount.id);
-
     console.log();
     console.log(data);
     //let userinfo = this.getUserId(data.userAccount.id);
-    this._router.navigateByUrl('/');
-    this._snackBar.open("Successfully logged in", '', {
-      duration: 3000
+    this._router.navigateByUrl("/");
+    this._snackBar.open("Successfully logged in", "", {
+      duration: 3000,
     });
   }
 
-  getResource(resourceUrl){
+  getResource(resourceUrl) {
     // var headers = new HttpHeaders({
     //   'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
     //   'Authorization': 'Bearer ' + Cookie.get('access_token')
@@ -62,69 +66,73 @@ export class UserService {
   }
 
   checkCredentials() {
-    return Cookie.check('access_token');
+    return Cookie.check("access_token");
   }
 
   logout() {
-    let token = Cookie.get('id_token');
-    Cookie.delete('access_token');
-    Cookie.delete('id_token');
-    this._router.navigateByUrl('/');
-    this._snackBar.open("Successfully logged out", '', {
-      duration: 3000
+    let token = Cookie.get("id_token");
+    Cookie.delete("access_token");
+    Cookie.delete("id_token");
+    this._router.navigateByUrl("/");
+    this._snackBar.open("Successfully logged out", "", {
+      duration: 3000,
     });
   }
 
-  register(registeredUser: RegisteredUser,element) {
+  register(registeredUser: RegisteredUser, element) {
     this.spinner.show();
-    this._http.post<any>('http://localhost:8086/api/user', registeredUser)
+    this._http
+      .post<any>("http://localhost:8086/api/user", registeredUser)
       .subscribe(
-        data =>{
+        (data) => {
           this.spinner.hide();
-          this._snackBar.open("user account created Please check your email", '', {
-            duration: 6000
-          });
-          this._router.navigate(['/pages/my-account']);
+          this._snackBar.open(
+            "user account created Please check your email",
+            "",
+            {
+              duration: 6000,
+            }
+          );
+          this._router.navigate(["/pages/my-account"]);
           this.spinner.hide();
           element.reset();
-          element.valid=true;
+          element.valid = true;
         },
-        err =>{
+        (err) => {
           this.spinner.hide();
           this.error(err);
         }
       );
-
   }
 
-  activate(data){
+  activate(data) {
     console.log(data);
   }
 
-  error(err){
+  error(err) {
     console.log(err.error);
     var message;
-    if(err.error.message==null||err.error.message=='')
+    if (err.error.message == null || err.error.message == "")
       message = "unable to connect to server";
-   else message =err.error.message;
-    this._snackBar.open(message, '', {
-      duration: 3000
+    else message = err.error.message;
+    this._snackBar.open(message, "", {
+      duration: 3000,
     });
   }
 
-  private  getUserId(id:number){
+  private getUserId(id: number) {
     // let headers = new HttpHeaders({'Authorization': 'Bearer '+Cookie.get("ccess_token")});
-  return   this._http.get<any>('http://localhost:8086/api/user/getByAccountId/'+id)
+    return this._http
+      .get<any>("http://localhost:8086/api/user/getByAccountId/" + id)
       .subscribe(
-        data => {
+        (data) => {
           return data;
         },
-        err => {return err;}
+        (err) => {
+          return err;
+        }
       );
   }
 
-  getRequest(){
-
-  }
+  getRequest() {}
 }
-

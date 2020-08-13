@@ -33,6 +33,7 @@ public class UserAccount {
     @Transient
     private Long user_id;
 
+    @Transient
     @JsonIgnore
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "userAccount", cascade = { CascadeType.REMOVE }, orphanRemoval = true)
     VerificationToken verificationToken;

@@ -3,12 +3,12 @@ import { PaymentInformation } from '../payment-information';
 
 export class UserDTO{
 
-    id : string;
+    id? : string;
     role : string; //"USER",
     firstName : string; //"yome",
     lastName : string; //"mg",
     addressList : AddressDTO[];
-    paymentInformation : PaymentInformation; /*[{
+    paymentInformation : PaymentInformation[]; /*[{
             "nameOnCard":"yome mengistu",
             "secCode":"113",
             "expDate":"06/22",
