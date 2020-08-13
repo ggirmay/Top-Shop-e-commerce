@@ -10,7 +10,7 @@
 		<fieldDescription><![CDATA[name]]></fieldDescription>
 	</field>
 	<field name="Category" class="java.lang.String">
-		<fieldDescription><![CDATA[category]]></fieldDescription>
+		<fieldDescription><![CDATA[category.name]]></fieldDescription>
 	</field>
 	<field name="Status" class="java.lang.Object">
 		<fieldDescription><![CDATA[status]]></fieldDescription>

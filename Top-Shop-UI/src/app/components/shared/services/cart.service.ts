@@ -189,6 +189,16 @@ export class CartService {
     );
   }
 
+
+  public getNewTotalAmount(): Observable<number> {
+
+    let items: CartItem[] = JSON.parse(localStorage.getItem('checkoutItem'))
+    return of(items.reduce((prev, curr: CartItem) => {
+      return prev + curr.product.price * curr.quantity;
+    }, 0));
+
+  }
+
   public updateItemInShoppingCart(
     productId: string,
     cartId: string,

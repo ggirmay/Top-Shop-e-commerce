@@ -17,13 +17,14 @@ import { ShopModule } from './components/shop/shop.module';
 import { SharedModule } from './components/shared/shared.module';
 import {UserService} from "./services/UserService";
 import {User} from "./models/userModel/User";
+import { VendorService } from './services/vendor-service.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     DemoComponent,
-    MainComponent
+    MainComponent,
   ],
   imports: [
     NgxSpinnerModule,
@@ -39,7 +40,7 @@ import {User} from "./models/userModel/User";
     MatRadioModule,
     MatCheckboxModule
   ],
-  providers: [UserService],
+  providers: [UserService,VendorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
