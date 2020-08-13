@@ -29,27 +29,9 @@ public class OrderController {
     }
 
     @CrossOrigin(origins = "*")
-    @PostMapping(value = "/placeorder" /*, consumes = {MediaType.APPLICATION_OCTET_STREAM_VALUE , MediaType.MULTIPART_FORM_DATA_VALUE }*/)
-    public Orders placeOrder(/*@RequestPart("order") Orders order , @RequestPart("card-info") PaymentInformation paymentInfo*/ @RequestBody PlaceOrderDTO data ) throws NumberFormatException, ParseException{
-    	
-//    	SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-//    	Date d = df.parse(String.valueOf(data.get("createdDate")));
-//    	
-//    	Orders order = new Orders( Long.valueOf(String.valueOf(data.get("userId"))) , (String) data.get("userName") ,
-//    			 d , String.valueOf(data.get("status")) , Float.valueOf(String.valueOf(data.get("amount"))));
-//    
-//    	
-//    	ArrayList<OrderDetail> orderDetails = (ArrayList) data.get("orderDetails");
-//    	order.setOrderDetails(orderDetails);
-//    	System.out.println(orderDetails);
-//    	
-//    	HashMap<String, String> orderInfo = new HashMap<>();
-//    	orderInfo.put("cardNumber" , String.valueOf(data.get("cardNumber")));
-//    	orderInfo.put("nameOnCard" , String.valueOf(data.get("nameOnCard")));
-//    	orderInfo.put("securityDigit" , String.valueOf(data.get("secDigit")));
-//    	orderInfo.put("expirationDate" , String.valueOf(data.get("expDate"))); // Localdate -> String
-//    	orderInfo.put("amount" , "" + String.valueOf(order.getAmount()));
-//    	
+    @PostMapping(value = "/placeorder" )
+    public Orders placeOrder ( @RequestBody PlaceOrderDTO data ) throws NumberFormatException, ParseException{
+    	    	
     	Orders order = data.getOrder();
     	PaymentInformation paymentInfo = data.getCard();
     	

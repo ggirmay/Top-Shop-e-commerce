@@ -57,4 +57,9 @@ public class ItemDetailController {
         boolean result = itemDetailService.deleteItem(id);
         return result;
     }
+
+    @GetMapping("/shoppingcart/{cartid}")
+    public List<ItemDetail> getAllItemsInShoppingCart(@PathVariable("cartid") Long cartId){
+        return itemDetailService.getAllItemsInShoppingCart(cartId);
+    }
 }

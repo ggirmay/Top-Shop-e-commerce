@@ -18,13 +18,15 @@ import java.util.List;
 public class OrderService {
 
     OrderRepository orderRepository;
-
+    ItemDetailService itemDetailService;
     RestTemplate restTemplate;
 
     @Autowired
-    public OrderService(OrderRepository orderRepository, RestTemplate restTemplate){
+    public OrderService(OrderRepository orderRepository, RestTemplate restTemplate
+    , ItemDetailService itemDetailService){
         this.orderRepository = orderRepository;
         this.restTemplate = restTemplate;
+        this.itemDetailService = itemDetailService;
     }
 
     public Orders placeOrder(Orders order , PaymentInformation paymentInfo) throws Exception {
@@ -47,7 +49,7 @@ public class OrderService {
         }
 
         // type inside the HttpEntity<here> must match with type that we pass to in as a first parameter
-        // in here "listOfQuantity"
+        // in here
         HttpEntity<HashMap<Long, Integer>> quantity = new HttpEntity(quantityInfo, httpHeaders);
 
 
@@ -59,8 +61,11 @@ public class OrderService {
             String checking = restTemplate.postForObject("http://localhost:8080/product-service/product/updateQuantity", quantity, String.class);
             System.out.println("this is order service " + checking);
 
-            if(checking.equals("true"))
+
+            if(checking.equals("true")) {
+//                itemDetailService.updateItemAfterPayment(order.getOrderDetails());
                 return orderRepository.save(order);
+            }
             else
                 throw new Exception("Not enough item in stock");
         }else if (result.get("valid").equals("false")){

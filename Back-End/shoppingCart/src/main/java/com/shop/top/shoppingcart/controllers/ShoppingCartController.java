@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/shoppingcart")
@@ -26,9 +27,16 @@ public class ShoppingCartController {
         return shoppingCartService.creatShoppingCart(shoppingCart);
     }
 
+    @GetMapping("/cartid/{userid}")
+    public Long getShoppingCartId(@PathVariable("userid") Long userId) throws Exception {
+        ShoppingCart shoppingCart = shoppingCartService.getShoppingCartId(userId);
+        return shoppingCart.getShoppingCartId();
+    }
+
     @PostMapping("/additem/{cartid}")
     public ShoppingCart addItemToCart(@PathVariable("cartid") Long id, @RequestBody ItemDetail itemDetail)
     throws RecordNotFoundException{
+        System.out.println("this is shopping cart controller " + id);
         return shoppingCartService.addItemToCart(id,itemDetail);
     }
 

@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-
   <component name="JavaScriptSettings">
     <option name="languageLevel" value="ES6" />
   </component>
-
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
@@ -13,15 +11,11 @@
         <option value="$PROJECT_DIR$/Back-End/discovery/pom.xml" />
         <option value="$PROJECT_DIR$/Back-End/gateway/pom.xml" />
         <option value="$PROJECT_DIR$/Back-End/user/pom.xml" />
-        <option value="$PROJECT_DIR$/../../Top Shop E-Commerce/Top-Shop-e-commerce/discovery/pom.xml" />
-        <option value="$PROJECT_DIR$/../../Top Shop E-Commerce/Top-Shop-e-commerce/config/pom.xml" />
-        <option value="$PROJECT_DIR$/../../Top Shop E-Commerce/Top-Shop-e-commerce/gateway/pom.xml" />
-        <option value="$PROJECT_DIR$/../../Top Shop E-Commerce/Top-Shop-e-commerce/payment/pom.xml" />
-        <option value="$PROJECT_DIR$/../../Top Shop E-Commerce/Top-Shop-e-commerce/product-service/pom.xml" />
-        <option value="$PROJECT_DIR$/../../Top Shop E-Commerce/Top-Shop-e-commerce/shoppingCart/pom.xml" />
-        <option value="$PROJECT_DIR$/../../Top Shop E-Commerce/Top-Shop-e-commerce/user/pom.xml" />
+        <option value="$PROJECT_DIR$/Back-End/product-service/pom.xml" />
+        <option value="$PROJECT_DIR$/Back-End/payment/pom.xml" />
+        <option value="$PROJECT_DIR$/Back-End/financialAndReporting/pom.xml" />
       </list>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_12" project-jdk-name="12" project-jdk-type="JavaSDK" />
 </project>

@@ -88,6 +88,7 @@ public class UserApi {
 
     public UserAccount login(@PathVariable String userName){
        UserAccount userAccount = userAccountQueryService.finsByUsername(userName);
+
         return userAccount;
     }
 

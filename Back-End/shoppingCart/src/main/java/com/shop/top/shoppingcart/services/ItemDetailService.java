@@ -3,6 +3,7 @@ package com.shop.top.shoppingcart.services;
 import com.shop.top.shoppingcart.exception.RecordNotFoundException;
 import com.shop.top.shoppingcart.models.ItemDetail;
 import com.shop.top.shoppingcart.repository.ItemDetailRepository;
+import org.graalvm.compiler.nodes.calc.IntegerDivRemNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -74,6 +75,23 @@ public class ItemDetailService {
     }
 
     public List<ItemDetail> selectAllShoppingCartItems(Long cartId){
+        return itemDetailRepository.selectAllShoppingCartItems(cartId);
+    }
+
+    public void updateItemAfterPayment(List<ItemDetail> items){
+        Optional<ItemDetail> temp;
+        for(ItemDetail item : items){
+           temp = itemDetailRepository.findById(item.getItemId());
+            if (temp.isPresent()){
+                temp.get().setStatus('P');
+                itemDetailRepository.save(temp.get());
+            }else {
+                throw new RecordNotFoundException("Wrong Item ID", item.getItemId());
+            }
+        }
+    }
+
+    public List<ItemDetail> getAllItemsInShoppingCart(Long cartId){
         return itemDetailRepository.selectAllShoppingCartItems(cartId);
     }
 }
