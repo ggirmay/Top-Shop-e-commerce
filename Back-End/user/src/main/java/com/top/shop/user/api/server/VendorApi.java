@@ -39,7 +39,7 @@ public class VendorApi {
     public ResponseEntity<List<Vendor>> getAll() {
         return ResponseEntity.ok().body(vendorQueryService.findAllVendor());
     }
-
+    @CrossOrigin(origins = "*")
     @PostMapping
     @Operation(summary = "CreateVendor", description = "<p> This Api Create a Vendor")
     public String create(@RequestBody Vendor vendor) {
