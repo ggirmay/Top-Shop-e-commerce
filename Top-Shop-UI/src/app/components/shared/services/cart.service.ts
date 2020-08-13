@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { Product } from 'src/app/modals/product.model';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { CartItem } from 'src/app/modals/cart-item';
-import { map } from 'rxjs/operators';
-import { Observable, BehaviorSubject, Subscriber, of } from 'rxjs';
+import { Injectable } from "@angular/core";
+import { Product } from "src/app/modals/product.model";
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { CartItem } from "src/app/modals/cart-item";
+import { map } from "rxjs/operators";
+import { Observable, BehaviorSubject, Subscriber, of } from "rxjs";
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Item_detail } from "src/app/modals/item_detail";
 
@@ -37,7 +37,7 @@ export class CartService {
   }
 
   public getCheckoutItems(): CartItem[] {
-    return JSON.parse(localStorage.getItem('checkoutItem'));
+    return JSON.parse(localStorage.getItem("checkoutItem"));
   }
 
   // Add to cart
@@ -114,8 +114,8 @@ export class CartService {
       // this.toastrService.error('You can not add more items than available. In stock '+ stock +' items.');
       this.snackBar.open(
         "You can not choose more items than available. In stock " +
-        stock +
-        " items.",
+          stock +
+          " items.",
         "×",
         { panelClass: "error", verticalPosition: "top", duration: 3000 }
       );
@@ -169,6 +169,14 @@ export class CartService {
     });
   }
 
+  public getNewTotalAmount(): Observable<number> {
+    let items: CartItem[] = JSON.parse(localStorage.getItem("checkoutItem"));
+    return of(
+      items.reduce((prev, curr: CartItem) => {
+        return prev + curr.product.price * curr.quantity;
+      }, 0)
+    );
+  }
 
   //============================================================================
   // my custome methods
@@ -181,28 +189,6 @@ export class CartService {
     );
   }
 
-  public getNewTotalAmount(): Observable<number> {
-
-    let items: CartItem[] = JSON.parse(localStorage.getItem('checkoutItem'))
-    return of(items.reduce((prev, curr: CartItem) => {
-      return prev + curr.product.price * curr.quantity;
-    }, 0));
-
-  }
-
-  // Update Cart Value
-  public updateCartQuantity(product: Product, quantity: number): CartItem | boolean {
-    return products.find((items, index) => {
-      if (items.product.id == product.id) {
-        let qty = products[index].quantity + quantity;
-        let stock = this.calculateStockCounts(products[index], quantity);
-        if (qty != 0 && stock)
-          products[index]['quantity'] = qty;
-        localStorage.setItem("cartItem", JSON.stringify(products));
-        return true;
-      }
-    });
-  }
   public updateItemInShoppingCart(
     productId: string,
     cartId: string,

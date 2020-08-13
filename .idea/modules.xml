@@ -7,11 +7,6 @@
       <module fileurl="file://$PROJECT_DIR$/Back-End/discovery/discovery.iml" filepath="$PROJECT_DIR$/Back-End/discovery/discovery.iml" />
       <module fileurl="file://$PROJECT_DIR$/Back-End/gateway/gateway.iml" filepath="$PROJECT_DIR$/Back-End/gateway/gateway.iml" />
       <module fileurl="file://$PROJECT_DIR$/Back-End/shoppingCart/shoppingcart.iml" filepath="$PROJECT_DIR$/Back-End/shoppingCart/shoppingcart.iml" />
-
-      <module fileurl="file://$PROJECT_DIR$/../../Top Shop E-Commerce/Top-Shop-e-commerce/config/config.iml" filepath="$PROJECT_DIR$/../../Top Shop E-Commerce/Top-Shop-e-commerce/config/config.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../../Top Shop E-Commerce/Top-Shop-e-commerce/discovery/discovery.iml" filepath="$PROJECT_DIR$/../../Top Shop E-Commerce/Top-Shop-e-commerce/discovery/discovery.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../../Top Shop E-Commerce/Top-Shop-e-commerce/gateway/gateway.iml" filepath="$PROJECT_DIR$/../../Top Shop E-Commerce/Top-Shop-e-commerce/gateway/gateway.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../../Top Shop E-Commerce/Top-Shop-e-commerce/payment/payment.iml" filepath="$PROJECT_DIR$/../../Top Shop E-Commerce/Top-Shop-e-commerce/payment/payment.iml" />
       <module fileurl="file://$PROJECT_DIR$/Back-End/user/user.iml" filepath="$PROJECT_DIR$/Back-End/user/user.iml" />
     </modules>
   </component>
