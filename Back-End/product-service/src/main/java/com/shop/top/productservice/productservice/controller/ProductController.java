@@ -1,6 +1,7 @@
 package com.shop.top.productservice.productservice.controller;
 import com.shop.top.productservice.productservice.model.Picture;
 import com.shop.top.productservice.productservice.model.Product;
+import com.shop.top.productservice.productservice.model.ProductList;
 import com.shop.top.productservice.productservice.repository.ImageService;
 import com.shop.top.productservice.productservice.repository.ProductRepository;
 import com.shop.top.productservice.productservice.service.FileUploadService;
@@ -46,7 +47,7 @@ public class ProductController {
 this.productService=productService;
     }
     @GetMapping("/getAll")
-    public  Iterable<Product> getProducts() {
+    public  Iterable<Product> getProductss() {
         return productService.getAllProducts();
     }
 @PostMapping("/save")
@@ -218,5 +219,13 @@ public Product updateQuantity(@PathVariable Long id, @PathVariable int quantity)
                 .ok()
                 .contentType(MediaType.IMAGE_JPEG)
                 .body(imageService.getImage(image_id));
+    }
+
+    //Janvier Reporting Module
+    @GetMapping("/getAllforReporting")
+    public ProductList getProducts() {
+        ProductList productList=new ProductList();
+        productList.setProductList(productService.getAllProducts());
+        return productList ;
     }
 }
