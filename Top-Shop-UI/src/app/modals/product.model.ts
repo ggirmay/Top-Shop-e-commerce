@@ -1,9 +1,7 @@
 // Product Tag
-
 import {Category} from "./Category";
 
 export type ProductTags = 'nike' | 'puma' | 'lifestyle' | 'caprese';
-
 
 // Product Colors
 export type ProductColor =

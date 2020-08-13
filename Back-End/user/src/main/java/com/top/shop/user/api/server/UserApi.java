@@ -31,10 +31,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 
-import javax.print.attribute.standard.Media;
 import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.Path;
 import java.util.List;
+
 
 @RestController
 @RequestMapping("api/user")
@@ -58,7 +57,6 @@ public class UserApi {
     @Operation(summary = "User Account registration", description = "Account registration and email activation")
     public ResponseEntity registerUserAccount(@RequestBody RegisteredUser user, HttpServletRequest request){
         log.debug(user.toString());
-
         String appUrl = request.getContextPath();
 
         try {
@@ -114,6 +112,7 @@ public class UserApi {
 //        userQueryService.deleteUser(id);
         return ResponseEntity.ok().body(userQueryService.getUerById(id));
     }
+
     @CrossOrigin
     @GetMapping("getByAccountId/{id}")
     @Operation(summary = "Get user by account id", description = "get by account id")

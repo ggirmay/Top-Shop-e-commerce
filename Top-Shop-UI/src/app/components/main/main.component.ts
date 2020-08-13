@@ -245,6 +245,12 @@ export class MainComponent implements OnInit {
           iconName: 'speaker_notes',
           route: '/pages/my-account',
         },
+
+        {
+          displayName: 'buy YOUR PRODUCT',
+          iconName: 'speaker_notes',
+          route: '/pages/vendor',
+        },
         {
           displayName: '404',
           iconName: 'feedback',

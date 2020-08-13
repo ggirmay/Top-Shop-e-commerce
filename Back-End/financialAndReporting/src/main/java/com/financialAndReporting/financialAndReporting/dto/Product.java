@@ -1,35 +1,53 @@
 package com.financialAndReporting.financialAndReporting.dto;
 
-import javax.persistence.*;
 
-//@Entity
-public class Product {
-    private Integer id;
+public class Product{
+    private Long id;
     private String name;
+    private String status;
     private String code;
     private String type;
-    private String price;
-    private String pictureUrl;
+    private Double price;
+    private  int quantity;
+    private String picture_url;
     private Category category;
+    private ProductDetail productDetail;
+    private double salesPrice;
+    private double discount;
+    private String shortDetails;
+    private String description;
+    private boolean newPro;
+    private boolean sale;
+    private String brand;
 
     public Product() {
     }
 
-    public Product(Integer id, String name, String code, String type, String price, String pictureUrl, Category category) {
+    public Product(Long id, String name, String status, String code, String type, Double price, int quantity, String picture_url, Category category, ProductDetail productDetail, double salesPrice, double discount, String shortDetails, String description, boolean newPro, boolean sale, String brand) {
         this.id = id;
         this.name = name;
+        this.status = status;
         this.code = code;
         this.type = type;
         this.price = price;
-        this.pictureUrl = pictureUrl;
+        this.quantity = quantity;
+        this.picture_url = picture_url;
         this.category = category;
+        this.productDetail = productDetail;
+        this.salesPrice = salesPrice;
+        this.discount = discount;
+        this.shortDetails = shortDetails;
+        this.description = description;
+        this.newPro = newPro;
+        this.sale = sale;
+        this.brand = brand;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -39,6 +57,14 @@ public class Product {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getCode() {
@@ -57,20 +83,28 @@ public class Product {
         this.type = type;
     }
 
-    public String getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
-    public String getPictureUrl() {
-        return pictureUrl;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setPictureUrl(String pictureUrl) {
-        this.pictureUrl = pictureUrl;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public String getPicture_url() {
+        return picture_url;
+    }
+
+    public void setPicture_url(String picture_url) {
+        this.picture_url = picture_url;
     }
 
     public Category getCategory() {
@@ -79,5 +113,69 @@ public class Product {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public ProductDetail getProductDetail() {
+        return productDetail;
+    }
+
+    public void setProductDetail(ProductDetail productDetail) {
+        this.productDetail = productDetail;
+    }
+
+    public double getSalesPrice() {
+        return salesPrice;
+    }
+
+    public void setSalesPrice(double salesPrice) {
+        this.salesPrice = salesPrice;
+    }
+
+    public double getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(double discount) {
+        this.discount = discount;
+    }
+
+    public String getShortDetails() {
+        return shortDetails;
+    }
+
+    public void setShortDetails(String shortDetails) {
+        this.shortDetails = shortDetails;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public boolean isNewPro() {
+        return newPro;
+    }
+
+    public void setNewPro(boolean newPro) {
+        this.newPro = newPro;
+    }
+
+    public boolean isSale() {
+        return sale;
+    }
+
+    public void setSale(boolean sale) {
+        this.sale = sale;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 }

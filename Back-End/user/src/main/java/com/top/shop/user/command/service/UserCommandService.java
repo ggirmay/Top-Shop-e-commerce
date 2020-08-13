@@ -9,7 +9,13 @@ import com.top.shop.user.exception.UserExist;
 import com.top.shop.user.query.service.UserAccountQueryService;
 import com.top.shop.user.query.service.UserQueryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+import java.util.HashMap;
 
 @Service
 public class UserCommandService {
@@ -18,9 +24,30 @@ public class UserCommandService {
     @Autowired
     UserAccountQueryService userAccountQueryService;
 
+    @Autowired
+    RestTemplate restTemplate;
+
+
+
     public User registerUser(RegisteredUser user){
         if(validateAccountInformation(user.getUserAccount().getEmail(),user.getUserAccount().getUsername())){
-            return userCommandAction.registerUser(user);
+            User temporary = userCommandAction.registerUser(user);
+
+            // this part for calling API in shopping cart module to create a shopping cart when use register.
+            HttpHeaders httpHeaders = new HttpHeaders();
+            httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+
+            HashMap<String, Long> shoppingCart = new HashMap<>();
+            shoppingCart.put("userId", temporary.getId());
+
+            HttpEntity<HashMap<String , Long >> request = new HttpEntity(shoppingCart, httpHeaders);
+
+            Object temp = restTemplate.postForObject("http://localhost:8080/shopping-cart-service/shoppingcart/createnewcart", request, shoppingCart.getClass());
+
+            System.out.println("this is in user service" + temp.toString());
+            // end of the process
+
+            return temporary;
         }
         else throw new UserExist("the user with this email/username has already exist");
     }

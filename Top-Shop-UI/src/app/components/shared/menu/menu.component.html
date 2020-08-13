@@ -7,10 +7,16 @@
   fxLayoutAlign="space-between center"
 >
   <div class="main-menu" fxLayout="row" fxHide fxShow.gt-sm>
-    <a mat-button class="mat-button" [matMenuTriggerFor]="animals"
-      >Home<mat-icon class="caret">arrow_drop_down</mat-icon></a
-    >
-    <mat-menu #animals="matMenu" [overlapTrigger]="false" class="app-dropdown">
+    <!--[matMenuTriggerFor]="animals"-->
+    <a
+      mat-button
+      class="mat-button"
+      [routerLink]="['/home']"
+      routerLinkActive="router-link-active"
+      >Home
+      <!--<mat-icon class="caret">arrow_drop_down</mat-icon> -->
+    </a>
+    <!-- <mat-menu #animals="matMenu" [overlapTrigger]="false" class="app-dropdown">
       <a
         mat-menu-item
         [routerLink]="['/home/one']"
@@ -41,7 +47,7 @@
         routerLinkActive="router-link-active"
         >Home-5</a
       >
-    </mat-menu>
+    </mat-menu> -->
     <a
       [routerLink]="['/home/products/all']"
       routerLinkActive="router-link-active"
@@ -97,7 +103,7 @@
         </div>
       </div>
     </mat-menu>
-    <a mat-button mat-button [matMenuTriggerFor]="blog" class="mat-button"
+    <!-- <a mat-button mat-button [matMenuTriggerFor]="blog" class="mat-button"
       >Blog<mat-icon class="caret">arrow_drop_down</mat-icon></a
     >
     <mat-menu #blog="matMenu" [overlapTrigger]="false" class="app-dropdown">
@@ -125,15 +131,15 @@
       mat-button
       class="mat-button"
       >Contact</a
-    >
-    <a mat-button class="mat-button" [routerLink]="['']">Sell your product</a>
+
+
     <a
-      [routerLink]="['/product/addNewProduct']"
+      [routerLink]="['/vendor']"
       routerLinkActive="router-link-active"
       mat-button
       class="mat-button"
-    >Add Products</a
-    >
+      > Sell your product</a>
+    <!-- <a mat-button class="mat-button" [routerLink]="['']">Sell your product</a> -->
 
   </div>
 
