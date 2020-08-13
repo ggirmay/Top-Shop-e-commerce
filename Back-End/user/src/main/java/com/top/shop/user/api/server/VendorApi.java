@@ -42,10 +42,10 @@ public class VendorApi {
     @CrossOrigin(origins = "*")
     @PostMapping
     @Operation(summary = "CreateVendor", description = "<p> This Api Create a Vendor")
-    public String create(@RequestBody Vendor vendor) {
+    public ResponseEntity<PlainText> create(@RequestBody Vendor vendor) {
         log.info("Create " + vendor.toString());
         vendorCommandService.createVendor(vendor);
-        return "created";
+        return ResponseEntity.ok().body(new PlainText("created"));
     }
 
 
@@ -84,4 +84,20 @@ public class VendorApi {
 
 
 
+}
+
+class PlainText{
+    String message;
+
+    public PlainText(String message) {
+        this.message = message;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 }
