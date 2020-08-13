@@ -132,6 +132,13 @@
       class="mat-button"
       >Contact</a
     > -->
-    <a mat-button class="mat-button" [routerLink]="['']">Sell your product</a>
+    <!-- <a mat-button class="mat-button" [routerLink]="['']">Sell your product</a> -->
+    <a
+      fxShow="false"
+      fxShow.gt-xs
+      [routerLink]="['/pages/vendor']"
+      routerLinkActive="router-link-active"
+      >sell product</a
+    >
   </div>
 </mat-toolbar-row>
