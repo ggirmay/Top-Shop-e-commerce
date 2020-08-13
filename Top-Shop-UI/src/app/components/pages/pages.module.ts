@@ -18,6 +18,8 @@ import { AboutUsComponent } from "./about-us/about-us.component";
 import { BlogModule } from "../blog/blog.module";
 import { ErrorPageComponent } from "./error-page/error-page.component";
 import { ProceedComponent } from './checkout/proceed/proceed.component';
+import { VendorComponent } from './vendor/vendor.component';
+import { ConfirmationPageComponent } from './checkout/confirmation-page/confirmation-page.component';
 
 @NgModule({
   imports: [
@@ -42,7 +44,10 @@ import { ProceedComponent } from './checkout/proceed/proceed.component';
     CardInfoComponent,
 //    ConfirmationPageComponent,
     CheckoutWithComponent,
-    ProceedComponent
+    ProceedComponent,
+    ConfirmationPageComponent,
+    CheckoutWithComponent,
+    VendorComponent
 
   ]
 })

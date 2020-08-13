@@ -19,9 +19,11 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Role role;
+
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private List<Address> addressList;
+
     @OneToMany(cascade = CascadeType.ALL)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private List<PaymentInformation> paymentInformation;

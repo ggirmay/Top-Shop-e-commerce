@@ -1,9 +1,18 @@
+<<<<<<< HEAD
 import { Injectable } from '@angular/core';
 import { Product } from '../../../modals/product.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CartItem } from '../../../modals/cart-item';
 import { map } from 'rxjs/operators';
 import { Observable, BehaviorSubject, Subscriber, of } from 'rxjs';
+=======
+import { Injectable } from "@angular/core";
+import { Product } from "src/app/modals/product.model";
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { CartItem } from "src/app/modals/cart-item";
+import { map } from "rxjs/operators";
+import { Observable, BehaviorSubject, Subscriber, of } from "rxjs";
+>>>>>>> 0ca15ecd7685695296203ba47cfb4e30c549aa0e
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Item_detail } from '../../../modals/item_detail';
 
@@ -37,7 +46,7 @@ export class CartService {
   }
 
   public getCheckoutItems(): CartItem[] {
-    return JSON.parse(localStorage.getItem('checkoutItem'));
+    return JSON.parse(localStorage.getItem("checkoutItem"));
   }
 
   // Add to cart
@@ -114,8 +123,8 @@ export class CartService {
       // this.toastrService.error('You can not add more items than available. In stock '+ stock +' items.');
       this.snackBar.open(
         "You can not choose more items than available. In stock " +
-        stock +
-        " items.",
+          stock +
+          " items.",
         "×",
         { panelClass: "error", verticalPosition: "top", duration: 3000 }
       );
@@ -169,6 +178,14 @@ export class CartService {
     });
   }
 
+  public getNewTotalAmount(): Observable<number> {
+    let items: CartItem[] = JSON.parse(localStorage.getItem("checkoutItem"));
+    return of(
+      items.reduce((prev, curr: CartItem) => {
+        return prev + curr.product.price * curr.quantity;
+      }, 0)
+    );
+  }
 
   //============================================================================
   // my custome methods
@@ -181,6 +198,7 @@ export class CartService {
     );
   }
 
+
   public getNewTotalAmount(): Observable<number> {
 
     let items: CartItem[] = JSON.parse(localStorage.getItem('checkoutItem'))
@@ -190,6 +208,7 @@ export class CartService {
 
   }
 
+<<<<<<< HEAD
   // Update Cart Value
   /*public updateCartQuantity(product: Product, quantity: number): CartItem | boolean {
     return products.find((items, index) => {
@@ -203,6 +222,8 @@ export class CartService {
       }
     });
   }*/
+=======
+>>>>>>> 0ca15ecd7685695296203ba47cfb4e30c549aa0e
   public updateItemInShoppingCart(
     productId: string,
     cartId: string,

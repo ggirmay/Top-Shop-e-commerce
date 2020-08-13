@@ -4,13 +4,13 @@ package com.financialAndReporting.financialAndReporting.dto;
 public class Product{
     private Long id;
     private String name;
-    ProductStatus status=ProductStatus.pending;
+    private String status;
     private String code;
     private String type;
     private Double price;
     private  int quantity;
     private String picture_url;
-    private String category;
+    private Category category;
     private ProductDetail productDetail;
     private double salesPrice;
     private double discount;
@@ -23,7 +23,7 @@ public class Product{
     public Product() {
     }
 
-    public Product(Long id, String name, ProductStatus status, String code, String type, Double price, int quantity, String picture_url, String category, ProductDetail productDetail, double salesPrice, double discount, String shortDetails, String description, boolean newPro, boolean sale, String brand) {
+    public Product(Long id, String name, String status, String code, String type, Double price, int quantity, String picture_url, Category category, ProductDetail productDetail, double salesPrice, double discount, String shortDetails, String description, boolean newPro, boolean sale, String brand) {
         this.id = id;
         this.name = name;
         this.status = status;
@@ -59,11 +59,11 @@ public class Product{
         this.name = name;
     }
 
-    public ProductStatus getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(ProductStatus status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
@@ -107,11 +107,11 @@ public class Product{
         this.picture_url = picture_url;
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 

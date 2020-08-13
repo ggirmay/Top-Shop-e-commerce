@@ -19,7 +19,7 @@ import { ShopModule } from './components/shop/shop.module';
 import { SharedModule } from './components/shared/shared.module';
 import {UserService} from "./services/UserService";
 import {User} from "./models/userModel/User";
-import { ConfirmationPageComponent } from './components/pages/checkout/confirmation-page/confirmation-page.component';
+import { VendorService } from './services/vendor-service.service';
 
 
 @NgModule({
@@ -27,7 +27,6 @@ import { ConfirmationPageComponent } from './components/pages/checkout/confirmat
     AppComponent,
     DemoComponent,
     MainComponent,
-    ConfirmationPageComponent
   ],
   imports: [
     NgxSpinnerModule,
@@ -43,7 +42,7 @@ import { ConfirmationPageComponent } from './components/pages/checkout/confirmat
     MatRadioModule,
     MatCheckboxModule
   ],
-  providers: [UserService],
+  providers: [UserService,VendorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
