@@ -4,15 +4,15 @@ import { HomeComponent } from "./home/home.component";
 import { ProductDetailsComponent } from "./products/product-details/product-details.component";
 import { ProductLeftSidebarComponent } from "./products/product-left-sidebar/product-left-sidebar.component";
 import { HomeThreeComponent } from "./home-three/home-three.component";
-import {AddproductComponent} from "./products/product/AddProduct.component";
+import { AddproductComponent } from "./products/product/AddProduct.component";
 
 // Routes
 const routes: Routes = [
-  { path: "one", component: HomeComponent },
-  { path: "three", component: HomeThreeComponent },
+  { path: "", component: HomeThreeComponent },
+  { path: "main", component: HomeThreeComponent },
   { path: "products/:category", component: ProductLeftSidebarComponent },
   { path: "product/:id", component: ProductDetailsComponent },
-  { path: "product/addNewProduct", component: AddproductComponent }
+  { path: "product/addNewProduct", component: AddproductComponent },
 ];
 
 @NgModule({

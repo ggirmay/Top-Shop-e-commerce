@@ -1,14 +1,13 @@
 import { Injectable } from "@angular/core";
 import { Observable, BehaviorSubject, Subscriber } from "rxjs";
 import { HttpClient } from "@angular/common/http";
-import { Product } from "src/app/modals/product.model";
 import { MatSnackBar } from "@angular/material";
 import { map } from "rxjs/operators";
-import {Category} from "../../../modals/Category";
+import { Category } from "../../../modals/Category";
+import { Product } from "../../../modals/product.model";
 
 // Get product from Localstorage
 let products = JSON.parse(localStorage.getItem("compareItem")) || [];
-
 
 // let products=this.getproducts().subscribe(
 //   response =>{this.employees = response;}
@@ -31,17 +30,18 @@ export class ProductService {
     this.compareProducts.subscribe((products) => (products = products));
     this.productUrl = "http://localhost:8080/product-service/product/";
   }
-//======================
+  //======================
 
-
-   getproducts()
-{
-
-  return this.httpClient.get<Product[]>('http://localhost:8083/product/getAll');
-}
-//===========================
+  getproducts() {
+    return this.httpClient.get<Product[]>(
+      "http://localhost:8083/product/getAll"
+    );
+  }
+  //===========================
   private products(): Observable<Product[]> {
-    return this.httpClient.get<Product[]>('http://localhost:8083/product/getAll');
+    return this.httpClient.get<Product[]>(
+      "http://localhost:8083/product/getAll"
+    );
   }
 
   public banners(): Observable<any[]> {
@@ -142,6 +142,9 @@ export class ProductService {
     );
   }
   addProduct(newProduct: Product) {
-    return this.httpClient.post<Product>('http://localhost:8083/product/upload', Product);
+    return this.httpClient.post<Product>(
+      "http://localhost:8083/product/upload",
+      Product
+    );
   }
 }

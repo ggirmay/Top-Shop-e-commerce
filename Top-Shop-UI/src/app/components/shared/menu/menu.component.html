@@ -143,10 +143,27 @@
       >sell product</a
     >
 
+    <a mat-button mat-button [matMenuTriggerFor]="blog" class="mat-button"
+      >Reports<mat-icon class="caret">arrow_drop_down</mat-icon></a
+    >
+    <mat-menu #blog="matMenu" [overlapTrigger]="false" class="app-dropdown">
+      <a
+        mat-menu-item
+        href="http://localhost:8095/products/report"
+        target="_blank"
+        >Product Report</a
+      >
+      <a
+        mat-menu-item
+        href="http://localhost:8095/orderDetail/all"
+        target="_blank"
+        >Sales Report</a
+      >
+    </mat-menu>
+
     <a
       mat-button
       class="mat-button"
-
       [routerLink]="['/pages/vendor']"
       *ngIf="userRole == 'VENDOR'"
       routerLinkActive="router-link-active"
@@ -169,9 +186,7 @@
       >Generated Report</a
     >
 
-      <!-- > Sell your product</a> -->
+    <!-- > Sell your product</a> -->
     <!-- <a mat-button class="mat-button" [routerLink]="['']">Sell your product</a> -->
   </div>
-
-
 </mat-toolbar-row>

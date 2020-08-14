@@ -40,9 +40,13 @@ public class UserCommandService {
             HashMap<String, Long> shoppingCart = new HashMap<>();
             shoppingCart.put("userId", temporary.getId());
 
+            System.out.println(shoppingCart.get("userId"));
             HttpEntity<HashMap<String , Long >> request = new HttpEntity(shoppingCart, httpHeaders);
-
-            restTemplate.postForObject("http://localhost:8080/shopping-cart-service/shoppingcart/createnewcart", request, shoppingCart.getClass());
+            try {
+                restTemplate.postForObject("http://localhost:8080/shopping-cart-service/shoppingcart/createnewcart", request, shoppingCart.getClass());
+            }catch (Exception e){
+                System.out.println("can't create shopping cart " + e.getMessage());
+            }
             // end of the process
             return temporary;
         }

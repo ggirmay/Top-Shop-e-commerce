@@ -12,12 +12,12 @@
         <module name="product-service" />
         <module name="payment" />
         <module name="financialAndReporting" />
+        <module name="config" />
         <module name="gateway" />
-        <module name="config (1)" />
         <module name="user (1)" />
         <module name="discovery (1)" />
         <module name="gateway (1)" />
-        <module name="config" />
+        <module name="config (1)" />
         <module name="shoppingcart" />
       </profile>
     </annotationProcessing>
@@ -26,6 +26,7 @@
       <module name="config (1)" target="1.8" />
       <module name="discovery" target="1.8" />
       <module name="discovery (1)" target="1.8" />
+      <module name="financialAndReporting" target="1.8" />
       <module name="gateway" target="1.8" />
       <module name="gateway (1)" target="1.8" />
       <module name="gateway (2)" target="1.8" />
@@ -43,6 +44,7 @@
       <module name="config (1)" options="-parameters" />
       <module name="discovery" options="-parameters" />
       <module name="discovery (1)" options="-parameters" />
+      <module name="financialAndReporting" options="-parameters" />
       <module name="gateway" options="-parameters" />
       <module name="gateway (1)" options="-parameters" />
       <module name="gateway (2)" options="-parameters" />
