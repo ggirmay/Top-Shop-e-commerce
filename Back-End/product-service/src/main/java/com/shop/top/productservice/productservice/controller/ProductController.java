@@ -77,7 +77,6 @@ this.productService=productService;
         return ResponseEntity.ok(updatedProduct);
     }
 
-    @CrossOrigin
     @DeleteMapping("/{id}")
     void deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);

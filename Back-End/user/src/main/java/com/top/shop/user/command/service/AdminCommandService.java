@@ -19,17 +19,24 @@ public class AdminCommandService {
     UserAccountQueryService userAccountQueryService;
 
     public Admin registerUser(Admin user){
-        if(validateAccountInformation(user.getAccount().getEmail())){
+        if(userAccountQueryService.validateAccountInformation(user.getAccount().getEmail(),user.getAccount().getUsername())){
+            user.getAccount().setRole("ADMIN");
             return adminCommandService.registerUser(user);
         }
-        else throw new UserExist("the user with this email has already exist");
+        else throw new UserExist("User exist with this email or username");
     }
 
-    public boolean validateAccountInformation(String email){
-        return   userAccountQueryService.getUserAccountByEmail(email)==null?true:false;
-    }
+
 
     public Admin update(Admin admin) {
        return adminCommandService.update(admin);
+    }
+
+    public boolean activate(Long id) {
+      return   adminCommandService.activate(id);
+    }
+
+    public boolean reject(Long id) {
+        return   adminCommandService.reject(id);
     }
 }

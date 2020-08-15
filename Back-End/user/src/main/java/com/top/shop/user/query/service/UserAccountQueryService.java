@@ -30,5 +30,10 @@ public class UserAccountQueryService {
         return userAccountQueryAction.getUserAccountByUserName(userName);
     }
 
+    public boolean validateAccountInformation(String email,String username){
+        boolean u = finsByUsername(username)==null?true:false;
+        boolean e = getUserAccountByEmail(email)==null?true:false;
 
+        return u&&e;
+    }
 }

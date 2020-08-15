@@ -60,7 +60,8 @@ public class UserApi {
         String appUrl = request.getContextPath();
 
         try {
-           RegisteredUser registeredUser =(RegisteredUser) userCommandservice.registerUser((RegisteredUser) user);
+
+           RegisteredUser registeredUser = (RegisteredUser) userCommandservice.registerUser((RegisteredUser) user);
             eventPublisher.publishEvent(new OnRegistrationCompleteEvent(registeredUser.getUserAccount(),
                     request.getLocale(), appUrl));
         }
