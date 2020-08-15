@@ -1,5 +1,6 @@
 package com.shop.top.shoppingcart.controllers;
 
+import com.shop.top.shoppingcart.dto.OrderDTO;
 import com.shop.top.shoppingcart.dto.PaymentInformation;
 import com.shop.top.shoppingcart.dto.PlaceOrderDTO;
 import com.shop.top.shoppingcart.models.OrderDetail;
@@ -32,8 +33,18 @@ public class OrderController {
     @PostMapping(value = "/placeorder" )
     public Orders placeOrder ( @RequestBody PlaceOrderDTO data ) throws NumberFormatException, ParseException{
     	    	
-    	Orders order = data.getOrder();
+    	OrderDTO orderDTO = data.getOrder();
     	PaymentInformation paymentInfo = data.getCard();
+    	
+    	Orders order = new Orders();
+    	order.setAmount(orderDTO.getAmount());
+    	order.setCreatedDate(orderDTO.getCreatedDate());
+    	order.setOrderDetails(orderDTO.getOrderDetails());
+    	order.setStatus(orderDTO.getStatus());
+    	
+    	long id = orderDTO.getUserId().startsWith("G") ? 0 : Long.valueOf(orderDTO.getUserId().split("-")[1]);
+    	order.setUserId(id);
+    	order.setUserName(orderDTO.getUserName());
     	
         System.out.println("this is order controller");
         try {

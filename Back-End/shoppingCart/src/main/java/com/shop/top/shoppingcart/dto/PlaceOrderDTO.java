@@ -9,14 +9,14 @@ import lombok.Setter;
 @Setter
 public class PlaceOrderDTO {
 
-	private Orders order;
+	private OrderDTO order;
 	private PaymentInformation card;
 	
 	public PlaceOrderDTO() {
 		super();
 	}
 	
-	public PlaceOrderDTO(Orders order, PaymentInformation card) {
+	public PlaceOrderDTO(OrderDTO order, PaymentInformation card) {
 		super();
 		this.order = order;
 		this.card = card;

@@ -33,6 +33,7 @@ export class CartService {
   }
 
   public getCartId() {
+    console.log("USER IDDDDD" , this.userId)
     this.httpClient
       .get<number>(this.shoppingCartUrl + "cartid/" + this.userId)
       .subscribe((data) => {
