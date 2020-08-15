@@ -35,11 +35,4 @@ public class VendorQueryService {
         return  action.getPendingBVendors();
     }
 
-    public void approveVendor(Long vendor_id, Long employee_id) {
-        action.approveVendor(vendor_id);
-    }
-
-    public void rejectVendor(Long vendor_id, Long employee_id) {
-        action.rejectVendor(vendor_id);
-    }
 }

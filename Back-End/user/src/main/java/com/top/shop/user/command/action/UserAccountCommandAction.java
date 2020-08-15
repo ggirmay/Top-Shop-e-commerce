@@ -16,4 +16,9 @@ public class UserAccountCommandAction {
     public void save(UserAccount userAccount) {
         userAccountRepository.save(userAccount);
     }
+
+    public boolean activate(Long id) {
+        userAccountRepository.activate(id);
+        return true;
+    }
 }
