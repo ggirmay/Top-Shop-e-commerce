@@ -4,8 +4,10 @@ import com.top.shop.user.command.action.VendorCommandAction;
 import com.top.shop.user.domain.Employee;
 import com.top.shop.user.domain.Vendor;
 import com.top.shop.user.exception.UserDoesntExit;
+import com.top.shop.user.exception.UserExist;
 import com.top.shop.user.query.action.VendorQueryAction;
 import com.top.shop.user.query.service.EmployeeQueryService;
+import com.top.shop.user.query.service.UserAccountQueryService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,8 @@ public class VendorCommandService {
     @Autowired
     EmployeeCommandService employeeCommandService;
     @Autowired
+    UserAccountQueryService userAccountQueryService;
+    @Autowired
     EmployeeQueryService employeeQueryService;
     @Value("${product.service.uri}")
     String productUri;
@@ -35,11 +39,16 @@ public class VendorCommandService {
 
 
     public Vendor createVendor(Vendor vendor){
-      Vendor c = action.save(vendor);
-      log.info("Create Vendor status: {},"+c.toString());
-
-      return c;
+        vendor.getUserAccount().setRole("VENDOR");
+        if(userAccountQueryService.validateAccountInformation(vendor.getUserAccount().getEmail(),vendor.getUserAccount().getUsername())) {
+            Vendor c = action.save(vendor);
+            log.info("Create Vendor status: {},"+c.toString());
+            return c;
+        }
+      throw new UserExist("User with this email or username exist");
     }
+
+
 
 
     public boolean deleteById(Long id){
@@ -88,5 +97,6 @@ public class VendorCommandService {
     public Employee getById(Long id) {
         return action.getById(id);
     }
+
 
 }

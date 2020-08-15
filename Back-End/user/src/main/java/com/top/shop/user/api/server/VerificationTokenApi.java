@@ -65,9 +65,6 @@ public class VerificationTokenApi{
         userAccountCommandService.enable(userAccount);
         verificationTokenCommandService.remove(verificationToken);
 
-//        log.debug("user Account = " + userAccount );
-
-
         return ResponseEntity.ok().body("account verified");
     }
     @PostMapping(value = "/resendActivation/{email}", produces = MediaType.APPLICATION_JSON_VALUE)
