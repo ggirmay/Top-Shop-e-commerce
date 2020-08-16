@@ -26,7 +26,6 @@ import java.net.URI;
 
 @RestController
 @Configuration
-@CrossOrigin
 public class Controller {
     @Bean
     RestTemplate getRestTemplate(){
@@ -46,7 +45,6 @@ public class Controller {
 
     @PostMapping(value = "authenticate")
     public ResponseEntity<Resposnse> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
-
         authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword(),authenticationRequest.getEmail());
 
         final UserDetails userDetails = userDetailsService
