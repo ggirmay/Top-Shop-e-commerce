@@ -1,5 +1,6 @@
 package com.top.shop.user.query.action;
 
+import com.top.shop.user.domain.User;
 import com.top.shop.user.domain.UserAccount;
 import com.top.shop.user.exception.BadInputRequestException;
 import com.top.shop.user.repository.UserAccountRepository;
@@ -29,5 +30,9 @@ public class UserAccountQueryAction {
            return null;
 //        throw new BadInputRequestException("Couldn't find user with this account");
         else return userAccount;
+    }
+
+    public List<UserAccount> getAllPendingAdmins() {
+        return userAccountRepository.findAllPendingAdmin();
     }
 }

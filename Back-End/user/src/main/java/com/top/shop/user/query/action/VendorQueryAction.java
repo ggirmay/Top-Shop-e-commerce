@@ -39,4 +39,7 @@ public class VendorQueryAction {
         return repository.findPendingAccount();
     }
 
+    public Vendor getVendorByAccountId(Long id) {
+        return repository.findVendorByAccountId(id);
+    }
 }

@@ -39,4 +39,8 @@ public class AdminCommandService {
     public boolean reject(Long id) {
         return   adminCommandService.reject(id);
     }
+
+    public boolean delete(Long id) {
+        return adminCommandService.delete(id);
+    }
 }
