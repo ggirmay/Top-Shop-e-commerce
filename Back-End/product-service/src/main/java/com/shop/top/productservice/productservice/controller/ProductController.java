@@ -23,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 import java.util.zip.DataFormatException;
@@ -133,11 +134,18 @@ this.productService=productService;
     }
 
     @CrossOrigin
-    @PutMapping("/updateQuantity/{id}/{quantity}")
-public Product updateQuantity(@PathVariable Long id, @PathVariable int quantity){
-        Product product=productService.getProduct(id);
-        product.setQuantity(product.getQuantity()-quantity);
-       return productService.save(product);
+    @PutMapping("/updateQuantity")
+public String updateQuantity(@RequestBody HashMap<Long, Integer> quantityInfo){
+        
+    	quantityInfo.entrySet().stream()
+    		.map(e -> {
+    			Product product=productService.getProduct(e.getKey());
+    	        product.setQuantity(product.getQuantity() - e.getValue());
+    	        return productService.save(product);
+    		});
+    	
+    	return "true";
+    	
 }
     public static byte[] compressBytes(byte[] data) {
 

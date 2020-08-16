@@ -1,5 +1,7 @@
 package com.shop.top.shoppingcart.controllers;
 
+import com.shop.top.shoppingcart.dto.CartItem;
+import com.shop.top.shoppingcart.dto.ProductDTO;
 import com.shop.top.shoppingcart.exception.RecordNotFoundException;
 import com.shop.top.shoppingcart.models.ItemDetail;
 import com.shop.top.shoppingcart.models.ShoppingCart;
@@ -8,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/shoppingcart")
@@ -32,6 +33,20 @@ public class ShoppingCartController {
     public Long getShoppingCartId(@PathVariable("userid") Long userId) throws Exception {
         ShoppingCart shoppingCart = shoppingCartService.getShoppingCartId(userId);
         return shoppingCart.getShoppingCartId();
+    }
+    
+    @CrossOrigin(origins = "*")
+    @GetMapping
+    public CartItem[] getShoppingCartIdDTO(@RequestParam("userid") Long userId) throws Exception {
+        ShoppingCart shoppingCart = shoppingCartService.getShoppingCartId(userId);
+        
+        return shoppingCart.getItemDetails().stream()
+        	.map(item -> {
+        		return new CartItem(
+    				new ProductDTO(item.getProductId(), item.getProductName(), item.getUnitPrice(), item.getSubTotal()), 
+    				item.getQuantity());
+        	}).toArray(CartItem[]::new);
+        
     }
 
     @PostMapping("/additem/{cartid}")

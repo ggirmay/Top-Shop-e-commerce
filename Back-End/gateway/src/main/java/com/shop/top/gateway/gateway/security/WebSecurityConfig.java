@@ -59,5 +59,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
-        }
+    	httpSecurity.csrf().disable()
+	        .authorizeRequests().antMatchers(
+	        userServicePath+"/employee/**",userServicePath+"/user/**")
+	        .hasAnyRole("ADMIN","VENDOR","SALES_OFFICER","")
+	        .and().authorizeRequests().antMatchers(userServicePath+"/vendor/**")
+	        .hasAnyRole("ADMIN","VENDOR")
+	        .anyRequest().permitAll().and().
+	        exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
+	        .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+
+    	httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+    }
 }

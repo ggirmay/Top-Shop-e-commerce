@@ -2,7 +2,11 @@ package com.shop.top.shoppingcart.services;
 
 import com.shop.top.shoppingcart.exception.RecordNotFoundException;
 import com.shop.top.shoppingcart.models.ItemDetail;
+import com.shop.top.shoppingcart.models.OrderDetail;
+import com.shop.top.shoppingcart.models.ShoppingCart;
 import com.shop.top.shoppingcart.repository.ItemDetailRepository;
+import com.shop.top.shoppingcart.repository.ShoppingCartRepository;
+
 //import org.graalvm.compiler.nodes.calc.IntegerDivRemNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +17,9 @@ import java.util.Optional;
 @Service
 public class ItemDetailService {
     ItemDetailRepository itemDetailRepository;
+    
+    @Autowired
+    ShoppingCartRepository shoppingCartRepo;
 
     @Autowired
     public ItemDetailService(ItemDetailRepository itemDetailRepository) {
@@ -77,19 +84,35 @@ public class ItemDetailService {
     public List<ItemDetail> selectAllShoppingCartItems(Long cartId){
         return itemDetailRepository.selectAllShoppingCartItems(cartId);
     }
-
-    public void updateItemAfterPayment(List<ItemDetail> items){
-        Optional<ItemDetail> temp;
-        for(ItemDetail item : items){
-           temp = itemDetailRepository.findById(item.getItemId());
-            if (temp.isPresent()){
-                temp.get().setStatus('P');
-                itemDetailRepository.save(temp.get());
-            }else {
-                throw new RecordNotFoundException("Wrong Item ID", item.getItemId());
-            }
-        }
+    
+    public void updateItemAfterPayment(Long userId, List<OrderDetail> items){
+        Optional<ShoppingCart> temp = this.shoppingCartRepo.findById(userId);
+        
+        if(temp.isPresent()) {
+	        for(ItemDetail item : temp.get().getItemDetails()){
+	           for(OrderDetail orderDetail : items) {
+	        	   if(item.getProductId().equals(orderDetail.getProductId())){
+	        		   item.setStatus('P');
+	        		   itemDetailRepository.save(item);
+	        	   }
+	           }    
+	        }
+        } 
+        //else throw new RecordNotFoundException("Wrong Item ID", item.getItemId());
     }
+
+//    public void updateItemAfterPayment(List<ItemDetail> items){
+//        Optional<ItemDetail> temp;
+//        for(ItemDetail item : items){
+//           temp = itemDetailRepository.findById(item.getItemId());
+//            if (temp.isPresent()){
+//                temp.get().setStatus('P');
+//                itemDetailRepository.save(temp.get());
+//            }else {
+//                throw new RecordNotFoundException("Wrong Item ID", item.getItemId());
+//            }
+//        }
+//    }
 
     public List<ItemDetail> getAllItemsInShoppingCart(Long cartId){
         return itemDetailRepository.selectAllShoppingCartItems(cartId);
