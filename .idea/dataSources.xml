@@ -25,5 +25,17 @@
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://ec2-52-72-34-184.compute-1.amazonaws.com:5432/d4b5imsu8m1896</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="shopping_cart_service@172.19.141.97" uuid="c5ceac42-17e7-44ca-b2a4-8010d9f6541b">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://172.19.141.97:3306/shopping_cart_service</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="user_service@172.19.141.97" uuid="93e326ba-a5d1-4599-a59a-5e805090115d">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://172.19.141.97:3306/user_service</jdbc-url>
+    </data-source>
   </component>
 </project>

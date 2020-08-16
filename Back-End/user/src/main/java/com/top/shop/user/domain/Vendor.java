@@ -13,14 +13,17 @@ public class Vendor {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id")
-    private Address address;
     private String name;
     private String moto;
     private String imageLogoName;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id")
+    private Address address;
+
     @OneToMany(cascade = CascadeType.ALL)
     private List<PaymentInformation> paymentInformation;
+
     @OneToOne(cascade = CascadeType.ALL)
     @NotNull
     private UserAccount userAccount;

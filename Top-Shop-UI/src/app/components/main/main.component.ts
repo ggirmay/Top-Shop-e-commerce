@@ -170,27 +170,6 @@ export class MainComponent implements OnInit {
       ],
     },
     {
-      displayName: "Blog",
-      iconName: "report_problem",
-      children: [
-        {
-          displayName: "Blog List",
-          iconName: "group",
-          route: "/blog/blog-list",
-        },
-        {
-          displayName: "Blog Columns",
-          iconName: "speaker_notes",
-          route: "/blog/blog-column",
-        },
-        {
-          displayName: "Blog Details",
-          iconName: "feedback",
-          route: "/blog/blog-details",
-        },
-      ],
-    },
-    {
       displayName: "Pages",
       iconName: "report_problem",
       children: [

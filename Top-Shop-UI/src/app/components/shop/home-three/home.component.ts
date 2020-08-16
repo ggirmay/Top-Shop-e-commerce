@@ -7,11 +7,11 @@ import { Product } from "../../../modals/product.model";
 import { CartItem } from "../../../modals/cart-item";
 
 @Component({
-  selector: "app-home-three",
-  templateUrl: "./home-three.component.html",
-  styleUrls: ["./home-three.component.sass"],
+  selector: "app-home",
+  templateUrl: "./home.component.html",
+  styleUrls: ["./home.component.sass"],
 })
-export class HomeThreeComponent implements OnInit {
+export class HomeComponent implements OnInit {
   products: Product[];
   public banners = [];
 

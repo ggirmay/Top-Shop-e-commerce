@@ -1,4 +1,33 @@
-2020-08-14 12:25:55.989  WARN 7860 --- [restartedMain] lientConfigServiceBootstrapConfiguration : Could not locate configserver via discovery
+2020-08-15 11:53:05.903  INFO 20256 --- [restartedMain] com.top.shop.user.UserApplication        : No active profile set, falling back to default profiles: default
+2020-08-15 11:53:11.307 ERROR 20256 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : Failed to load driver class com.mysql.cj.jdbc.Driver from HikariConfig class classloader jdk.internal.loader.ClassLoaders$AppClassLoader@2626b418
+2020-08-15 11:53:11.310  WARN 20256 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cloud.autoconfigure.RefreshAutoConfiguration$JpaInvokerConfiguration': Invocation of init method failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker': Invocation of init method failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception; nested exception is org.springframework.boot.context.properties.bind.BindException: Failed to bind properties under '' to com.zaxxer.hikari.HikariDataSource
+2020-08-15 11:53:11.379 ERROR 20256 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to bind properties under '' to com.zaxxer.hikari.HikariDataSource:
+
+    Property: driver-class-name
+    Value: com.mysql.cj.jdbc.Driver
+    Origin: "driverClassName" from property source "source"
+    Reason: Failed to load driver class com.mysql.cj.jdbc.Driver in either of HikariConfig class loader or Thread context classloader
+
+Action:
+
+Update your application's configuration
+
+2020-08-15 14:03:35.316  INFO 32260 --- [restartedMain] com.top.shop.user.UserApplication        : No active profile set, falling back to default profiles: default
+2020-08-15 14:03:37.766  WARN 32260 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-08-15 14:03:37.770  WARN 32260 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-08-15 14:03:37.897  WARN 32260 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-08-15 14:03:39.150  WARN 32260 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2020-08-15 14:03:40.185  WARN 32260 --- [restartedMain] ockingLoadBalancerClientRibbonWarnLogger : You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2020-08-15 14:03:42.373  INFO 32260 --- [restartedMain] com.top.shop.user.UserApplication        : Started UserApplication in 10.536 seconds (JVM running for 11.868)
+2020-08-15 17:36:55.714  WARN 34072 --- [restartedMain] lientConfigServiceBootstrapConfiguration : Could not locate configserver via discovery
 
 java.lang.IllegalStateException: No instances found of configserver (config)
 	at org.springframework.cloud.config.client.ConfigServerInstanceProvider.getConfigServerInstances(ConfigServerInstanceProvider.java:52)
@@ -37,10 +66,10 @@ java.lang.IllegalStateException: No instances found of configserver (config)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
 
-2020-08-14 12:25:58.543  WARN 7860 --- [restartedMain] c.c.c.ConfigServicePropertySourceLocator : Could not locate PropertySource: I/O error on GET request for "http://localhost:8888/user-service/default": Connection refused: connect; nested exception is java.net.ConnectException: Connection refused: connect
-2020-08-14 12:25:58.545  INFO 7860 --- [restartedMain] com.top.shop.user.UserApplication        : No active profile set, falling back to default profiles: default
-2020-08-14 12:26:00.558  WARN 7860 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cloud.autoconfigure.RefreshAutoConfiguration$JpaInvokerConfiguration': Invocation of init method failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker': Invocation of init method failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception; nested exception is org.springframework.boot.autoconfigure.jdbc.DataSourceProperties$DataSourceBeanCreationException: Failed to determine a suitable driver class
-2020-08-14 12:26:00.582 ERROR 7860 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+2020-08-15 17:36:58.255  WARN 34072 --- [restartedMain] c.c.c.ConfigServicePropertySourceLocator : Could not locate PropertySource: I/O error on GET request for "http://localhost:8888/user-service/default": Connection refused: connect; nested exception is java.net.ConnectException: Connection refused: connect
+2020-08-15 17:36:58.257  INFO 34072 --- [restartedMain] com.top.shop.user.UserApplication        : No active profile set, falling back to default profiles: default
+2020-08-15 17:37:00.751  WARN 34072 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cloud.autoconfigure.RefreshAutoConfiguration$JpaInvokerConfiguration': Invocation of init method failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker': Invocation of init method failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception; nested exception is org.springframework.boot.autoconfigure.jdbc.DataSourceProperties$DataSourceBeanCreationException: Failed to determine a suitable driver class
+2020-08-15 17:37:00.777 ERROR 34072 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
 
 ***************************
 APPLICATION FAILED TO START
@@ -59,175 +88,26 @@ Consider the following:
 	If you want an embedded database (H2, HSQL or Derby), please put it on the classpath.
 	If you have database settings to be loaded from a particular profile you may need to activate it (no profiles are currently active).
 
-2020-08-14 12:26:44.524  INFO 22500 --- [restartedMain] com.top.shop.user.UserApplication        : No active profile set, falling back to default profiles: default
-2020-08-14 12:26:46.691  WARN 22500 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
-2020-08-14 12:26:46.695  WARN 22500 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
-2020-08-14 12:26:46.810  WARN 22500 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2020-08-14 12:26:47.850  WARN 22500 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
-2020-08-14 12:26:48.806  WARN 22500 --- [restartedMain] ockingLoadBalancerClientRibbonWarnLogger : You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
-2020-08-14 12:26:49.183  WARN 22500 --- [task-1] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "drop table if exists user cascade" via JDBC Statement
-
-org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "drop table if exists user cascade" via JDBC Statement
-	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
-	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlString(SchemaDropperImpl.java:375)
-	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlStrings(SchemaDropperImpl.java:359)
-	at org.hibernate.tool.schema.internal.SchemaDropperImpl.dropFromMetadata(SchemaDropperImpl.java:241)
-	at org.hibernate.tool.schema.internal.SchemaDropperImpl.performDrop(SchemaDropperImpl.java:154)
-	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:126)
-	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:112)
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:145)
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73)
-	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:316)
-	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:469)
-	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1259)
-	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at java.base/java.lang.Thread.run(Thread.java:835)
-Caused by: org.postgresql.util.PSQLException: ERROR: syntax error at or near "user"
-  Position: 22
-	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2532)
-	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2267)
-	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:312)
-	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:448)
-	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:369)
-	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:310)
-	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:296)
-	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:273)
-	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:268)
-	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
-	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
-	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
-	... 18 common frames omitted
-
-2020-08-14 12:26:49.765  WARN 22500 --- [task-1] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "create table user (id int8 not null, role int4, primary key (id))" via JDBC Statement
-
-org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "create table user (id int8 not null, role int4, primary key (id))" via JDBC Statement
-	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
-	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlString(SchemaCreatorImpl.java:439)
-	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlStrings(SchemaCreatorImpl.java:423)
-	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createFromMetadata(SchemaCreatorImpl.java:314)
-	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:166)
-	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:135)
-	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:121)
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:156)
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73)
-	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:316)
-	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:469)
-	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1259)
-	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at java.base/java.lang.Thread.run(Thread.java:835)
-Caused by: org.postgresql.util.PSQLException: ERROR: syntax error at or near "user"
-  Position: 14
-	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2532)
-	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2267)
-	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:312)
-	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:448)
-	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:369)
-	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:310)
-	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:296)
-	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:273)
-	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:268)
-	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
-	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
-	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
-	... 18 common frames omitted
-
-2020-08-14 12:26:50.875  INFO 22500 --- [restartedMain] com.top.shop.user.UserApplication        : Started UserApplication in 9.311 seconds (JVM running for 10.697)
-2020-08-14 12:29:44.208 DEBUG 22500 --- [http-nio-8086-exec-2] com.top.shop.user.api.server.UserApi     : RegisteredUser(userAccount=UserAccount(id=null, email=jacki@gmail.com, password=123123, enabled=false, username=jacki, Role=REGISTERED_USER, firstName=jacki, lastName=chan, user_id=null, verificationToken=null))
-2020-08-14 12:29:45.450  WARN 22500 --- [http-nio-8086-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.client.HttpClientErrorException$Forbidden: 403 : [<Map><timestamp>2020-08-14T17:29:45.390+00:00</timestamp><status>403</status><error>Forbidden</error><message></message><path>/shopping-cart-service/shoppingcart/createnewcart</path></Map>]]
-2020-08-14 14:07:02.687  WARN 22500 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h34m15s197ms420µs700ns).
-2020-08-14 14:12:19.628  INFO 21356 --- [restartedMain] com.top.shop.user.UserApplication        : No active profile set, falling back to default profiles: default
-2020-08-14 14:12:21.673  WARN 21356 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
-2020-08-14 14:12:21.679  WARN 21356 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
-2020-08-14 14:12:21.784  WARN 21356 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2020-08-14 14:12:22.720  WARN 21356 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
-2020-08-14 14:12:23.698  WARN 21356 --- [restartedMain] ockingLoadBalancerClientRibbonWarnLogger : You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
-2020-08-14 14:12:24.286  WARN 21356 --- [task-1] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "drop table if exists user cascade" via JDBC Statement
-
-org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "drop table if exists user cascade" via JDBC Statement
-	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
-	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlString(SchemaDropperImpl.java:375)
-	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlStrings(SchemaDropperImpl.java:359)
-	at org.hibernate.tool.schema.internal.SchemaDropperImpl.dropFromMetadata(SchemaDropperImpl.java:241)
-	at org.hibernate.tool.schema.internal.SchemaDropperImpl.performDrop(SchemaDropperImpl.java:154)
-	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:126)
-	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:112)
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:145)
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73)
-	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:316)
-	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:469)
-	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1259)
-	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at java.base/java.lang.Thread.run(Thread.java:835)
-Caused by: org.postgresql.util.PSQLException: ERROR: syntax error at or near "user"
-  Position: 22
-	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2532)
-	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2267)
-	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:312)
-	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:448)
-	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:369)
-	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:310)
-	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:296)
-	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:273)
-	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:268)
-	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
-	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
-	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
-	... 18 common frames omitted
-
-2020-08-14 14:12:24.891  WARN 21356 --- [task-1] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "create table user (id int8 not null, role int4, primary key (id))" via JDBC Statement
-
-org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "create table user (id int8 not null, role int4, primary key (id))" via JDBC Statement
-	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
-	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlString(SchemaCreatorImpl.java:439)
-	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlStrings(SchemaCreatorImpl.java:423)
-	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createFromMetadata(SchemaCreatorImpl.java:314)
-	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:166)
-	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:135)
-	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:121)
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:156)
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73)
-	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:316)
-	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:469)
-	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1259)
-	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at java.base/java.lang.Thread.run(Thread.java:835)
-Caused by: org.postgresql.util.PSQLException: ERROR: syntax error at or near "user"
-  Position: 14
-	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2532)
-	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2267)
-	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:312)
-	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:448)
-	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:369)
-	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:310)
-	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:296)
-	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:273)
-	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:268)
-	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
-	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
-	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
-	... 18 common frames omitted
-
-2020-08-14 14:12:26.023  INFO 21356 --- [restartedMain] com.top.shop.user.UserApplication        : Started UserApplication in 9.565 seconds (JVM running for 10.936)
-2020-08-14 14:15:58.118 DEBUG 21356 --- [http-nio-8086-exec-2] com.top.shop.user.api.server.UserApi     : RegisteredUser(userAccount=UserAccount(id=null, email=aliansari2747@gmail.com, password=123, enabled=false, username=Ali, Role=REGISTERED_USER, firstName=Ali, lastName=Ansari, user_id=null, verificationToken=null))
-2020-08-14 14:16:43.185 DEBUG 21356 --- [http-nio-8086-exec-3] c.t.s.u.api.server.VerificationTokenApi  : id = 2 token =fbac9d37-699c-4aa0-8127-27a9be091085
-2020-08-14 14:16:43.302 DEBUG 21356 --- [http-nio-8086-exec-3] c.t.s.u.api.server.VerificationTokenApi  : 2 2
+2020-08-15 17:37:46.733  INFO 33672 --- [restartedMain] com.top.shop.user.UserApplication        : No active profile set, falling back to default profiles: default
+2020-08-15 17:37:48.885  WARN 33672 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-08-15 17:37:48.889  WARN 33672 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-08-15 17:37:49.023  WARN 33672 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-08-15 17:37:51.428  WARN 33672 --- [restartedMain] ockingLoadBalancerClientRibbonWarnLogger : You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2020-08-15 17:37:53.279  INFO 33672 --- [restartedMain] com.top.shop.user.UserApplication        : Started UserApplication in 9.822 seconds (JVM running for 11.403)
+2020-08-15 18:07:24.684  INFO 15036 --- [restartedMain] com.top.shop.user.UserApplication        : No active profile set, falling back to default profiles: default
+2020-08-15 18:07:26.907  WARN 15036 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-08-15 18:07:26.917  WARN 15036 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-08-15 18:07:27.080  WARN 15036 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-08-15 18:07:29.067  WARN 15036 --- [restartedMain] ockingLoadBalancerClientRibbonWarnLogger : You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2020-08-15 18:07:31.143  INFO 15036 --- [restartedMain] com.top.shop.user.UserApplication        : Started UserApplication in 9.475 seconds (JVM running for 10.776)
+2020-08-15 19:35:03.194  WARN 15036 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=56m5s539ms385µs800ns).
+2020-08-15 19:37:34.038  WARN 15036 --- [http-nio-8086-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.lang.NullPointerException]
+2020-08-15 19:41:10.721  INFO 19208 --- [restartedMain] com.top.shop.user.UserApplication        : No active profile set, falling back to default profiles: default
+2020-08-15 19:41:14.580  WARN 19208 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-08-15 19:41:14.589  WARN 19208 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-08-15 19:41:14.768  WARN 19208 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-08-15 19:41:18.513  WARN 19208 --- [restartedMain] ockingLoadBalancerClientRibbonWarnLogger : You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2020-08-15 19:41:21.518  INFO 19208 --- [restartedMain] com.top.shop.user.UserApplication        : Started UserApplication in 15.385 seconds (JVM running for 17.365)
+2020-08-15 19:42:52.472  WARN 19208 --- [http-nio-8086-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.lang.NullPointerException]
+2020-08-15 20:12:34.302  WARN 19208 --- [http-nio-8086-exec-4] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.lang.NullPointerException]
+2020-08-15 21:06:22.588  WARN 19208 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=53m7s127ms134µs500ns).
