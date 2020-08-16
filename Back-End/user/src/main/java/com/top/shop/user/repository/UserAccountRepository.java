@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Repository
 public interface UserAccountRepository extends JpaRepository<UserAccount, Long> {
@@ -22,5 +23,10 @@ public interface UserAccountRepository extends JpaRepository<UserAccount, Long> 
     @Modifying
     @Query(value = "update UserAccount u set u.enabled=false , u.rejected=true where u.id= :id")
     public int reject(@Param("id") Long id);
+
+    @Transactional
+    @Modifying
+    @Query(value = "from UserAccount u where u.enabled=true and u.rejected=false and u.Role='ADMIN'")
+    List<UserAccount> findAllPendingAdmin();
 
 }

@@ -41,4 +41,9 @@ public class AdminCommandAction {
         userAccountRepository.reject(id);
         return true;
     }
+
+    public boolean delete(Long id) {
+        adminRepository.deleteById(id);
+       return true;
+    }
 }
