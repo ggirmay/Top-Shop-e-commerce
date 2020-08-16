@@ -20,10 +20,10 @@ public class EmployeeApi {
     @Autowired
     EmployeeCommandService employeeCommandService;
 
-    @PostMapping
+    @PostMapping("{id}")
     @Operation(summary = "Create Employee ",description = "Return Employee Detail")
-    public ResponseEntity<Employee> create(@RequestBody Employee employee){
-        return ResponseEntity.ok().body(employeeCommandService.registerUser(employee));
+    public ResponseEntity<Employee> create(@RequestBody Employee employee, @PathVariable Long id){
+        return ResponseEntity.ok().body(employeeCommandService.registerUser(employee,id));
     }
 
     @GetMapping

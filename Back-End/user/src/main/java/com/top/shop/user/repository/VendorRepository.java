@@ -18,4 +18,7 @@ public interface VendorRepository extends JpaRepository<Vendor,Long> {
 
     @Query( "from Vendor v inner join fetch v.userAccount u where u.enabled = false")
     List<Vendor> findPendingAccount();
+
+    @Query( "from Vendor v inner join fetch v.userAccount u where u.id = :id")
+    Vendor findVendorByAccountId(@Param("id") Long id);
 }
