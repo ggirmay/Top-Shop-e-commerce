@@ -58,16 +58,16 @@ public class OrderService {
         System.out.println("this is before product call" + request.toString());
 
         if (result.get("valid").equals("true") && result.get("amount").equals("true")){
-            String checking = restTemplate.postForObject("http://localhost:8080/product-service/product/updateQuantity", quantity, String.class);
-            System.out.println("this is order service " + checking);
+            //String checking = restTemplate.postForObject("http://localhost:8080/product-service/product/updateQuantity", quantity, String.class);
+            //System.out.println("this is order service " + checking);
 
 
-            if(checking.equals("true")) {
+            //if(checking.equals("true")) {
 //                itemDetailService.updateItemAfterPayment(order.getOrderDetails());
                 return orderRepository.save(order);
-            }
-            else
-                throw new Exception("Not enough item in stock");
+            //}
+            //else
+                //throw new Exception("Not enough item in stock");
         }else if (result.get("valid").equals("false")){
             throw new Exception("You card information is not valid");
         }else {

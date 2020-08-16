@@ -26,7 +26,7 @@ import java.net.URI;
 
 @RestController
 @Configuration
-@CrossOrigin(origins = "*",allowedHeaders = "*")
+@CrossOrigin
 public class Controller {
     @Bean
     RestTemplate getRestTemplate(){
@@ -43,7 +43,8 @@ public class Controller {
     UserAccountControllerBuilder ubuilder = new UserAccountControllerBuilder();
     UserAccountClient userAccountClient = ubuilder.getUserAccountClient();
 
-    @PostMapping("/authenticate")
+
+    @PostMapping(value = "authenticate")
     public ResponseEntity<Resposnse> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
 
         authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword(),authenticationRequest.getEmail());

@@ -30,7 +30,7 @@ public class UserCommandService {
 
 
     public User registerUser(RegisteredUser user){
-        if(validateAccountInformation(user.getUserAccount().getEmail(),user.getUserAccount().getUsername())){
+        if(userAccountQueryService.validateAccountInformation(user.getUserAccount().getEmail(),user.getUserAccount().getUsername())){
             User temporary = userCommandAction.registerUser(user);
 
             // this part for calling API in shopping cart module to create a shopping cart when use register.
@@ -40,22 +40,18 @@ public class UserCommandService {
             HashMap<String, Long> shoppingCart = new HashMap<>();
             shoppingCart.put("userId", temporary.getId());
 
-            System.out.println(shoppingCart.get("userId"));
             HttpEntity<HashMap<String , Long >> request = new HttpEntity(shoppingCart, httpHeaders);
             try {
                 restTemplate.postForObject("http://localhost:8080/shopping-cart-service/shoppingcart/createnewcart", request, shoppingCart.getClass());
-            }catch (Exception e){
-                System.out.println("can't create shopping cart " + e.getMessage());
+            }catch(Exception ex){
+                ex.printStackTrace();
             }
-            // end of the process
             return temporary;
         }
         else throw new UserExist("the user with this email/username has already exist");
     }
 
-    public boolean validateAccountInformation(String email,String userName){
-      return   userAccountQueryService.getUserAccountByEmail(email)==null?userAccountQueryService.finsByUsername(userName)==null?true:false:false;
-    }
+
 
 
     public RegisteredUser update(RegisteredUser registeredUser) {
@@ -65,4 +61,6 @@ public class UserCommandService {
     public User createGuest(GuestUser guestUser) {
         return userCommandAction.createGuest(guestUser);
     }
+
+
 }

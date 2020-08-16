@@ -17,4 +17,9 @@ public class UserAccountCommandService {
         userAccount.enable();
         userAccountCommandAction.save(userAccount);
     }
+
+    public boolean activateById(Long id){
+      return   userAccountCommandAction.activate(id);
+    }
+
 }
