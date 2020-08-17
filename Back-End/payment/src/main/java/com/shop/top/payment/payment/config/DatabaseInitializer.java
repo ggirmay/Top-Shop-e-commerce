@@ -16,12 +16,12 @@ import org.springframework.stereotype.Component;
 @ConditionalOnProperty(name = "initialize-db" , havingValue = "Yes")
 public class DatabaseInitializer implements CommandLineRunner {
 
-    @Autowired
-    private MastercardRepository mastercardRepository;
-
+//    @Autowired
+//    private MastercardRepository mastercardRepository;
+//
 //    @Autowired
 //    private RoleRepository roleRepository;
-
+//
 //    @Autowired
 //    private UserRepository userRepository;
 //
@@ -35,13 +35,13 @@ public class DatabaseInitializer implements CommandLineRunner {
 //
 //        Role roleAdmin = new Role("ROLE_ADMIN");
 //        roleAdmin = this.roleRepository.save(roleAdmin);
-
+//
 //        User user = new User("Ny Aina Mickael" , "Andriantsoa" , "Admin", passwordEncoder.encode("admin") , roleAdmin);
 //        this.userRepository.save(user);
 //
 //        user = new User("user" , "user" , "user" , passwordEncoder.encode("user") , roleUser);
 //        this.userRepository.save(user);
-
+//
 //        Mastercard mastercard1 = new Mastercard("Kassa" , "Mulusew" , "Mulusew K." , "mkass@miu.edu");
 //        Mastercard mastercard2 = new Mastercard("Andriantsoa" , "Ny" , "Ny Andriantsoa" , "nandriantsoa@miu.edu");
 //
