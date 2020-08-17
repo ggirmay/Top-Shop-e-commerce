@@ -52,7 +52,13 @@ public class ProductServiceImpl implements ProductService {
      productRepository.deleteById(id);
 
     }
-
+    @Override
+    public void removeProduct(Long id) {
+        Product product = productRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException(id));
+        product.setStatus(ProductStatus.removed);
+        productRepository.save(product);
+    }
     @Override
     public void aproveProduct(Long id) {
         Product product= productRepository.findById(id)
@@ -81,6 +87,14 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.getpending(ProductStatus.pending);
     }
 
+    @Override
+    public List<Product> getApprovedProducts() {
+        return productRepository.getpending(ProductStatus.approved);
+    }
 
+    @Override
+    public List<Product> search(String keyword) {
+        return productRepository.searchProducts(keyword);
+    }
 
 }
