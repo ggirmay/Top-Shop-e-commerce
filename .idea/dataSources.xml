@@ -37,5 +37,11 @@
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://172.19.141.97:3306/user_service</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="product_service@172.19.141.97" uuid="2c3f465f-5383-4b25-99cc-5ec06ff75061">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://172.19.141.97:3306/product_service</jdbc-url>
+    </data-source>
   </component>
 </project>
