@@ -1,17 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="d4b5imsu8m1896@ec2-52-72-34-184.compute-1.amazonaws.com" uuid="9488eb34-2a2e-43c2-a323-ba72c889312c">
+    <data-source source="LOCAL" name="ShoppingCart" uuid="9488eb34-2a2e-43c2-a323-ba72c889312c">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://ec2-54-158-122-162.compute-1.amazonaws.com:5432/d1j9ui0029l5iu</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="UserAndAdmin" uuid="dfdb4a6a-fc34-44b4-8a75-ec684f0f8e98">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://ec2-34-194-198-176.compute-1.amazonaws.com:5432/d50sak4m2q1rpi</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="Product" uuid="f527117d-2ea9-4b5c-8940-245d32afe723">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://ec2-54-147-209-121.compute-1.amazonaws.com:5432/d9k3iep991fch7</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="Payment" uuid="fd25f480-5fd9-4811-a11b-29fbe4d4cbf2">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://ec2-52-72-34-184.compute-1.amazonaws.com:5432/d4b5imsu8m1896</jdbc-url>
     </data-source>
-    <data-source source="LOCAL" name="d50sak4m2q1rpi@ec2-34-194-198-176.compute-1.amazonaws.com" uuid="dfdb4a6a-fc34-44b4-8a75-ec684f0f8e98">
-      <driver-ref>postgresql</driver-ref>
+    <data-source source="LOCAL" name="shopping_cart_service@172.19.141.97" uuid="c5ceac42-17e7-44ca-b2a4-8010d9f6541b">
+      <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
-      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://ec2-34-194-198-176.compute-1.amazonaws.com:5432/d50sak4m2q1rpi</jdbc-url>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://172.19.141.97:3306/shopping_cart_service</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="user_service@172.19.141.97" uuid="93e326ba-a5d1-4599-a59a-5e805090115d">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://172.19.141.97:3306/user_service</jdbc-url>
     </data-source>
   </component>
 </project>

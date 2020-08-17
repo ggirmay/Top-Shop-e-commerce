@@ -36,7 +36,6 @@ public class Employee{
     }
     public void setUserAccount(UserAccount userAccount) {
         this.userAccount = userAccount;
-
     }
 
     public UserAccount getUserAccount() {

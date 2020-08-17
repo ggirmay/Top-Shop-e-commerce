@@ -99,10 +99,10 @@ this.productService=productService;
                 String url ="http://localhost:8083/product/getImage?image_id=";
                 Picture p = new Picture();
                 p.setBig(url+imageNmae);
-
                 p.setSmall(url+imageNmae);
 
                 ArrayList<Picture> pictures= new ArrayList<Picture>();
+
                 pictures.add(p);
                 product.setPictures(pictures);
             }
