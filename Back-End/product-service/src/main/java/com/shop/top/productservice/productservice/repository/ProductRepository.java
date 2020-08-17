@@ -29,4 +29,10 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
 
     @Query(value = "select p from Product p  where p.status = :status ")
     List<Product> getpending(@Param(value = "status") ProductStatus productStatus);
+    @Query(value = "select p from Product p  where p.status = :status ")
+    List<Product> getApproved(@Param(value = "status") ProductStatus productStatus);
+    @Query(value = "SELECT * FROM product p WHERE p.name LIKE :keyword", nativeQuery = true)
+   // @Query("SELECT p FROM Product p WHERE p.name = :keyword")
+    List<Product> searchProducts(@Param("keyword")String keyword);
+
 }
