@@ -36,9 +36,7 @@ public class Employee{
     }
     public void setUserAccount(UserAccount userAccount) {
         this.userAccount = userAccount;
-        if(this.role!=null&&this.role!="ADMIN")
-        userAccount.setRole(this.role);
-        else userAccount.setRole("GUEST");
+
     }
 
     public UserAccount getUserAccount() {

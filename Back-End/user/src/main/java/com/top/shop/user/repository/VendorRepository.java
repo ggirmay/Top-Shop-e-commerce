@@ -16,7 +16,7 @@ public interface VendorRepository extends JpaRepository<Vendor,Long> {
     @Query(value = "SELECT v.paymentInformation FROM Vendor v WHERE v.id = :id")
     List<PaymentInformation> findAllPaymentInformationById(@Param("id") Long id);
 
-    @Query( "from Vendor v inner join fetch v.userAccount u where u.enabled = false")
+    @Query( "from Vendor v inner join fetch v.userAccount u where u.enabled = false and u.rejected=false")
     List<Vendor> findPendingAccount();
 
     @Query( "from Vendor v inner join fetch v.userAccount u where u.id = :id")
