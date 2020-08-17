@@ -1,24 +1,22 @@
-import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
-import { BillingInformation } from 'src/app/modals/billing-information';
+import { Component, OnInit, Input, AfterViewInit } from "@angular/core";
+import { BillingInformation } from "../../../../modals/billing-information";
 
 @Component({
-  selector: 'app-billing-info',
-  templateUrl: './billing-info.component.html',
-  styleUrls: ['./billing-info.component.sass']
+  selector: "app-billing-info",
+  templateUrl: "./billing-info.component.html",
+  styleUrls: ["./billing-info.component.sass"],
 })
 export class BillingInfoComponent implements AfterViewInit {
+  @Input() billing: BillingInformation;
 
-  @Input() billing : BillingInformation;
+  billingInformation: BillingInformation = new BillingInformation();
 
-  billingInformation : BillingInformation = new BillingInformation();
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {}
-  
-  ngAfterViewInit(){
+
+  ngAfterViewInit() {
     this.billingInformation = this.billing;
     console.log(this.billingInformation);
   }
-
 }

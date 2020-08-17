@@ -1,7 +1,5 @@
 package com.financialAndReporting.financialAndReporting.dto;
 
-
-import javax.persistence.*;
 import java.time.LocalDate;
 //@Entity
 

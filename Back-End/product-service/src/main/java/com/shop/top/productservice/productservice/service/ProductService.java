@@ -25,5 +25,8 @@ public interface ProductService {
     Page<Product> searchProduct(String prodct, Pageable pageable);
 
     List<Product> getPendingProducts();
+    List<Product> getApprovedProducts();
+    List<Product> search(String keyword);
 
+    void removeProduct(Long id);
 }

@@ -1,32 +1,44 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
-import { Product } from 'src/app/modals/product.model';
-import { CartService } from 'src/app/components/shared/services/cart.service';
-import { ProductService } from 'src/app/components/shared/services/product.service';
-import { WishlistService } from 'src/app/components/shared/services/wishlist.service';
-import { MatDialog } from '@angular/material';
-import { Router } from '@angular/router';
-import { ProductDialogComponent } from '../../products/product-dialog/product-dialog.component';
-import {  SwiperDirective } from 'ngx-swiper-wrapper';
-import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  ViewChild,
+} from "@angular/core";
+
+import { MatDialog } from "@angular/material";
+import { Router } from "@angular/router";
+import { ProductDialogComponent } from "../../products/product-dialog/product-dialog.component";
+import { SwiperDirective } from "ngx-swiper-wrapper";
+import { SwiperConfigInterface } from "ngx-swiper-wrapper";
+import { Product } from "../../../../modals/product.model";
+import { WishlistService } from "../../../shared/services/wishlist.service";
+import { ProductService } from "../../../shared/services/product.service";
+import { CartService } from "../../../shared/services/cart.service";
 
 @Component({
-  selector: 'app-product-carousel-three',
-  templateUrl: './product-carousel-three.component.html',
-  styleUrls: ['./product-carousel-three.component.sass']
+  selector: "app-product-carousel-three",
+  templateUrl: "./product-carousel-three.component.html",
+  styleUrls: ["./product-carousel-three.component.sass"],
 })
 export class ProductCarouselThreeComponent implements OnInit {
-
   @Output() onOpenProductDialog: EventEmitter<any> = new EventEmitter();
 
- @Input('product') product: Array<Product> = [];
- public config: SwiperConfigInterface = {};
+  @Input("product") product: Array<Product> = [];
+  public config: SwiperConfigInterface = {};
 
-  constructor(private cartService: CartService, private productsService: ProductService, private wishlistService: WishlistService, private dialog: MatDialog, private router: Router) { }
+  constructor(
+    private cartService: CartService,
+    private productsService: ProductService,
+    private wishlistService: WishlistService,
+    private dialog: MatDialog,
+    private router: Router
+  ) {}
   // @ViewChild(SwiperDirective) directiveRef: SwiperDirective;
 
-  ngOnInit() {
-  }
-  ngAfterViewInit(){
+  ngOnInit() {}
+  ngAfterViewInit() {
     this.config = {
       observer: true,
       slidesPerView: 4,
@@ -40,7 +52,7 @@ export class ProductCarouselThreeComponent implements OnInit {
       lazy: true,
       breakpoints: {
         480: {
-          slidesPerView: 1
+          slidesPerView: 1,
         },
         740: {
           slidesPerView: 2,
@@ -51,39 +63,35 @@ export class ProductCarouselThreeComponent implements OnInit {
         1280: {
           slidesPerView: 4,
         },
-
-
-      }
-    }
+      },
+    };
   }
 
   // Add to cart
-  public addToCart(product: Product,  quantity: number = 1) {
-    this.cartService.addToCart(product,quantity);
+  public addToCart(product: Product, quantity: number = 1) {
+    this.cartService.addToCart(product, quantity);
     console.log(product, quantity);
   }
 
   // Add to wishlist
   public addToWishlist(product: Product) {
     this.wishlistService.addToWishlist(product);
- }
+  }
 
   // Add to compare
   public addToCompare(product: Product) {
     this.productsService.addToCompare(product);
- }
+  }
 
-
-public openProductDialog(product){
-  let dialogRef = this.dialog.open(ProductDialogComponent, {
+  public openProductDialog(product) {
+    let dialogRef = this.dialog.open(ProductDialogComponent, {
       data: product,
-      panelClass: 'product-dialog',
-  });
-  dialogRef.afterClosed().subscribe(product => {
-    if(product){
-      this.router.navigate(['/products', product.id, product.name]);
-    }
-  });
-}
-
+      panelClass: "product-dialog",
+    });
+    dialogRef.afterClosed().subscribe((product) => {
+      if (product) {
+        this.router.navigate(["/products", product.id, product.name]);
+      }
+    });
+  }
 }
