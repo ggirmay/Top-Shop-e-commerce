@@ -59,7 +59,7 @@ public class ProductController {
         Map parameters = new HashMap();
    parameters.put("createdBy", "Top Shop");
 //        parameters.put("ProductName",productName);
-        String pathname = "E:\\MUM\\PM\\Top-Shop-e-commerce\\Back-End\\financialAndReporting\\src\\main\\resources\\product_report.jrxml";
+        String pathname = "S:\\MUM Classes Code & Projects\\PM\\front end\\Top-Shop-e-commerce\\Back-End\\financialAndReporting\\src\\main\\resources\\product_report.jrxml";
         try {
             response = createPdfReport(response,productLists,parameters,pathname);
             log.info("File successfully Created");

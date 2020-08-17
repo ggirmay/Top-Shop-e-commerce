@@ -4,10 +4,8 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-@Entity
 @Setter
 @Getter
 @EqualsAndHashCode
@@ -25,23 +23,23 @@ public class ItemDetail {
         this.status = status;
     }
 
-    @Id
-    @NotNull
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "item_id")
+//    @Id
+//    @NotNull
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @Column(name = "item_id")
     Long ItemId;
-
-    @NotNull
-    @Column(name = "product_id")
+//
+//    @NotNull
+//    @Column(name = "product_id")
     Long productId;
-
-    @Column(name = "product_name")
+//
+//    @Column(name = "product_name")
     String productName;
 
-    @Column(name = "unit_price")
+//    @Column(name = "unit_price")
     float unitPrice;
 
-    @Column(name = "sub_total")
+//    @Column(name = "sub_total")
     float subTotal;
 
     int quantity;

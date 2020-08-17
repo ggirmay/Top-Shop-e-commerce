@@ -1,18 +1,17 @@
-import {Component, Input, OnInit} from "@angular/core";
-import { Product } from "src/app/modals/product.model";
-import { CartItem } from "src/app/modals/cart-item";
+import { Component, Input, OnInit } from "@angular/core";
 import { ProductService } from "../../shared/services/product.service";
 import { CartService } from "../../shared/services/cart.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {HttpClient} from "@angular/common/http";
+import { ActivatedRoute, Router } from "@angular/router";
+import { HttpClient } from "@angular/common/http";
+import { Product } from "../../../modals/product.model";
+import { CartItem } from "../../../modals/cart-item";
 
 @Component({
-  selector: "app-home-three",
-  templateUrl: "./home-three.component.html",
-  styleUrls: ["./home-three.component.sass"],
+  selector: "app-home",
+  templateUrl: "./home.component.html",
+  styleUrls: ["./home.component.sass"],
 })
-export class HomeThreeComponent implements OnInit {
-
+export class HomeComponent implements OnInit {
   products: Product[];
   public banners = [];
 
@@ -53,7 +52,9 @@ export class HomeThreeComponent implements OnInit {
   ];
 
   constructor(
-    private productService: ProductService,private httpClient:HttpClient, private router: Router,
+    private productService: ProductService,
+    private httpClient: HttpClient,
+    private router: Router,
     private cartService: CartService
   ) {}
 
@@ -83,9 +84,4 @@ export class HomeThreeComponent implements OnInit {
     },
   ];
   // ====================================================================
-
-
-
-
-
 }
