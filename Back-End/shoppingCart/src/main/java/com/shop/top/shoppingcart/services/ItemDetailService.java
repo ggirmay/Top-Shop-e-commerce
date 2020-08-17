@@ -86,18 +86,36 @@ public class ItemDetailService {
     }
     
     public void updateItemAfterPayment(Long userId, List<OrderDetail> items){
-        Optional<ShoppingCart> temp = this.shoppingCartRepo.findById(userId);
-        
+        Optional<ShoppingCart> temp = this.shoppingCartRepo.findByUserId(userId);
+//        
+//        if(temp.isPresent()) {
+//	        for(ItemDetail item : temp.get().getItemDetails()){
+//	           for(OrderDetail orderDetail : items) {
+//	        	   if(item.getProductId().equals(orderDetail.getProductId())){
+//	        		   item.setStatus('P');
+//	        		   itemDetailRepository.save(item);
+//	        	   }
+//	           }    
+//	        }
+//        }
+    	
         if(temp.isPresent()) {
-	        for(ItemDetail item : temp.get().getItemDetails()){
-	           for(OrderDetail orderDetail : items) {
-	        	   if(item.getProductId().equals(orderDetail.getProductId())){
-	        		   item.setStatus('P');
-	        		   itemDetailRepository.save(item);
-	        	   }
-	           }    
-	        }
-        } 
+        	ItemDetail tempItemDetail;
+        	for(OrderDetail item : items) {
+        		 tempItemDetail = this.itemDetailRepository.findByProductIdAndShoppingCartId(item.getProductId(), temp.get().getShoppingCartId());
+        		 
+        		 System.out.println(tempItemDetail);
+        		 
+        		 if(tempItemDetail != null) {
+        			 tempItemDetail.setStatus('P');
+        			 this.itemDetailRepository.save(tempItemDetail);
+        		 }
+        	}
+        	
+        	
+        }
+    	
+    	
         //else throw new RecordNotFoundException("Wrong Item ID", item.getItemId());
     }
 

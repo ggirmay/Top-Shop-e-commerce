@@ -49,7 +49,16 @@ public class ItemDetail {
     // status has three values "Active = A", "Payed = P" and "Deleted = D"
     char status;
 
+	@Override
+	public String toString() {
+		return "ItemDetail [ItemId=" + ItemId + ", productId=" + productId + ", productName=" + productName
+				+ ", unitPrice=" + unitPrice + ", subTotal=" + subTotal + ", quantity=" + quantity + ", status="
+				+ status + "]";
+	}
+
 //    @ManyToOne()
 //    @JoinColumn(name = "shopping_cart_id", nullable = false)
 //    ShoppingCart shoppingCart;
+    
+    
 }

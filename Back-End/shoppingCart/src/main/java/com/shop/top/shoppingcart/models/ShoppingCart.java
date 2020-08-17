@@ -6,6 +6,8 @@ import lombok.Setter;
 import javax.persistence.Entity;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -23,5 +25,9 @@ public class ShoppingCart {
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "shopping_cart_id")
-    private List<ItemDetail> itemDetails;
+    private List<ItemDetail> itemDetails = new ArrayList<>();
+    
+    public void addItemDetail(ItemDetail itemDetail) {
+    	this.itemDetails.add(itemDetail);
+    }
 }

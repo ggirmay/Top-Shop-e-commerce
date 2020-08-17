@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 public class ProductDTO {
 
-    Long productId;
+    Long id;
     String productName;
     double unitPrice;
     double subtotalPrice;
@@ -19,7 +19,7 @@ public class ProductDTO {
 
 	public ProductDTO(Long productId, String productName, double unitPrice, double subtotalPrice) {
 		super();
-		this.productId = productId;
+		this.id = productId;
 		this.productName = productName;
 		this.unitPrice = unitPrice;
 		this.subtotalPrice = subtotalPrice;

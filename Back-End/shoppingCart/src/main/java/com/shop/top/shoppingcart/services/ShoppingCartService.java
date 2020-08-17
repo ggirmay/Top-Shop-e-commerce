@@ -1,5 +1,6 @@
 package com.shop.top.shoppingcart.services;
 
+import com.shop.top.shoppingcart.dto.CartItem;
 import com.shop.top.shoppingcart.exception.RecordNotFoundException;
 import com.shop.top.shoppingcart.models.ItemDetail;
 import com.shop.top.shoppingcart.models.ShoppingCart;
@@ -21,17 +22,45 @@ public class ShoppingCartService {
         this.shoppingCartRepository = shoppingCartRepository;
         this.itemDetailService = itemDetailService;
     }
+    
+    public ShoppingCart getById(Long cartId) throws Exception {
+    	Optional<ShoppingCart> shoppingCart = this.shoppingCartRepository.findById(cartId);
+    	
+    	if(shoppingCart.isPresent()) return shoppingCart.get();
+    	else throw new Exception("Shopping cart not found");
+    	
+    }
+    
+    public boolean saveItemstoCart(ShoppingCart shoppingCart, CartItem[] items) {
+    	
+    	for(CartItem item : items) {
+    	
+    		ItemDetail itemDetail = new ItemDetail(item.getProduct().getId(), 
+    			item.getProduct().getProductName(), (float) item.getProduct().getUnitPrice(), 
+    			item.getQuantity(), (float) item.getProduct().getUnitPrice() * item.getQuantity(), 'A');
+    		
+    		shoppingCart.addItemDetail(itemDetail);
+    	}
+    	
+    	shoppingCart = this.shoppingCartRepository.save(shoppingCart);
+    	
+    	return true;
+    	
+    }
 
     public ShoppingCart creatShoppingCart(ShoppingCart shoppingCart){
         return shoppingCartRepository.save(shoppingCart);
     }
 
     public ShoppingCart getShoppingCartId(Long userId) throws Exception {
-        try {
-            return shoppingCartRepository.findByUserId(userId);
-        }catch (Exception e){
-            throw new Exception("user doesn't have shopping cart id ");
-        }
+    	Optional<ShoppingCart> cart = shoppingCartRepository.findByUserId(userId); 
+    
+    	if(cart.isPresent()) {
+    		return cart.get();
+    	}else {
+    		throw new Exception("user doesn't have shopping cart id ");
+    	}
+        
     }
     public ShoppingCart addItemToCart(Long cartId, ItemDetail itemDetail) throws RecordNotFoundException {
         System.out.println("this is shopping cart service cart id" + cartId);

@@ -7,9 +7,14 @@ import com.shop.top.shoppingcart.models.ItemDetail;
 import com.shop.top.shoppingcart.models.ShoppingCart;
 import com.shop.top.shoppingcart.services.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 
 @RestController
 @RequestMapping("/shoppingcart")
@@ -25,27 +30,46 @@ public class ShoppingCartController {
 
     @PostMapping("/createnewcart")
     public ShoppingCart createShoppingCart(@RequestBody ShoppingCart shoppingCart){
+    	System.out.println("USER ID.........." + shoppingCart.getUserId());
         return shoppingCartService.creatShoppingCart(shoppingCart);
     }
 
     @CrossOrigin(origins = "*")
     @GetMapping("/cartid/{userid}")
-    public Long getShoppingCartId(@PathVariable("userid") Long userId) throws Exception {
-        ShoppingCart shoppingCart = shoppingCartService.getShoppingCartId(userId);
-        return shoppingCart.getShoppingCartId();
+    public ResponseEntity<?> getShoppingCartId(@PathVariable("userid") Long userId) {
+    	
+		try {
+			ShoppingCart shoppingCart = shoppingCartService.getShoppingCartId(userId);
+			return ResponseEntity.ok(shoppingCart.getShoppingCartId());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.badRequest().body("Cannot found Shopping Cart");
+		}
+        
     }
     
     @CrossOrigin(origins = "*")
-    @GetMapping
-    public CartItem[] getShoppingCartIdDTO(@RequestParam("userid") Long userId) throws Exception {
-        ShoppingCart shoppingCart = shoppingCartService.getShoppingCartId(userId);
-        
-        return shoppingCart.getItemDetails().stream()
-        	.map(item -> {
-        		return new CartItem(
-    				new ProductDTO(item.getProductId(), item.getProductName(), item.getUnitPrice(), item.getSubTotal()), 
-    				item.getQuantity());
-        	}).toArray(CartItem[]::new);
+    @GetMapping("/cart-id")
+    public List<CartItem> getShoppingCartIdDTO(@RequestParam("userId") Long userId) {
+        ShoppingCart shoppingCart;
+		try {
+			shoppingCart = shoppingCartService.getShoppingCartId(userId);
+			
+			List<ItemDetail> list = shoppingCart.getItemDetails();
+	        
+	        List<CartItem> items = new ArrayList<>();
+	        if(list != null) {
+	            for(ItemDetail item : shoppingCart.getItemDetails()) {
+	            	if(item.getStatus() == 'A')
+	            	items.add(new CartItem(new ProductDTO(item.getProductId(), item.getProductName(), item.getUnitPrice(), item.getSubTotal()), item.getQuantity()));
+	            }
+	        }
+	        
+	        return items;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ArrayList<>();
+		}
         
     }
 
@@ -66,6 +90,19 @@ public class ShoppingCartController {
             System.out.println(e.getMessage());
             return false;
         }
+    }
+    
+    @PostMapping("/save-to-cart")
+    public boolean saveCart(@RequestBody CartItem[] items , @RequestParam("cartId") Long cartId) {
+    	ShoppingCart shoppingCart;
+		try {
+			shoppingCart = this.shoppingCartService.getById(cartId);
+			return this.shoppingCartService.saveItemstoCart(shoppingCart, items);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+    	
     }
 
     @GetMapping("/allitems/{cartid}")
