@@ -51,7 +51,7 @@ public class OrderDetailController {
         List<OrderDetail> orderDetailList = getFromOrderDetailsList().getOrderDetails();
         Map parameters = new HashMap();
         parameters.put("createdBy", "Top Shop");
-        String pathname = "S:\\MUM Classes Code & Projects\\PM\\front end\\Top-Shop-e-commerce\\Back-End\\financialAndReporting\\src\\main\\resources\\Sales.jrxml";
+        String pathname = "S:\\MUM Classes Code & Projects\\PM\\backup\\Top Shop V 0.3\\Top-Shop-e-commerce\\Back-End\\financialAndReporting\\src\\main\\resources\\Sales.jrxml";
         try {
             response = createPdfReport(response,orderDetailList,parameters,pathname);
             log.info("File successfully Created");
