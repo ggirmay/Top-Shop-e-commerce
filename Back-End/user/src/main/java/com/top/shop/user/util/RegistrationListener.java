@@ -12,6 +12,8 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Component;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.UUID;
 
 @Component
@@ -41,8 +43,18 @@ public class RegistrationListener implements
 
         String recipientAddress = userAccount.getEmail();
         String subject = "Registration Confirmation";
+        String  ip;
+
+        try {
+           ip = InetAddress.getLocalHost().toString();
+          ip = getIp(ip);
+        } catch (Exception e) {
+            ip="localhost";
+            e.printStackTrace();
+        }
+
         String confirmationUrl
-                = event.getAppUrl() + "http://localhost:8086/api/verificationToken/registrationConfirm/"+userAccount.getId()+"?token=" + token;
+                = event.getAppUrl() + "http://"+ip+":8086/api/verificationToken/registrationConfirm/"+userAccount.getId()+"?token=" + token;
 //        String message = messages.getMessage("message.regSucc", null, event.getLocale());
 
         SimpleMailMessage email = new SimpleMailMessage();
@@ -51,4 +63,13 @@ public class RegistrationListener implements
         email.setText( "\r\n Activate your account using this link  " + confirmationUrl);
         mailSender.send(email);
     }
+
+    public String getIp(String host) throws Exception {
+        if(host==null||host==""){
+            throw  new Exception("invalid ip");
+        }
+        String[] s = host.split("/");
+        return  s[1];
+    }
+
 }

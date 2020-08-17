@@ -1,6 +1,7 @@
 package com.top.shop.user.api.server;
 
 import com.top.shop.user.command.service.EmployeeCommandService;
+import com.top.shop.user.command.service.UserAccountCommandService;
 import com.top.shop.user.command.service.VendorCommandService;
 
 import com.top.shop.user.domain.Employee;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
+@CrossOrigin
 @RequestMapping("/api/vendor")
 public class VendorApi {
     @Autowired
@@ -27,16 +29,16 @@ public class VendorApi {
     EmployeeQueryService employeeQueryService;
     @Autowired
     EmployeeCommandService employeeCommandService;
+    @Autowired
+    UserAccountCommandService userAccountCommandService;
 
     final Logger log = LoggerFactory.getLogger(VendorApi.class);
-    @CrossOrigin
     @GetMapping
     @Operation(summary = "Get All Vendor", description = "<p> This Api Return List of Vendor"
             + "or if {} if the database is empty.</p>")
     public ResponseEntity<List<Vendor>> getAll() {
         return ResponseEntity.ok().body(vendorQueryService.findAllVendor());
     }
-    @CrossOrigin
     @GetMapping("/pending")
     @Operation(summary = "Get  Vendor pending", description = "<p> This Api Return List of Vendor"
             + "or if {} if the database is empty.</p>")
@@ -44,17 +46,19 @@ public class VendorApi {
         return ResponseEntity.ok().body(vendorQueryService.getpending());
     }
 
-    @CrossOrigin
 
     @PostMapping
     @Operation(summary = "CreateVendor", description = "<p> This Api Create a Vendor")
     public ResponseEntity<PlainText> create(@RequestBody Vendor vendor) {
+        System.out.println("this is vendor controller: " + vendor.getName());
+        System.out.println(vendor.getAddress().getAddressLineOne());
+
         vendor.getUserAccount().setEnabled(false);
         vendorCommandService.createVendor(vendor);
         return ResponseEntity.ok().body(new PlainText("created"));
     }
 
-    @CrossOrigin
+
 
     @PutMapping(value = "/{id}")
     @Operation(summary = "Update Vendor", description = "<p> This Api Update a Vendor")
@@ -64,21 +68,19 @@ public class VendorApi {
 
         return ResponseEntity.ok(vendor);
     }
-    @CrossOrigin
 
     @GetMapping("getEmployees/{id}")
     @Operation(summary = "Get all employees", description = "return all employess belongs to  a vendor")
     public ResponseEntity<List<Employee>> getAllEmployees(@PathVariable Long id) {
         return ResponseEntity.ok().body(employeeQueryService.findEmployyes(id));
     }
-    @CrossOrigin
 
     @PostMapping("addEmployee/{id}")
     @Operation(summary = "Add employee Employee", description = "Add  Employees")
     public ResponseEntity<Employee> getAllEmployees(@PathVariable Long id,@RequestBody Employee employee) {
+        System.out.println("this is vendor controller" + employee.getRole());
         return ResponseEntity.ok().body(vendorCommandService.addemployee(id,employee));
     }
-    @CrossOrigin
 
     @DeleteMapping("/{vendor_id}")
     @Operation(summary = "Delete Vendor", description = "return  true if deleted or false ")
@@ -86,28 +88,12 @@ public class VendorApi {
         return ResponseEntity.ok().body(vendorCommandService.deleteById(vendor_id));
     }
 
-    @CrossOrigin
     @DeleteMapping("/{vendor_id}/{employee_id}")
     @Operation(summary = "Delete Employee", description = "return  true if deleted or false ")
     public ResponseEntity<Boolean> removeEmployeeFromVendor(@PathVariable Long vendor_id, @PathVariable Long employee_id){
         return ResponseEntity.ok().body(vendorCommandService.removeEmployee(vendor_id,employee_id));
     }
 
-    @CrossOrigin
-    @GetMapping("/approve/{vendor_id}/{employee_id}")
-    @Operation(summary = "Delete Employee", description = "return  true if deleted or false ")
-    public ResponseEntity<PlainText> approveVendor(@PathVariable Long vendor_id, @PathVariable Long employee_id){
-        vendorQueryService.approveVendor(vendor_id,employee_id);
-        return ResponseEntity.ok().body(new PlainText("approved"));
-    }
-
-    @CrossOrigin
-    @GetMapping("/reject/{vendor_id}/{employee_id}")
-    @Operation(summary = "Reject Vendor", description = "return  true if Rejected or false ")
-    public ResponseEntity<PlainText> rejectVendor(@PathVariable Long vendor_id, @PathVariable Long employee_id){
-        vendorQueryService.rejectVendor(vendor_id,employee_id);
-        return ResponseEntity.ok().body(new PlainText("rejected"));
-    }
 
 
     static class PlainText{

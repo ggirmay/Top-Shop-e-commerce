@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
-import { Product } from '../../../modals/product.model';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { CartItem } from '../../../modals/cart-item';
+import { Injectable } from "@angular/core";
+import { Product } from "../../../modals/product.model";
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { CartItem } from "../../../modals/cart-item";
 import { map, timeInterval } from "rxjs/operators";
 import { Observable, BehaviorSubject, Subscriber, of } from "rxjs";
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
-import { Item_detail } from '../../../modals/item_detail';
+import { Item_detail } from "../../../modals/item_detail";
 import { Cookie } from "ng2-cookies";
 
 // Get product from Localstorage
@@ -26,13 +26,13 @@ export class CartService {
   constructor(public snackBar: MatSnackBar, public httpClient: HttpClient) {
     this.cartItems.subscribe((products) => (products = products));
     this.itemDetail = new Item_detail();
-    this.shoppingCartUrl =
-      "http://localhost:8087/shoppingcart/";
+    this.shoppingCartUrl = "http://localhost:8087/shoppingcart/";
 
-    this.getCartId();
+    // this.getCartId();
   }
 
   public getCartId() {
+    console.log("USER IDDDDD" , this.userId)
     this.httpClient
       .get<number>(this.shoppingCartUrl + "cartid/" + this.userId)
       .subscribe((data) => {
@@ -44,34 +44,33 @@ export class CartService {
   public getItems(): Observable<CartItem[]> {
     let id = Cookie.get("user_id");
 
-    if (id != null) {
-      const itemsStream = new Observable((observer) => {
-        observer.next(products);
-        observer.complete();
-      });
-      return <Observable<CartItem[]>>itemsStream;
-    } else {
-      let items: CartItem[] = [];
-      this.httpClient
-        .get<Item_detail[]>(
-          "http://localhost:8087/itemdetail/shoppingcart/" +
-            this.cartId
-        )
-        .subscribe((data) => {
-          for (let i of data) {
-            items.push({
-              product: {
-                name: i.productName,
-                price: i.unitPrice,
-                id: i.productId,
-              },
-              quantity: i.quantity,
-            });
-          }
-        });
+    // if (id != null) {
+    const itemsStream = new Observable((observer) => {
+      observer.next(products);
+      observer.complete();
+    });
+    return <Observable<CartItem[]>>itemsStream;
+    // } else {
+    //   let items: CartItem[] = [];
+    //   this.httpClient
+    //     .get<Item_detail[]>(
+    //       "http://localhost:8087/itemdetail/shoppingcart/" +
+    //         this.cartId
+    //     )
+    //     .subscribe((data) => {
+    //       for (let i of data) {
+    //         items.push({
+    //           product: {
+    //             name: i.productName,
+    //             price: i.unitPrice,
+    //             id: i.productId,
+    //           },
+    //           quantity: i.quantity,
+    //         });
+    //       }
+    //     });
 
-      return of(items);
-    }
+    // }
   }
 
   public getCheckoutItems(): CartItem[] {
@@ -224,12 +223,12 @@ export class CartService {
   }
 
   public getNewTotalAmount(): Observable<number> {
-
-    let items: CartItem[] = JSON.parse(localStorage.getItem('checkoutItem'))
-    return of(items.reduce((prev, curr: CartItem) => {
-      return prev + curr.product.price * curr.quantity;
-    }, 0));
-
+    let items: CartItem[] = JSON.parse(localStorage.getItem("checkoutItem"));
+    return of(
+      items.reduce((prev, curr: CartItem) => {
+        return prev + curr.product.price * curr.quantity;
+      }, 0)
+    );
   }
 
   public updateItemInShoppingCart(

@@ -11,10 +11,9 @@
 
   <app-header
     *ngIf="
-      (url == '/home' && url != '/home/two' && url != '/home/four') ||
+      url == '/home' ||
       router.url.includes('pages') ||
       router.url.includes('products') ||
-      router.url.includes('blog') ||
       router.url.includes('product')
     "
   ></app-header>

@@ -2,6 +2,7 @@ package com.top.shop.user.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.top.shop.user.util.Role;
+import lombok.Data;
 import lombok.ToString;
 
 import javax.persistence.*;
@@ -13,7 +14,7 @@ import java.util.List;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-@ToString
+@Data
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,39 +26,12 @@ public class User {
     private List<Address> addressList;
 
     @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private List<PaymentInformation> paymentInformation;
 
     public void setRole(Role role) {
         this.role = Role.USER;
-    }
-
-    public List<Address> getAddressList() {
-        return addressList;
-    }
-
-    public void setAddressList(List<Address> addressList) {
-        this.addressList = addressList;
-    }
-
-    public List<PaymentInformation> getPaymentInformation() {
-        return paymentInformation;
-    }
-
-    public void setPaymentInformation(List<PaymentInformation> paymentInformation) {
-        this.paymentInformation = paymentInformation;
-    }
-
-    public Role getRole() {
-        return role;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
 

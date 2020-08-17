@@ -7,6 +7,7 @@ import com.top.shop.user.exception.UserDoesntExit;
 import com.top.shop.user.repository.AdminRepository;
 import com.top.shop.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -27,5 +28,9 @@ public class AdminQueryAction {
 
     public Admin findAdminById(Long id) {
        return adminRepository.findById(id).orElseThrow(()->new UserDoesntExit("User  not found"));
+    }
+
+    public List<Admin> getPendingAdmin() {
+        return adminRepository.getPendingAdmin();
     }
 }

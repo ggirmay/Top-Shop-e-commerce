@@ -24,10 +24,10 @@ export class UserService {
       .post<any>("http://localhost:8080/authenticate", {
         password: password,
         username: username,
-        email: "ymengit2u@outlook.com",
       })
       .subscribe(
         (data) => {
+          console.log("DATAAAAAA : " , data)
           this.saveToken(data);
         },
         (err) => {
@@ -40,11 +40,12 @@ export class UserService {
           );
         }
       );
+    console.log("MATYYIIIII")
     this.spinner.hide();
   }
   saveToken(data) {
     var expireDate = new Date().getTime() + 1000 * data.token.expires_in;
-    Cookie.set("access_token", data.token.tokaccess_token, expireDate);
+    Cookie.set("access_token", data.token, expireDate);
     Cookie.set("id_token", data.token.id_token, expireDate);
     Cookie.set("user_id", data.userAccount.id);
     console.log();
@@ -73,6 +74,8 @@ export class UserService {
     let token = Cookie.get("id_token");
     Cookie.delete("access_token");
     Cookie.delete("id_token");
+    Cookie.delete("user_id");
+    Cookie.deleteAll();
     this._router.navigateByUrl("/");
     this._snackBar.open("Successfully logged out", "", {
       duration: 3000,

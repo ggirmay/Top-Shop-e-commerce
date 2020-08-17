@@ -1,6 +1,5 @@
 package com.financialAndReporting.financialAndReporting.dto;
 
-import javax.persistence.Embeddable;
 import java.time.LocalDate;
 
 //@Embeddable
