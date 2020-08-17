@@ -50,6 +50,9 @@ public class VendorApi {
     @PostMapping
     @Operation(summary = "CreateVendor", description = "<p> This Api Create a Vendor")
     public ResponseEntity<PlainText> create(@RequestBody Vendor vendor) {
+        System.out.println("this is vendor controller: " + vendor.getName());
+        System.out.println(vendor.getAddress().getAddressLineOne());
+
         vendor.getUserAccount().setEnabled(false);
         vendorCommandService.createVendor(vendor);
         return ResponseEntity.ok().body(new PlainText("created"));
@@ -75,6 +78,7 @@ public class VendorApi {
     @PostMapping("addEmployee/{id}")
     @Operation(summary = "Add employee Employee", description = "Add  Employees")
     public ResponseEntity<Employee> getAllEmployees(@PathVariable Long id,@RequestBody Employee employee) {
+        System.out.println("this is vendor controller" + employee.getRole());
         return ResponseEntity.ok().body(vendorCommandService.addemployee(id,employee));
     }
 

@@ -138,4 +138,11 @@ public class UserApi {
         return ResponseEntity.ok().body(userQueryService.getGuestUerById(id));
     }
 
+    @GetMapping(value = "/pendingAdmin",produces = MediaType.APPLICATION_JSON_VALUE)
+    @Operation(summary = "Get pending Admin", description = "Get All Pending Admin")
+    public ResponseEntity<List<UserAccount>> getAllPendingAdmins(){
+//        userQueryService.deleteUser(id);
+        return ResponseEntity.ok().body(userAccountQueryService.getAllPendingAdmins());
+    }
+
 }

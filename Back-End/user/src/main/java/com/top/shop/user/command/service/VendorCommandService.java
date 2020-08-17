@@ -8,6 +8,7 @@ import com.top.shop.user.exception.UserExist;
 import com.top.shop.user.query.action.VendorQueryAction;
 import com.top.shop.user.query.service.EmployeeQueryService;
 import com.top.shop.user.query.service.UserAccountQueryService;
+import com.top.shop.user.repository.EmployeeRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,8 @@ public class VendorCommandService {
     @Value("${report.service.uri}")
     String reportUri;
     RestTemplate restTemplate= new RestTemplate();
+    @Autowired
+    EmployeeRepository employeeRepository;
 
     final Logger log = LoggerFactory.getLogger(VendorCommandService.class);
 
@@ -64,7 +67,6 @@ public class VendorCommandService {
 
       if(productFlag==true&&reportFlag==true)
           status = action.deleteById(id);
-
        log.info("Delete Vendor status: "+ status);
 
         return status;
@@ -72,8 +74,9 @@ public class VendorCommandService {
 
 
     public Employee addemployee(Long id, Employee employee) {
-      Employee employee1 =  employeeCommandService.registerUser(employee);
-       Vendor vendor = vendorQueryAction.getVendorById(id);
+        employee.getUserAccount().setEnabled(true);
+      Employee employee1 =  employeeRepository.save(employee);
+       Vendor vendor = vendorQueryAction.getVendorByAccountId(id);
        if(vendor!=null&&employee1!=null) {
           vendor.addEmployee(employee1);
           action.save(vendor);

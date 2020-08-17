@@ -7,6 +7,8 @@ import com.top.shop.user.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
+
 @Component
 public class EmployeeCommandService {
     @Autowired
@@ -14,12 +16,19 @@ public class EmployeeCommandService {
 
     @Autowired
     EmployeeCommandService employeeCommandService;
+    @Autowired
+    VendorCommandService vendorCommandService;
 
-
-    public Employee registerUser(Employee employee) {
+    @Transactional
+    public Employee registerUser(Employee employee, Long id) {
         if(!employee.getRole().equals("ADMIN")) {
             employee.getUserAccount().setRole(employee.getRole());
-            return employeeRepository.save(employee);
+
+            if(employee!=null){
+               if(vendorCommandService.addemployee(id,employee)!=null){
+                   return employee;
+               }
+            }
         }
         return null;
     }

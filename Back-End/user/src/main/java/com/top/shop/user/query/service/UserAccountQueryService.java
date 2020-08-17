@@ -2,10 +2,13 @@ package com.top.shop.user.query.service;
 
 import com.top.shop.user.api.response.LoginResponse;
 import com.top.shop.user.domain.RegisteredUser;
+import com.top.shop.user.domain.User;
 import com.top.shop.user.domain.UserAccount;
 import com.top.shop.user.query.action.UserAccountQueryAction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class UserAccountQueryService {
@@ -35,5 +38,9 @@ public class UserAccountQueryService {
         boolean e = getUserAccountByEmail(email)==null?true:false;
 
         return u&&e;
+    }
+
+    public List<UserAccount> getAllPendingAdmins() {
+       return userAccountQueryAction.getAllPendingAdmins();
     }
 }

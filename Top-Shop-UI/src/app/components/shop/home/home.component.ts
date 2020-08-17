@@ -13,6 +13,9 @@ import {Router} from "@angular/router";
 export class HomeComponent implements OnInit {
   products: Product[];
   public banners = [];
+
+  cin ;
+
   public slides = [
     { title: 'Huge sale', subtitle: 'Up to 70%', image: 'assets/images/carousel/banner1.jpg' },
     { title: 'Biggest discount', subtitle: 'Check the promotion', image: 'assets/images/carousel/banner2.jpg' },
@@ -57,7 +60,7 @@ export class HomeComponent implements OnInit {
 
   }
 
-  saveBook() {
+  saveProduct() {
 
     const uploadData = new FormData();
     uploadData.append('imageFile', this.selectedFile, this.selectedFile.name);
@@ -68,7 +71,7 @@ export class HomeComponent implements OnInit {
           if (response.status === 200) {
             this.productService.addProduct(this.product).subscribe(
               (book) => {
-                this.router.navigate(['admin', 'books']);
+                console.log('Image uploaded successfully');
               }
             );
             console.log('Image uploaded successfully');
@@ -78,7 +81,7 @@ export class HomeComponent implements OnInit {
         }
       );
   }
-  filesToUpload: Array<File> = [];
+  filesToUpload: File;
 
 
 
@@ -86,7 +89,8 @@ export class HomeComponent implements OnInit {
 
   upload() {
     const formData: any = new FormData();
-    const files: Array<File> = this.filesToUpload;
+
+   const files: File = this.filesToUpload;
     console.log(files);
 
 
@@ -94,14 +98,14 @@ export class HomeComponent implements OnInit {
       'Content-Type': undefined});
     let options = { headers: headers };
 
-    formData.append("image",files[0]);
-    formData.append("product",{})
-    this.httpClient.post('http://localhost:8083/product/upload', formData,options).subscribe(
+    formData.append("image",this.selectedFile,this.selectedFile.name);
+     formData.append("product",{})
+    this.httpClient.post('http://localhost:8083/product/uploadImage', formData,options).subscribe(
      data=>{
        console.log("Mulie"+data);
        },
      error => {
-       console.log("Mulie");
+       console.log(error);
      }
     )
     console.log('form data variable :   '+ formData);
@@ -110,7 +114,8 @@ export class HomeComponent implements OnInit {
   }
 
   fileChangeEvent(fileInput: any) {
-    this.filesToUpload = <Array<File>>fileInput.target.files;
+    console.log(this.cin)
+    this.filesToUpload = fileInput
     //this.product.photo = fileInput.target.files[0]['name'];
   }
 }

@@ -72,7 +72,19 @@ public class AdminApi {
         VendorApi.PlainText response = new VendorApi.PlainText((b)?"rejected":"someting went wrong");
         return ResponseEntity.ok().body(response);
     }
+    @DeleteMapping("reject/{id}")
+    @Operation(summary = "reject  admin Account",description = "return updated value")
+    public ResponseEntity<VendorApi.PlainText> delete(@PathVariable Long id){
+        boolean b = adminCommandService.delete(id);
+        VendorApi.PlainText response = new VendorApi.PlainText((b)?"rejected":"someting went wrong");
+        return ResponseEntity.ok().body(response);
+    }
 
+    @GetMapping("/pending")
+    @Operation(summary = "pending  ",description = "return pending admins")
+    public ResponseEntity<List<Admin>> pending(){
+           return ResponseEntity.ok().body(adminQueryService.getPendingAdmin());
+    }
 
 
 }

@@ -40,7 +40,7 @@
 			</staticText>
 			<image>
 				<reportElement x="4" y="-2" width="210" height="100" uuid="99f29b25-6555-49f0-b586-c68abd5311da"/>
-				<imageExpression><![CDATA["E:/MUM/PM/Top-Shop-e-commerce/Back-End/financialAndReporting/topshop logo.png"]]></imageExpression>
+				<imageExpression><![CDATA["S:/MUM Classes Code & Projects/PM/front end/Top-Shop-e-commerce/Back-End/financialAndReporting/topshop logo.png"]]></imageExpression>
 			</image>
 		</band>
 	</title>

@@ -21,6 +21,7 @@ public class AdminCommandService {
     public Admin registerUser(Admin user){
         if(userAccountQueryService.validateAccountInformation(user.getAccount().getEmail(),user.getAccount().getUsername())){
             user.getAccount().setRole("ADMIN");
+            user.getAccount().setEnabled(false);
             return adminCommandService.registerUser(user);
         }
         else throw new UserExist("User exist with this email or username");
@@ -38,5 +39,9 @@ public class AdminCommandService {
 
     public boolean reject(Long id) {
         return   adminCommandService.reject(id);
+    }
+
+    public boolean delete(Long id) {
+        return adminCommandService.delete(id);
     }
 }
