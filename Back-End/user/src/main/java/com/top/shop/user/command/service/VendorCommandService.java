@@ -67,7 +67,6 @@ public class VendorCommandService {
 
       if(productFlag==true&&reportFlag==true)
           status = action.deleteById(id);
-
        log.info("Delete Vendor status: "+ status);
 
         return status;

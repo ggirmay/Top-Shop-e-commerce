@@ -80,6 +80,11 @@ public class AdminApi {
         return ResponseEntity.ok().body(response);
     }
 
+    @GetMapping("/pending")
+    @Operation(summary = "pending  ",description = "return pending admins")
+    public ResponseEntity<List<Admin>> pending(){
+           return ResponseEntity.ok().body(adminQueryService.getPendingAdmin());
+    }
 
 
 }
