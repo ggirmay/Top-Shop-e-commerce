@@ -1,1 +1,9 @@
 2020-08-17 03:44:32.404  WARN 25980 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=21m1s366ms84µs100ns).
+2020-08-17 04:31:30.991  WARN 25980 --- [Thread-3] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1597656690990, current=DOWN, previous=UP]
+2020-08-17 04:31:35.096  WARN 25980 --- [DiscoveryClient-0] c.netflix.discovery.TimedSupervisorTask  : task supervisor shutting down, can't accept the task
+2020-08-17 04:31:40.530  INFO 25980 --- [restartedMain] com.top.shop.user.UserApplication        : No active profile set, falling back to default profiles: default
+2020-08-17 04:31:42.203  WARN 25980 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-08-17 04:31:42.297  WARN 25980 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-08-17 04:31:42.931  WARN 25980 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2020-08-17 04:31:43.517  WARN 25980 --- [restartedMain] ockingLoadBalancerClientRibbonWarnLogger : You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2020-08-17 04:31:44.374  INFO 25980 --- [restartedMain] com.top.shop.user.UserApplication        : Started UserApplication in 6.426 seconds (JVM running for 44804.278)
