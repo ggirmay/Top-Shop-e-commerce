@@ -3,7 +3,6 @@ package com.shop.top.gateway.gateway.security;
 import com.shop.top.gateway.gateway.filter.JwtRequestFilter;
 import com.shop.top.gateway.gateway.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -18,9 +17,16 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.reactive.CorsWebFilter;
+import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
+
+import java.util.List;
+
 
 @Configuration
 @EnableWebSecurity
+
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -56,14 +62,23 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         return authProvider;
     }
+    @Bean
+    CorsWebFilter corsWebFilter() {
+        CorsConfiguration corsConfig = new CorsConfiguration();
+        corsConfig.setAllowedOrigins(List.of("*"));
+        corsConfig.setMaxAge(3600L);
+        corsConfig.addAllowedMethod("*");
+        corsConfig.addAllowedHeader("*");
 
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", corsConfig);
+
+        return new CorsWebFilter(source);
+    }
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.csrf().disable()
-                .authorizeRequests().antMatchers(
-                userServicePath+"/employee/**",userServicePath+"/user/**")
-                .hasAnyRole("ADMIN","VENDOR","SALES_OFFICER","")
-                .and().authorizeRequests().antMatchers(userServicePath+"/vendor/**")
+        httpSecurity.csrf().disable().cors().and()
+                .authorizeRequests().antMatchers(userServicePath+"admin/**")
                 .hasAnyRole("ADMIN","VENDOR")
                 .anyRequest().permitAll().and().
                 exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
@@ -71,4 +86,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
     }
+
 }

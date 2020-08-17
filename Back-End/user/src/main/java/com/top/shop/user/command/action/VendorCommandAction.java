@@ -21,6 +21,7 @@ public class VendorCommandAction {
     @Autowired
     PasswordEncoder passwordEncoder;
 
+
     public boolean deleteById(Long id) {
         repository.deleteById(id);
         return true;
@@ -35,4 +36,5 @@ public class VendorCommandAction {
     public Employee getById(Long id) {
        return employeeRepository.findById(id).orElseThrow(()->new UserDoesntExit("user not found"));
     }
+
 }

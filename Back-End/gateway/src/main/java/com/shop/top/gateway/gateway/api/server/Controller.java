@@ -42,10 +42,9 @@ public class Controller {
     UserAccountControllerBuilder ubuilder = new UserAccountControllerBuilder();
     UserAccountClient userAccountClient = ubuilder.getUserAccountClient();
 
-    @CrossOrigin(origins = "http://localhost:4200")
+
     @PostMapping(value = "authenticate")
     public ResponseEntity<Resposnse> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
-
         authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword(),authenticationRequest.getEmail());
 
         final UserDetails userDetails = userDetailsService

@@ -36,6 +36,7 @@ import java.util.List;
 
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("api/user")
 public class UserApi {
     @Autowired
@@ -52,7 +53,6 @@ public class UserApi {
     MessageSource messageSource;
     private RegisterduserQueryService regUserService;
 
-    @CrossOrigin(origins = "*")
     @PostMapping
     @Operation(summary = "User Account registration", description = "Account registration and email activation")
     public ResponseEntity registerUserAccount(@RequestBody RegisteredUser user, HttpServletRequest request){
@@ -60,7 +60,8 @@ public class UserApi {
         String appUrl = request.getContextPath();
 
         try {
-           RegisteredUser registeredUser =(RegisteredUser) userCommandservice.registerUser((RegisteredUser) user);
+
+           RegisteredUser registeredUser = (RegisteredUser) userCommandservice.registerUser((RegisteredUser) user);
             eventPublisher.publishEvent(new OnRegistrationCompleteEvent(registeredUser.getUserAccount(),
                     request.getLocale(), appUrl));
         }
@@ -72,7 +73,6 @@ public class UserApi {
         return ResponseEntity.ok().body(message);
 
     }
-    @CrossOrigin
     @PostMapping("/login")
     @Operation(summary = "User Login",description = "Use your email and password to login")
     @ApiResponses(value = { @ApiResponse(responseCode = "200", description = "successfully logged in")})
@@ -81,7 +81,6 @@ public class UserApi {
         return ResponseEntity.ok().body(userAccountQueryService.authenticate(loginRequest.getEmail(),loginRequest.getPassword()));
     }
 
-    @CrossOrigin
     @GetMapping(value = "/findByUserName/{userName}")
     @Operation(summary = "User return details",description = "Return User Account")
     @ApiResponses(value = { @ApiResponse(responseCode = "200", description = "successfully logged in")})
@@ -93,20 +92,17 @@ public class UserApi {
     }
 
 
-    @CrossOrigin
     @GetMapping
     @Operation(summary = "Grt All users", description = "Retrive all Users")
     public ResponseEntity<List<RegisteredUser>> getAllREgisteredUsers(){
         return ResponseEntity.ok().body(userQueryService.getAllUsers());
     }
-    @CrossOrigin
     @DeleteMapping("/{id}")
     @Operation(summary = "delete user", description = "delete User")
     public ResponseEntity<String> deleteUserById(@PathVariable Long id){
         userQueryService.deleteUser(id);
         return ResponseEntity.ok("deleted");
     }
-    @CrossOrigin
     @GetMapping("/{id}")
     @Operation(summary = "Grt by user id", description = "get by user id")
     public ResponseEntity<User> getUserById(@PathVariable Long id){
@@ -114,7 +110,6 @@ public class UserApi {
         return ResponseEntity.ok().body(userQueryService.getUerById(id));
     }
 
-    @CrossOrigin
     @GetMapping("getByAccountId/{id}")
     @Operation(summary = "Get user by account id", description = "get by account id")
     public ResponseEntity<User> getUserBy_accountId(@PathVariable Long id){
@@ -122,7 +117,6 @@ public class UserApi {
         return ResponseEntity.ok().body(userQueryService.getUserBy_accountId(id));
     }
 
-    @CrossOrigin
     @PutMapping("update/{id}")
     @Operation(summary = "update Registred user", description = "Update User")
     public ResponseEntity<User> editUserById(@RequestBody RegisteredUser registeredUser){
@@ -130,7 +124,6 @@ public class UserApi {
         return ResponseEntity.ok().body(userCommandservice.update(registeredUser));
     }
 
-    @CrossOrigin
     @PostMapping("/create_guest")
     @Operation(summary = "create guest user", description = "create User")
     public ResponseEntity<User> create(@RequestBody GuestUser guestUser){
@@ -138,12 +131,18 @@ public class UserApi {
         return ResponseEntity.ok().body(userCommandservice.createGuest(guestUser));
     }
 
-    @CrossOrigin
     @GetMapping("/get_guest/{id}")
     @Operation(summary = "create guest user", description = "create User")
     public ResponseEntity<User> getGuest(@PathVariable Long id){
 //        userQueryService.deleteUser(id);
         return ResponseEntity.ok().body(userQueryService.getGuestUerById(id));
+    }
+
+    @GetMapping(value = "/pendingAdmin",produces = MediaType.APPLICATION_JSON_VALUE)
+    @Operation(summary = "Get pending Admin", description = "Get All Pending Admin")
+    public ResponseEntity<List<UserAccount>> getAllPendingAdmins(){
+//        userQueryService.deleteUser(id);
+        return ResponseEntity.ok().body(userAccountQueryService.getAllPendingAdmins());
     }
 
 }

@@ -28,6 +28,7 @@ export class UserService {
       })
       .subscribe(
         (data) => {
+          console.log("DATAAAAAA : " , data)
           this.saveToken(data);
         },
         (err) => {
@@ -40,6 +41,7 @@ export class UserService {
           );
         }
       );
+    console.log("MATYYIIIII")
     this.spinner.hide();
   }
   saveToken(data) {

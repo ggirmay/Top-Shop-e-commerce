@@ -4,8 +4,11 @@ import com.top.shop.user.command.action.VendorCommandAction;
 import com.top.shop.user.domain.Employee;
 import com.top.shop.user.domain.Vendor;
 import com.top.shop.user.exception.UserDoesntExit;
+import com.top.shop.user.exception.UserExist;
 import com.top.shop.user.query.action.VendorQueryAction;
 import com.top.shop.user.query.service.EmployeeQueryService;
+import com.top.shop.user.query.service.UserAccountQueryService;
+import com.top.shop.user.repository.EmployeeRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,22 +27,31 @@ public class VendorCommandService {
     @Autowired
     EmployeeCommandService employeeCommandService;
     @Autowired
+    UserAccountQueryService userAccountQueryService;
+    @Autowired
     EmployeeQueryService employeeQueryService;
     @Value("${product.service.uri}")
     String productUri;
     @Value("${report.service.uri}")
     String reportUri;
     RestTemplate restTemplate= new RestTemplate();
+    @Autowired
+    EmployeeRepository employeeRepository;
 
     final Logger log = LoggerFactory.getLogger(VendorCommandService.class);
 
 
     public Vendor createVendor(Vendor vendor){
-      Vendor c = action.save(vendor);
-      log.info("Create Vendor status: {},"+c.toString());
-
-      return c;
+        vendor.getUserAccount().setRole("VENDOR");
+        if(userAccountQueryService.validateAccountInformation(vendor.getUserAccount().getEmail(),vendor.getUserAccount().getUsername())) {
+            Vendor c = action.save(vendor);
+            log.info("Create Vendor status: {},"+c.toString());
+            return c;
+        }
+      throw new UserExist("User with this email or username exist");
     }
+
+
 
 
     public boolean deleteById(Long id){
@@ -55,7 +67,6 @@ public class VendorCommandService {
 
       if(productFlag==true&&reportFlag==true)
           status = action.deleteById(id);
-
        log.info("Delete Vendor status: "+ status);
 
         return status;
@@ -63,8 +74,9 @@ public class VendorCommandService {
 
 
     public Employee addemployee(Long id, Employee employee) {
-      Employee employee1 =  employeeCommandService.registerUser(employee);
-       Vendor vendor = vendorQueryAction.getVendorById(id);
+        employee.getUserAccount().setEnabled(true);
+      Employee employee1 =  employeeRepository.save(employee);
+       Vendor vendor = vendorQueryAction.getVendorByAccountId(id);
        if(vendor!=null&&employee1!=null) {
           vendor.addEmployee(employee1);
           action.save(vendor);
@@ -88,5 +100,6 @@ public class VendorCommandService {
     public Employee getById(Long id) {
         return action.getById(id);
     }
+
 
 }

@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/shoppingcart")
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(origins = "*")
 public class ShoppingCartController {
 
     ShoppingCartService shoppingCartService;
@@ -27,6 +27,7 @@ public class ShoppingCartController {
         return shoppingCartService.creatShoppingCart(shoppingCart);
     }
 
+    @CrossOrigin(origins = "*")
     @GetMapping("/cartid/{userid}")
     public Long getShoppingCartId(@PathVariable("userid") Long userId) throws Exception {
         ShoppingCart shoppingCart = shoppingCartService.getShoppingCartId(userId);
