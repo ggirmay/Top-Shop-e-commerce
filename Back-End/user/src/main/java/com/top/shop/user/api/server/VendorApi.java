@@ -78,6 +78,7 @@ public class VendorApi {
     @PostMapping("addEmployee/{id}")
     @Operation(summary = "Add employee Employee", description = "Add  Employees")
     public ResponseEntity<Employee> getAllEmployees(@PathVariable Long id,@RequestBody Employee employee) {
+        System.out.println("this is vendor controller" + employee.getRole());
         return ResponseEntity.ok().body(vendorCommandService.addemployee(id,employee));
     }
 
