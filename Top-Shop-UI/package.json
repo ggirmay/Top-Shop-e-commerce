@@ -29,7 +29,7 @@
     "circular-json": "^0.5.9",
     "core-js": "^2.5.4",
     "font-awesome": "^4.7.0",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "ngx-image-zoom": "^0.4.1",
     "ngx-img-zoom": "^3.3.3",
     "ngx-pagination": "^4.0.0",
